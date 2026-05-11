@@ -1,5 +1,3 @@
-"use client";
-
 import React from "react";
 import { PageHero, FadeUp } from "@/components/animation/animations";
 import { Button } from "@/components/ui/button";

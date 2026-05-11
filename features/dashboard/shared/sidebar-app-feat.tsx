@@ -24,10 +24,7 @@ import { Role } from "@/types/access";
 import { hasAccess } from "@/lib/access";
 import { TeacherDTO } from "@/types/dto/teacher";
 
-interface SidebarAppFeatProps {
-  items: SidebarItem[];
-  user: UserDTO;
-}
+import { SidebarAppFeatProps } from "@/types/components";
 
 export function SidebarAppFeat({ items, user }: SidebarAppFeatProps) {
   const pathname = usePathname();

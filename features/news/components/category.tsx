@@ -5,20 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion } from "motion/react";
 
-interface Article {
-  id: string | number;
-  title: string;
-  date: string;
-  readTime: string;
-  image: string;
-}
-
-interface CategoryNewsProps {
-  title: string;
-  mainArticle: Article & { description: string };
-  sideArticles: Article[];
-}
-
+import { CategoryNewsProps } from "@/types/components";
 export function CategoryNews({ title, mainArticle, sideArticles }: CategoryNewsProps) {
   return (
     <section className="mb-12">
@@ -41,7 +28,7 @@ export function CategoryNews({ title, mainArticle, sideArticles }: CategoryNewsP
             className="object-cover transition-transform duration-700 group-hover:scale-105"
             sizes="(max-width: 768px) 100vw, 50vw"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
+          <div className="absolute inset-0 bg-linear-to-t from-black/80 via-black/30 to-transparent" />
           
           <div className="absolute bottom-0 left-0 w-full p-6">
             <Link href={`/news/${mainArticle.id}`} className="block">

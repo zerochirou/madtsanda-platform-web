@@ -39,7 +39,7 @@ export default function CampusPage() {
                   className="object-cover group-hover:scale-110 transition-transform duration-700" 
                   sizes="(max-width: 768px) 100vw, 50vw" 
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/20 to-transparent opacity-80"></div>
+                <div className="absolute inset-0 bg-linear-to-t from-zinc-950 via-zinc-950/20 to-transparent opacity-80"></div>
                 <div className="absolute bottom-8 left-8 right-8">
                   <h3 className="text-3xl font-bold text-white mb-2 translate-y-4 group-hover:translate-y-0 transition-transform duration-500">{fac.name}</h3>
                   <div className="h-1 w-12 bg-emerald-500 rounded-full scale-0 group-hover:scale-100 origin-left transition-transform duration-500 delay-100"></div>

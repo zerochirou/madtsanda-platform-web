@@ -1,4 +1,4 @@
-// libs/api.ts
+import { getAuthToken } from "./auth-service";
 
 const BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3333/api/v1';
 
@@ -12,8 +12,11 @@ export async function request<T>(endpoint: string, options: RequestOptions = {})
   const queryString = params ? `?${new URLSearchParams(params).toString()}` : '';
   const url = `${BASE_URL}${endpoint}${queryString}`;
 
+  const token = await getAuthToken();
+
   const headers = {
     ...customConfig.headers,
+    ...(token ? { Authorization: `Bearer ${token}` } : {}),
   };
 
   const config: RequestInit = {

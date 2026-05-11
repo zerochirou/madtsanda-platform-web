@@ -21,12 +21,7 @@ import { LogOut } from "lucide-react"; // Tambah icon untuk visual trigger
 import { Button } from "@/components/ui/button";
 import { handleLogout } from "@/features/auth/actions/logout";
 
-interface SidebarHeaderProps {
-  user: UserDTO;
-  student: StudentDTO | null;
-  teacher: TeacherDTO | null;
-}
-
+import { SidebarHeaderProps } from "@/types/components";
 export function SidebarHeader({ user, student, teacher }: SidebarHeaderProps) {
   const profileImage = student?.profileUrl || teacher?.profileUrl;
 

@@ -5,13 +5,7 @@ import { ReactNode } from "react";
 import { SidebarHeader } from "./sidebar-header";
 import { SidebarApp } from "./sidebar-app";
 import { TeacherDTO } from "@/types/dto/teacher";
-
-interface SidebarLayoutProps {
-  user: UserDTO;
-  student?: StudentDTO | null;
-  teacher?: TeacherDTO | null;
-  children: ReactNode;
-}
+import { SidebarLayoutProps } from "@/types/components";
 
 export function SidebarLayout({ user, student, children, teacher }: SidebarLayoutProps) {
   return (

@@ -1,11 +1,11 @@
 "use client";
 
-import { NewsListProps } from "@/types/components";
+import { ResearchListProps } from "@/types/components";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { Badge } from "@/components/ui/badge";
 
-export function NewsList({ data }: NewsListProps) {
-  if (!data || data.length === 0) return <div className="p-4">Belum ada berita.</div>;
+export function ResearchList({ data }: ResearchListProps) {
+  if (!data || data.length === 0) return <div className="p-4">Belum ada penelitian.</div>;
 
   return (
     <div className="border rounded-md mt-4">
@@ -13,8 +13,8 @@ export function NewsList({ data }: NewsListProps) {
         <TableHeader>
           <TableRow>
             <TableHead>Judul</TableHead>
-            <TableHead>Kategori</TableHead>
-            <TableHead>Status</TableHead>
+            <TableHead>Abstrak</TableHead>
+            <TableHead>File</TableHead>
             <TableHead>Tanggal</TableHead>
           </TableRow>
         </TableHeader>
@@ -22,9 +22,15 @@ export function NewsList({ data }: NewsListProps) {
           {data.map((item) => (
             <TableRow key={item.id}>
               <TableCell className="font-medium">{item.title}</TableCell>
-              <TableCell>{item.newsCategory?.category || '-'}</TableCell>
+              <TableCell className="max-w-xs truncate">{item.abstrack}</TableCell>
               <TableCell>
-                {item.pin ? <Badge variant="default">Pinned</Badge> : <Badge variant="secondary">Normal</Badge>}
+                {item.fileUrl ? (
+                  <a href={item.fileUrl} target="_blank" rel="noreferrer" className="text-emerald-500 hover:underline">
+                    Lihat Dokumen
+                  </a>
+                ) : (
+                  <Badge variant="secondary">Tidak ada</Badge>
+                )}
               </TableCell>
               <TableCell>{new Date(item.createdAt).toLocaleDateString('id-ID')}</TableCell>
             </TableRow>

@@ -13,10 +13,7 @@ import { SidebarAppFeat } from "./sidebar-app-feat";
 import { sidebarItems } from "@/components/data/sidebar-data";
 import { UserDTO } from "@/types/dto/user";
 
-interface SidebarAppProps {
-  user: UserDTO
-}
-
+import { SidebarAppProps } from "@/types/components";
 export function SidebarApp({ user }: SidebarAppProps) {
   return (
     <Sidebar collapsible="icon" variant="sidebar">

@@ -57,12 +57,12 @@ export function NewsEditor({
 
   function onSubmit(data: z.infer<typeof NewsCreateSchema>) {
     startTransition(async () => {
-      const rawFile = data.image?.[0];
+      const rawFile = (data.image as FileList)?.[0];
       if (!rawFile) {
         toast.error("Silakan pilih gambar terlebih dahulu");
         return;
       }
-      await createNewsService({
+      const result = await createNewsService({
         title: data.title,
         content: data.content,
         image: rawFile,
@@ -70,8 +70,12 @@ export function NewsEditor({
         pin: data.pin,
         userId: user.id,
       });
+      if (result) {
+        toast.success("Berita berhasil dibuat!");
+      } else {
+        toast.error("Gagal membuat berita. Silakan coba lagi.");
+      }
     });
-    toast.success("Berita berhasil dibuat!");
   }
 
   return (

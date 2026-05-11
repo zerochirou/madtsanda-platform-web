@@ -13,12 +13,7 @@ import {
   ShieldCheck,
 } from "lucide-react";
 
-interface HomeProfileProps {
-  user: UserDTO;
-  student?: StudentDTO | null;
-  teacher?: TeacherDTO | null;
-}
-
+import { HomeProfileProps } from "@/types/components";
 export function HomeProfile({ user, student, teacher }: HomeProfileProps) {
   const profileUrl = student?.profileUrl || teacher?.profileUrl;
   return (

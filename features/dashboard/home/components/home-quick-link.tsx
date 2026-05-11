@@ -6,10 +6,7 @@ import { Role } from "@/types/access";
 import { UserDTO } from "@/types/dto/user";
 import Link from "next/link";
 
-interface HomeQuickLinkProps {
-  user: UserDTO;
-}
-
+import { HomeQuickLinkProps } from "@/types/components";
 export function HomeQuickLink({ user }: HomeQuickLinkProps) {
   const userRole: Role = user.role;
 

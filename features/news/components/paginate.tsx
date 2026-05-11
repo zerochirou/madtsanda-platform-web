@@ -11,10 +11,7 @@ import {
 } from "@/components/ui/pagination";
 import { usePathname, useSearchParams } from "next/navigation";
 
-interface DynamicPaginationProps {
-  totalPages: number;
-}
-
+import { DynamicPaginationProps } from "@/types/components";
 export function DynamicPagination({ totalPages }: DynamicPaginationProps) {
   const pathname = usePathname();
   const searchParams = useSearchParams();

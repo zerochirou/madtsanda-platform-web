@@ -22,16 +22,19 @@ export const NewsCreateSchema = z.object({
   content: z.string(),
   pin: z.boolean(),
   image: z
-    .any()
-    .refine((files) => files?.length == 1, "Avatar harus diunggah.")
-    .refine(
-      (files) => files?.[0]?.size <= MAX_FILE_SIZE,
-      `Ukuran maksimal adalah 5MB.`,
-    )
-    .refine(
-      (files) => ACCEPTED_IMAGE_TYPES.includes(files?.[0]?.type),
-      "Hanya format .jpg, .jpeg, dan .png yang didukung.",
-    ),
+    .unknown()
+    .refine((files) => {
+      const list = files as FileList;
+      return list && list.length === 1;
+    }, "Avatar harus diunggah.")
+    .refine((files) => {
+      const list = files as FileList;
+      return list && list[0] && list[0].size <= MAX_FILE_SIZE;
+    }, "Ukuran maksimal adalah 5MB.")
+    .refine((files) => {
+      const list = files as FileList;
+      return list && list[0] && ACCEPTED_IMAGE_TYPES.includes(list[0].type);
+    }, "Hanya format .jpg, .jpeg, dan .png yang didukung."),
   categoryId: z.uuid(),
 });
 

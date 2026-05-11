@@ -1,14 +1,18 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-export function errorFormat(error: unknown): { message: string } {
+export function errorFormat(error: unknown): { message: string; code?: string; detail?: unknown } {
   if (error instanceof Error) {
     return {
       message: error.message,
-      stack: error.stack,
-      name: error.name,
-      ...((error as any).response?.data && {
-        detail: (error as any).response.data,
-      }),
-    }
+    };
   }
-  return { message: String(error) }
+  
+  if (typeof error === 'object' && error !== null) {
+    const err = error as Record<string, unknown>;
+    return {
+      message: typeof err.message === 'string' ? err.message : 'Terjadi kesalahan tidak dikenal.',
+      code: typeof err.code === 'string' ? err.code : undefined,
+      detail: err.data || err.detail,
+    };
+  }
+
+  return { message: String(error) };
 }

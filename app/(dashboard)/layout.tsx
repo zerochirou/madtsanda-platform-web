@@ -22,8 +22,8 @@ export default async function RootLayout({
     <TooltipProvider>
       <SidebarLayout
         user={user.data}
-        student={student?.data}
-        teacher={teacher?.data}
+        student={student?.data ?? null}
+        teacher={teacher?.data ?? null}
       >
         {children}
       </SidebarLayout>
