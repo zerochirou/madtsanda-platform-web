@@ -58,7 +58,7 @@ export const sidebarItems: SidebarItem[] = [
     subItems: [
       {
         id: "table-list",
-        minRole: "student",
+        minRole: "admin",
         label: "List Berita",
         description: "List tabel berita",
         icon: ContentView24Color,
@@ -71,14 +71,6 @@ export const sidebarItems: SidebarItem[] = [
         description: "Buat berita baru",
         minRole: "admin",
         route: "/dashboard/news/create",
-      },
-      {
-        id: "update",
-        label: "Update News",
-        icon: Drafts20Color,
-        minRole: "admin",
-        description: "Update berita",
-        route: "/dashboard/news/edit",
       },
     ],
   },

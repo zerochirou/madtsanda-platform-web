@@ -95,3 +95,34 @@ export async function deleteNewsService(id: string): Promise<NewsResponseDTO | n
   }
 }
 
+export async function updateNewsService(data: Partial<NewsPostDTO>, id: string) {
+  try {
+    const formData = new FormData();
+
+    // Hanya tambahkan ke FormData jika field tersebut ada/dikirim
+    if (data.title) formData.append("title", data.title);
+    if (data.content) formData.append("content", data.content);
+    if (data.categoryId) formData.append("categoryId", data.categoryId);
+    if (data.userId) formData.append("userId", data.userId);
+    
+    if (data.pin !== undefined) {
+      formData.append("pin", String(data.pin));
+    }
+
+    if (data.image instanceof File) {
+      formData.append("image", data.image);
+    }
+
+    const response = await request<NewsResponseDTO>(`/news/${id}`, {
+      method: "PUT", 
+      body: formData,
+    });
+
+    return response;
+  } catch (error: unknown) {
+  // } catch (error: any) {
+    logger.error(errorFormat(error));
+    // console.dir(error.data, { depth: null });
+    return null;
+  }
+}

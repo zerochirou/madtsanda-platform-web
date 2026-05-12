@@ -30,18 +30,7 @@ export function UpdateDropdown({ id }: { id: string }) {
       <DropdownMenuContent className="w-40" align="start">
         <DropdownMenuGroup>
           <DropdownMenuLabel>Actions</DropdownMenuLabel>
-          <DropdownMenuItem>
-            Edit Berita
-            <DropdownMenuShortcut>
-              <Settings2 />
-            </DropdownMenuShortcut>
-          </DropdownMenuItem>
           <DeleteNews id={id} />
-          {/*<DropdownMenuItem variant="destructive" >
-            Hapus Berita
-            <DropdownMenuShortcut>
-            </DropdownMenuShortcut>
-          </DropdownMenuItem>*/}
         </DropdownMenuGroup>
       </DropdownMenuContent>
     </DropdownMenu>

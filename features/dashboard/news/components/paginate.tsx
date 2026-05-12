@@ -45,7 +45,7 @@ export function DynamicPagination({ totalPages }: DynamicPaginationProps) {
   };
 
   return (
-    <Pagination className="mt-8">
+    <Pagination>
       <PaginationContent>
         {/* Tombol Previous */}
         <PaginationItem>

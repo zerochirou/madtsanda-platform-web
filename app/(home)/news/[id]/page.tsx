@@ -1,8 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowLeft, Clock, Calendar, Share2, Bookmark } from "lucide-react";
+import { ArrowLeft, Calendar } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { allNews } from "@/components/data/news";
 import { getNewsByIdService } from "@/features/news/services";
 import { formatReadableDate } from "@/lib/date";
 
@@ -119,7 +118,7 @@ export default async function NewsDetailPage({
               </div>
             </div>
             <div className="flex items-center gap-2">
-              <Share id={news.data.id}/>
+              <Share id={news.data.id} />
             </div>
           </div>
         </div>
@@ -137,8 +136,8 @@ export default async function NewsDetailPage({
         </div>
 
         {/* Article Content */}
-        <div className="prose prose-zinc dark:prose-invert max-w-none">
-          <BlockRenderDynamic md={news.data.content} />
+        <div className="prose prose-zinc dark:prose-invert max-w-4xl ">
+          <BlockRenderDynamic md={news.data.content} name={news.data.user.username} />
         </div>
 
         {/* Footer actions */}

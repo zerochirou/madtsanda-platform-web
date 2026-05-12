@@ -15,6 +15,7 @@ import { togglePinNewsAction } from "@/features/dashboard/news/actions/update-pi
 import { ALargeSmall, Calendar, Tag, ToggleLeft, User } from "lucide-react";
 import { UpdateDropdown } from "./update-dropdown";
 import { toast } from "sonner";
+import Link from "next/link";
 
 export function NewsList({ data }: NewsListProps) {
   async function handlePinToggle(id: string, currentPin: boolean) {
@@ -71,10 +72,16 @@ export function NewsList({ data }: NewsListProps) {
                 <TableCell className="border-r-2 border-dashed">
                   <span className="flex flex-row items-center gap-1">
                     <UpdateDropdown id={item.id} />
-                    {item.title}
+                    <Link
+                      href={`/dashboard/news/edit/${item.id}`}
+                      prefetch
+                      className="hover:underline hover:text-emerald-400 transition-all duration-150 ease-in-out font-semibold"
+                    >
+                      {item.title}
+                    </Link>
                   </span>
                 </TableCell>
-                <TableCell className="border-r-2 border-dashed">
+                <TableCell className="border-r-2 border-dashed capitalize text-right">
                   {item.newsCategory?.category || "-"}
                 </TableCell>
                 <TableCell className="border-r-2 border-dashed">
@@ -86,7 +93,7 @@ export function NewsList({ data }: NewsListProps) {
                       variant="outline"
                       className="bg-purple-200 hover:bg-purple-300 dark:bg-purple-700 dark:text-purple-300 dark:border-purple-200 hover:text-purple-700 border-purple-400 text-purple-600 h-6 capitalize rounded-xl w-full"
                     >
-                      Pinned
+                      Unpinned
                     </Button>
                   ) : (
                     <Button
@@ -96,7 +103,7 @@ export function NewsList({ data }: NewsListProps) {
                       variant="outline"
                       className="bg-slate-200 hover:bg-slate-300 dark:bg-slate-700 dark:text-slate-300 dark:border-slate-400 hover:text-slate-700 border-slate-400 text-slate-600 h-6 capitalize rounded-xl w-full"
                     >
-                      Unpinned
+                      Pinned
                     </Button>
                   )}
                 </TableCell>

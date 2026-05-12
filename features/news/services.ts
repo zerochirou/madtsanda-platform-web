@@ -38,7 +38,7 @@ export async function getNewsWithPaginate(
     const response = await request<NewsPaginateDTO>(
       `/news/paginate/?page=${page} `,
     );
-    console.log(response)
+    console.log(response);
 
     return response;
   } catch (error: unknown) {
@@ -51,12 +51,7 @@ export async function getNewsByIdService(
   id: string,
 ): Promise<NewsItemDTO | null> {
   try {
-    const response = await request<NewsItemDTO>(`/news/${id}`, {
-      next: {
-        revalidate: 3600,
-        tags: ["news"],
-      },
-    });
+    const response = await request<NewsItemDTO>(`/news/${id}`);
 
     return response;
   } catch (error: unknown) {
@@ -69,8 +64,7 @@ export async function getAllNewsCategoryService(): Promise<
   NewsCategoryDTO[] | null
 > {
   try {
-    const response = await request<NewsCategoryDTO[]>(`/news/category`, {
-    });
+    const response = await request<NewsCategoryDTO[]>(`/news/category`, {});
 
     return response;
   } catch (error: unknown) {

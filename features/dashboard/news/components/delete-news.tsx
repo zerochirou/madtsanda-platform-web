@@ -36,10 +36,9 @@ export function DeleteNews({ id }: { id: string }) {
           <AlertDialogMedia className="bg-destructive/10 text-destructive dark:bg-destructive/20 dark:text-destructive">
             <Trash2Icon />
           </AlertDialogMedia>
-          <AlertDialogTitle>Delete chat?</AlertDialogTitle>
+          <AlertDialogTitle>Apakah Anda yakin untuk menghapus berita ini?</AlertDialogTitle>
           <AlertDialogDescription>
-            This will permanently delete this chat conversation. View{" "}
-            <a href="#">Settings</a> delete any memories saved during this chat.
+            Aksi ini tidak dapat dibatalkan setelah dilakukan. pertimbangkan ulang apakah Anda yakin untuk menghapus berita ini.
           </AlertDialogDescription>
         </AlertDialogHeader>
         <AlertDialogFooter>
