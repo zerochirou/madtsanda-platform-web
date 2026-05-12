@@ -69,7 +69,6 @@ export function ResearchEditor({ user }: { user: UserDTO }) {
         <FieldDescription>
           Maksimal ukuran file adalah 50MB.
         </FieldDescription>
-
         <FieldGroup>
           {/* TITLE */}
           <Controller
