@@ -33,8 +33,7 @@ import { Editor, EditorFrame } from "@/components/shared/block-editor";
 import { Switch } from "@/components/ui/switch";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
-import { is } from "zod/v4/locales";
-import { Spinner } from "@/components/ui/spinner";
+import { is } from "zod/v4/locales";import { Spinner } from "@/components/ui/spinner";
 import { DropzoneInput } from "@/components/shared/file-upload";
 
 export function NewsEditor({
@@ -140,12 +139,14 @@ export function NewsEditor({
           <Controller
             name="image"
             control={control}
-            render={({ field, fieldState }) => ( // Ambil 'field' secara utuh saja
+            render={(
+              { field, fieldState }, // Ambil 'field' secara utuh saja
+            ) => (
               <Field>
                 <FieldLabel>
                   Gambar berita <Badge className="ml-2">Experimental</Badge>
                 </FieldLabel>
-                
+
                 <DropzoneInput
                   name={field.name}
                   onBlur={field.onBlur}

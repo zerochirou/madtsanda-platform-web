@@ -11,64 +11,105 @@ import {
   FieldGroup,
   FieldLabel,
   FieldLegend,
-  FieldSeparator,
   FieldSet,
 } from "@/components/ui/field";
 import { UserDTO } from "@/types/dto/user";
 import z from "zod";
-import { ResearchCreateSchema } from "@/types/dto/research";
+import {
+  ResearchCreateSchema,
+  ResearchTagResponseDTO,
+} from "@/types/dto/research";
 import { createResearchService } from "../service";
 import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
+import {
+  Select,
+  SelectContent,
+  SelectGroup,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select"; // Pastikan path import benar
+import { DatePicker } from "@/components/shared/date-picker/date";
+import { Textarea } from "@/components/ui/textarea";
 
-export function ResearchEditor({ user }: { user: UserDTO }) {
+export function ResearchEditor({
+  user,
+  researchTag,
+}: {
+  user: UserDTO;
+  researchTag: ResearchTagResponseDTO | null;
+}) {
   const [pending, startTransition] = useTransition();
+
   const form = useForm<z.infer<typeof ResearchCreateSchema>>({
     resolver: zodResolver(ResearchCreateSchema),
+    resetOptions: {
+      keepValues: true,
+      keepErrors: true,
+      keepTouched: true,
+      keepIsSubmitted: true,
+      keepIsValid: true,
+    },
     defaultValues: {
       title: "",
       abstrack: "",
-      file: null,
+      document: undefined, // Gunakan undefined untuk file
+      published_date: new Date(),
+      researchTagId: "",
     },
   });
 
   const { handleSubmit, control } = form;
 
-  function onSubmit(data: z.infer<typeof ResearchCreateSchema>) {
+  function onSubmit(values: z.infer<typeof ResearchCreateSchema>) {
     startTransition(async () => {
-      const rawFile = (data.file as FileList)?.[0];
-      if (!rawFile) {
-        toast.error("Silakan pilih file penelitian (PDF/DOC) terlebih dahulu");
-        return;
-      }
-      const result = await createResearchService({
-        title: data.title,
-        abstract: data.abstrack,
-        file: rawFile,
-        userId: user.id,
-      });
+      try {
+        const rawFile =
+          values.document instanceof FileList
+            ? values.document[0]
+            : values.document;
 
-      if (result) {
+        if (!rawFile) {
+          toast.error("Silakan pilih file penelitian terlebih dahulu");
+          return;
+        }
+
+        // 1. Panggil service
+        const result = await createResearchService({
+          ...values,
+          document: rawFile,
+          status: "pending",
+          user_id: user.id,
+        });
+
+        // 2. Jika sampai sini tanpa throw, berarti sukses
         toast.success("Penelitian berhasil diunggah!");
-      } else {
-        toast.error("Gagal mengunggah penelitian.");
+        console.log("Success result:", result);
+      } catch (error: any) {
+        const msg = error.message || "Terjadi kesalahan";
+
+        toast.error(msg);
+        console.error("Detail Error:", error);
       }
     });
   }
 
   return (
     <form className="mx-auto max-w-3xl py-10" onSubmit={handleSubmit(onSubmit)}>
-      <div className="">
+      <div>
         <h1 className="text-4xl font-bold mt-4">Unggah Penelitian</h1>
       </div>
       <Separator className="mb-8 mt-4" />
+
       <FieldSet>
-        <FieldLegend className="text-4xl">Detail Penelitian</FieldLegend>
-        <FieldDescription>
-          Maksimal ukuran file adalah 50MB.
-        </FieldDescription>
+        <FieldLegend className="text-2xl font-semibold">
+          Detail Penelitian
+        </FieldLegend>
+        <FieldDescription>Maksimal ukuran file adalah 50MB.</FieldDescription>
+
         <FieldGroup>
           {/* TITLE */}
           <Controller
@@ -76,18 +117,61 @@ export function ResearchEditor({ user }: { user: UserDTO }) {
             control={control}
             render={({ field, fieldState }) => (
               <Field>
-                <FieldLabel htmlFor="title">Judul</FieldLabel>
+                <FieldLabel>Judul</FieldLabel>
                 <Input
                   {...field}
-                  id="title"
                   placeholder="Masukkan judul penelitian..."
                   aria-invalid={fieldState.invalid}
-                  className="rounded-sm"
                 />
                 {fieldState.error && <FieldError errors={[fieldState.error]} />}
               </Field>
             )}
           />
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {/* DATE */}
+            <Controller
+              name="published_date"
+              control={control}
+              render={({ field, fieldState }) => (
+                <Field>
+                  <FieldLabel>Tanggal Publikasi</FieldLabel>
+                  <DatePicker value={field.value} onChange={field.onChange} />
+                  {fieldState.error && (
+                    <FieldError errors={[fieldState.error]} />
+                  )}
+                </Field>
+              )}
+            />
+
+            {/* TAG */}
+            <Controller
+              name="researchTagId"
+              control={control}
+              render={({ field, fieldState }) => (
+                <Field>
+                  <FieldLabel>Kategori Penelitian</FieldLabel>
+                  <Select onValueChange={field.onChange} value={field.value}>
+                    <SelectTrigger>
+                      <SelectValue placeholder="Pilih Kategori" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectGroup>
+                        {researchTag?.data?.map((i) => (
+                          <SelectItem key={i.id} value={String(i.id)}>
+                            {i.category}
+                          </SelectItem>
+                        ))}
+                      </SelectGroup>
+                    </SelectContent>
+                  </Select>
+                  {fieldState.error && (
+                    <FieldError errors={[fieldState.error]} />
+                  )}
+                </Field>
+              )}
+            />
+          </div>
 
           {/* ABSTRACT */}
           <Controller
@@ -95,49 +179,48 @@ export function ResearchEditor({ user }: { user: UserDTO }) {
             control={control}
             render={({ field, fieldState }) => (
               <Field>
-                <FieldLabel htmlFor="abstrack">Abstrak</FieldLabel>
-                <Input
+                <FieldLabel>Abstrak</FieldLabel>
+                <Textarea
                   {...field}
-                  id="abstrack"
                   placeholder="Masukkan abstrak..."
-                  aria-invalid={fieldState.invalid}
-                  className="rounded-sm"
+                  className="min-h-[150px]"
                 />
                 {fieldState.error && <FieldError errors={[fieldState.error]} />}
               </Field>
             )}
           />
 
-          {/* FILE */}
+          {/* FILE - Perbaikan krusial pada value handling */}
           <Controller
-            name="file"
+            name="document"
             control={control}
-            render={({
-              field: { onChange, ref, value, ...field },
-              fieldState,
-            }) => (
+            render={({ field: { onChange, value, ...field }, fieldState }) => (
               <Field>
                 <FieldLabel>
-                  File Dokumen (PDF/DOC) <Badge className="ml-2">Max 50MB</Badge>
+                  File Dokumen (PDF/DOC)
+                  <Badge variant="secondary" className="ml-2">
+                    Max 50MB
+                  </Badge>
                 </FieldLabel>
                 <Input
                   {...field}
                   type="file"
-                  id="file"
-                  ref={ref}
-                  onChange={(e) => {
-                    onChange(e.target.files);
-                  }}
-                  aria-invalid={fieldState.invalid}
-                  className="rounded-sm"
                   accept=".pdf,.doc,.docx"
+                  // Value harus di-reset atau dibiarkan kosong untuk input file
+                  value={undefined}
+                  onChange={(e) => {
+                    const files = e.target.files;
+                    if (files && files.length > 0) {
+                      onChange(files); // Simpan FileList ke RHF
+                    }
+                  }}
                 />
                 {fieldState.error && <FieldError errors={[fieldState.error]} />}
               </Field>
             )}
           />
 
-          <Button type="submit" className="w-full mt-4" disabled={pending}>
+          <Button type="submit" className="w-full mt-6" disabled={pending}>
             {pending ? "Mengunggah..." : "Unggah Penelitian"}
           </Button>
         </FieldGroup>
