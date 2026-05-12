@@ -1,6 +1,7 @@
 import { StudentDTO } from "./dto/student";
 import { TeacherDTO } from "./dto/teacher";
 import { UserDTO } from "./dto/user";
+import { ResearchItem } from "./dto/research";
 import { SidebarItem } from "./sidebar";
 
 export interface EditorBlockProps {
@@ -56,7 +57,6 @@ export interface HomeQuickLinkProps {
 }
 
 import { NewsItem } from "./dto/news";
-import { ResearchItem } from "./dto/research";
 
 export interface NewsListProps {
   data: NewsItem[];

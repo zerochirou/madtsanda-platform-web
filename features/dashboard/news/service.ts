@@ -48,10 +48,6 @@ export async function updatePinNews(
     const response = await request<NewsResponseDTO>(`/news/${id}`, {
       method: "PUT",
       body: JSON.stringify(data),
-      next: {
-        revalidate: 3600,
-        tags: ["news"],
-      },
     });
 
     return response;

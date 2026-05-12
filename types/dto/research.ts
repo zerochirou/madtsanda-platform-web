@@ -55,10 +55,17 @@ export interface ResearchItem {
   id: string;
   title: string;
   abstrack: string;
-  fileUrl: string | null;
   createdAt: string;
+  documentUrl: string | null;
+  documentKey: string | null;
+  status: "pending" | "has_done";
+  researchTag: ResearchTagDTO;
   updatedAt: string;
   user: UserDTO;
+}
+
+export interface ResearchStatusUpdateDTO {
+  status: "pending" | "has_done";
 }
 
 export interface ResearchPaginateMetadata {
