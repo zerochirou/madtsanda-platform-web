@@ -1,6 +1,6 @@
-import React from "react";
+"use client"
+
 import { PageHero, FadeUp } from "@/components/animation/animations";
-import { Button } from "@/components/ui/button";
 import { programsData } from "@/components/data/programs";
 import Image from "next/image";
 import { ProgramSheet } from "@/components/shared/program-sheet";

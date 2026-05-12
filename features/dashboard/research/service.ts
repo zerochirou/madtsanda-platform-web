@@ -24,7 +24,7 @@ export async function createResearchService(data: {
     });
 
     return response;
-  } catch (error: unknown) {
+  } catch (error: unknown) {  
     logger.error(errorFormat(error));
     return null;
   }

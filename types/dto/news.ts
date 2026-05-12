@@ -47,6 +47,10 @@ export interface NewsPostDTO {
   categoryId: string;
 }
 
+export interface NewsPinUpdateDTO {
+  pin: boolean;
+}
+
 export interface NewsItemDTO {
   data: NewsItem;
 }

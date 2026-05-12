@@ -33,6 +33,8 @@ import { Editor, EditorFrame } from "@/components/shared/block-editor";
 import { Switch } from "@/components/ui/switch";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
+import { is } from "zod/v4/locales";
+import { Spinner } from "@/components/ui/spinner";
 
 export function NewsEditor({
   user,
@@ -210,7 +212,7 @@ export function NewsEditor({
             )}
           />
           <Button type="submit" className="w-full mt-4">
-            Publikasikan Berita
+            {pending ? <Spinner /> : "Publikasikan Berita"}
           </Button>
         </FieldGroup>
       </FieldSet>

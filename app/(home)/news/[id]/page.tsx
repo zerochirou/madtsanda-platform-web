@@ -20,13 +20,11 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { BlockRenderDynamic } from "@/components/shared/block-render";
 
-export function Share() {
+export function Share({ id }: { id: string }) {
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <Button variant="outline" size="icon" className="rounded-full h-9 w-9">
-          <Share2 className="h-4 w-4" />
-        </Button>
+        <Button variant="outline">Share</Button>
       </DialogTrigger>
       <DialogContent className="sm:max-w-md">
         <DialogHeader>
@@ -42,7 +40,7 @@ export function Share() {
             </Label>
             <Input
               id="link"
-              defaultValue="https://ui.shadcn.com/docs/installation"
+              defaultValue={`${process.env.NEXT_PUBLIC_BASE_URL}/news/${id}`}
               readOnly
             />
           </div>
@@ -121,7 +119,7 @@ export default async function NewsDetailPage({
               </div>
             </div>
             <div className="flex items-center gap-2">
-              <Share/>
+              <Share id={news.data.id}/>
             </div>
           </div>
         </div>

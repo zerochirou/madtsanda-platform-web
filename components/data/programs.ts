@@ -1,4 +1,5 @@
-import { Building, Laptop, Lightbulb } from "lucide-react";
+"use client"
+
 import Mahad from "@/components/content/programs/mahad.mdx";
 import KelasReguler from "@/components/content/programs/kelas-reguler.mdx";
 import KelasExcellent from "@/components/content/programs/kelas-excellent.mdx";

@@ -40,7 +40,7 @@ export function FeaturedNews({
 
           <div className="absolute bottom-0 left-0 w-full p-6 md:p-8">
             <Link href={`/news/${topNews?.id}`} className="block">
-              <h2 className="text-2xl md:text-4xl font-bold text-white mb-3 leading-tight group-hover:text-emerald-400 transition-colors">
+              <h2 className="text-xl md:text-4xl font-bold text-white mb-3 leading-tight group-hover:text-emerald-400 transition-colors">
                 {topNews?.title}
               </h2>
             </Link>

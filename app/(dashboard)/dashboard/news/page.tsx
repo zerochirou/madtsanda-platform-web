@@ -2,9 +2,18 @@ import { NewsList } from "@/features/dashboard/news/components";
 import { getNewsWithPaginate } from "@/features/news/services";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
+import { DynamicPagination } from "@/features/dashboard/news/components/paginate";
 
-export default async function Page() {
-  const news = await getNewsWithPaginate(1);
+export default async function Page({
+  searchParams,
+}: {
+  searchParams: Promise<{ page?: string }>;
+}) {
+  const params = await searchParams;
+  const currentPage = Number(params.page) || 1;
+  const news = await getNewsWithPaginate(currentPage);
+  const totalPage = news?.metadata.lastPage;
+
   return (
     <div className="px-4 py-6 max-w-7xl mx-auto w-full">
       <div className="flex justify-between items-center mb-6">
@@ -14,6 +23,7 @@ export default async function Page() {
         </Link>
       </div>
       <NewsList data={news?.data || []} />
+      <DynamicPagination totalPages={totalPage ? totalPage : 0} />
     </div>
-  )
+  );
 }
