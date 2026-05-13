@@ -23,7 +23,7 @@ export function UpdateDropdown({ id }: { id: string }) {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button variant="ghost">
+        <Button variant="ghost" size={'xs'}>
           <GripVertical className="size-4" />
         </Button>
       </DropdownMenuTrigger>

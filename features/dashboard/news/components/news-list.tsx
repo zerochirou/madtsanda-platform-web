@@ -12,7 +12,14 @@ import {
 import { Badge } from "@/components/ui/badge";
 import { Button, Card } from "@/components/ui";
 import { togglePinNewsAction } from "@/features/dashboard/news/actions/update-pin";
-import { ALargeSmall, Calendar, Tag, ToggleLeft, User } from "lucide-react";
+import {
+  ALargeSmall,
+  Calendar,
+  Tag,
+  ToggleLeft,
+  User,
+  User2,
+} from "lucide-react";
 import { UpdateDropdown } from "./update-dropdown";
 import { toast } from "sonner";
 import Link from "next/link";
@@ -82,7 +89,12 @@ export function NewsList({ data }: NewsListProps) {
                   </span>
                 </TableCell>
                 <TableCell className="border-r-2 border-dashed capitalize text-right">
-                  {item.newsCategory?.category || "-"}
+                  <Badge
+                    variant={"outline"}
+                    className="w-full h-6 rounded-lg bg-emerald-100 border border-emerald-600 text-emerald-600 font-bold"
+                  >
+                    {item.newsCategory?.category || "-"}
+                  </Badge>
                 </TableCell>
                 <TableCell className="border-r-2 border-dashed">
                   {item.pin ? (
@@ -108,7 +120,13 @@ export function NewsList({ data }: NewsListProps) {
                   )}
                 </TableCell>
                 <TableCell className="border-r-2 border-dashed text-right">
-                  {item.user.username || "-"}
+                  <Badge
+                    variant={"outline"}
+                    className="w-full h-6 rounded-lg bg-blue-100 border border-blue-600 text-blue-600 font-bold"
+                  >
+                    <User2 className="size-2" />
+                    {item.user.username || "-"}
+                  </Badge>
                 </TableCell>
                 <TableCell className="font-mono text-right">
                   {new Date(item.createdAt).toLocaleDateString("id-ID")}

@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 
 export default async function Page() {
   const research = await getResearchWithPaginate(1);
-  console.log(research)
+  // console.log(research)
   return (
     <div className="px-4 py-6 max-w-7xl mx-auto w-full">
       <div className="flex justify-between items-center mb-6">

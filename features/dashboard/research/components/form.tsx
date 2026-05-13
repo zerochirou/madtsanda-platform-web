@@ -87,7 +87,7 @@ export function ResearchEditor({
 
         // 2. Jika sampai sini tanpa throw, berarti sukses
         toast.success("Penelitian berhasil diunggah!");
-        console.log("Success result:", result);
+        // console.log("Success result:", result);
       } catch (error: unknown) {
         const msg = error instanceof Error ? error.message : "Terjadi kesalahan";
 

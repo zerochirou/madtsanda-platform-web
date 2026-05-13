@@ -21,7 +21,7 @@ export default function BlockRender({
       const timeout = setTimeout(() => {
         setDisplayedContent((prev) => prev + md[index]);
         setIndex((prev) => prev + 1);
-      }, 0.000001);
+      }, 0.001);
 
       return () => clearTimeout(timeout);
     }

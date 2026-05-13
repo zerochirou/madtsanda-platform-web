@@ -38,7 +38,7 @@ export async function getNewsWithPaginate(
     const response = await request<NewsPaginateDTO>(
       `/news/paginate/?page=${page} `,
     );
-    console.log(response);
+    // console.log(response);
 
     return response;
   } catch (error: unknown) {

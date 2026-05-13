@@ -13,7 +13,7 @@ import {
 export async function createNewsService(data: NewsPostDTO) {
   // : Promise<NewsResponseDTO | null>
   try {
-    console.log(data);
+    // console.log(data);
     const formData = new FormData();
     formData.append("title", data.title);
     formData.append("content", data.content);
