@@ -33,6 +33,8 @@ import { Editor, EditorFrame } from "@/components/shared/block-editor";
 import { Switch } from "@/components/ui/switch";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
+import { is } from "zod/v4/locales";import { Spinner } from "@/components/ui/spinner";
+import { DropzoneInput } from "@/components/shared/file-upload";
 
 export function NewsEditor({
   user,
@@ -79,11 +81,7 @@ export function NewsEditor({
   }
 
   return (
-    <form className="mx-auto max-w-3xl py-10" onSubmit={handleSubmit(onSubmit)}>
-      <div className="">
-        <h1 className="text-4xl font-bold mt-4">Unggah Berita</h1>
-      </div>
-      <Separator className="mb-8 mt-4" />
+    <form onSubmit={handleSubmit(onSubmit)}>
       <FieldSet>
         <FieldLegend className="text-4xl">Buat Draft Berita</FieldLegend>
         <FieldDescription>
@@ -141,26 +139,25 @@ export function NewsEditor({
           <Controller
             name="image"
             control={control}
-            render={({
-              field: { onChange, ref, value, ...field },
-              fieldState,
-            }) => (
+            render={(
+              { field, fieldState }, // Ambil 'field' secara utuh saja
+            ) => (
               <Field>
                 <FieldLabel>
                   Gambar berita <Badge className="ml-2">Experimental</Badge>
                 </FieldLabel>
-                <Input
-                  {...field} // menyebarkan name, onBlur, dll
-                  type="file"
-                  id="image"
-                  ref={ref}
-                  // JANGAN gunakan value={value} karena ini yang bikin error
-                  onChange={(e) => {
-                    // Kita ambil FileList-nya, bukan string value-nya
-                    onChange(e.target.files);
+
+                <DropzoneInput
+                  name={field.name}
+                  onBlur={field.onBlur}
+                  ref={field.ref}
+                  // Sekarang field.onChange akan berfungsi dengan benar
+                  onChange={(files) => {
+                    field.onChange(files);
                   }}
-                  aria-invalid={fieldState.invalid}
-                  className="rounded-sm"
+                  isInvalid={!!fieldState.error}
+                  accept="image/*"
+                  multiple={false}
                 />
                 {fieldState.error && <FieldError errors={[fieldState.error]} />}
               </Field>
@@ -210,7 +207,7 @@ export function NewsEditor({
             )}
           />
           <Button type="submit" className="w-full mt-4">
-            Publikasikan Berita
+            {pending ? <Spinner /> : "Publikasikan Berita"}
           </Button>
         </FieldGroup>
       </FieldSet>

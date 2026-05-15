@@ -1,3 +1,5 @@
+"use client";
+
 import {
   Sheet,
   SheetContent,
@@ -13,7 +15,6 @@ interface MyContentProps {
   title: string;
 }
 
-// 2. Gunakan nama yang berbeda untuk fungsi komponennya (misal: ProgramSheet)
 export const ProgramSheet = ({ mdx: MdxContent, title }: MyContentProps) => {
   return (
     <Sheet>

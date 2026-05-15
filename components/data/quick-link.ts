@@ -1,20 +1,9 @@
 import { Role } from "@/types/access";
 import {
-  FolderPlus,
-  Microscope,
-  Newspaper,
-  SwatchBook,
-  User,
-} from "lucide-react";
-import {
-  Home28Color,
   News28Color,
-  Settings24Color,
   Poll24Color,
   Person24Color,
   Library24Color,
-  CheckmarkCircle24Color,
-  Drafts20Color,
   ContentView24Color,
   DocumentEdit16Color,
 } from "@fluentui/react-icons";
@@ -51,7 +40,7 @@ export const quickLink: QuickLink[] = [
     className: "",
     icon: ContentView24Color,
     role: "admin",
-    url: "/dashboard/news/create",
+    url: "/dashboard/news/table",
   },
   {
     title: "Arsip Penelitian Ilmiah",

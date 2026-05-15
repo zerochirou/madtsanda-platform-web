@@ -231,7 +231,7 @@ try {
   const result = await fetchSomething();
   return result;
 } catch (e) {
-  console.log(e);   // ❌ jangan console.log
+  // console.log(e);   // ❌ jangan console.log
   throw e;          // ❌ jangan re-throw tanpa handling
 }
 ```

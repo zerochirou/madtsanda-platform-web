@@ -7,6 +7,7 @@ import { motion } from "motion/react";
 // import { sideNews } from "@/components/data/news";
 import { NewsItem, NewsResponseDTO } from "@/types/dto/news";
 import { formatReadableDate } from "@/lib/date";
+import { User } from "lucide-react";
 
 export function FeaturedNews({
   sideNews,
@@ -40,7 +41,7 @@ export function FeaturedNews({
 
           <div className="absolute bottom-0 left-0 w-full p-6 md:p-8">
             <Link href={`/news/${topNews?.id}`} className="block">
-              <h2 className="text-2xl md:text-4xl font-bold text-white mb-3 leading-tight group-hover:text-emerald-400 transition-colors">
+              <h2 className="text-xl md:text-4xl font-bold text-white mb-3 leading-tight group-hover:text-emerald-400 transition-colors">
                 {topNews?.title}
               </h2>
             </Link>
@@ -79,7 +80,8 @@ export function FeaturedNews({
                     <span className="mb-3 inline-flex items-center gap-2 rounded-full border border-sky-200 bg-emerald-50 px-3 text-xs font-medium text-sky-700 dark:border-sky-800/50 dark:bg-emerald-900/30 dark:text-sky-400">
                       {formatReadableDate(news.createdAt)}
                     </span>
-                    <span className="mb-3 inline-flex items-center gap-2 rounded-full border border-amber-200 bg-amber-50 dark:bg-amber-300 px-3 text-xs font-medium text-amber-700 dark:border-amber-800/50 dark:text-amber-400">
+                    <span className="mb-3 inline-flex items-center gap-1 rounded-full border border-amber-200 bg-amber-50 dark:bg-amber-900/30 px-3 text-xs font-medium text-amber-700 dark:border-amber-800/50 dark:text-amber-400">
+                      <User className="h-3 w-3" />
                       {news.user.username}
                     </span>
                   </div>
