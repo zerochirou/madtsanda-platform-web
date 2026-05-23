@@ -1,12 +1,4 @@
-import BlockRender from "@/components/shared/block-render/render";
-import {
-  Badge,
-  Button,
-  Card,
-  CardContent,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui";
+import { Badge, Button, Card, CardHeader, CardTitle } from "@/components/ui";
 import {
   getResearchTag,
   getResearchWithPaginate,
@@ -47,10 +39,7 @@ export default async function ResearchPage() {
                   </div>
                   <CardTitle className="mt-4">{i.title}</CardTitle>
                   <div className="flex justify-end">
-                    <Button
-                      variant={"secondary"}
-                      size={"sm"}
-                    >
+                    <Button variant={"secondary"} size={"sm"}>
                       Baca lebih lanjut
                     </Button>
                   </div>

@@ -3,15 +3,16 @@
 import { request, requestV2 } from "@/lib/request";
 import logger from "@/lib/logger";
 import { errorFormat } from "@/lib/error";
-import {
+import { format } from "date-fns";
+import type {
+  ResearchPostDTO,
   ResearchItemDTO,
   ResearchPaginateDTO,
-  ResearchPostDTO,
   ResearchTagResponseDTO,
   ResearchItem,
   ResearchStatusUpdateDTO,
 } from "@/types/dto/research";
-import { format } from "date-fns";
+// Types are imported where needed in function signatures.
 
 export async function createResearchService(
   data: ResearchPostDTO,

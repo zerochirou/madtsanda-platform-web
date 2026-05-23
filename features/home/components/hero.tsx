@@ -5,6 +5,7 @@ import Image from "next/image";
 import { motion } from "motion/react";
 import { Play } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { WordRotate } from "@/components/ui/word-rotate";
 
 export const Hero = () => (
   <section className="relative h-screen flex items-center justify-center overflow-hidden">
@@ -33,7 +34,7 @@ export const Hero = () => (
         transition={{ duration: 0.8, delay: 0.2 }}
         className="text-5xl md:text-6xl lg:text-8xl font-bold text-white tracking-tight mb-8"
       >
-        Madtsanda
+        <WordRotate words={["MTsN 2 Kota Kediri", "Madtsanda", "Islam Terampil.", "Inovatif.", "Kompetitif.",]} duration={3000} />
       </motion.h1>
       <motion.div
         initial={{ opacity: 0, scale: 0.9 }}
