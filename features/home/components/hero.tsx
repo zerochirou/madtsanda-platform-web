@@ -34,7 +34,7 @@ export const Hero = () => (
         transition={{ duration: 0.8, delay: 0.2 }}
         className="text-5xl md:text-6xl lg:text-8xl font-bold text-white tracking-tight mb-8"
       >
-        <WordRotate words={["MTsN 2 Kota Kediri", "Madtsanda", "Islam Terampil.", "Inovatif.", "Kompetitif.",]} duration={3000} />
+        <WordRotate words={["MTsN 2 Kota Kediri", "Madtsanda.", "Islami.", "Terampil.", "Inovatif.", "Kompetitif.", "Berakhlakul", "Karimah."]} duration={3000} />
       </motion.h1>
       <motion.div
         initial={{ opacity: 0, scale: 0.9 }}
