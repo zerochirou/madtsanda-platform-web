@@ -86,3 +86,17 @@ export async function updateResearchStatus(
     return null;
   }
 }
+
+export async function getResearchById(
+  id: string,
+): Promise<ResearchItemDTO | null> {
+  try {
+    // const response = await request<ResearchItem>(`/research/${id}`);
+    const response = await fetch(`http://localhost:3333/api/v1/research/${id}`);
+    const data = await response.json();
+    return data;
+  } catch (error: unknown) {
+    logger.error(errorFormat(error));
+    return null;
+  }
+}

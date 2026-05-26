@@ -62,6 +62,7 @@ export interface ResearchItem {
   researchTag: ResearchTagDTO;
   updatedAt: string;
   user: UserDTO;
+  publishedDate: string;        // ← ubah dari published_date
 }
 
 export interface ResearchStatusUpdateDTO {

@@ -67,12 +67,12 @@ export function Navigation() {
               />
             )}
             <DiaTextReveal
-              text="Madtsanda."
+              text="MTsN 2 Kota Kediri"
               repeatDelay={0.5}
               once={false}
               textColor={showSolid ? "#000" : "#fff"}
               colors={["#c679c4", "#fa3d1d", "#ffb005", "#e1e1fe", "#0358f7"]}
-              className={`text-xl md:text-2xl -ml-4 font-bold tracking-tighter transition-colors duration-300 ${
+              className={`text-sm md:text-2xl -ml-4 font-bold tracking-tighter transition-colors duration-300 ${
                 showSolid ? "text-zinc-900 dark:text-white" : "text-white"
               }`}
             />
@@ -82,7 +82,7 @@ export function Navigation() {
               }`}
               whileHover={{ scale: 1.02 }}
             >
-              Madtsanda<span className="text-emerald-500">.</span>
+              MTsN 2 Kota <span className="text-emerald-500">Kediri</span>
             </motion.div>*/}
           </Link>
 

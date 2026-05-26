@@ -52,7 +52,7 @@ export const Intro = () => {
           (ISTIKOMAH)."
             repeatDelay={0.5}
             once={false}
-            textColor={theme === "dark" || "system" ? "#fff" : "#000"}
+            textColor={theme === "dark" || theme === "system" ? "#fff" : "#000"}
             colors={["#c679c4", "#fa3d1d", "#ffb005", "#e1e1fe", "#0358f7"]}
             className="text-lg md:text-xl text-zinc-600 opacity-60 dark:text-zinc-400 leading-relaxed mb-8 font-medium"
           />

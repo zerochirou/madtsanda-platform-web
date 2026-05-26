@@ -38,7 +38,7 @@ export const InsideLeading = () => (
             transition={{ delay: 0.4 }}
           >
             <Button className="bg-emerald-500 text-white hover:bg-emerald-600 rounded-full font-bold px-8 py-6 shadow-xl shadow-emerald-500/20 w-fit">
-              Explore Campus Facilities
+              Explore School Facilities
             </Button>
           </motion.div>
         </div>

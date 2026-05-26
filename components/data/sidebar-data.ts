@@ -31,14 +31,6 @@ export const sidebarItems: SidebarItem[] = [
         route: "/dashboard/profile",
       },
       {
-        id: "settings",
-        label: "Settings",
-        description: "Manajemen pengguna",
-        icon: Settings24Color,
-        minRole: "student",
-        route: "/dashboard/settings",
-      },
-      {
         id: "profile list",
         label: "User Management",
         description: "Manajemen semua pengguna",
@@ -52,7 +44,7 @@ export const sidebarItems: SidebarItem[] = [
     id: "news",
     label: "Berita",
     icon: News28Color,
-    route: "/dashboard/news",
+    route: "/dashboard/news/table",
     hasSubItems: true,
     minRole: "student",
     subItems: [

@@ -15,9 +15,10 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import { TeacherDirectory } from "@/features/home/components/teacher-directory";
+import { Button } from "@/components/ui";
+import Link from "next/link";
 
 export default function About() {
-  
   return (
     <div className="min-h-screen bg-zinc-50 dark:bg-zinc-950 transition-colors duration-300">
       <PageHero
@@ -63,6 +64,10 @@ export default function About() {
           </FadeLeft>
         </div>
 
+        <Link href={"/sambutan"}>
+          <Button variant={'outline'} className="bg-emerald-400 text-white" size={'lg'}>Sambutan Kepala Madrasah</Button>
+        </Link>
+
         <FadeUp>
           <div className="max-w-4xl mx-auto mb-32">
             <h2 className="text-3xl md:text-5xl font-bold text-zinc-900 dark:text-white mb-6 text-center">
@@ -107,7 +112,7 @@ export default function About() {
               Didukung oleh lebih dari 100 staf pengajar profesional dan
               berdedikasi tinggi.
             </p>
-            <TeacherDirectory/>
+            <TeacherDirectory />
           </div>
         </FadeUp>
       </section>
