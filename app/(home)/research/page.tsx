@@ -1,17 +1,10 @@
-import BlockRender from "@/components/shared/block-render/render";
-import {
-  Badge,
-  Button,
-  Card,
-  CardContent,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui";
+import { Badge, Button, Card, CardHeader, CardTitle } from "@/components/ui";
 import {
   getResearchTag,
   getResearchWithPaginate,
 } from "@/features/dashboard/research/service";
 import { formatReadableDate } from "@/lib/date";
+import Link from "next/link";
 
 export default async function ResearchPage() {
   const tag = await getResearchTag();
@@ -47,12 +40,11 @@ export default async function ResearchPage() {
                   </div>
                   <CardTitle className="mt-4">{i.title}</CardTitle>
                   <div className="flex justify-end">
-                    <Button
-                      variant={"secondary"}
-                      size={"sm"}
-                    >
-                      Baca lebih lanjut
+                    <Link href={`/research/${i.id}`}>
+                      <Button variant={"secondary"} size={"sm"}>
+                        Baca lebih lanjut
                     </Button>
+                    </Link>
                   </div>
                 </CardHeader>
               </Card>

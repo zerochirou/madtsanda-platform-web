@@ -3,15 +3,16 @@
 import { request, requestV2 } from "@/lib/request";
 import logger from "@/lib/logger";
 import { errorFormat } from "@/lib/error";
-import {
+import { format } from "date-fns";
+import type {
+  ResearchPostDTO,
   ResearchItemDTO,
   ResearchPaginateDTO,
-  ResearchPostDTO,
   ResearchTagResponseDTO,
   ResearchItem,
   ResearchStatusUpdateDTO,
 } from "@/types/dto/research";
-import { format } from "date-fns";
+// Types are imported where needed in function signatures.
 
 export async function createResearchService(
   data: ResearchPostDTO,
@@ -80,6 +81,20 @@ export async function updateResearchStatus(
       body: JSON.stringify(data),
     });
     return response;
+  } catch (error: unknown) {
+    logger.error(errorFormat(error));
+    return null;
+  }
+}
+
+export async function getResearchById(
+  id: string,
+): Promise<ResearchItemDTO | null> {
+  try {
+    // const response = await request<ResearchItem>(`/research/${id}`);
+    const response = await fetch(`http://localhost:3333/api/v1/research/${id}`);
+    const data = await response.json();
+    return data;
   } catch (error: unknown) {
     logger.error(errorFormat(error));
     return null;

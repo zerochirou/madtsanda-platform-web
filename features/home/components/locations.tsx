@@ -49,7 +49,7 @@ export const Locations = () => {
             <span className="h-px w-8 bg-emerald-500"></span>
             Location
           </p>
-          <h2 className="text-4xl lg:text-6xl font-bold leading-tight">Explore Our<br />Campuses Location</h2>
+          <h2 className="text-4xl lg:text-6xl font-bold leading-tight">Explore Our<br />School Location</h2>
           <p className="text-zinc-400 text-lg leading-relaxed hidden lg:block max-w-md">Swipe through the images to explore our different campus facilities and learning environments tailored for your success.</p>
         </FadeLeft>
       </div>

@@ -9,11 +9,14 @@ import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { ThemeToggle } from "./theme-toggle";
 import { navItems } from "../data/navigation";
+import { useTheme } from "next-themes";
+import { DiaTextReveal } from "../ui/dia-text-reveal";
 
 export function Navigation() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const pathname = usePathname();
+  const { theme } = useTheme();
 
   // Only hero page (home) gets transparent navbar
   const isHome = pathname === "/";
@@ -43,22 +46,44 @@ export function Navigation() {
       >
         <div className="max-w-7xl mx-auto px-4 md:px-6 flex justify-between items-center">
           {/* Logo */}
-          <Link href="/" className="group flex items-center gap-0">
-            <Image
-              src="/images/logokemenag.png"
-              alt="Logo MTsN 2 Kota Kediri"
-              width={100}
-              height={100}
-              className="object-contain px-0"
+          <Link href="/" className="group flex items-center gap-6">
+            {theme === "dark" ? (
+              <Image
+                suppressHydrationWarning
+                src="/icons/icon-dark.png"
+                alt="Logo MTsN 2 Kota Kediri"
+                width={50}
+                height={50}
+                className="object-contain px-0"
+              />
+            ) : (
+              <Image
+                suppressHydrationWarning
+                src="/icons/icon.png"
+                alt="Logo MTsN 2 Kota Kediri"
+                width={50}
+                height={50}
+                className="object-contain px-0"
+              />
+            )}
+            <DiaTextReveal
+              text="MTsN 2 Kota Kediri"
+              repeatDelay={0.5}
+              once={false}
+              textColor={showSolid ? "#000" : "#fff"}
+              colors={["#c679c4", "#fa3d1d", "#ffb005", "#e1e1fe", "#0358f7"]}
+              className={`text-sm md:text-2xl -ml-4 font-bold tracking-tighter transition-colors duration-300 ${
+                showSolid ? "text-zinc-900 dark:text-white" : "text-white"
+              }`}
             />
-            <motion.div
+            {/*<motion.div
               className={`text-xl md:text-2xl -ml-4 font-bold tracking-tighter transition-colors duration-300 ${
                 showSolid ? "text-zinc-900 dark:text-white" : "text-white"
               }`}
               whileHover={{ scale: 1.02 }}
             >
-              Madtsanda<span className="text-emerald-500">.</span>
-            </motion.div>
+              MTsN 2 Kota <span className="text-emerald-500">Kediri</span>
+            </motion.div>*/}
           </Link>
 
           {/* Desktop Nav */}
