@@ -31,10 +31,10 @@ export default function RootLayout({
       suppressHydrationWarning
     >
       <body className="min-h-full flex flex-col">
-        {/*<ThemeProvider>*/}
+        <ThemeProvider>
         <Toaster position="top-center" />
         <main className="flex-1">{children}</main>
-        {/*</ThemeProvider>*/}
+        </ThemeProvider>
       </body>
     </html>
   );

@@ -1,25 +1,23 @@
-import { labelDayButton } from "react-day-picker";
-
 const aboutUs = [
   {
     label: "Sambutan kepala madrasah",
     description: "Pesan dan sapaan hangat Kepala Madrasah.",
-    href: "",
+    href: "/about/sambutan",
   },
   {
     label: "Sejarah",
     description: "Asal-usul dan rekam jejak madrasah.",
-    href: "",
+    href: "/about/sejarah",
   },
   {
     label: "Budaya",
     description: "Nilai Islami dan karakter lingkungan kami.",
-    href: "",
+    href: "/about/budaya",
   },
   {
     label: "Visi & Misi",
     description: "Target utama dan arah strategis kami.",
-    href: "",
+    href: "/about/visi-misi",
   }
 ];
 

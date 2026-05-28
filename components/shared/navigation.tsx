@@ -23,6 +23,7 @@ export function Navigation() {
   const [expandedSections, setExpandedSections] = useState<number[]>([]);
   const pathname = usePathname();
   const isHome = pathname === "/";
+  const isHistory = pathname === "/about/sejarah";
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 50);
@@ -36,7 +37,7 @@ export function Navigation() {
     setExpandedSections([]);
   }, [pathname]);
 
-  const showSolid = scrolled || !isHome;
+  const showSolid = scrolled || !isHome || !isHistory;
 
   const toggleSection = (index: number) => {
     setExpandedSections((prev) =>
