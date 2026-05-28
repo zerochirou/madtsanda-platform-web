@@ -1,62 +1,139 @@
 "use client";
 
-import { FadeLeft, FadeRight } from "@/components/animation/animations";
-import { DiaTextReveal } from "@/components/ui/dia-text-reveal";
 import { motion } from "motion/react";
 import { useTheme } from "next-themes";
+import {
+  Clock,
+  GraduationCap,
+  Home,
+  FlaskConical,
+  Heart,
+  Leaf,
+} from "lucide-react";
+import { BorderBeam } from "@/components/ui/border-beam";
+import { ShineBorder } from "@/components/ui/shine-border";
 
 export const Intro = () => {
-  const { theme } = useTheme();
+  const features = [
+    {
+      title: "Sejak 1978",
+      description:
+        "Telah berdiri dan berkembang selama lebih dari 45 tahun sebagai madrasah unggulan.",
+      icon: Clock, // Menggantikan 🕒
+    },
+    {
+      title: "4 Program Kelas Unggulan",
+      description:
+        "Program unggulan yang dirancang untuk mengembangkan potensi siswa secara optimal.",
+      icon: GraduationCap, // Menggantikan 🎓
+    },
+    {
+      title: "Fasilitas Ma'had Al-Azhar",
+      description:
+        "Dukungan fasilitas asrama modern untuk pembinaan karakter dan keilmuan.",
+      icon: Home, // Menggantikan 🏛️ (Home/Hotel lebih cocok untuk konsep Asrama/Ma'had)
+    },
+    {
+      title: "Pendidikan Berbasis Riset",
+      description:
+        "Mengutamakan pendekatan riset, inovasi, dan pengembangan ilmu pengetahuan.",
+      icon: FlaskConical, // Menggantikan 🔬
+    },
+    {
+      title: "Akhlakul Karimah",
+      description:
+        "Penguatan karakter mulia, empati, dan nilai-nilai keislaman dalam kehidupan sehari-hari.",
+      icon: Heart, // Menggantikan 🌿 (Heart melambangkan ketulusan dan akhlak)
+    },
+    {
+      title: "Madrasah Adiwiyata",
+      description:
+        "Kepedulian tinggi terhadap lingkungan melalui program Adiwiyata Nasional.",
+      icon: Leaf, // Menggantikan 🌍 (Leaf/Daun sangat identik dengan Adiwiyata/Hijau)
+    },
+  ];
+
   return (
-    <section className="py-20 lg:py-32 bg-zinc-50 dark:bg-zinc-950 transition-colors duration-300">
-      <div className="max-w-7xl mx-auto px-4 md:px-6 grid md:grid-cols-2 gap-12 lg:gap-20">
-        <FadeLeft>
-          <motion.div>
-            <DiaTextReveal
-              text="MTsN 2 Kota Kediri Madrasah Adiwiyata Nasional"
-              repeatDelay={0.5}
-              once={false}
-              colors={["#c679c4", "#fa3d1d", "#ffb005", "#e1e1fe", "#0358f7"]}
-              textColor={theme === "dark" || theme === "system" ? "#fff" : "#000"}
-              className="text-4xl md:text-5xl lg:text-6xl font-bold text-zinc-900 dark:text-white leading-tight"
-            />
-          </motion.div>
-          <div className="mt-10 lg:mt-14 space-y-6 text-sm font-medium text-zinc-600 dark:text-zinc-400">
-            <div className="border-b border-zinc-200 dark:border-zinc-800 pb-4 flex items-center gap-4">
-              <div className="h-2 w-2 rounded-full bg-emerald-500"></div>
-              <p>Sejak tahun 1978</p>
+    <section className="pt-20 lg:py-32 bg-zinc-50 dark:bg-zinc-950 transition-colors duration-300">
+      <div className="max-w-7xl mx-auto px-4 md:px-6">
+        {/* Header */}
+        <div className="max-w-3xl mb-12">
+          <motion.h2
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+            viewport={{ once: true }}
+            className="text-4xl md:text-5xl lg:text-6xl font-bold text-zinc-900 dark:text-white tracking-tighter"
+          >
+            MTsN 2 Kota Kediri
+          </motion.h2>
+          <p className="mt-4 text-xl text-zinc-600 dark:text-zinc-400">
+            Madrasah Adiwiyata Nasional
+          </p>
+        </div>
+
+        {/* Feature Grid - ala Next.js */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2">
+          {features.map((feature, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{
+                duration: 0.6,
+                delay: index * 0.05,
+                ease: [0.22, 1, 0.36, 1],
+              }}
+              viewport={{ once: true }}
+              whileHover={{ y: -6 }}
+              className="relative w-full overflow-hidden group rounded-xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 p-8 transition-all hover:border-zinc-300 dark:hover:border-zinc-700 hover:shadow-sm flex flex-col"
+            >
+              <BorderBeam
+                duration={10 + index * 2}
+                size={100}
+                className="from-transparent via-emerald-500 to-transparent"
+              />
+              <div className="text-4xl mb-6 opacity-80 transition-transform duration-300">
+                <feature.icon />
+              </div>
+
+              <h3 className="font-semibold text-xl text-zinc-900 dark:text-white tracking-tight mb-3">
+                {feature.title}
+              </h3>
+
+              <p className="text-zinc-600 dark:text-zinc-400 text-[15px] leading-relaxed flex-1">
+                {feature.description}
+              </p>
+            </motion.div>
+          ))}
+        </div>
+
+        {/* Bottom Highlight Card (seperti card Next.js 16) */}
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, delay: 0.3 }}
+          viewport={{ once: true }}
+          className="relative w-full overflow-hidden mt-2 rounded-xl border bg-white dark:bg-zinc-900 p-8 flex flex-col md:flex-row md:items-center gap-6"
+        >
+          <ShineBorder shineColor={["#34d399", "#10b981", "#059669"]} />
+          <div className="flex-1">
+            <div className="uppercase tracking-[3px] text-xs text-emerald-400 font-medium mb-2">
+              NILAI UTAMA KAMI
             </div>
-            <div className="border-b border-zinc-200 dark:border-zinc-800 pb-4 flex items-center gap-4">
-              <div className="h-2 w-2 rounded-full bg-emerald-500"></div>
-              <p>4 Program Kelas Unggulan</p>
-            </div>
-            <div className="border-b border-zinc-200 dark:border-zinc-800 pb-4 flex items-center gap-4">
-              <div className="h-2 w-2 rounded-full bg-emerald-500"></div>
-              <p>Fasilitas Ma&apos;had Al-Azhar</p>
-            </div>
+            <h3 className="text-2xl font-semibold tracking-tight">ISTIKOMAH</h3>
+            <p className="mt-3 text-zinc-400 max-w-md">
+              Berakar pada nilai-nilai agama Islam, empati, dan intelektualitas.
+              Kami mempersiapkan generasi yang unggul dalam ilmu pengetahuan,
+              teknologi, dan memiliki karakter mulia.
+            </p>
           </div>
-        </FadeLeft>
-        <FadeRight delay={0.2} className="flex flex-col justify-center">
-          <DiaTextReveal
-            text="MTsN 2 Kota Kediri (Madtsanda) merupakan madrasah tsanawiyah negeri unggulan yang mengedepankan pendidikan berbasis riset, penguatan akhlakul karimah, serta kepedulian terhadap lingkungan melalui program Adiwiyata."
-            repeatDelay={0.5}
-            once={false}
-            textColor={theme === "dark" || theme === "system" ? "#fff" : "#000"}
-            colors={["#c679c4", "#fa3d1d", "#ffb005", "#e1e1fe", "#0358f7"]}
-            className="text-lg md:text-xl text-zinc-600 dark:text-zinc-400 leading-relaxed mb-8 font-medium"
-          />
-          <DiaTextReveal
-            text="Berakar pada nilai-nilai agama Islam, empati, dan intelektualitas,
-          kami mempersiapkan generasi yang tidak hanya unggul dalam ilmu
-          pengetahuan dan teknologi, tetapi juga memiliki karakter yang mulia
-          (ISTIKOMAH)."
-            repeatDelay={0.5}
-            once={false}
-            textColor={theme === "dark" || theme === "system" ? "#fff" : "#000"}
-            colors={["#c679c4", "#fa3d1d", "#ffb005", "#e1e1fe", "#0358f7"]}
-            className="text-lg md:text-xl text-zinc-600 opacity-60 dark:text-zinc-400 leading-relaxed mb-8 font-medium"
-          />
-        </FadeRight>
+
+          <div className="text-sm text-zinc-500 max-w-65">
+            Kami percaya bahwa pendidikan yang baik adalah perpaduan antara
+            kecerdasan intelektual dan kebaikan akhlak.
+          </div>
+        </motion.div>
       </div>
     </section>
   );

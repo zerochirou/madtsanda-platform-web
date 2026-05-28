@@ -1,11 +1,12 @@
 import type { Metadata } from "next";
-import { Outfit } from "next/font/google";
+import { Geist_Mono, Outfit } from "next/font/google";
 import "./globals.css";
 import { cn } from "@/lib/utils";
 import { ThemeProvider } from "@/components/shared/theme-provider";
 import { Toaster } from "@/components/ui/sonner";
 
 const outfit = Outfit({ subsets: ["latin"], variable: "--font-sans" });
+const geistMono = Geist_Mono({ variable: "--font-geist-mono" });
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -20,13 +21,19 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={cn("h-full", "antialiased", "font-sans", outfit.variable)}
+      className={cn(
+        "h-full",
+        "antialiased",
+        "font-sans",
+        outfit.variable,
+        geistMono.variable,
+      )}
       suppressHydrationWarning
     >
       <body className="min-h-full flex flex-col">
         <ThemeProvider>
-          <Toaster position="top-center" />
-          <main className="flex-1">{children}</main>
+        <Toaster position="top-center" />
+        <main className="flex-1">{children}</main>
         </ThemeProvider>
       </body>
     </html>
