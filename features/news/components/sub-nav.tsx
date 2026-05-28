@@ -1,9 +1,5 @@
-"use client";
-
-import React from "react";
 import Link from "next/link";
-import { categories } from "@/components/data/news";
-import { NewsCategoryDTO } from "@/types/dto/news-category";
+import type { NewsCategoryDTO } from "@/types/dto/news-category";
 
 export function NewsSubnav({
   categories,
@@ -11,17 +7,23 @@ export function NewsSubnav({
   categories: NewsCategoryDTO[] | null;
 }) {
   return (
-    <div className="sticky mx-auto max-w-7xl z-40 top-[84px] md:top-[96px] flex justify-center px-4 mt-2 md:mt-4 mb-8 pointer-events-none">
-      <div className="pointer-events-auto w-full max-w-7xl bg-white/90 dark:bg-zinc-900/90 backdrop-blur-xl border border-zinc-200 dark:border-zinc-800 rounded-xl md:rounded-full px-4 md:px-6 py-2.5 md:py-3 flex items-center justify-start">
+    <div className="sticky top-[78px] z-40 mx-auto mb-4 mt-2 flex max-w-7xl justify-center px-4 pointer-events-none md:top-[92px] md:mt-4">
+      <div className="pointer-events-auto flex w-full max-w-7xl items-center justify-start rounded-2xl border border-zinc-200 bg-white/90 px-4 py-2.5 shadow-sm backdrop-blur-xl dark:border-zinc-800 dark:bg-zinc-900/90 md:px-6 md:py-3">
         <div
-          className="flex items-center space-x-6 overflow-x-auto w-full pb-1 md:pb-0 scrollbar-hide hide-scrollbar"
+          className="flex w-full items-center gap-2 overflow-x-auto pb-1 md:pb-0 scrollbar-hide hide-scrollbar"
           style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
         >
+          <Link
+            href="/news"
+            className="whitespace-nowrap rounded-full bg-emerald-500 px-4 py-1.5 text-sm font-semibold text-white shadow-sm shadow-emerald-500/20 transition-colors hover:bg-emerald-600"
+          >
+            Semua
+          </Link>
           {categories?.map((category) => (
             <Link
               key={category.id}
               href={`/news/category/${category.id}`}
-              className="text-sm font-medium text-zinc-600 dark:text-zinc-400 hover:text-emerald-500 dark:hover:text-emerald-400 transition-colors whitespace-nowrap"
+              className="whitespace-nowrap rounded-full px-4 py-1.5 text-sm font-medium text-zinc-600 transition-colors hover:bg-zinc-100 hover:text-emerald-600 dark:text-zinc-400 dark:hover:bg-zinc-800 dark:hover:text-emerald-300"
             >
               {category.category}
             </Link>

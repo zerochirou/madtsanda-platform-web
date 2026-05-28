@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowLeft, Calendar } from "lucide-react";
+import { ArrowLeft, CalendarDays, Share2, Tag, UserRound } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { getNewsByIdService } from "@/features/news/services";
 import { formatReadableDate } from "@/lib/date";
@@ -19,17 +19,22 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { BlockRenderDynamic } from "@/components/shared/block-render";
 
+const newsImageFallback = "/images/kegiatan-sekolah.jpg";
+
 export function Share({ id }: { id: string }) {
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <Button variant="outline">Share</Button>
+        <Button variant="outline" className="gap-2">
+          <Share2 className="size-4" />
+          Bagikan
+        </Button>
       </DialogTrigger>
       <DialogContent className="sm:max-w-md">
         <DialogHeader>
-          <DialogTitle>Share link</DialogTitle>
+          <DialogTitle>Bagikan tautan</DialogTitle>
           <DialogDescription>
-            Anyone who has this link will be able to view this.
+            Salin tautan berita ini untuk dibagikan kepada warga Madtsanda.
           </DialogDescription>
         </DialogHeader>
         <div className="flex items-center gap-2">
@@ -46,7 +51,7 @@ export function Share({ id }: { id: string }) {
         </div>
         <DialogFooter className="sm:justify-start">
           <DialogClose asChild>
-            <Button type="button">Close</Button>
+            <Button type="button">Tutup</Button>
           </DialogClose>
         </DialogFooter>
       </DialogContent>
@@ -65,56 +70,63 @@ export default async function NewsDetailPage({
 
   if (!news) {
     return (
-      <div className="min-h-screen flex flex-col items-center justify-center p-4">
-        <h1 className="text-2xl font-bold mb-4">Berita tidak ditemukan</h1>
+      <div className="flex min-h-screen flex-col items-center justify-center bg-zinc-50 p-4 text-center dark:bg-zinc-950">
+        <p className="mb-3 text-xs font-bold uppercase tracking-[0.24em] text-emerald-500">
+          Madtsanda News
+        </p>
+        <h1 className="mb-4 text-2xl font-bold text-zinc-950 dark:text-white">
+          Berita tidak ditemukan
+        </h1>
         <Link href="/news">
-          <Button variant="outline">Kembali ke News Portal</Button>
+          <Button variant="outline">Kembali ke Madtsanda News</Button>
         </Link>
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-zinc-50 dark:bg-zinc-950 transition-colors duration-300 pb-20 pt-24 md:pt-32">
-      <div className="max-w-4xl mx-auto px-4 md:px-6">
+    <div className="min-h-screen bg-zinc-50 pb-20 pt-24 transition-colors duration-300 dark:bg-zinc-950 md:pt-32">
+      <article className="mx-auto max-w-5xl px-4 md:px-6">
         <div className="mb-8">
           <Link
             href="/news"
-            className="inline-flex items-center text-sm font-medium text-zinc-500 hover:text-emerald-500 transition-colors group"
+            className="group inline-flex items-center text-sm font-semibold text-zinc-500 transition-colors hover:text-emerald-600 dark:text-zinc-400 dark:hover:text-emerald-300"
           >
             <ArrowLeft className="mr-2 h-4 w-4 transition-transform group-hover:-translate-x-1" />
-            Kembali ke News Portal
+            Kembali ke Madtsanda News
           </Link>
         </div>
 
-        {/* Article Header */}
-        <div className="space-y-6 mb-10">
-          <div className="flex flex-wrap items-center gap-4 text-xs md:text-sm text-zinc-500">
-            <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-emerald-100 text-emerald-800 dark:bg-emerald-900/30 dark:text-emerald-400">
+        <header className="overflow-hidden rounded-2xl border border-zinc-200 bg-white shadow-sm dark:border-zinc-800 dark:bg-zinc-900">
+          <div className="space-y-6 border-b border-zinc-200 p-5 dark:border-zinc-800 md:p-8">
+            <div className="flex flex-wrap items-center gap-2 text-xs font-medium">
+              <span className="inline-flex items-center gap-1 rounded-full bg-emerald-50 px-3 py-1 text-emerald-700 ring-1 ring-emerald-200 dark:bg-emerald-500/10 dark:text-emerald-300 dark:ring-emerald-500/25">
+                <Tag className="size-3.5" />
               {news.data.newsCategory.category}
             </span>
-            <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-emerald-100 text-emerald-800 dark:bg-emerald-900/30 dark:text-emerald-400">
-              <div className="flex items-center gap-1.5">
-                <Calendar className="h-3 w-3" />
+              <span className="inline-flex items-center gap-1 rounded-full bg-zinc-100 px-3 py-1 text-zinc-600 ring-1 ring-zinc-200 dark:bg-zinc-800 dark:text-zinc-300 dark:ring-zinc-700">
+                <CalendarDays className="size-3.5" />
                 <span>{formatReadableDate(news.data.createdAt)}</span>
-              </div>
-            </span>
-          </div>
+              </span>
+            </div>
 
-          <h1 className="text-3xl md:text-5xl font-extrabold tracking-tight text-zinc-900 dark:text-white leading-tight">
+            <h1 className="max-w-4xl text-3xl font-extrabold leading-tight tracking-tight text-zinc-950 dark:text-white md:text-5xl">
             {news.data.title}
           </h1>
 
-          <div className="flex items-center justify-between py-6 border-y border-zinc-200 dark:border-zinc-800">
+            <div className="flex flex-col gap-4 border-t border-zinc-200 pt-6 dark:border-zinc-800 sm:flex-row sm:items-center sm:justify-between">
             <div className="flex items-center gap-3">
-              <div className="h-10 w-10 rounded-full bg-emerald-500 flex items-center justify-center text-white font-bold">
+                <div className="flex size-11 items-center justify-center rounded-full bg-emerald-500 text-sm font-bold text-white shadow-sm shadow-emerald-500/30">
                 {news.data.user.username.slice(0, 1)}
               </div>
               <div>
-                <p className="text-sm font-bold text-zinc-900 dark:text-white">
+                  <p className="text-sm font-bold text-zinc-950 dark:text-white">
                   {news.data.user.username}
                 </p>
-                <p className="text-xs text-zinc-500">Editor Utama</p>
+                  <p className="inline-flex items-center gap-1 text-xs text-zinc-500 dark:text-zinc-400">
+                    <UserRound className="size-3" />
+                    Editor Madtsanda
+                  </p>
               </div>
             </div>
             <div className="flex items-center gap-2">
@@ -123,37 +135,37 @@ export default async function NewsDetailPage({
           </div>
         </div>
 
-        {/* Featured Image */}
-        <div className="relative aspect-video w-full rounded-3xl overflow-hidden border mb-12">
-          <Image
-            src={news.data.imageUrl as string}
-            alt={news.data.title}
-            fill
-            unoptimized
-            className="object-cover"
-            priority
-          />
-        </div>
+          <div className="relative aspect-video w-full overflow-hidden bg-zinc-100 dark:bg-zinc-800">
+            <Image
+              src={news.data.imageUrl ?? newsImageFallback}
+              alt={news.data.title}
+              fill
+              unoptimized
+              className="object-cover"
+              sizes="(max-width: 1024px) 100vw, 1024px"
+              fetchPriority="high"
+              priority
+            />
+          </div>
+        </header>
 
-        {/* Article Content */}
-        <div className="prose prose-zinc dark:prose-invert max-w-4xl ">
+        <div className="prose prose-zinc mx-auto mt-10 max-w-4xl dark:prose-invert">
           <BlockRenderDynamic md={news.data.content} name={news.data.user.username} />
         </div>
 
-        {/* Footer actions */}
-        <div className="mt-16 pt-8 border-t border-zinc-200 dark:border-zinc-800">
+        <footer className="mt-16 border-t border-zinc-200 pt-8 dark:border-zinc-800">
           <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
             <div className="flex items-center gap-2">
               <span className="text-sm font-medium text-zinc-500">Tags:</span>
               <div className="flex flex-wrap gap-2">
-                <span className="px-3 py-1 rounded-full bg-zinc-100 dark:bg-zinc-800 text-xs font-medium text-zinc-600 dark:text-zinc-400">
+                <span className="rounded-full bg-zinc-100 px-3 py-1 text-xs font-medium text-zinc-600 dark:bg-zinc-800 dark:text-zinc-400">
                   {news.data.newsCategory.category}
                 </span>
               </div>
             </div>
           </div>
-        </div>
-      </div>
+        </footer>
+      </article>
     </div>
   );
 }

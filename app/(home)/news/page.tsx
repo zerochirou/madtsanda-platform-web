@@ -1,6 +1,4 @@
-import { NewsSubnav } from "@/features/news/components/sub-nav";
-import { FeaturedNews } from "@/features/news/components/featured-nav";
-import { NewsList } from "@/features/news/components/news-list";
+import { FeaturedNews, NewsList, NewsSubnav } from "@/features/news/components";
 import {
   getAllNewsCategoryService,
   getNewsWithLimitService,
@@ -27,7 +25,7 @@ export default async function News({
   return (
     <div
       id="home"
-      className="min-h-screen bg-zinc-50 dark:bg-zinc-950 transition-colors duration-300 selection:bg-emerald-500/30 selection:text-emerald-900 dark:selection:text-emerald-100 pb-12 pt-[54px] md:pt-[64px]"
+      className="min-h-screen bg-zinc-50 pb-12 pt-[54px] selection:bg-emerald-500/30 selection:text-emerald-900 transition-colors duration-300 dark:bg-zinc-950 dark:selection:text-emerald-100 md:pt-[64px]"
     >
       <NewsSubnav categories={newsCategory} />
       <FeaturedNews sideNews={featuredNews} topNews={featuredNews?.data[0]} />
