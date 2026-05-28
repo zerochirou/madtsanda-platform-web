@@ -5,8 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "motion/react";
-import { Menu, X } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { Menu, X } from "lucide-react"
 import { ThemeToggle } from "./theme-toggle";
 import { navItems } from "../data/navigation";
 import { useTheme } from "next-themes";
@@ -47,16 +46,6 @@ export function Navigation() {
         <div className="max-w-7xl mx-auto px-4 md:px-6 flex justify-between items-center">
           {/* Logo */}
           <Link href="/" className="group flex items-center gap-6">
-            {theme === "dark" ? (
-              <Image
-                suppressHydrationWarning
-                src="/icons/icon-dark.png"
-                alt="Logo MTsN 2 Kota Kediri"
-                width={50}
-                height={50}
-                className="object-contain px-0"
-              />
-            ) : (
               <Image
                 suppressHydrationWarning
                 src="/icons/icon.png"
@@ -65,8 +54,7 @@ export function Navigation() {
                 height={50}
                 className="object-contain px-0"
               />
-            )}
-            <DiaTextReveal
+            {/*<DiaTextReveal
               text="MTsN 2 Kota Kediri"
               repeatDelay={0.5}
               once={false}
@@ -75,15 +63,15 @@ export function Navigation() {
               className={`text-sm md:text-2xl -ml-4 font-bold tracking-tighter transition-colors duration-300 ${
                 showSolid ? "text-zinc-900 dark:text-white" : "text-white"
               }`}
-            />
-            {/*<motion.div
+            />*/}
+            <motion.div
               className={`text-xl md:text-2xl -ml-4 font-bold tracking-tighter transition-colors duration-300 ${
                 showSolid ? "text-zinc-900 dark:text-white" : "text-white"
               }`}
               whileHover={{ scale: 1.02 }}
             >
               MTsN 2 Kota <span className="text-emerald-500">Kediri</span>
-            </motion.div>*/}
+            </motion.div>
           </Link>
 
           {/* Desktop Nav */}
