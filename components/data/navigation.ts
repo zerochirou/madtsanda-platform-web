@@ -41,6 +41,11 @@ const organizations = [
 
 export const services = [
   {
+    label: "Madtsanda News",
+    description: "Tempat melihat berita dan artikel Madtsanda.",
+    href: "/news",
+  },
+  {
     label: "Research Repository",
     description: "Arsip digital karya ilmiah dan riset.",
     href: "",
@@ -73,13 +78,4 @@ export const navigationData = [
     description: "MPK dan OSIS, Ekstrakurikuler.",
     items: organizations,
   },
-];
-
-export const footerLinks = [
-  { label: "Profil", href: "/about" },
-  { label: "Akademik", href: "/programs" },
-  { label: "Kesiswaan", href: "/extracurricular" },
-  { label: "PPDB", href: "/ppdb" },
-  { label: "Fasilitas", href: "/facilities" },
-  { label: "Research", href: "/research" },
 ];
