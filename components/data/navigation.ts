@@ -79,3 +79,13 @@ export const navigationData = [
     items: organizations,
   },
 ];
+
+
+export const footerLinks = [
+  { label: "Profil", href: "/about" },
+  { label: "Akademik", href: "/programs" },
+  { label: "Kesiswaan", href: "/extracurricular" },
+  { label: "PPDB", href: "/ppdb" },
+  { label: "Fasilitas", href: "/facilities" },
+  { label: "Research", href: "/research" },
+];
