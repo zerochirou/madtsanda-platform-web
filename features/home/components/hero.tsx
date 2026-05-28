@@ -10,16 +10,16 @@ import { WordRotate } from "@/components/ui/word-rotate";
 export const Hero = () => {
   const [index, setIndex] = useState(0);
   const images = [
-    "paskibra2.jpeg",
     "paseban-1.png",
     "paseban-2.jpg",
     "foto-siswa3.JPG",
+    "paskibra2.jpeg",
   ];
 
   useEffect(() => {
     const interval = setInterval(() => {
       setIndex((prev) => (prev + 1) % images.length);
-    }, 5000);
+    }, 10000);
 
     return () => clearInterval(interval);
   }, []);
@@ -28,9 +28,9 @@ export const Hero = () => {
       <div className="absolute inset-0 z-0">
         <motion.div
           key={images[index]} // Sangat penting
-          initial={{ opacity: 0, y: -80 }} // Masuk dari kanan
-          animate={{ opacity: 1, y: 0 }} // Ke posisi normal
-          exit={{ opacity: 0, y: 80 }} // Keluar ke kiri
+          initial={{ opacity: 0, }} // Masuk dari kanan
+          animate={{ opacity: 1,  }} // Ke posisi normal
+          exit={{ opacity: 0, }} // Keluar ke kiri
           transition={{
             duration: 0.8,
             ease: "easeInOut",

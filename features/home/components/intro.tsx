@@ -14,8 +14,6 @@ import { BorderBeam } from "@/components/ui/border-beam";
 import { ShineBorder } from "@/components/ui/shine-border";
 
 export const Intro = () => {
-  const { theme } = useTheme();
-
   const features = [
     {
       title: "Sejak 1978",
@@ -121,7 +119,7 @@ export const Intro = () => {
           <ShineBorder shineColor={["#34d399", "#10b981", "#059669"]} />
           <div className="flex-1">
             <div className="uppercase tracking-[3px] text-xs text-emerald-400 font-medium mb-2">
-              NILAI UTAMA KAMI {theme}
+              NILAI UTAMA KAMI
             </div>
             <h3 className="text-2xl font-semibold tracking-tight">ISTIKOMAH</h3>
             <p className="mt-3 text-zinc-400 max-w-md">
