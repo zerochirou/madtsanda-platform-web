@@ -41,14 +41,19 @@ const organizations = [
 
 export const services = [
   {
+    label: "Madtsanda News",
+    description: "Tempat berita inspirasi dan keseharian MTsN 2 Kota Kediri.",
+    href: "/news",
+  },
+  {
     label: "Research Repository",
     description: "Arsip digital karya ilmiah dan riset.",
-    href: "",
+    href: "/research",
   },
   {
     label: "Madtsanda Connect",
     description: "Portal integrasi sistem akademik digital.",
-    href: "",
+    href: "/login",
   },
   {
     label: "Modern Library",
