@@ -5,19 +5,26 @@ import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "motion/react";
-import { Menu, X } from "lucide-react"
+import { ChevronDown, Menu, SquareArrowOutUpRight, X } from "lucide-react";
 import { ThemeToggle } from "./theme-toggle";
-import { navItems } from "../data/navigation";
-import { useTheme } from "next-themes";
-import { DiaTextReveal } from "../ui/dia-text-reveal";
+import { navigationData } from "../data/navigation";
+import {
+  NavigationMenu,
+  NavigationMenuContent,
+  NavigationMenuItem,
+  NavigationMenuLink,
+  NavigationMenuList,
+  NavigationMenuTrigger,
+  navigationMenuTriggerStyle,
+} from "@/components/ui/navigation-menu";
+import { Button } from "../ui";
+import { cn } from "@/lib/utils";
 
 export function Navigation() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [expandedSections, setExpandedSections] = useState<number[]>([]);
   const pathname = usePathname();
-  const { theme } = useTheme();
-
-  // Only hero page (home) gets transparent navbar
   const isHome = pathname === "/";
 
   useEffect(() => {
@@ -26,13 +33,19 @@ export function Navigation() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Close mobile menu on route change
   useEffect(() => {
     // eslint-disable-next-line react-hooks/set-state-in-effect
     setMobileOpen(false);
+    setExpandedSections([]);
   }, [pathname]);
 
   const showSolid = scrolled || !isHome;
+
+  const toggleSection = (index: number) => {
+    setExpandedSections((prev) =>
+      prev.includes(index) ? prev.filter((i) => i !== index) : [...prev, index],
+    );
+  };
 
   return (
     <>
@@ -45,63 +58,104 @@ export function Navigation() {
       >
         <div className="max-w-7xl mx-auto px-4 md:px-6 flex justify-between items-center">
           {/* Logo */}
-          <Link href="/" className="group flex items-center gap-6">
+          <motion.div
+            initial={{ x: -100, opacity: 0 }}
+            transition={{
+              ease: "easeInOut",
+            }}
+            animate={{ x: 0, opacity: 1 }}
+          >
+            <Link href="/" className="group flex items-center gap-6">
               <Image
                 suppressHydrationWarning
                 src="/icons/icon.png"
                 alt="Logo MTsN 2 Kota Kediri"
                 width={50}
                 height={50}
-                className="object-contain px-0"
+                className="object-contain px-0 w-10 tracking-wide md:w-14"
               />
-            {/*<DiaTextReveal
-              text="MTsN 2 Kota Kediri"
-              repeatDelay={0.5}
-              once={false}
-              textColor={showSolid ? "#000" : "#fff"}
-              colors={["#c679c4", "#fa3d1d", "#ffb005", "#e1e1fe", "#0358f7"]}
-              className={`text-sm md:text-2xl -ml-4 font-bold tracking-tighter transition-colors duration-300 ${
-                showSolid ? "text-zinc-900 dark:text-white" : "text-white"
-              }`}
-            />*/}
-            <motion.div
-              className={`text-xl md:text-2xl -ml-4 font-bold tracking-tighter transition-colors duration-300 ${
-                showSolid ? "text-zinc-900 dark:text-white" : "text-white"
-              }`}
-              whileHover={{ scale: 1.02 }}
-            >
-              MTsN 2 Kota <span className="text-emerald-500">Kediri</span>
-            </motion.div>
-          </Link>
+              <motion.div
+                className={`text-xl flex flex-col md:text-xl tracking-wide -ml-4 font-bold transition-colors duration-300 ${
+                  showSolid ? "text-zinc-900 dark:text-white" : "text-white"
+                }`}
+                whileHover={{ scale: 1.02 }}
+              >
+                <span className="-mb-1 text-md md:block hidden">MTsN 2</span>
+                <span className="text-sm md:block hidden">Kota Kediri</span>
+                <span className="md:hidden block text-sm tracking-wider">
+                  MTsN 2 Kota Kediri
+                </span>
+              </motion.div>
+            </Link>
+          </motion.div>
 
           {/* Desktop Nav */}
-          <div
+          <motion.div
+            initial={{ y: -100, opacity: 0 }}
+            transition={{
+              ease: "easeInOut",
+            }}
+            animate={{ y: 0, opacity: 1 }}
             className={`hidden md:flex items-center space-x-8 text-sm font-medium ${
               showSolid ? "text-zinc-600 dark:text-zinc-400" : "text-white/90"
             }`}
           >
-            {navItems.map((item) => (
-              <Link
-                key={item.href}
-                href={item.href}
-                className={`relative py-1 transition-colors duration-300 hover:text-emerald-500 ${
-                  pathname === item.href ? "text-emerald-500" : ""
-                }`}
-              >
-                {item.label}
-                {pathname === item.href && (
-                  <motion.div
-                    layoutId="nav-indicator"
-                    className="absolute -bottom-1 left-0 right-0 h-0.5 bg-emerald-500 rounded-full"
-                    transition={{ type: "spring", stiffness: 300, damping: 30 }}
-                  />
-                )}
-              </Link>
-            ))}
-          </div>
+            <NavigationMenu>
+              <NavigationMenuList>
+                {navigationData.map((labels, index) => {
+                  return (
+                    <NavigationMenuItem key={index}>
+                      <NavigationMenuTrigger
+                        className={
+                          "group/navigation-menu-trigger inline-flex h-9 w-max items-center justify-center rounded-md px-4 py-2 text-sm hover:text-emerald-400 focus:text-emerald-400 font-medium transition-all outline-none hover:bg-transparent focus:bg-transparent focus-visible:ring-3 focus-visible:ring-ring/50 focus-visible:outline-1 disabled:pointer-events-none disabled:opacity-50 data-popup-open:bg-transparent/50 data-popup-open:hover:bg-transparent data-open:bg-transparent/50 data-open:hover:bg-transparent data"
+                        }
+                      >
+                        {labels.label}
+                      </NavigationMenuTrigger>
+                      <NavigationMenuContent>
+                        <ul className="grid gap-3 p-2 md:w-100 lg:w-150 lg:grid-cols-[.75fr_1fr]">
+                          <li className="row-span-3">
+                            <div className="flex h-full w-full select-none flex-col justify-end rounded-md bg-linear-to-bl from-emerald-100 via-emerald-500  to-emerald-600 p-6 no-underline outline-none focus:shadow-md relative overflow-hidden text-white">
+                              <div className="mb-2 mt-4 text-lg font-medium">
+                                <div className="text-xl font-bold leading-tight">
+                                  {labels.label}
+                                </div>
+                              </div>
+                              <p className="text-sm leading-tight opacity-70">
+                                {labels.description}
+                              </p>
+                            </div>
+                          </li>
+
+                          <div className="flex flex-col gap-1">
+                            {labels.items.map((item, itemIndex) => (
+                              <ListItem
+                                key={itemIndex}
+                                href={item.href}
+                                title={item.label}
+                              >
+                                {item.description}
+                              </ListItem>
+                            ))}
+                          </div>
+                        </ul>
+                      </NavigationMenuContent>
+                    </NavigationMenuItem>
+                  );
+                })}
+              </NavigationMenuList>
+            </NavigationMenu>
+          </motion.div>
 
           {/* Desktop Actions */}
-          <div className="hidden md:flex items-center space-x-4">
+          <motion.div
+            initial={{ x: 100, opacity: 0 }}
+            transition={{
+              ease: "easeInOut",
+            }}
+            animate={{ x: 0, opacity: 1 }}
+            className="hidden md:flex items-center space-x-4"
+          >
             <ThemeToggle />
             <Link href="/login" prefetch>
               <button className="dark:bg-emerald-950 bg-emerald-100 text-emerald-400 border border-emerald-400 border-b-4 font-bold font-mono overflow-hidden relative px-4 py-1 rounded-xl dark:hover:brightness-150 hover:brightness-110 hover:border-t-4 hover:border-b active:opacity-75 outline-none duration-300 group">
@@ -109,10 +163,15 @@ export function Navigation() {
                 Connect
               </button>
             </Link>
-          </div>
+          </motion.div>
 
           {/* Mobile Menu Button */}
-          <button
+          <motion.button
+            initial={{ x: 100, opacity: 0 }}
+            transition={{
+              ease: "easeInOut",
+            }}
+            animate={{ x: 0, opacity: 1 }}
             className="md:hidden relative z-50"
             onClick={() => setMobileOpen(!mobileOpen)}
             aria-label="Toggle menu"
@@ -132,66 +191,154 @@ export function Navigation() {
                 <Menu className="h-6 w-6" />
               )}
             </div>
-          </button>
+          </motion.button>
         </div>
       </nav>
 
       {/* Mobile Menu Overlay */}
       <AnimatePresence>
         {mobileOpen && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.3 }}
-            className="fixed inset-0 z-40 bg-zinc-950/95 backdrop-blur-xl flex flex-col items-center justify-center"
-          >
+          <>
+            {/* Backdrop */}
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: 20 }}
-              transition={{ duration: 0.3, delay: 0.1 }}
-              className="flex flex-col items-center space-y-8"
-            >
-              {navItems.map((item, i) => (
-                <motion.div
-                  key={item.href}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.15 + i * 0.05 }}
-                >
-                  <Link
-                    href={item.href}
-                    className={`text-3xl font-bold transition-colors ${
-                      pathname === item.href
-                        ? "text-emerald-500"
-                        : "text-white hover:text-emerald-400"
-                    }`}
-                    onClick={() => setMobileOpen(false)}
-                  >
-                    {item.label}
-                  </Link>
-                </motion.div>
-              ))}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setMobileOpen(false)}
+              className="fixed inset-0 z-40 bg-black/60 md:hidden"
+            />
 
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.4 }}
-                className="pt-6 flex flex-col items-center gap-6"
-              >
-                <ThemeToggle />
-                <Link href="/login">
-                  <button className="dark:bg-emerald-950 bg-emerald-100 text-emerald-400 border border-emerald-400 border-b-4 font-medium font-mono overflow-hidden relative px-20 py-2 rounded-xl dark:hover:brightness-150 hover:brightness-110 hover:border-t-4 hover:border-b active:opacity-75 outline-none duration-300 group">
-                    <span className="dark:bg-emerald-400 bg-emerald-100 shadow-emerald-400 absolute top-[-150%] left-0 inline-flex w-80 h-1.25 rounded-md opacity-50 group-hover:top-[150%] duration-500 shadow-[0_0_10px_10px_rgba(0,0,0,0.3)]" />
-                    <span className="text-2xl font-bold">Connect</span>
+            {/* Slide-in Panel */}
+            <motion.div
+              initial={{ x: "100%" }}
+              animate={{ x: 0 }}
+              exit={{ x: "100%" }}
+              transition={{ type: "spring", damping: 28, stiffness: 220 }}
+              className="fixed top-0 right-0 bottom-0 z-50 w-full max-w-[320px] bg-white dark:bg-zinc-950 shadow-2xl md:hidden overflow-y-auto"
+            >
+              <div className="pb-6 px-4 pt-4">
+                {/* Header Mobile */}
+                <div className="flex items-center justify-end mb-4">
+                  <button onClick={() => setMobileOpen(false)}>
+                    <X className="h-6 w-6" />
                   </button>
-                </Link>
-              </motion.div>
+                </div>
+
+                {/* Navigation Sections */}
+                <div className="space-y-2">
+                  {navigationData.map((section, index) => {
+                    const isExpanded = expandedSections.includes(index);
+
+                    return (
+                      <div
+                        key={index}
+                        className="border border-zinc-200 dark:border-zinc-800 rounded-sm overflow-hidden"
+                      >
+                        {/* Section Header */}
+                        <button
+                          onClick={() => toggleSection(index)}
+                          className="w-full flex items-center justify-between px-3 py-3 text-left hover:bg-zinc-50 dark:hover:bg-zinc-900 transition-colors"
+                        >
+                          <div>
+                            <div className="font-semibold text-base">
+                              {section.label}
+                            </div>
+                            <div className="text-xs text-transbg-transparent-foreground line-clamp-1">
+                              {section.description}
+                            </div>
+                          </div>
+                          <ChevronDown
+                            className={`h-5 w-5 text-zinc-400 transition-transform duration-200 ${
+                              isExpanded ? "rotate-180" : ""
+                            }`}
+                          />
+                        </button>
+
+                        {/* Expanded Content */}
+                        <AnimatePresence>
+                          {isExpanded && (
+                            <motion.div
+                              initial={{ height: 0, opacity: 0 }}
+                              animate={{ height: "auto", opacity: 1 }}
+                              exit={{ height: 0, opacity: 0 }}
+                              transition={{ duration: 0.2 }}
+                              className="overflow-hidden"
+                            >
+                              {/* List Items */}
+                              <div className="px-2 pb-4 space-y-1">
+                                {section.items.map((item, itemIndex) => (
+                                  <Link
+                                    key={itemIndex}
+                                    href={item.href}
+                                    onClick={() => setMobileOpen(false)}
+                                    className="block px-4 py-3 rounded-xl hover:bg-zinc-100 dark:hover:bg-zinc-900 transition-colors"
+                                  >
+                                    <div className="font-medium text-sm">
+                                      {item.label}
+                                    </div>
+                                    {item.description && (
+                                      <div className="text-xs text-transbg-transparent-foreground line-clamp-2 mt-0.5">
+                                        {item.description}
+                                      </div>
+                                    )}
+                                  </Link>
+                                ))}
+                              </div>
+                            </motion.div>
+                          )}
+                        </AnimatePresence>
+                      </div>
+                    );
+                  })}
+                </div>
+
+                {/* Bottom Actions */}
+                <div className="mt-8 space-y-3">
+                  <div className="flex justify-center">
+                    <ThemeToggle />
+                  </div>
+
+                  <Link
+                    href="/login"
+                    onClick={() => setMobileOpen(false)}
+                    prefetch
+                  >
+                    <button className="w-full dark:bg-emerald-950 bg-emerald-100 text-emerald-400 border border-emerald-400 border-b-4 font-bold font-mono overflow-hidden relative px-4 py-3 rounded-2xl dark:hover:brightness-150 hover:brightness-110 hover:border-t-4 hover:border-b active:opacity-75 outline-none duration-300 group">
+                      <span className="dark:bg-emerald-400 bg-emerald-100 shadow-emerald-400 absolute top-[-150%] left-0 inline-flex w-80 h-1.25 rounded-md opacity-50 group-hover:top-[150%] duration-500 shadow-[0_0_10px_10px_rgba(0,0,0,0.3)]" />
+                      Connect
+                    </button>
+                  </Link>
+                </div>
+              </div>
             </motion.div>
-          </motion.div>
+          </>
         )}
       </AnimatePresence>
     </>
+  );
+}
+
+function ListItem({
+  title,
+  children,
+  href,
+  ...props
+}: React.ComponentPropsWithoutRef<"li"> & { href: string }) {
+  return (
+    <li {...props} className="container">
+      <NavigationMenuLink asChild>
+        <Link href={href}>
+          <div className="flex flex-col gap-1 text-sm">
+            <span className="flex flex-row items-center gap-1 text-sm">
+            <SquareArrowOutUpRight className="size-4"/>
+              <div className="leading-none font-medium group-hover:text-emerald-400">{title}</div>
+            </span>
+            <div className="line-clamp-2 text-transbg-transparent-foreground group-hover:text-emerald-400 opacity-50 text-xs">
+              {children}
+            </div>
+          </div>
+        </Link>
+      </NavigationMenuLink>
+    </li>
   );
 }
