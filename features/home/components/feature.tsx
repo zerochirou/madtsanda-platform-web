@@ -5,7 +5,7 @@ import { FadeUp } from "@/components/animation/animations";
 
 export const Features = () => {
   return (
-    <section className="py-12 lg:py-20 bg-zinc-50 dark:bg-zinc-950 pb-20 lg:pb-32 transition-colors duration-300">
+    <section className="lg:py-20 bg-zinc-50 dark:bg-zinc-950 pb-20 lg:pb-32 transition-colors duration-300">
       <div className="max-w-7xl mx-auto px-4 md:px-6">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 pt-12 border-t border-zinc-200 dark:border-zinc-800">
           {featuresData.map((f, i) => (

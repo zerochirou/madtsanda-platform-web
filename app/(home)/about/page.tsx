@@ -5,15 +5,6 @@ import {
   FadeRight,
   FadeLeft,
 } from "@/components/animation/animations";
-import { teachersData } from "@/components/data/teachers";
-import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-} from "@/components/ui/dialog";
 import { TeacherDirectory } from "@/features/home/components/teacher-directory";
 import { Button } from "@/components/ui";
 import Link from "next/link";
@@ -31,7 +22,7 @@ export default function About() {
       <section className="py-20 lg:py-32 max-w-7xl mx-auto px-4 md:px-6">
         <div className="grid md:grid-cols-2 gap-16 items-center mb-32">
           <FadeRight>
-            <div className="relative h-[400px] lg:h-[600px] rounded-3xl overflow-hidden shadow-2xl border border-zinc-200 dark:border-zinc-800">
+            <div className="relative h-100 lg:h-1 rounded-3xl overflow-hidden shadow-2xl border border-zinc-200 dark:border-zinc-800">
               <Image
                 src="/images/kegiatan-sekolah.jpg"
                 alt="Students collaborating"

@@ -15,10 +15,7 @@ import {
   NavigationMenuLink,
   NavigationMenuList,
   NavigationMenuTrigger,
-  navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu";
-import { Button } from "../ui";
-import { cn } from "@/lib/utils";
 
 export function Navigation() {
   const [scrolled, setScrolled] = useState(false);
@@ -54,7 +51,7 @@ export function Navigation() {
           showSolid
             ? "bg-white/90 dark:bg-zinc-950/90 backdrop-blur-xl py-3 shadow-sm border-b border-zinc-200/50 dark:border-zinc-800/50"
             : "bg-transparent py-4 md:py-6"
-        }`}
+        }`} 
       >
         <div className="max-w-7xl mx-auto px-4 md:px-6 flex justify-between items-center">
           {/* Logo */}

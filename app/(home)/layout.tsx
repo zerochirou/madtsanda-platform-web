@@ -8,6 +8,7 @@ export default function RootLayout({
 }>) {
   return (
     <div>
+      {/*<SmoothCursor cursor={<GraduationCap />} />*/}
       <Navigation />
       <main className="flex-1">{children}</main>
       <Footer />
