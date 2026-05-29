@@ -1,63 +1,13 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowLeft, CalendarDays, Share2, Tag, UserRound } from "lucide-react";
+import { ArrowLeft, CalendarDays, Tag, UserRound } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { getNewsByIdService } from "@/features/news/services";
 import { formatReadableDate } from "@/lib/date";
-
-import {
-  Dialog,
-  DialogClose,
-  DialogContent,
-  DialogDescription,
-  DialogFooter,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-} from "@/components/ui/dialog";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
 import { BlockRenderDynamic } from "@/components/shared/block-render";
+import { Share } from "@/features/news/components/share";
 
 const newsImageFallback = "/images/kegiatan-sekolah.jpg";
-
-export function Share({ id }: { id: string }) {
-  return (
-    <Dialog>
-      <DialogTrigger asChild>
-        <Button variant="outline" className="gap-2">
-          <Share2 className="size-4" />
-          Bagikan
-        </Button>
-      </DialogTrigger>
-      <DialogContent className="sm:max-w-md">
-        <DialogHeader>
-          <DialogTitle>Bagikan tautan</DialogTitle>
-          <DialogDescription>
-            Salin tautan berita ini untuk dibagikan kepada warga Madtsanda.
-          </DialogDescription>
-        </DialogHeader>
-        <div className="flex items-center gap-2">
-          <div className="grid flex-1 gap-2">
-            <Label htmlFor="link" className="sr-only">
-              Link
-            </Label>
-            <Input
-              id="link"
-              defaultValue={`${process.env.NEXT_PUBLIC_BASE_URL}/news/${id}`}
-              readOnly
-            />
-          </div>
-        </div>
-        <DialogFooter className="sm:justify-start">
-          <DialogClose asChild>
-            <Button type="button">Tutup</Button>
-          </DialogClose>
-        </DialogFooter>
-      </DialogContent>
-    </Dialog>
-  );
-}
 
 export default async function NewsDetailPage({
   params,
@@ -102,8 +52,8 @@ export default async function NewsDetailPage({
             <div className="flex flex-wrap items-center gap-2 text-xs font-medium">
               <span className="inline-flex items-center gap-1 rounded-full bg-emerald-50 px-3 py-1 text-emerald-700 ring-1 ring-emerald-200 dark:bg-emerald-500/10 dark:text-emerald-300 dark:ring-emerald-500/25">
                 <Tag className="size-3.5" />
-              {news.data.newsCategory.category}
-            </span>
+                {news.data.newsCategory.category}
+              </span>
               <span className="inline-flex items-center gap-1 rounded-full bg-zinc-100 px-3 py-1 text-zinc-600 ring-1 ring-zinc-200 dark:bg-zinc-800 dark:text-zinc-300 dark:ring-zinc-700">
                 <CalendarDays className="size-3.5" />
                 <span>{formatReadableDate(news.data.createdAt)}</span>
@@ -111,29 +61,29 @@ export default async function NewsDetailPage({
             </div>
 
             <h1 className="max-w-4xl text-3xl font-extrabold leading-tight tracking-tight text-zinc-950 dark:text-white md:text-5xl">
-            {news.data.title}
-          </h1>
+              {news.data.title}
+            </h1>
 
             <div className="flex flex-col gap-4 border-t border-zinc-200 pt-6 dark:border-zinc-800 sm:flex-row sm:items-center sm:justify-between">
-            <div className="flex items-center gap-3">
+              <div className="flex items-center gap-3">
                 <div className="flex size-11 items-center justify-center rounded-full bg-emerald-500 text-sm font-bold text-white shadow-sm shadow-emerald-500/30">
-                {news.data.user.username.slice(0, 1)}
-              </div>
-              <div>
+                  {news.data.user.username.slice(0, 1)}
+                </div>
+                <div>
                   <p className="text-sm font-bold text-zinc-950 dark:text-white">
-                  {news.data.user.username}
-                </p>
+                    {news.data.user.username}
+                  </p>
                   <p className="inline-flex items-center gap-1 text-xs text-zinc-500 dark:text-zinc-400">
                     <UserRound className="size-3" />
                     Editor Madtsanda
                   </p>
+                </div>
+              </div>
+              <div className="flex items-center gap-2">
+                <Share id={news.data.id} />
               </div>
             </div>
-            <div className="flex items-center gap-2">
-              <Share id={news.data.id} />
-            </div>
           </div>
-        </div>
 
           <div className="relative aspect-video w-full overflow-hidden bg-zinc-100 dark:bg-zinc-800">
             <Image
@@ -149,8 +99,11 @@ export default async function NewsDetailPage({
           </div>
         </header>
 
-        <div className="prose prose-zinc mx-auto mt-10 max-w-4xl dark:prose-invert">
-          <BlockRenderDynamic md={news.data.content} name={news.data.user.username} />
+        <div className="prose-lg prose-zinc mx-auto mt-10 max-w-4xl dark:prose-invert">
+          <BlockRenderDynamic
+            md={news.data.content}
+            name={news.data.user.username}
+          />
         </div>
 
         <footer className="mt-16 border-t border-zinc-200 pt-8 dark:border-zinc-800">
