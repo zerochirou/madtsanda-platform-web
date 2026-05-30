@@ -89,3 +89,8 @@ export interface ResearchPaginateDTO {
 export interface ResearchItemDTO {
   data: ResearchItem;
 }
+
+export interface ResearchPageProps {
+  research: ResearchPaginateDTO;
+  tags: ResearchTagResponseDTO[] | null
+}

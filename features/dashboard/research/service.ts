@@ -48,9 +48,9 @@ export async function createResearchService(
   }
 }
 
-export async function getResearchWithPaginate(): Promise<ResearchPaginateDTO | null> {
+export async function getResearchWithPaginate(page: number): Promise<ResearchPaginateDTO | null> {
   try {
-    const response = await request<ResearchPaginateDTO>(`/research`);
+    const response = await request<ResearchPaginateDTO>(`/research/paginate/?page=${page}`);
     return response;
   } catch (error: unknown) {
     logger.error(errorFormat(error));

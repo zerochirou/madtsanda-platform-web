@@ -48,7 +48,7 @@ export const services = [
   {
     label: "Research Repository",
     description: "Arsip digital karya ilmiah dan riset.",
-    href: "",
+    href: "/research",
   },
   {
     label: "Madtsanda Connect",
