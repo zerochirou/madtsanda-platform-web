@@ -4,6 +4,7 @@ import { ArrowRight, CalendarDays, Tag, UserRound } from "lucide-react";
 import type { NewsPaginateDTO } from "@/types/dto/news";
 import { formatReadableDate } from "@/lib/date";
 import { Skeleton } from "@/components/ui/skeleton";
+import { getNewsImage } from "@/lib/news";
 
 const newsImageFallback = "/images/kegiatan-sekolah.jpg";
 
@@ -67,7 +68,7 @@ export function NewsList({
             >
               <div className="relative aspect-[16/10] w-full overflow-hidden bg-zinc-100 dark:bg-zinc-800">
                 <Image
-                  src={news.imageUrl ?? newsImageFallback}
+                  src={getNewsImage(news.title, news.imageUrl)}
                   alt={news.title}
                   fill
                   unoptimized

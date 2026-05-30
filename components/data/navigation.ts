@@ -58,7 +58,7 @@ export const services = [
   {
     label: "Modern Library",
     description: "Layanan perpustakaan digital dan fisik.",
-    href: "",
+    href: "/library",
   }
 ];
 

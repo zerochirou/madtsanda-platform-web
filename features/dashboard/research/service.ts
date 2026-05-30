@@ -12,6 +12,7 @@ import type {
   ResearchItem,
   ResearchStatusUpdateDTO,
 } from "@/types/dto/research";
+import { mockResearchPaginate } from "@/components/data/research";
 // Types are imported where needed in function signatures.
 
 export async function createResearchService(
@@ -90,13 +91,23 @@ export async function updateResearchStatus(
 export async function getResearchById(
   id: string,
 ): Promise<ResearchItemDTO | null> {
+  // Return immediately if id is mock
+  if (id && id.startsWith("mock-res-")) {
+    const item = mockResearchPaginate.data.find((r) => r.id === id);
+    return item ? { data: item } : null;
+  }
+
   try {
-    // const response = await request<ResearchItem>(`/research/${id}`);
     const response = await fetch(`http://localhost:3333/api/v1/research/${id}`);
+    if (!response.ok) {
+      const item = mockResearchPaginate.data.find((r) => r.id === id);
+      return item ? { data: item } : null;
+    }
     const data = await response.json();
     return data;
   } catch (error: unknown) {
     logger.error(errorFormat(error));
-    return null;
+    const item = mockResearchPaginate.data.find((r) => r.id === id);
+    return item ? { data: item } : null;
   }
 }
