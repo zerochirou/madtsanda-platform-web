@@ -7,10 +7,6 @@ import { Download, FileText, Users } from "lucide-react";
 import { ClientResearchList } from "@/features/research/components/research-library";
 import { ScrollButton } from "@/features/research/components/scroll-button";
 import { NumberTicker } from "@/components/ui/number-ticker";
-import Image from "next/image";
-import { InteractiveGridPattern } from "@/components/ui/interactive-grid-pattern";
-import { DotPattern } from "@/components/ui/dot-pattern";
-import { cn } from "@/lib/utils";
 import Link from "next/link";
 
 export default async function ResearchPage({
@@ -24,7 +20,10 @@ export default async function ResearchPage({
   const research = await getResearchWithPaginate(Number(page));
 
   // NOTE: for now it's still like this
-
+  if (!research) {
+    return <></>;
+  }
+  
   return (
     <div className="min-h-screen bg-white dark:bg-black text-foreground">
       {/* ========== HERO SECTION (inspired by reference, emerald accent, glassmorphism) ========== */}
