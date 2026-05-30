@@ -4,14 +4,12 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Calendar, User, FileText, ArrowLeft, Download } from "lucide-react";
 import Link from "next/link";
-import { ResearchItem } from "@/types/dto/research";
 import BlockRender from "@/components/shared/block-render/render";
 
 interface ResearchDetailPageProps {
   params: Promise<{ id: string }>;
 }
 
-// Optional: Dynamic metadata
 export async function generateMetadata({ params }: ResearchDetailPageProps) {
   const { id } = await params;
   const research = await getResearchById(id);
@@ -20,7 +18,7 @@ export async function generateMetadata({ params }: ResearchDetailPageProps) {
     title: research
       ? `${research.data.title} | Research Repository`
       : "Research Not Found",
-    description: research?.abstrack?.slice(0, 160) || "Detail penelitian",
+    description: research?.data?.abstrack?.slice(0, 160) || "Detail penelitian",
   };
 }
 
@@ -43,25 +41,25 @@ export default async function ResearchDetailPage({
   };
 
   return (
-    <div className="min-h-screen">
-      <div className="max-w-4xl mx-auto px-6 py-10">
+    <div className="mt-20 min-h-screen bg-white dark:bg-zinc-950 text-zinc-950 dark:text-white selection:bg-emerald-500 selection:text-white">
+      <div className="max-w-4xl mx-auto px-6 py-12">
         {/* Back Button */}
         <Link
           href="/research"
-          className="inline-flex items-center gap-2 text-sm text-zinc-400 hover:text-white mb-8 transition-colors"
+          className="inline-flex items-center gap-2 text-sm text-zinc-500 hover:text-emerald-600 dark:text-zinc-400 dark:hover:text-emerald-400 mb-8 transition-colors font-bold"
         >
           <ArrowLeft className="w-4 h-4" />
           Kembali ke Repository
         </Link>
 
         {/* Header */}
-        <div className="mb-8">
-          <div className="flex items-center gap-3 mb-4">
+        <div className="mb-8 space-y-4">
+          <div className="flex items-center gap-3">
             <Badge
               variant={
                 research.data.status === "has_done" ? "default" : "secondary"
               }
-              className="text-sm px-4 py-1"
+              className="text-xs px-4 py-1"
             >
               {research.data.status === "has_done"
                 ? "Published"
@@ -70,52 +68,52 @@ export default async function ResearchDetailPage({
 
             <Badge
               variant="outline"
-              className="text-sm px-4 py-1 border-zinc-700"
+              className="text-xs px-4 py-1 border-zinc-200 dark:border-zinc-800"
             >
               {research.data.researchTag.category}
             </Badge>
           </div>
 
-          <h1 className="text-4xl md:text-5xl font-semibold tracking-tighter leading-tight">
+          <h1 className="text-4xl md:text-5xl font-black tracking-tighter leading-tight text-zinc-900 dark:text-white">
             {research.data.title}
           </h1>
 
           {/* Meta Info */}
-          <div className="flex flex-wrap items-center gap-x-6 gap-y-2 mt-6 text-sm text-zinc-400">
+          <div className="flex flex-wrap items-center gap-x-6 gap-y-2 pt-2 text-sm text-zinc-500 dark:text-zinc-400">
             <div className="flex items-center gap-2">
               <User className="w-4 h-4" />
-              {/*<span>{research.data.user.username}</span>*/}
+              <span>Peneliti: {research.data.user?.username || "Research Team"}</span>
             </div>
             <div className="flex items-center gap-2">
               <Calendar className="w-4 h-4" />
-              <span>Published: {formatDate(research.data.createdAt)}</span>
+              <span>Dipublikasikan: {formatDate(research.data.createdAt)}</span>
             </div>
             <div className="flex items-center gap-2">
               <FileText className="w-4 h-4" />
-              <span>Updated: {formatDate(research.data.updatedAt)}</span>
+              <span>Diperbarui: {formatDate(research.data.updatedAt)}</span>
             </div>
           </div>
         </div>
 
         {/* Abstract Section */}
-        <div className=" border rounded-3xl p-8 mb-8">
-          <h2 className="text-xl font-semibold mb-4 flex items-center gap-2">
-            <FileText className="w-5 h-5" /> Abstrak
+        <div className="border border-zinc-200 dark:border-zinc-800 rounded-3xl p-8 mb-8 bg-zinc-50/30 dark:bg-zinc-900/10">
+          <h2 className="text-xl font-bold mb-4 flex items-center gap-2 text-zinc-900 dark:text-white">
+            <FileText className="w-5 h-5 text-emerald-600 dark:text-emerald-400" /> Abstrak Penelitian
           </h2>
-          <div className="prose  max-w-none text leading-relaxed">
+          <div className="prose dark:prose-invert max-w-none text leading-relaxed text-zinc-700 dark:text-zinc-300">
             <BlockRender name="" md={research.data.abstrack} />
           </div>
         </div>
 
         {/* Document Section */}
         {research.data.documentUrl && (
-          <div className=" rounded-3xl p-8 mb-8">
-            <h2 className="text-xl font-semibold mb-4">Dokumen Penelitian</h2>
+          <div className="border border-zinc-200 dark:border-zinc-800 rounded-3xl p-8 mb-8 bg-zinc-50/50 dark:bg-zinc-900/20">
+            <h2 className="text-xl font-bold mb-4 text-zinc-900 dark:text-white">Dokumen Penelitian</h2>
 
             <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
               <div>
-                <p className="text-zinc-400">File tersedia untuk diunduh</p>
-                <p className="text-sm text-zinc-500 mt-1">
+                <p className="text-zinc-600 dark:text-zinc-400 text-sm">File dokumen riset lengkap tersedia untuk diunduh</p>
+                <p className="text-xs text-zinc-400 mt-1">
                   Format: PDF / DOC / DOCX • Maksimal 50MB
                 </p>
               </div>
@@ -126,7 +124,7 @@ export default async function ResearchDetailPage({
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <Button size="lg" className="gap-2">
+                <Button size="lg" className="gap-2 bg-emerald-600 hover:bg-emerald-500 text-white font-bold rounded-xl shadow-md shadow-emerald-600/10 active:scale-[0.985]">
                   <Download className="w-4 h-4" />
                   Download Paper
                 </Button>
@@ -136,11 +134,11 @@ export default async function ResearchDetailPage({
         )}
 
         {/* Metadata Footer */}
-        <div className="text-xs text-zinc-500 flex flex-wrap gap-x-6">
-          <span>ID: {research.data.id}</span>
-          <span>Created: {formatDate(research.data.createdAt)}</span>
+        <div className="text-xs text-zinc-400 flex flex-wrap gap-x-6 gap-y-1 pt-4 border-t border-zinc-100 dark:border-zinc-900">
+          <span>Paper ID: {research.data.id}</span>
+          <span>Dibuat: {formatDate(research.data.createdAt)}</span>
           {research.data.documentKey && (
-            <span>Key: {research.data.documentKey}</span>
+            <span>Dokumen Key: {research.data.documentKey}</span>
           )}
         </div>
       </div>

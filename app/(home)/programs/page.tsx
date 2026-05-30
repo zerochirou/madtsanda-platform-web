@@ -2,7 +2,6 @@
 
 import { PageHero, FadeUp } from "@/components/animation/animations";
 import { programsData } from "@/components/data/programs";
-import Image from "next/image";
 import { ProgramSheet } from "@/components/shared/program-sheet";
 
 export default function Programs() {
@@ -31,24 +30,24 @@ export default function Programs() {
         <div className="grid md:grid-cols-2 lg:grid-cols-2 gap-8 mt-10">
           {programsData.map((prog, i) => (
             <FadeUp key={i} delay={i * 0.1}>
-              <div className="container rounded-3xl p-8 border border-dashed hover:-translate-y-2 transition-all duration-300 group">
-                <div className="mt-6 px-4 group-hover:rotate-3 grayscale-100 group-hover:grayscale-0 transition-all flex flex-col items-center duration-500 hover:scale-110">
-                  <Image
-                    src={prog.icon}
-                    width={200}
-                    height={200}
-                    alt={prog.title}
-                  />
-                  {/*<prog.icon className="w-8 h-8 stroke-1" />*/}
+              <ProgramSheet mdx={prog.content} title={prog.title}>
+                <div className="container cursor-pointer rounded-3xl p-8 border border-dashed hover:-translate-y-2 transition-all duration-300 group">
+                  <div className={`mt-6 flex flex-col items-center justify-center py-8 rounded-2xl bg-linear-to-br ${prog.gradient} group-hover:scale-105 transition-all duration-500`}>
+                    <div className="p-4 rounded-xl bg-white/20 backdrop-blur-sm border border-white/30">
+                      <prog.icon className="h-12 w-12 text-white" />
+                    </div>
+                  </div>
+                  <h3 className="text-2xl font-bold text-zinc-900 dark:text-white mb-3 group-hover:text-emerald-500 transition-colors">
+                    {prog.title}
+                  </h3>
+                  <p className="text-zinc-500 dark:text-zinc-400 mb-8">
+                    {prog.school}
+                  </p>
+                  <span className="text-sm text-zinc-600 dark:text-zinc-400 font-bold group-hover:text-emerald-500 transition-colors group-hover:underline decoration-2 underline-offset-4">
+                    Lihat detail program →
+                  </span>
                 </div>
-                <h3 className="text-2xl font-bold text-zinc-900 dark:text-white mb-3 group-hover:text-emerald-500 transition-colors">
-                  {prog.title}
-                </h3>
-                <p className="text-zinc-500 dark:text-zinc-400 mb-8">
-                  {prog.school}
-                </p>
-                <ProgramSheet mdx={prog.content} title={prog.title} />
-              </div>
+              </ProgramSheet>
             </FadeUp>
           ))}
         </div>

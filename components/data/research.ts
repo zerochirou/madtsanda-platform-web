@@ -1,75 +1,157 @@
-export const researchData = [
-  {
-    id: "1",
-    title: "Analisis Kualitas Air Sungai Brantas",
-    category: "ipa",
-    author: "Tim Riset IPA - XII MIPA 1",
-    image: "/images/gedung-madtsanda.jpg",
-    date: "12 Maret 2026",
-    description: "Penelitian mendalam mengenai parameter fisik dan kimia air di aliran sungai Brantas Kediri untuk menentukan tingkat pencemaran.",
-    content: `
-      <p>Penelitian ini bertujuan untuk menganalisis kualitas air Sungai Brantas di wilayah Kediri menggunakan parameter fisika dan kimia. Parameter yang diuji meliputi suhu, kekeruhan, pH, DO (Dissolved Oxygen), dan BOD (Biological Oxygen Demand).</p>
-      <p>Hasil penelitian menunjukkan bahwa beberapa titik pengambilan sampel memiliki tingkat kekeruhan yang cukup tinggi, namun parameter pH dan DO masih berada dalam batas normal untuk kehidupan biota air.</p>
-      <h3>Metodologi Penelitian</h3>
-      <p>Pengambilan sampel dilakukan di tiga titik strategis: hulu (Jembatan Brawijaya), tengah (Pasar Bandar), dan hilir (Jembatan Semampir). Analisis laboratorium dilakukan selama 2 minggu untuk mendapatkan hasil yang akurat.</p>
-    `,
+import { ResearchPaginateDTO, ResearchTagResponseDTO } from "@/types/dto/research";
+
+export const mockResearchTags: ResearchTagResponseDTO = {
+  data: [
+    {
+      id: "tag-1",
+      category: "Sains & Teknologi",
+      createdAt: "2025-11-20T00:00:00.000Z",
+      updatedAt: "2025-11-20T00:00:00.000Z",
+    },
+    {
+      id: "tag-2",
+      category: "Pendidikan Islam",
+      createdAt: "2025-11-20T00:00:00.000Z",
+      updatedAt: "2025-11-20T00:00:00.000Z",
+    },
+    {
+      id: "tag-3",
+      category: "Humaniora",
+      createdAt: "2025-11-20T00:00:00.000Z",
+      updatedAt: "2025-11-20T00:00:00.000Z",
+    },
+    {
+      id: "tag-4",
+      category: "Sosial & Lingkungan",
+      createdAt: "2025-11-20T00:00:00.000Z",
+      updatedAt: "2025-11-20T00:00:00.000Z",
+    },
+    {
+      id: "tag-5",
+      category: "Kepenulisan Kreatif",
+      createdAt: "2025-11-20T00:00:00.000Z",
+      updatedAt: "2025-11-20T00:00:00.000Z",
+    },
+  ],
+};
+
+export const mockResearchPaginate: ResearchPaginateDTO = {
+  data: [
+    {
+      id: "mock-res-1",
+      title: "Analisis Efektivitas Penggunaan Gadget Terhadap Prestasi Belajar Siswa Kelas VIII MTsN 2 Kota Kediri",
+      abstrack: "Penelitian ini bertujuan untuk menguji korelasi antara durasi penggunaan gawai (gadget) dengan pencapaian prestasi akademik siswa kelas VIII di MTsN 2 Kota Kediri. Menggunakan metode kuantitatif korelasional dengan sampel 120 siswa. Data dikumpulkan melalui angket terstruktur dan dokumentasi nilai raport semester ganjil. Hasil penelitian menunjukkan adanya korelasi negatif yang signifikan antara penggunaan gawai non-edukatif berlebih dengan prestasi belajar siswa. Penelitian merekomendasikan perlunya pembatasan screen-time dan kolaborasi intensif antara guru serta orang tua dalam memantau aktivitas digital anak.",
+      createdAt: "2026-04-10T08:00:00.000Z",
+      updatedAt: "2026-04-12T10:00:00.000Z",
+      documentUrl: "/documents/sample-research.pdf",
+      documentKey: "sample-key-1",
+      status: "has_done",
+      publishedDate: "2026-04-12T00:00:00.000Z",
+      researchTag: mockResearchTags.data[0], // Sains & Teknologi
+      user: {
+        id: "usr-1",
+        username: "Ahmad Mujahidin",
+        email: "ahmad@mtsn2.sch.id",
+        initials: "AM",
+        role: "student",
+        createdAt: "2025-01-01T00:00:00.000Z",
+        updatedAt: "2025-01-01T00:00:00.000Z",
+      },
+    },
+    {
+      id: "mock-res-2",
+      title: "Penerapan Konsep Green School Sebagai Upaya Menumbuhkan Karakter Peduli Lingkungan Sejak Dini",
+      abstrack: "Sebagai Madrasah Adiwiyata Nasional, MTsN 2 Kota Kediri berkomitmen menerapkan konsep sekolah hijau (Green School). Penelitian ini mengevaluasi efektivitas program Adiwiyata dalam membentuk karakter peduli lingkungan siswa melalui pemilahan sampah, pembuatan kompos organik, dan pembiasaan hemat energi. Menggunakan pendekatan kualitatif deskriptif melalui observasi partisipatif dan wawancara mendalam dengan kader Adiwiyata. Hasil riset mengonfirmasi peningkatan kesadaran ekologis siswa sebesar 85% setelah satu tahun berpartisipasi aktif dalam kegiatan kader Adiwiyata.",
+      createdAt: "2026-03-25T09:00:00.000Z",
+      updatedAt: "2026-03-26T11:00:00.000Z",
+      documentUrl: "/documents/sample-research.pdf",
+      documentKey: "sample-key-2",
+      status: "has_done",
+      publishedDate: "2026-03-26T00:00:00.000Z",
+      researchTag: mockResearchTags.data[3], // Sosial & Lingkungan
+      user: {
+        id: "usr-2",
+        username: "Siti Rahmawati",
+        email: "siti@mtsn2.sch.id",
+        initials: "SR",
+        role: "student",
+        createdAt: "2025-01-01T00:00:00.000Z",
+        updatedAt: "2025-01-01T00:00:00.000Z",
+      },
+    },
+    {
+      id: "mock-res-3",
+      title: "Implementasi Nilai-Nilai Istikomah dalam Pembelajaran Berbasis Riset di Kelas Akselerasi",
+      abstrack: "Penelitian ini mengeksplorasi integrasi nilai-nilai karakter 'ISTIKOMAH' (Islami, Terampil, Inovatif, Kompetitif, Berakhlakul Karimah) dalam kurikulum berbasis riset pada kelas akselerasi (PDCI) MTsN 2 Kota Kediri. Melalui studi kasus kualitatif, ditemukan bahwa penanaman nilai Islami dan kejujuran ilmiah menjadi pilar utama siswa dalam menyelesaikan karya tulis ilmiah mereka. Siswa akselerasi terbukti memiliki daya saing kompetitif yang lebih tinggi berkat bimbingan riset terstruktur yang disiplin.",
+      createdAt: "2026-03-15T07:30:00.000Z",
+      updatedAt: "2026-03-16T08:45:00.000Z",
+      documentUrl: "/documents/sample-research.pdf",
+      documentKey: "sample-key-3",
+      status: "has_done",
+      publishedDate: "2026-03-16T00:00:00.000Z",
+      researchTag: mockResearchTags.data[1], // Pendidikan Islam
+      user: {
+        id: "usr-3",
+        username: "Fajar Shidiq",
+        email: "fajar@mtsn2.sch.id",
+        initials: "FS",
+        role: "teacher",
+        createdAt: "2025-01-01T00:00:00.000Z",
+        updatedAt: "2025-01-01T00:00:00.000Z",
+      },
+    },
+    {
+      id: "mock-res-4",
+      title: "Sintesis Bioplastik Ramah Lingkungan Berbasis Pati Biji Durian dengan Plasticizer Gliserol",
+      abstrack: "Meningkatnya pencemaran sampah plastik sekali pakai menuntut alternatif bahan biodegradable yang terjangkau. Penelitian ini memanfaatkan limbah biji durian lokal Kediri untuk disintesis menjadi bioplastik ramah lingkungan dengan penambahan gliserol sebagai pembuat elastisitas. Menguji sifat mekanik (kuat tarik, elongasi) dan laju biodegradasi di dalam tanah. Hasil uji menunjukkan bioplastik mampu terurai sempurna dalam waktu 14 hari dan memiliki parameter kekuatan yang layak untuk kemasan kering ringan.",
+      createdAt: "2026-02-18T10:00:00.000Z",
+      updatedAt: "2026-02-20T12:00:00.000Z",
+      documentUrl: "/documents/sample-research.pdf",
+      documentKey: "sample-key-4",
+      status: "has_done",
+      publishedDate: "2026-02-20T00:00:00.000Z",
+      researchTag: mockResearchTags.data[0], // Sains & Teknologi
+      user: {
+        id: "usr-4",
+        username: "Rizky Pratama",
+        email: "rizky@mtsn2.sch.id",
+        initials: "RP",
+        role: "student",
+        createdAt: "2025-01-01T00:00:00.000Z",
+        updatedAt: "2025-01-01T00:00:00.000Z",
+      },
+    },
+    {
+      id: "mock-res-5",
+      title: "Kajian Historis Perkembangan PGAN 6 Tahun Menjadi MTsN 2 Kota Kediri (1962 - Sekarang)",
+      abstrack: "Artikel penelitian sejarah ini menelusuri akar historis madrasah dari masa berdirinya Pendidikan Guru Agama Negeri (PGAN) 6 Tahun pada tahun 1962, transformasinya menjadi Madrasah Tsanawiyah Negeri 2 Kota Kediri tahun 1978, hingga menjadi institusi modern berstandar riset saat ini. Penelitian ini menggunakan metode sejarah kritis yang meliputi pengumpulan sumber tertulis dan lisan, kritik sumber, interpretasi kronologis, dan historiografi.",
+      createdAt: "2026-01-05T09:00:00.000Z",
+      updatedAt: "2026-01-08T14:00:00.000Z",
+      documentUrl: "/documents/sample-research.pdf",
+      documentKey: "sample-key-5",
+      status: "has_done",
+      publishedDate: "2026-01-08T00:00:00.000Z",
+      researchTag: mockResearchTags.data[2], // Humaniora
+      user: {
+        id: "usr-5",
+        username: "Budi Santoso",
+        email: "budi@mtsn2.sch.id",
+        initials: "BS",
+        role: "teacher",
+        createdAt: "2025-01-01T00:00:00.000Z",
+        updatedAt: "2025-01-01T00:00:00.000Z",
+      },
+    },
+  ],
+  metadata: {
+    total: 5,
+    perPage: 10,
+    currentPage: 1,
+    lastPage: 1,
+    firstPage: 1,
+    firstPageUrl: "/research?page=1",
+    lastPageUrl: "/research?page=1",
+    nextPageUrl: null,
+    previousPageUrl: null,
   },
-  {
-    id: "2",
-    title: "Dampak Media Sosial pada Interaksi Siswa",
-    category: "ips",
-    author: "Tim Riset IPS - XI IIS 2",
-    image: "/images/bg-mts.jpg",
-    date: "15 Maret 2026",
-    description: "Studi sosiologis tentang perubahan pola komunikasi siswa di lingkungan madrasah akibat penggunaan media sosial yang intensif.",
-    content: `
-      <p>Media sosial telah mengubah cara siswa berinteraksi satu sama lain. Penelitian ini menggunakan metode kualitatif dengan wawancara mendalam terhadap 50 responden siswa MTsN 2 Kota Kediri.</p>
-      <p>Temuan utama menunjukkan adanya penurunan frekuensi interaksi tatap muka selama jam istirahat, di mana siswa cenderung lebih fokus pada perangkat mobile masing-masing.</p>
-      <h3>Rekomendasi</h3>
-      <p>Dibutuhkan program literasi digital yang lebih intensif dan pembuatan zona bebas ponsel di area tertentu untuk mendorong kembali interaksi sosial yang sehat.</p>
-    `,
-  },
-  {
-    id: "3",
-    title: "Prototipe Robot Penyiram Tanaman Otomatis",
-    category: "iptr",
-    author: "Tim Riset IPTR - XII MIPA 3",
-    image: "/images/kegiatan-sekolah.jpg",
-    date: "20 Maret 2026",
-    description: "Inovasi teknologi berbasis Arduino untuk efisiensi perawatan taman sekolah menggunakan sensor kelembaban tanah.",
-    content: `
-      <p>Robot ini dirancang untuk membantu penjaga sekolah dalam merawat tanaman di area taman Madtsanda. Menggunakan mikrokontroler Arduino Uno, sensor kelembaban tanah, dan pompa air mini.</p>
-      <p>Sistem akan secara otomatis menyalakan pompa air jika sensor mendeteksi kelembaban tanah di bawah 30%, dan mematikannya kembali setelah kelembaban mencapai 70%.</p>
-    `,
-  },
-  {
-    id: "4",
-    title: "Efektivitas Pupuk Organik dari Limbah Kantin",
-    category: "ipa",
-    author: "Tim Riset IPA - X MIPA 4",
-    image: "/images/kantin.jpg",
-    date: "22 Maret 2026",
-    description: "Mengolah limbah sayuran dan buah dari kantin sekolah menjadi pupuk cair organik untuk tanaman hias.",
-    content: `<p>Limbah organik kantin seringkali hanya dibuang begitu saja. Penelitian ini mencoba mengolahnya menggunakan metode fermentasi anaerob selama 21 hari.</p>`,
-  },
-  {
-    id: "5",
-    title: "Sejarah Perkembangan Budaya Lokal Kediri",
-    category: "ips",
-    author: "Tim Riset IPS - XI IIS 1",
-    image: "/images/paseban-1.JPG",
-    date: "25 Maret 2026",
-    description: "Menelusuri jejak sejarah dan pelestarian budaya lokal di sekitar wilayah Kediri oleh generasi muda.",
-    content: `<p>Kediri memiliki kekayaan sejarah yang luar biasa. Riset ini mendokumentasikan situs-situs bersejarah yang kurang dikenal namun memiliki nilai edukasi tinggi.</p>`,
-  },
-  {
-    id: "6",
-    title: "Aplikasi Android untuk Manajemen Absensi",
-    category: "iptr",
-    author: "Tim Riset IPTR - XII MIPA 2",
-    image: "/images/pks.jpg",
-    date: "28 Maret 2026",
-    description: "Pengembangan aplikasi absensi berbasis QR Code untuk memudahkan monitoring kehadiran siswa secara real-time.",
-    content: `<p>Aplikasi ini dikembangkan menggunakan framework Flutter untuk membantu wali kelas memantau kehadiran siswa di kelas secara digital.</p>`,
-  },
-];
+};

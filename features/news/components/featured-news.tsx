@@ -5,6 +5,7 @@ import type { NewsItem, NewsResponseDTO } from "@/types/dto/news";
 import { formatReadableDate } from "@/lib/date";
 import { Avatar, AvatarFallback, Badge, Button } from "@/components/ui";
 import { BlockRenderDynamicNoType } from "@/components/shared/block-render";
+import { getNewsImage } from "@/lib/news";
 
 const newsImageFallback = "/images/kegiatan-sekolah.jpg";
 
@@ -96,7 +97,7 @@ export function FeaturedNews({
             </h2>
             <div className="relative aspect-[16/10] overflow-hidden rounded-xl bg-zinc-100 dark:bg-zinc-800">
               <Image
-                src={topNews.imageUrl ?? newsImageFallback}
+                src={getNewsImage(topNews.title, topNews.imageUrl)}
                 alt={topNews.title}
                 fill
                 unoptimized
@@ -144,7 +145,7 @@ export function FeaturedNews({
                 </h3>
                 <div className="relative aspect-square overflow-hidden rounded-xl bg-zinc-100 dark:bg-zinc-800 lg:aspect-[4/3]">
                   <Image
-                    src={news.imageUrl ?? newsImageFallback}
+                    src={getNewsImage(news.title, news.imageUrl)}
                     alt={news.title}
                     fill
                     unoptimized
@@ -168,7 +169,7 @@ export function FeaturedNews({
               >
                 <div className="relative aspect-square overflow-hidden rounded-xl bg-zinc-100 dark:bg-zinc-800 lg:aspect-[4/3]">
                   <Image
-                    src={news.imageUrl ?? newsImageFallback}
+                    src={getNewsImage(news.title, news.imageUrl)}
                     alt={news.title}
                     fill
                     unoptimized
