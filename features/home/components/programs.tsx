@@ -45,7 +45,7 @@ export const Programs = () => {
             return (
               <FadeUp key={i} delay={i * 0.1}>
                 <ProgramSheet mdx={prog.content} title={prog.title}>
-                  <Card className={`group border-zinc-200 dark:border-zinc-800 hover:shadow-2xl ${prog.shadowColor} transition-all duration-300 cursor-pointer h-full border bg-white dark:bg-zinc-900/50 hover:-translate-y-2 overflow-hidden`}>
+                  <Card className={`pt-0 group border-zinc-200 dark:border-zinc-800 hover:shadow-2xl ${prog.shadowColor} transition-all duration-300 cursor-pointer h-full border bg-white dark:bg-zinc-900/50 hover:-translate-y-2 overflow-hidden`}>
                     {/* Gradient Icon Area */}
                     <div className={`relative flex items-center justify-center py-12 bg-linear-to-br ${prog.gradient} group-hover:bg-linear-to-br ${prog.gradientHover} transition-all duration-500`}>
                       <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(255,255,255,0.15),transparent_70%)]" />
