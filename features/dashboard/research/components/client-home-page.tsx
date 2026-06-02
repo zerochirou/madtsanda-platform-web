@@ -33,10 +33,10 @@ export default function ResearchClient({ initialData }: { initialData: ResearchP
         />
         
         <div className="flex gap-2">
-          {["all", "has_done", "pending"].map((s) => (
+          {(["all", "has_done", "pending"] as const).map((s) => (
             <button
               key={s}
-              onClick={() => setSelectedStatus(s as any)}
+              onClick={() => setSelectedStatus(s)}
               className={`px-5 py-2 rounded-2xl border transition ${selectedStatus === s ? "bg-white text-black border-white" : "border-zinc-700 hover:bg-zinc-900"}`}
             >
               {s === "all" ? "All Status" : s === "has_done" ? "Published" : "Under Review"}
