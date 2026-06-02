@@ -59,6 +59,11 @@ export const services = [
     label: "Modern Library",
     description: "Layanan perpustakaan digital dan fisik.",
     href: "/library",
+  },
+  {
+    label: "Rapot Digital Madrasah",
+    description: "Sistem penilaian siswa madrasah resmi Kemenag.",
+    href: "/rapot",
   }
 ];
 

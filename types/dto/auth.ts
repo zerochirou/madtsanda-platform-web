@@ -8,11 +8,14 @@ export interface LoginDTO {
 
 export interface LoginResponseDTO {
   data: {
-    token: string
+    token: string;
     user: UserDTO;
   };
 }
 
 export interface LoginFailedResponseDTO {
-  errors: VineError[]
+  data: {
+    message: string;
+    code: number;
+  };
 }

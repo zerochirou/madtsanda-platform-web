@@ -18,17 +18,26 @@ export function LoginForm() {
 
   async function onSubmit(data: z.infer<typeof loginSchema>) {
     const result = await handleLogin(data);
-    if (result && "errors" in result) {
-      result.errors.forEach((error) => {
-        toast.error(error.message);
-        const fieldName =
-          error.field === "general" || !error.field ? "password" : error.field;
-        form.setError(fieldName as never, {
-          type: "server",
-          message: error.message,
-        });
+
+    // Cek apakah ada error dari server
+    if (result && result.data && result.data.code) {
+      const errorMessage =
+        result.data.message || "Login gagal. Silakan coba lagi.";
+
+      // Tampilkan toast error
+      toast.error(errorMessage);
+
+      // Set error di form (react-hook-form)
+      form.setError("password", {
+        type: "server",
+        message: errorMessage,
       });
+
+      // Atau kalau mau pakai root error:
+      // form.setError("root", { type: "server", message: errorMessage })
     }
+
+    // Kalau sukses → handleLogin sudah melakukan redirect, jadi baris ini tidak akan dijalankan
   }
 
   const form = useForm<z.infer<typeof loginSchema>>({

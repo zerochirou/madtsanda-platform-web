@@ -1,47 +1,28 @@
 "use server";
 
-import { request } from "@/lib/request";
 import logger from "@/lib/logger";
 import { errorFormat } from "@/lib/error";
-import {
-  LoginDTO,
-  LoginFailedResponseDTO,
-  LoginResponseDTO,
-} from "@/types/dto/auth";
+import { LoginDTO } from "@/types/dto/auth";
 
-async function accessTokenService(
-  payload: LoginDTO,
-): Promise<LoginResponseDTO | LoginFailedResponseDTO> {
+async function accessTokenService(payload: LoginDTO) {
   try {
-    const response = await request<LoginResponseDTO | LoginFailedResponseDTO>(
-      `/auth/login`,
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(payload),
+    const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/auth/login`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
       },
-    );
+      body: JSON.stringify(payload),
+    });
 
-    return response;
+
+    return await response.json();
   } catch (error: unknown) {
-    console.error("Login Service Error:", error);
     logger.error(errorFormat(error));
-
     return {
-      errors: [
-        {
-          message: "Terjadi kesalahan sistem atau koneksi.",
-          rule: "server_error",
-          field: "general",
-        },
-        {
-          message: "Kredensial tidak valid.",
-          rule: "server_error",
-          field: "general",
-        },
-      ],
+      data: {
+        message: "Terjadi kesalahan pada server",
+        code: 500,
+      },
     };
   }
 }

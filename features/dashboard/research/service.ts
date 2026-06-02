@@ -1,6 +1,6 @@
 "use server";
 
-import { request, requestV2 } from "@/lib/request";
+import { request } from "@/lib/request";
 import logger from "@/lib/logger";
 import { errorFormat } from "@/lib/error";
 import { format } from "date-fns";
@@ -13,12 +13,14 @@ import type {
   ResearchStatusUpdateDTO,
 } from "@/types/dto/research";
 import { mockResearchPaginate } from "@/components/data/research";
-// Types are imported where needed in function signatures.
+import { cookies } from "next/headers";
 
 export async function createResearchService(
   data: ResearchPostDTO,
 ): Promise<ResearchItemDTO | null> {
   try {
+    const cookieStore = await cookies();
+    const accessToken = cookieStore.get("auth_token")?.value;
     const formData = new FormData();
 
     formData.append("title", data.title);
@@ -34,13 +36,17 @@ export async function createResearchService(
     if (data.document instanceof File) {
       formData.append("document", data.document);
     }
-
-    const response = await requestV2<ResearchItemDTO>(`/research`, {
+    
+    const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/research`, {
       method: "POST",
       body: formData,
+      headers: {
+        Authorization: `Bearer ${accessToken}`,
+      },
     });
+    
 
-    return response;
+    return await response.json();
   } catch (error: unknown) {
     // } catch (error: any) {
     logger.error(errorFormat(error));
