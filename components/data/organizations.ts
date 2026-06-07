@@ -1,4 +1,6 @@
-export const organizationsData = [
+import type { OrganizationDTO } from "@/types/dto/organization";
+
+export const organizationsData: OrganizationDTO[] = [
   {
     name: "OSIS",
     desc: "OSIS adalah organisasi independen pada suatu madrasah yang anggotanya adalah seluruh siswa siswi. OSIS MTsN 2 Kota Kediri mengkoordinasikan seluruh kegiatan keekstraan baik akademik maupun non akademik.",
@@ -40,5 +42,12 @@ export const organizationsData = [
     ig: "matsanda.scout",
     founder: "Drs. H. NurSalim M.Pd.I.",
     image: "/images/pramuka.png"
+  },
+  {
+    name: "FIKRUNA",
+    desc: "FIKRUNA adalah organisasi jurnalistik madrasah yang aktif meliput berbagai kegiatan madrasah, melatih keterampilan menulis dan jurnalistik siswa, serta menerbitkan majalah tahunan secara profesional.",
+    ig: "fikrunaberkarya",
+    founder: "Drs. H. NurSalim M.Pd.I.",
+    image: "/images/fikruna.png"
   }
 ];
