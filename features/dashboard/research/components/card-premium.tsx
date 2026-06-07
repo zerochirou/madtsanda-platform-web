@@ -2,6 +2,7 @@ import Link from "next/link";
 import { Badge } from "@/components/ui/badge";
 import { Calendar, User, Download } from "lucide-react";
 import { ResearchItem } from "@/types/dto/research";
+import { formatDateUTC } from "@/lib/date";
 
 export default function ResearchCard({ research }: { research: ResearchItem }) {
   return (
@@ -29,7 +30,7 @@ export default function ResearchCard({ research }: { research: ResearchItem }) {
           </div>
           <div className="flex items-center gap-1.5">
             <Calendar className="w-3.5 h-3.5" />
-            {new Date(research.createdAt).toLocaleDateString("id-ID", { month: "short", year: "numeric" })}
+            {formatDateUTC(research.createdAt, "short")}
           </div>
         </div>
 

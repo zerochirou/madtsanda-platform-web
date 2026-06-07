@@ -28,6 +28,8 @@ import {
 import { toast } from "sonner";
 import Link from "next/link";
 import { DropdownResearch } from "./dropdown";
+import { formatDateUTC } from "@/lib/date";
+
 
 export function ResearchList({ data }: ResearchListProps) {
   if (!data || data.length === 0)
@@ -161,7 +163,7 @@ export function ResearchList({ data }: ResearchListProps) {
                   </Badge>
                 </TableCell>
                 <TableCell className="font-mono text-right">
-                  {new Date(item.createdAt).toLocaleDateString("id-ID")}
+                  {formatDateUTC(item.createdAt)}
                 </TableCell>
               </TableRow>
             ))}

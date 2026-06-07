@@ -25,17 +25,17 @@ const organizations = [
   {
     label: "MPK dan OSIS",
     description: "Wadah organisasi siswa untuk melatih kepemimpinan dan aspirasi.",
-    href: "",
+    href: "/organizations/mpk-osis",
   },
   {
     label: "Ekstrakurikuler",
     description: "Berbagai kegiatan minat dan bakat untuk mengembangkan potensi siswa.",
-    href: "",
+    href: "/organizations/extracurricular",
   },
   {
     label: "Fivesa",
     description: "Komunitas/organisasi khusus madrasah untuk ajang kreativitas.",
-    href: "",
+    href: "/organizations/fivesa",
   }
 ];
 
