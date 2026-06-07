@@ -1,6 +1,7 @@
 import { notFound } from "next/navigation";
 import { getResearchById } from "@/features/dashboard/research/service";
 import { Badge } from "@/components/ui/badge";
+import { formatDateUTC } from "@/lib/date";
 import { Button } from "@/components/ui/button";
 import { Calendar, User, FileText, ArrowLeft, Download } from "lucide-react";
 import Link from "next/link";
@@ -33,11 +34,7 @@ export default async function ResearchDetailPage({
   }
 
   const formatDate = (dateString: string) => {
-    return new Date(dateString).toLocaleDateString("id-ID", {
-      day: "numeric",
-      month: "long",
-      year: "numeric",
-    });
+    return formatDateUTC(dateString, "long");
   };
 
   return (

@@ -23,6 +23,7 @@ import {
 import { UpdateDropdown } from "./update-dropdown";
 import { toast } from "sonner";
 import Link from "next/link";
+import { formatDateUTC } from "@/lib/date";
 
 export function NewsList({ data }: NewsListProps) {
   async function handlePinToggle(id: string, currentPin: boolean) {
@@ -129,7 +130,7 @@ export function NewsList({ data }: NewsListProps) {
                   </Badge>
                 </TableCell>
                 <TableCell className="font-mono text-right">
-                  {new Date(item.createdAt).toLocaleDateString("id-ID")}
+                  {formatDateUTC(item.createdAt)}
                 </TableCell>
               </TableRow>
             ))}

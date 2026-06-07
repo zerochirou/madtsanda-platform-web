@@ -42,6 +42,10 @@ const getBookCoverGradient = (category: string) => {
   return "from-emerald-500 to-emerald-700";
 };
 
+const formatNumber = (num: number) => {
+  return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+};
+
 export function LibraryClient() {
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
@@ -60,82 +64,23 @@ export function LibraryClient() {
 
   return (
     <div className="selection:bg-emerald-500 selection:text-white">
-      {/* ==================== HERO SECTION (Emerald-Dark Theme) ==================== */}
-      <section className="relative overflow-hidden bg-zinc-950 text-white">
-        {/* Glow grid particle background in green */}
-        <div className="absolute inset-0 bg-[radial-gradient(#10b981_0.8px,transparent_1px)] bg-[length:24px_24px] opacity-20" />
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_left,rgba(16,185,129,0.15),transparent_60%)]" />
-
-        <div className="relative z-10 mx-auto max-w-7xl px-6 pt-20 pb-28 lg:pt-28 lg:pb-36">
-          <div className="grid lg:grid-cols-[1.3fr_1fr] gap-12 items-center">
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7 }}
-              className="space-y-6"
+      {/* ==================== STATS OVERLAP SECTION ==================== */}
+      <section className="relative z-20 -mt-16 md:-mt-20 max-w-7xl mx-auto px-4 md:px-6 mb-16">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
+          {libraryStats.map((stat, i) => (
+            <div
+              key={i}
+              className="rounded-3xl border border-zinc-200 dark:border-zinc-800/80 bg-white dark:bg-zinc-900/60 backdrop-blur-md p-6 text-center hover:border-emerald-500/30 dark:hover:border-emerald-500/30 transition-all duration-300 group shadow-xl shadow-zinc-200/50 dark:shadow-none"
             >
-              <div className="inline-flex items-center gap-2 rounded-full border border-emerald-500/30 bg-emerald-500/10 px-4 py-1.5 text-sm text-emerald-400 font-bold uppercase tracking-wider">
-                <div className="h-2 w-2 rounded-full bg-emerald-400 animate-pulse" />
-                Perpustakaan Madrasah
+              <div className="text-3xl lg:text-4xl font-black text-zinc-900 dark:text-white tracking-tighter">
+                <NumberTicker value={stat.value} className="text-zinc-900 dark:text-white" />
+                <span className="text-emerald-500 dark:text-emerald-400">{stat.suffix}</span>
               </div>
-
-              <h1 className="text-5xl md:text-6xl lg:text-7xl font-black tracking-tighter leading-[1.05] text-white">
-                Gerbang Ilmu
-                <br />
-                <span className="text-emerald-400">Digital & Fisik</span>
-              </h1>
-
-              <p className="max-w-lg text-lg text-zinc-400 leading-relaxed">
-                Akses ribuan koleksi buku, e-book, dan jurnal ilmiah untuk mendukung
-                pembelajaran interaktif serta riset kolaboratif siswa-siswi Madtsanda.
+              <p className="text-sm text-zinc-500 dark:text-zinc-400 mt-2 font-medium tracking-wide uppercase text-[11px] group-hover:text-emerald-500 dark:group-hover:text-emerald-400 transition-colors">
+                {stat.label}
               </p>
-
-              <div className="flex flex-wrap gap-4 pt-4">
-                <a href="#katalog-buku">
-                  <Button className="h-14 px-8 bg-emerald-600 hover:bg-emerald-500 text-white text-base rounded-2xl font-bold transition-all shadow-lg shadow-emerald-600/20 active:scale-[0.98]">
-                    <Search className="h-5 w-5 mr-2" />
-                    Cari Koleksi Buku
-                  </Button>
-                </a>
-                <Button
-                  variant="outline"
-                  className="h-14 px-8 border-zinc-800 text-white hover:bg-white/10 text-base rounded-2xl font-bold transition-all"
-                  onClick={() => {
-                    setSelectedCategory(null);
-                    setSearchTerm("");
-                    const el = document.getElementById("katalog-buku");
-                    el?.scrollIntoView({ behavior: "smooth" });
-                  }}
-                >
-                  <BookOpen className="h-5 w-5 mr-2" />
-                  Katalog Lengkap
-                </Button>
-              </div>
-            </motion.div>
-
-            {/* Stats (Emerald Styled) */}
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, delay: 0.2 }}
-              className="grid grid-cols-2 gap-4"
-            >
-              {libraryStats.map((stat, i) => (
-                <div
-                  key={i}
-                  className="rounded-3xl border border-zinc-800/80 bg-zinc-900/40 backdrop-blur-xs p-6 text-center hover:border-emerald-500/30 transition-all duration-300 group"
-                >
-                  <div className="text-3xl lg:text-4xl font-black text-white tracking-tighter">
-                    <NumberTicker value={stat.value} className="text-white" />
-                    <span className="text-emerald-400">{stat.suffix}</span>
-                  </div>
-                  <p className="text-sm text-zinc-500 mt-2 font-medium tracking-wide uppercase text-[11px] group-hover:text-emerald-400 transition-colors">
-                    {stat.label}
-                  </p>
-                </div>
-              ))}
-            </motion.div>
-          </div>
+            </div>
+          ))}
         </div>
       </section>
 
@@ -193,7 +138,7 @@ export function LibraryClient() {
                     {cat.name}
                   </h3>
                   <p className={`text-xs ${isSelected ? "text-emerald-100" : "text-zinc-500"}`}>
-                    {cat.count.toLocaleString()} buku
+                    {formatNumber(cat.count)} buku
                   </p>
                 </motion.div>
               );
