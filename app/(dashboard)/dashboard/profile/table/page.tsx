@@ -10,7 +10,6 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { UserDTO, UserResponseDTO } from "@/types/dto/user";
 import { getUsersProfile } from "@/features/dashboard/profile/services";
-import { formatReadableDate } from "@/lib/date";
 
 // Helper function to get color class based on role
 const getColorForRole = (role: UserDTO["role"]): string => {

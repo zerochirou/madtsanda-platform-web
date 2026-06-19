@@ -5,17 +5,10 @@ import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuGroup,
-  DropdownMenuItem,
   DropdownMenuLabel,
-  DropdownMenuPortal,
-  DropdownMenuSeparator,
-  DropdownMenuShortcut,
-  DropdownMenuSub,
-  DropdownMenuSubContent,
-  DropdownMenuSubTrigger,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { GripVertical, Settings2, Trash } from "lucide-react";
+import { GripVertical } from "lucide-react";
 import { DeleteNews } from "./delete-news";
 
 export function UpdateDropdown({ id }: { id: string }) {

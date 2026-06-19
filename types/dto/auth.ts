@@ -1,4 +1,3 @@
-import { VineError } from "./error";
 import { UserDTO } from "./user";
 
 export interface LoginDTO {

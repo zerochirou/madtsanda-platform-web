@@ -85,14 +85,15 @@ export function ResearchEditor({
           user_id: user.id,
         });
 
-        // 2. Jika sampai sini tanpa throw, berarti sukses
-        toast.success("Penelitian berhasil diunggah!");
-        // console.log("Success result:", result);
+        if (result) {
+          toast.success("Penelitian berhasil diunggah!");
+        } else {
+          toast.error("Gagal mengunggah penelitian. Silakan coba lagi.");
+        }
       } catch (error: unknown) {
         const msg = error instanceof Error ? error.message : "Terjadi kesalahan";
 
         toast.error(msg);
-        console.error("Detail Error:", error);
       }
     });
   }
@@ -194,30 +195,35 @@ export function ResearchEditor({
           <Controller
             name="document"
             control={control}
-            render={({ field: { onChange, value, ...field }, fieldState }) => (
-              <Field>
-                <FieldLabel>
-                  File Dokumen (PDF/DOC)
-                  <Badge variant="secondary" className="ml-2">
-                    Max 50MB
-                  </Badge>
-                </FieldLabel>
-                <Input
-                  {...field}
-                  type="file"
-                  accept=".pdf,.doc,.docx"
-                  // Value harus di-reset atau dibiarkan kosong untuk input file
-                  value={undefined}
-                  onChange={(e) => {
-                    const files = e.target.files;
-                    if (files && files.length > 0) {
-                      onChange(files); // Simpan FileList ke RHF
-                    }
-                  }}
-                />
-                {fieldState.error && <FieldError errors={[fieldState.error]} />}
-              </Field>
-            )}
+            render={({ field: { onChange, value, ...field }, fieldState }) => {
+              void value;
+
+              return (
+                <Field>
+                  <FieldLabel>
+                    File Dokumen (PDF/DOC)
+                    <Badge variant="secondary" className="ml-2">
+                      Max 50MB
+                    </Badge>
+                  </FieldLabel>
+                  <Input
+                    {...field}
+                    type="file"
+                    accept=".pdf,.doc,.docx"
+                    value={undefined}
+                    onChange={(e) => {
+                      const files = e.target.files;
+                      if (files && files.length > 0) {
+                        onChange(files);
+                      }
+                    }}
+                  />
+                  {fieldState.error && (
+                    <FieldError errors={[fieldState.error]} />
+                  )}
+                </Field>
+              );
+            }}
           />
 
           <Button type="submit" className="w-full mt-6" disabled={pending}>

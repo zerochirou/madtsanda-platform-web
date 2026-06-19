@@ -8,11 +8,11 @@ import { ClientResearchList } from "@/features/research/components/research-libr
 import { ScrollButton } from "@/features/research/components/scroll-button";
 import { NumberTicker } from "@/components/ui/number-ticker";
 import Link from "next/link";
-import { mockResearchPaginate, mockResearchTags } from "@/components/data/research";
 
 export const metadata = {
   title: "Repository Riset | MTsN 2 Kota Kediri",
-  description: "Eksplorasi karya ilmiah, sains, teknologi, dan tulisan keagamaan mutakhir hasil riset siswa-siswi MTsN 2 Kota Kediri.",
+  description:
+    "Eksplorasi karya ilmiah, sains, teknologi, dan tulisan keagamaan mutakhir hasil riset siswa-siswi MTsN 2 Kota Kediri.",
 };
 
 export default async function ResearchPage({
@@ -22,13 +22,25 @@ export default async function ResearchPage({
 }) {
   const resolvedParams = await searchParams;
   const page = resolvedParams.page;
-  
+
   const tagData = await getResearchTag();
   const researchData = await getResearchWithPaginate(Number(page) || 1);
 
-  // Fallback to mock data if backend yields empty or null results
-  const tag = (tagData && tagData.data && tagData.data.length > 0) ? tagData : mockResearchTags;
-  const research = (researchData && researchData.data && researchData.data.length > 0) ? researchData : mockResearchPaginate;
+  const tag = tagData ?? { data: [] };
+  const research = researchData ?? {
+    data: [],
+    metadata: {
+      total: 0,
+      perPage: 6,
+      currentPage: 1,
+      lastPage: 1,
+      firstPage: 1,
+      firstPageUrl: "/research?page=1",
+      lastPageUrl: "/research?page=1",
+      nextPageUrl: null,
+      previousPageUrl: null,
+    },
+  };
 
   return (
     <div className="min-h-screen bg-white dark:bg-black text-foreground">
@@ -72,12 +84,13 @@ export default async function ResearchPage({
             </h1>
 
             <p className="max-w-200 text-xl text-zinc-400 leading-relaxed">
-              Pusat publikasi ilmiah siswa Madtsanda. Akses karya tulis, laporan riset camp, dan proyek inovasi sains terintegrasi nilai keagamaan.
+              Pusat publikasi ilmiah siswa Madtsanda. Akses karya tulis, laporan
+              riset camp, dan proyek inovasi sains terintegrasi nilai keagamaan.
             </p>
 
             <div className="flex flex-wrap gap-4 pt-4">
               <ScrollButton />
-              <Link href={'/login'}>
+              <Link href={"/login"}>
                 <Button
                   size="lg"
                   variant="outline"
@@ -135,7 +148,10 @@ export default async function ResearchPage({
       </div>
 
       {/* ========== RESEARCH LIBRARY SECTION ========== */}
-      <div id="research-library" className="max-w-7xl mx-auto px-6 py-20 bg-white dark:bg-black">
+      <div
+        id="research-library"
+        className="max-w-7xl mx-auto px-6 py-20 bg-white dark:bg-black"
+      >
         <ClientResearchList research={research} tags={tag} />
       </div>
     </div>

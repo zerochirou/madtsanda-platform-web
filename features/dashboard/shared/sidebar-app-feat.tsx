@@ -16,13 +16,10 @@ import {
   SidebarMenuSubButton,
   SidebarMenuSubItem,
 } from "@/components/ui/sidebar";
-import { SidebarItem } from "@/types/sidebar";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { UserDTO } from "@/types/dto/user";
 import { Role } from "@/types/access";
 import { hasAccess } from "@/lib/access";
-import { TeacherDTO } from "@/types/dto/teacher";
 
 import { SidebarAppFeatProps } from "@/types/components";
 

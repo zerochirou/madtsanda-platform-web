@@ -3,9 +3,6 @@
 import { Separator } from "@/components/ui/separator";
 import { SidebarBreadcrumb } from "./sidebar-breadcrumb";
 import { ThemeToggle } from "@/components/shared/theme-toggle";
-import { UserDTO } from "@/types/dto/user";
-import { StudentDTO } from "@/types/dto/student";
-import { TeacherDTO } from "@/types/dto/teacher";
 import {
   Avatar,
   AvatarBadge,

@@ -12,15 +12,11 @@ import type {
   ResearchItem,
   ResearchStatusUpdateDTO,
 } from "@/types/dto/research";
-import { mockResearchPaginate } from "@/components/data/research";
-import { cookies } from "next/headers";
 
 export async function createResearchService(
   data: ResearchPostDTO,
 ): Promise<ResearchItemDTO | null> {
   try {
-    const cookieStore = await cookies();
-    const accessToken = cookieStore.get("auth_token")?.value;
     const formData = new FormData();
 
     formData.append("title", data.title);
@@ -36,28 +32,26 @@ export async function createResearchService(
     if (data.document instanceof File) {
       formData.append("document", data.document);
     }
-    
-    const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/research`, {
+
+    const response = await request<ResearchItemDTO>("/research", {
       method: "POST",
       body: formData,
-      headers: {
-        Authorization: `Bearer ${accessToken}`,
-      },
     });
-    
 
-    return await response.json();
+    return response;
   } catch (error: unknown) {
-    // } catch (error: any) {
     logger.error(errorFormat(error));
-    // console.dir(error.data, { depth: null });
-    throw error;
+    return null;
   }
 }
 
-export async function getResearchWithPaginate(page: number): Promise<ResearchPaginateDTO | null> {
+export async function getResearchWithPaginate(
+  page: number,
+): Promise<ResearchPaginateDTO | null> {
   try {
-    const response = await request<ResearchPaginateDTO>(`/research/paginate/?page=${page}`);
+    const response = await request<ResearchPaginateDTO>(
+      `/research/paginate/?page=${page}`,
+    );
     return response;
   } catch (error: unknown) {
     logger.error(errorFormat(error));
@@ -97,23 +91,13 @@ export async function updateResearchStatus(
 export async function getResearchById(
   id: string,
 ): Promise<ResearchItemDTO | null> {
-  // Return immediately if id is mock
-  if (id && id.startsWith("mock-res-")) {
-    const item = mockResearchPaginate.data.find((r) => r.id === id);
-    return item ? { data: item } : null;
-  }
-
   try {
-    const response = await fetch(`http://localhost:3333/api/v1/research/${id}`);
-    if (!response.ok) {
-      const item = mockResearchPaginate.data.find((r) => r.id === id);
-      return item ? { data: item } : null;
-    }
-    const data = await response.json();
-    return data;
+    const response = await request<ResearchItemDTO>(`/research/${id}`, {
+      next: { revalidate: 3600, tags: ["research"] },
+    });
+    return response;
   } catch (error: unknown) {
     logger.error(errorFormat(error));
-    const item = mockResearchPaginate.data.find((r) => r.id === id);
-    return item ? { data: item } : null;
+    return null;
   }
 }

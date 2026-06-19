@@ -10,7 +10,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { GripVertical } from "lucide-react";
 
-export function DropdownResearch({ id }: { id: string }) {
+export function DropdownResearch() {
   
   return (
     <DropdownMenu>

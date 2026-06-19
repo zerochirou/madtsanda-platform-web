@@ -97,6 +97,12 @@ export function Navigation() {
               showSolid ? "text-zinc-600 dark:text-zinc-400" : "text-white/90"
             }`}
           >
+            <Link
+              href="/"
+              className="inline-flex h-9 items-center justify-center rounded-md px-4 py-2 text-sm font-medium transition-colors hover:text-emerald-400"
+            >
+              Beranda
+            </Link>
             <NavigationMenu>
               <NavigationMenuList>
                 {navigationData.map((labels, index) => {
@@ -223,6 +229,13 @@ export function Navigation() {
 
                 {/* Navigation Sections */}
                 <div className="space-y-2">
+                  <Link
+                    href="/"
+                    onClick={() => setMobileOpen(false)}
+                    className="block rounded-sm border border-zinc-200 px-3 py-3 font-semibold transition-colors hover:bg-zinc-50 dark:border-zinc-800 dark:hover:bg-zinc-900"
+                  >
+                    Beranda
+                  </Link>
                   {navigationData.map((section, index) => {
                     const isExpanded = expandedSections.includes(index);
 

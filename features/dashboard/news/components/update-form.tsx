@@ -1,7 +1,7 @@
 "use client";
 
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useTransition, useEffect, Suspense } from "react";
+import { useTransition, useEffect } from "react";
 import { Controller, useForm } from "react-hook-form";
 import { toast } from "sonner";
 import {
@@ -26,7 +26,7 @@ import { UserDTO } from "@/types/dto/user";
 import { NewsCategoryDTO } from "@/types/dto/news-category";
 import z from "zod";
 import { NewsUpdateSchema, NewsItem } from "@/types/dto/news";
-import { updateNewsService } from "../service"; // Ganti ke update service nanti
+import { updateNewsService } from "../service";
 import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
 import {
@@ -139,14 +139,12 @@ export function UpdateForm({
 
   function onSubmit(data: z.infer<typeof NewsUpdateSchema>) {
     startTransition(async () => {
-      // Ambil file baru jika ada
       const newFile = (data.image as unknown as File[])?.[0];
 
       const payload = {
-        id: news.id, // ID Berita untuk update
+        id: news.id,
         title: data.title,
         content: data.content,
-        // Jika newFile tidak ada, berarti user tidak mengganti gambar (gunakan gambar lama di backend)
         image: newFile || news.imageUrl,
         categoryId: data.categoryId,
         pin: data.pin,
@@ -238,8 +236,6 @@ export function UpdateForm({
                   isInvalid={!!fieldState.error}
                   accept="image/*"
                   multiple={false}
-                  // Tips: Kamu bisa memodifikasi DropzoneInput untuk menerima
-                  // prop 'initialPreview' yang berisi news.imageUrl
                 />
                 {fieldState.error && <FieldError errors={[fieldState.error]} />}
               </Field>
@@ -252,7 +248,7 @@ export function UpdateForm({
             <Controller
               name="content"
               control={control}
-              render={({ field, fieldState }) => (
+              render={({ fieldState }) => (
                 <Field>
                   <FieldLabel>Konten Utama</FieldLabel>
                   <EditorFrame className="mx-auto w-full border-2 border-dashed rounded-sm p-1 dark:bg-[#1f1f1f]">

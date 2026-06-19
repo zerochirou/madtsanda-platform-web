@@ -1,6 +1,6 @@
 // app/api/old-path/route.ts
 import { redirect } from 'next/navigation';
 
-export async function GET(request: Request) {
+export async function GET() {
   redirect('/dashboard/news/table'); 
 }

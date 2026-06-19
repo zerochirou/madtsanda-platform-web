@@ -6,6 +6,8 @@ const ACCEPTED_MIME_TYPES = [
   "application/pdf",
   "application/msword",
   "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+  "application/x-tex",
+  "text/x-tex",
 ];
 
 export const ResearchTagSchema = z.object({

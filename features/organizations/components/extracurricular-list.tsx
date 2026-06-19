@@ -2,6 +2,7 @@
 
 import React, { useState, useMemo } from "react";
 import * as Icons from "lucide-react";
+import type { LucideIcon } from "lucide-react";
 import type { ExtracurricularDTO } from "@/types/dto/extracurricular";
 import { FadeUp } from "@/components/animation/animations";
 
@@ -79,8 +80,8 @@ export function ExtracurricularList({ data }: ExtracurricularListProps) {
       {filteredData.length > 0 ? (
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {filteredData.map((item, idx) => {
-            // Dynamically load the icon from lucide-react
-            const IconComponent = (Icons as any)[item.icon] || Icons.HelpCircle;
+            const iconMap = Icons as unknown as Record<string, LucideIcon>;
+            const IconComponent = iconMap[item.icon] || Icons.HelpCircle;
 
             return (
               <FadeUp key={item.name} delay={idx * 0.05}>

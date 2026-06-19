@@ -3,7 +3,6 @@
 import { quickLink } from "@/components/data/quick-link";
 import { hasAccess } from "@/lib/access";
 import { Role } from "@/types/access";
-import { UserDTO } from "@/types/dto/user";
 import Link from "next/link";
 
 import { HomeQuickLinkProps } from "@/types/components";

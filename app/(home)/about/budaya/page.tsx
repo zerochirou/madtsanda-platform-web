@@ -14,7 +14,6 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { PageHero, FadeUp } from "@/components/animation/animations";
 
-const pillarIcons = [BookOpen, Landmark, HeartHandshake, Clock3];
 const akhlakIcons = [Smile, PenLine, Users, Shirt];
 
 export default function BudayaPage() {

@@ -1,3 +1,5 @@
+import { programMadrasahNavItems } from "./program-madrasah";
+
 const aboutUs = [
   {
     label: "Sambutan kepala madrasah",
@@ -69,6 +71,11 @@ export const services = [
 
 export const navigationData = [
   {
+    label: "Program Madrasah",
+    description: "Kurikulum, kesiswaan, humas, dan sarana prasarana.",
+    items: programMadrasahNavItems,
+  },
+  {
     label: "Tentang Kami",
     description: "Sejarah, visi, dan misi Madrasah Tsanawiyah.",
     items: aboutUs,
@@ -88,8 +95,8 @@ export const navigationData = [
 
 export const footerLinks = [
   { label: "Profil", href: "/about" },
-  { label: "Akademik", href: "/programs" },
-  { label: "Kesiswaan", href: "/extracurricular" },
+  { label: "Kurikulum", href: "/program-madrasah/kurikulum" },
+  { label: "Kesiswaan", href: "/program-madrasah/kesiswaan" },
   { label: "PPDB", href: "/ppdb" },
   { label: "Fasilitas", href: "/facilities" },
   { label: "Research", href: "/research" },

@@ -1,6 +1,6 @@
 "use client";
 
-import { NewsListProps, ResearchListProps } from "@/types/components";
+import { ResearchListProps } from "@/types/components";
 import {
   Table,
   TableBody,
@@ -19,7 +19,6 @@ import {
   ToggleLeft,
   User,
   CheckCircle,
-  Circle,
   ClockFading,
   User2,
   Paperclip,
@@ -29,7 +28,6 @@ import { toast } from "sonner";
 import Link from "next/link";
 import { DropdownResearch } from "./dropdown";
 import { formatDateUTC } from "@/lib/date";
-
 
 export function ResearchList({ data }: ResearchListProps) {
   if (!data || data.length === 0)
@@ -50,15 +48,15 @@ export function ResearchList({ data }: ResearchListProps) {
       } else {
         toast.error("Gagal mengubah status penelitian");
       }
-    } catch (error) {
+    } catch {
       toast.error("Terjadi kesalahan saat mengubah status");
     }
   };
 
   return (
-    <Card className="p-0">
-      <div className="rounded-md">
-        <Table>
+    <Card className="overflow-hidden p-0">
+      <div className="w-full overflow-x-auto rounded-md">
+        <Table className="min-w-[1120px]">
           <TableHeader className="">
             <TableRow className="">
               <TableHead className="border-r">
@@ -104,7 +102,7 @@ export function ResearchList({ data }: ResearchListProps) {
               <TableRow key={item.id}>
                 <TableCell className="border-r-2 border-dashed">
                   <span className="flex flex-row items-center gap-1">
-                    <DropdownResearch id={item.id} />
+                    <DropdownResearch />
                     <Link
                       href={`/dashboard/news/edit/${item.id}`}
                       prefetch

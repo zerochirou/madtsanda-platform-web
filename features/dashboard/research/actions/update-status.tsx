@@ -3,7 +3,6 @@
 import {
   ResearchStatusUpdateDTO,
   ResearchItem,
-  ResearchTagResponseDTO,
 } from "@/types/dto/research";
 import { revalidatePath } from "next/cache";
 import { updateResearchStatus } from "../service";

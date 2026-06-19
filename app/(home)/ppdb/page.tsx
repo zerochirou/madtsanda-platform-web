@@ -6,7 +6,6 @@ import {
   FadeRight,
 } from "@/components/animation/animations";
 import { Button } from "@/components/ui/button";
-import Link from "next/link";
 
 export default function PPDB() {
   const steps = [

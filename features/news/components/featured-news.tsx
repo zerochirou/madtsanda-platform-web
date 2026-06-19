@@ -7,8 +7,6 @@ import { Avatar, AvatarFallback, Badge, Button } from "@/components/ui";
 import { BlockRenderDynamicNoType } from "@/components/shared/block-render";
 import { getNewsImage } from "@/lib/news";
 
-const newsImageFallback = "/images/kegiatan-sekolah.jpg";
-
 function NewsMeta({
   category,
   date,

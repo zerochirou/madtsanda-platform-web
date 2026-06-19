@@ -3,13 +3,10 @@
 import Image from "next/image";
 import { motion } from "motion/react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import {
   Quote,
-  Sparkles,
-  GraduationCap,
   ArrowRight,
   BookOpen,
   Users,
@@ -18,15 +15,6 @@ import {
 import Link from "next/link";
 
 export default function Sambutan() {
-  const words = [
-    "Berakhlak",
-    "Berprestasi",
-    "Mandiri",
-    "Religius",
-    "Cerdas",
-    "Berdaya Saing",
-  ];
-
   const stats = [
     {
       icon: School,

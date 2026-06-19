@@ -37,9 +37,9 @@ export function NewsList({ data }: NewsListProps) {
     return <div className="p-4">Belum ada berita.</div>;
 
   return (
-    <Card className="p-0">
-      <div className="rounded-md">
-        <Table>
+    <Card className="overflow-hidden p-0">
+      <div className="w-full overflow-x-auto rounded-md">
+        <Table className="min-w-[980px]">
           <TableHeader className="">
             <TableRow className="">
               <TableHead className="border-r">
