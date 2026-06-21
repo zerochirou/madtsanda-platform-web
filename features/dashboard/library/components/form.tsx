@@ -61,7 +61,6 @@ export function LibraryForm({
 
       toast.success("Koleksi library berhasil disimpan");
       router.push("/dashboard/library/table");
-      router.refresh();
     });
   }
 

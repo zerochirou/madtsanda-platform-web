@@ -102,9 +102,9 @@ export function ResearchList({ data }: ResearchListProps) {
               <TableRow key={item.id}>
                 <TableCell className="border-r-2 border-dashed">
                   <span className="flex flex-row items-center gap-1">
-                    <DropdownResearch />
+                    <DropdownResearch id={item.id} />
                     <Link
-                      href={`/dashboard/news/edit/${item.id}`}
+                      href={`/dashboard/research/edit/${item.id}`}
                       prefetch
                       className="hover:underline hover:text-emerald-400 transition-all duration-150 ease-in-out font-semibold"
                     >

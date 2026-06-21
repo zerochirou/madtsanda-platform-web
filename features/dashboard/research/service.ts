@@ -4,6 +4,7 @@ import { request } from "@/lib/request";
 import logger from "@/lib/logger";
 import { errorFormat } from "@/lib/error";
 import { format } from "date-fns";
+import { revalidatePath, revalidateTag } from "next/cache";
 import type {
   ResearchPostDTO,
   ResearchItemDTO,
@@ -37,6 +38,9 @@ export async function createResearchService(
       method: "POST",
       body: formData,
     });
+
+    revalidateTag("research");
+    revalidatePath("/dashboard/research/table");
 
     return response;
   } catch (error: unknown) {
@@ -81,6 +85,10 @@ export async function updateResearchStatus(
       },
       body: JSON.stringify(data),
     });
+
+    revalidateTag("research");
+    revalidatePath("/dashboard/research/table");
+
     return response;
   } catch (error: unknown) {
     logger.error(errorFormat(error));
@@ -101,3 +109,60 @@ export async function getResearchById(
     return null;
   }
 }
+
+export async function updateResearchService(
+  id: string,
+  data: Partial<ResearchPostDTO> & { document?: File | null },
+): Promise<ResearchItemDTO | null> {
+  try {
+    const formData = new FormData();
+
+    if (data.title) formData.append("title", data.title);
+    if (data.abstrack) formData.append("abstrack", data.abstrack);
+    if (data.published_date) {
+      formData.append(
+        "published_date",
+        format(data.published_date, "yyyy-MM-dd"),
+      );
+    }
+    if (data.researchTagId) formData.append("researchTagId", data.researchTagId);
+    if (data.status) formData.append("status", data.status);
+    if (data.user_id) formData.append("user_id", data.user_id);
+
+    if (data.document instanceof File) {
+      formData.append("document", data.document);
+    }
+
+    const response = await request<ResearchItemDTO>(`/research/${id}`, {
+      method: "PUT",
+      body: formData,
+    });
+
+    revalidateTag("research");
+    revalidatePath("/dashboard/research/table");
+
+    return response;
+  } catch (error: unknown) {
+    logger.error(errorFormat(error));
+    return null;
+  }
+}
+
+export async function deleteResearchService(
+  id: string,
+): Promise<ResearchItemDTO | null> {
+  try {
+    const response = await request<ResearchItemDTO>(`/research/${id}`, {
+      method: "DELETE",
+    });
+
+    revalidateTag("research");
+    revalidatePath("/dashboard/research/table");
+
+    return response;
+  } catch (error: unknown) {
+    logger.error(errorFormat(error));
+    return null;
+  }
+}
+

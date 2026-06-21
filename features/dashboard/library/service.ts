@@ -3,6 +3,7 @@
 import { request } from "@/lib/request";
 import logger from "@/lib/logger";
 import { errorFormat } from "@/lib/error";
+import { revalidatePath, revalidateTag } from "next/cache";
 import {
   LibraryItemDTO,
   LibraryPostDTO,
@@ -55,6 +56,9 @@ export async function createLibraryService(
       body: JSON.stringify(data),
     });
 
+    revalidateTag("library");
+    revalidatePath("/dashboard/library/table");
+
     return response;
   } catch (error: unknown) {
     logger.error(errorFormat(error));
@@ -75,6 +79,9 @@ export async function updateLibraryService(
       body: JSON.stringify(data),
     });
 
+    revalidateTag("library");
+    revalidatePath("/dashboard/library/table");
+
     return response;
   } catch (error: unknown) {
     logger.error(errorFormat(error));
@@ -89,6 +96,9 @@ export async function deleteLibraryService(
     const response = await request<LibraryItemDTO>(`/library/${id}`, {
       method: "DELETE",
     });
+
+    revalidateTag("library");
+    revalidatePath("/dashboard/library/table");
 
     return response;
   } catch (error: unknown) {

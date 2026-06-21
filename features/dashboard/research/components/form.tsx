@@ -4,6 +4,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useTransition } from "react";
 import { Controller, useForm } from "react-hook-form";
 import { toast } from "sonner";
+import { useRouter } from "next/navigation";
 import {
   Field,
   FieldDescription,
@@ -17,9 +18,11 @@ import { UserDTO } from "@/types/dto/user";
 import z from "zod";
 import {
   ResearchCreateSchema,
+  ResearchUpdateSchema,
   ResearchTagResponseDTO,
+  ResearchItem,
 } from "@/types/dto/research";
-import { createResearchService } from "../service";
+import { createResearchService, updateResearchService } from "../service";
 import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -38,14 +41,19 @@ import { Textarea } from "@/components/ui/textarea";
 export function ResearchEditor({
   user,
   researchTag,
+  initialData,
 }: {
   user: UserDTO;
   researchTag: ResearchTagResponseDTO | null;
+  initialData?: ResearchItem | null;
 }) {
   const [pending, startTransition] = useTransition();
+  const router = useRouter();
+
+  const schema = initialData ? ResearchUpdateSchema : ResearchCreateSchema;
 
   const form = useForm<z.infer<typeof ResearchCreateSchema>>({
-    resolver: zodResolver(ResearchCreateSchema),
+    resolver: zodResolver(schema),
     resetOptions: {
       keepValues: true,
       keepErrors: true,
@@ -54,11 +62,11 @@ export function ResearchEditor({
       keepIsValid: true,
     },
     defaultValues: {
-      title: "",
-      abstrack: "",
+      title: initialData?.title ?? "",
+      abstrack: initialData?.abstrack ?? "",
       document: undefined, // Gunakan undefined untuk file
-      published_date: new Date(),
-      researchTagId: "",
+      published_date: initialData?.publishedDate ? new Date(initialData.publishedDate) : new Date(),
+      researchTagId: initialData?.researchTag?.id ?? "",
     },
   });
 
@@ -72,23 +80,33 @@ export function ResearchEditor({
             ? values.document[0]
             : values.document;
 
-        if (!rawFile) {
+        if (!initialData && !rawFile) {
           toast.error("Silakan pilih file penelitian terlebih dahulu");
           return;
         }
 
-        // 1. Panggil service
-        const result = await createResearchService({
-          ...values,
-          document: rawFile,
-          status: "pending",
-          user_id: user.id,
-        });
+        const result = initialData
+          ? await updateResearchService(initialData.id, {
+              title: values.title,
+              abstrack: values.abstrack,
+              published_date: values.published_date,
+              researchTagId: values.researchTagId,
+              document: rawFile || null,
+              status: initialData.status,
+              user_id: user.id,
+            })
+          : await createResearchService({
+              ...values,
+              document: rawFile,
+              status: "pending",
+              user_id: user.id,
+            });
 
         if (result) {
-          toast.success("Penelitian berhasil diunggah!");
+          toast.success(initialData ? "Penelitian berhasil diperbarui!" : "Penelitian berhasil diunggah!");
+          router.push("/dashboard/research/table");
         } else {
-          toast.error("Gagal mengunggah penelitian. Silakan coba lagi.");
+          toast.error(initialData ? "Gagal memperbarui penelitian." : "Gagal mengunggah penelitian. Silakan coba lagi.");
         }
       } catch (error: unknown) {
         const msg = error instanceof Error ? error.message : "Terjadi kesalahan";
@@ -101,7 +119,9 @@ export function ResearchEditor({
   return (
     <form className="mx-auto max-w-3xl py-10" onSubmit={handleSubmit(onSubmit)}>
       <div>
-        <h1 className="text-4xl font-bold mt-4">Unggah Penelitian</h1>
+        <h1 className="text-4xl font-bold mt-4">
+          {initialData ? "Edit Penelitian" : "Unggah Penelitian"}
+        </h1>
       </div>
       <Separator className="mb-8 mt-4" />
 
@@ -227,7 +247,13 @@ export function ResearchEditor({
           />
 
           <Button type="submit" className="w-full mt-6" disabled={pending}>
-            {pending ? "Mengunggah..." : "Unggah Penelitian"}
+            {pending
+              ? initialData
+                ? "Memperbarui..."
+                : "Mengunggah..."
+              : initialData
+                ? "Simpan Perubahan"
+                : "Unggah Penelitian"}
           </Button>
         </FieldGroup>
       </FieldSet>
