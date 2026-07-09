@@ -1,6 +1,6 @@
 "use client"
 
-import { useEffect, useRef, useState } from "react"
+import { useEffect, useMemo, useRef, useState } from "react"
 import {
   animate,
   motion,
@@ -138,7 +138,8 @@ export function DiaTextReveal({
   fixedWidth = false,
   ...props
 }: DiaTextRevealProps) {
-  const texts = Array.isArray(text) ? text : [text]
+  const texts = useMemo(() => (Array.isArray(text) ? text : [text]), [text])
+  const textsKey = useMemo(() => texts.join("\0"), [texts])
   const isMulti = texts.length > 1
   const prefersReducedMotion = useReducedMotion()
 
@@ -185,7 +186,7 @@ export function DiaTextReveal({
     const el = spanRef.current
     if (!el || !isMulti) return
     setMeasuredWidths(measureWidths(el, texts))
-  }, [Array.isArray(text) ? text.join("\0") : text])
+  }, [isMulti, texts, textsKey])
 
   useEffect(() => {
     playRef.current = () => {

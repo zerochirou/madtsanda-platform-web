@@ -7,5 +7,6 @@ export * from "./journey";
 export * from "./locations";
 export * from "./news-room";
 export * from "./programs";
+export * from "./research-repository";
 export * from "./teacher-directory";
 export * from "./testimonial";

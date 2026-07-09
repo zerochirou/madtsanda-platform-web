@@ -12,7 +12,6 @@ import {
   Heart,
   Target,
   CheckCircle2,
-  Bookmark,
   ChevronRight,
 } from "lucide-react";
 import { visiData, misiData, tujuanData } from "@/components/data/visi-misi-data";
@@ -182,7 +181,6 @@ export function VisiMisiTabs() {
               {/* Stepper List (Left Side) */}
               <div className="space-y-4">
                 {misiData.map((misi, index) => {
-                  const Icon = misiIcons[index];
                   const isActive = activeMisi === index;
                   return (
                     <div

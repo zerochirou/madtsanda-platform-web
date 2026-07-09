@@ -21,12 +21,12 @@ export const ImageBanner = () => (
           Ini adalah ekosistem para pemikir, kreator, dan inovator berakhlakul karimah. Bergabunglah bersama kami untuk membangun masa depan dengan dukungan fasilitas berstandar nasional.
         </p>
         <div className="flex flex-col sm:flex-row gap-4">
-          <Link href="/campus">
+          <Link href="/facilities">
             <Button className="bg-emerald-500 text-white hover:bg-emerald-600 rounded-full px-8 py-6 font-bold text-base shadow-lg shadow-emerald-500/20 hover:shadow-emerald-500/40 transition-all hover:-translate-y-1">
               Jelajahi Lingkungan
             </Button>
           </Link>
-          <Link href="/campus">
+          <Link href="/facilities">
             <Button variant="outline" className="border-white/30 text-white bg-white/10 backdrop-blur-md hover:bg-white/20 rounded-full px-8 py-6 font-bold text-base transition-all hover:-translate-y-1">
               Tur Virtual
             </Button>

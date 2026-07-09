@@ -6,11 +6,18 @@ import { Journey } from "@/features/home/components/journey";
 import { Locations } from "@/features/home/components/locations";
 import { Newsroom } from "@/features/home/components/news-room";
 import { Programs } from "@/features/home/components/programs";
+import { ResearchRepository } from "@/features/home/components/research-repository";
 import { Testimonial } from "@/features/home/components/testimonial";
-import { getNewsWithLimitService } from "@/features/home/services";
+import {
+  getLatestResearchService,
+  getNewsWithLimitService,
+} from "@/features/home/services";
 
 export default async function Home() {
-  const [news] = await Promise.all([getNewsWithLimitService(3)]);
+  const [news, research] = await Promise.all([
+    getNewsWithLimitService(4),
+    getLatestResearchService(1),
+  ]);
   return (
     <div className="min-h-screen bg-zinc-50 dark:bg-zinc-950 transition-colors duration-300 selection:bg-emerald-500/30 selection:text-emerald-900 dark:selection:text-emerald-100">
       <Hero />
@@ -22,6 +29,7 @@ export default async function Home() {
       <Programs />
       <InsideLeading />
       <Testimonial />
+      <ResearchRepository research={research} />
       <Newsroom news={news}/>
     </div>
   );

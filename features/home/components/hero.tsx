@@ -7,18 +7,19 @@ import { Play } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { WordRotate } from "@/components/ui/word-rotate";
 
+const heroImages = [
+  "paseban-1.png",
+  "paseban-2.jpg",
+  "foto-siswa3.JPG",
+  "paskibra2.jpeg",
+];
+
 export const Hero = () => {
   const [index, setIndex] = useState(0);
-  const images = [
-    "paseban-1.png",
-    "paseban-2.jpg",
-    "foto-siswa3.JPG",
-    "paskibra2.jpeg",
-  ];
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setIndex((prev) => (prev + 1) % images.length);
+      setIndex((prev) => (prev + 1) % heroImages.length);
     }, 10000);
 
     return () => clearInterval(interval);
@@ -27,7 +28,7 @@ export const Hero = () => {
     <section className="relative h-screen flex items-center justify-center overflow-hidden">
       <div className="absolute inset-0 z-0">
         <motion.div
-          key={images[index]} // Sangat penting
+          key={heroImages[index]} // Sangat penting
           initial={{ opacity: 0, }} // Masuk dari kanan
           animate={{ opacity: 1,  }} // Ke posisi normal
           exit={{ opacity: 0, }} // Keluar ke kiri
@@ -38,7 +39,7 @@ export const Hero = () => {
           className="absolute inset-0"
         >
           <Image
-            src={`/images/${images[index]}`}
+            src={`/images/${heroImages[index]}`}
             alt="Gedung MTsN 2 Kota Kediri"
             fill
             className="object-cover scale-105 animate-slow-zoom"

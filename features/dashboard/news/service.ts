@@ -11,9 +11,7 @@ import {
 } from "@/types/dto/news";
 
 export async function createNewsService(data: NewsPostDTO) {
-  // : Promise<NewsResponseDTO | null>
   try {
-    // console.log(data);
     const formData = new FormData();
     formData.append("title", data.title);
     formData.append("content", data.content);
@@ -31,10 +29,8 @@ export async function createNewsService(data: NewsPostDTO) {
     });
 
     return response;
-  // } catch (error: any) {
   } catch (error: unknown) {
     logger.error(errorFormat(error));
-    // console.dir(error.data, { depth: null });
     return null;
   }
 }
@@ -68,10 +64,8 @@ export async function updatePinNewsService(id: string, data: NewsPinUpdateDTO): 
     });
 
     return response;
-  // } catch (error: any) {
   } catch (error: unknown) {
     logger.error(errorFormat(error));
-    // console.dir(error.data, { depth: null });
     return null;
   }
 }
@@ -83,10 +77,8 @@ export async function deleteNewsService(id: string): Promise<NewsResponseDTO | n
     });
 
     return response;
-  // } catch (error: any) {
   } catch (error: unknown) {
     logger.error(errorFormat(error));
-    // console.dir(error.data, { depth: null });
     return null;
   }
 }
@@ -116,9 +108,7 @@ export async function updateNewsService(data: Partial<NewsPostDTO>, id: string) 
 
     return response;
   } catch (error: unknown) {
-  // } catch (error: any) {
     logger.error(errorFormat(error));
-    // console.dir(error.data, { depth: null });
     return null;
   }
 }

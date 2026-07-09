@@ -11,7 +11,6 @@ import {
 import { SidebarAppHeader } from "./sidebar-app-header";
 import { SidebarAppFeat } from "./sidebar-app-feat";
 import { sidebarItems } from "@/components/data/sidebar-data";
-import { UserDTO } from "@/types/dto/user";
 
 import { SidebarAppProps } from "@/types/components";
 export function SidebarApp({ user }: SidebarAppProps) {

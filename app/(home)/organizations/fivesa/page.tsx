@@ -1,23 +1,31 @@
 import React from "react";
 import Image from "next/image";
-import { PageHero, FadeUp } from "@/components/animation/animations";
+import { FadeUp } from "@/components/animation/animations";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui";
 import { AtSign, User } from "lucide-react";
 import { organizationsData } from "@/components/data/organizations";
+import { OrganizationHero } from "@/features/organizations/components";
 
 export default function FivesaPage() {
   // Filter out MPK and OSIS, and display Fivesa organizations
   const fivesaOrgs = organizationsData.filter(
-    (org) => org.name !== "OSIS" && org.name !== "MPK"
+    (org) => org.name !== "OSIS" && org.name !== "MPK",
   );
 
   return (
     <div className="min-h-screen bg-zinc-50 dark:bg-zinc-950 transition-colors duration-300">
-      <PageHero
+      <OrganizationHero
         title="Fivesa"
-        subtitle="Komunitas & Organisasi Kesiswaan"
+        eyebrow="Komunitas & Organisasi Kesiswaan"
         description="Wadah pengembangan minat bakat, kedisiplinan, kemanusiaan, serta jurnalistik siswa MTsN 2 Kota Kediri."
         imageSrc="/images/gedung-madtsanda.jpg"
+        imageAlt="Gedung MTsN 2 Kota Kediri sebagai ruang kegiatan Fivesa"
+        tone="amber"
+        metrics={[
+          { value: `${fivesaOrgs.length}`, label: "Komunitas aktif" },
+          { value: "Sosial", label: "Fokus kepedulian" },
+          { value: "Kreatif", label: "Karya dan publikasi" },
+        ]}
       />
 
       <section className="py-20 lg:py-32 max-w-7xl mx-auto px-4 md:px-6">
@@ -27,7 +35,10 @@ export default function FivesaPage() {
               Wadah Pembentukan Karakter & Jiwa Sosial
             </h2>
             <p className="text-lg text-zinc-600 dark:text-zinc-400 leading-relaxed">
-              Komunitas organisasi Fivesa melatih kemandirian, kepedulian sosial, sportivitas, serta kreativitas siswa melalui program-program pengabdian masyarakat dan kompetisi tingkat daerah maupun nasional.
+              Komunitas organisasi Fivesa melatih kemandirian, kepedulian
+              sosial, sportivitas, serta kreativitas siswa melalui
+              program-program pengabdian masyarakat dan kompetisi tingkat daerah
+              maupun nasional.
             </p>
           </div>
         </FadeUp>
@@ -63,7 +74,11 @@ export default function FivesaPage() {
                     <div className="flex items-center gap-3 text-sm text-zinc-500 dark:text-zinc-400 justify-center">
                       <AtSign className="w-4 h-4 text-emerald-500" />
                       <span className="font-medium text-zinc-700 dark:text-zinc-300 hover:text-emerald-500 dark:hover:text-emerald-400">
-                        <a href={`https://www.instagram.com/${org.ig}`} target="_blank" rel="noreferrer">
+                        <a
+                          href={`https://www.instagram.com/${org.ig}`}
+                          target="_blank"
+                          rel="noreferrer"
+                        >
                           @{org.ig}
                         </a>
                       </span>

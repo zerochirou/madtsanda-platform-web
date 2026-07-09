@@ -1,12 +1,7 @@
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
 import { Card } from "@/components/ui/card";
-import { StudentDTO } from "@/types/dto/student";
-import { TeacherDTO } from "@/types/dto/teacher";
-import { UserDTO } from "@/types/dto/user";
 import {
-  DoorOpen,
-  GraduationCap,
   IdCard,
   Mail,
   MoreVertical,

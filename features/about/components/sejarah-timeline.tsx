@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { motion } from "motion/react";
 import { timelineMilestones } from "@/components/data/timeline-data";
 
@@ -32,16 +33,29 @@ export function SejarahTimeline() {
               <div className="hidden md:grid md:grid-cols-[1fr_auto_1fr] md:gap-12 items-center">
                 {/* Left side content */}
                 {isLeft ? (
-                  <div className="text-right pr-4 group">
-                    <div className="font-mono text-sm tracking-widest text-emerald-600 dark:text-emerald-400 mb-2 font-bold">
-                      {milestone.year}
+                  <div className="group grid gap-5 pr-4 text-right">
+                    {milestone.imageSrc && (
+                      <div className="relative ml-auto aspect-[16/10] w-full max-w-md overflow-hidden rounded-lg border border-zinc-200 bg-zinc-100 shadow-sm dark:border-zinc-800 dark:bg-zinc-900">
+                        <Image
+                          src={milestone.imageSrc}
+                          alt={milestone.imageAlt ?? milestone.title}
+                          fill
+                          sizes="(max-width: 1024px) 45vw, 420px"
+                          className="object-cover transition duration-700 group-hover:scale-105"
+                        />
+                      </div>
+                    )}
+                    <div>
+                      <div className="font-mono text-sm tracking-widest text-emerald-600 dark:text-emerald-400 mb-2 font-bold">
+                        {milestone.year}
+                      </div>
+                      <h3 className="text-2xl font-bold tracking-tight text-zinc-900 dark:text-white mb-3 group-hover:text-emerald-500 transition-colors">
+                        {milestone.title}
+                      </h3>
+                      <p className="text-[15px] leading-relaxed text-zinc-600 dark:text-zinc-400">
+                        {milestone.description}
+                      </p>
                     </div>
-                    <h3 className="text-2xl font-bold tracking-tight text-zinc-900 dark:text-white mb-3 group-hover:text-emerald-500 transition-colors">
-                      {milestone.title}
-                    </h3>
-                    <p className="text-[15px] leading-relaxed text-zinc-600 dark:text-zinc-400">
-                      {milestone.description}
-                    </p>
                   </div>
                 ) : (
                   <div />
@@ -54,16 +68,29 @@ export function SejarahTimeline() {
 
                 {/* Right side content */}
                 {!isLeft ? (
-                  <div className="text-left pl-4 group">
-                    <div className="font-mono text-sm tracking-widest text-emerald-600 dark:text-emerald-400 mb-2 font-bold">
-                      {milestone.year}
+                  <div className="group grid gap-5 pl-4 text-left">
+                    {milestone.imageSrc && (
+                      <div className="relative aspect-[16/10] w-full max-w-md overflow-hidden rounded-lg border border-zinc-200 bg-zinc-100 shadow-sm dark:border-zinc-800 dark:bg-zinc-900">
+                        <Image
+                          src={milestone.imageSrc}
+                          alt={milestone.imageAlt ?? milestone.title}
+                          fill
+                          sizes="(max-width: 1024px) 45vw, 420px"
+                          className="object-cover transition duration-700 group-hover:scale-105"
+                        />
+                      </div>
+                    )}
+                    <div>
+                      <div className="font-mono text-sm tracking-widest text-emerald-600 dark:text-emerald-400 mb-2 font-bold">
+                        {milestone.year}
+                      </div>
+                      <h3 className="text-2xl font-bold tracking-tight text-zinc-900 dark:text-white mb-3 group-hover:text-emerald-500 transition-colors">
+                        {milestone.title}
+                      </h3>
+                      <p className="text-[15px] leading-relaxed text-zinc-600 dark:text-zinc-400">
+                        {milestone.description}
+                      </p>
                     </div>
-                    <h3 className="text-2xl font-bold tracking-tight text-zinc-900 dark:text-white mb-3 group-hover:text-emerald-500 transition-colors">
-                      {milestone.title}
-                    </h3>
-                    <p className="text-[15px] leading-relaxed text-zinc-600 dark:text-zinc-400">
-                      {milestone.description}
-                    </p>
                   </div>
                 ) : (
                   <div />
@@ -79,6 +106,17 @@ export function SejarahTimeline() {
                   </div>
                 </div>
 
+                {milestone.imageSrc && (
+                  <div className="relative mb-4 aspect-[16/10] overflow-hidden rounded-lg border border-zinc-200 bg-zinc-100 shadow-sm dark:border-zinc-800 dark:bg-zinc-900">
+                    <Image
+                      src={milestone.imageSrc}
+                      alt={milestone.imageAlt ?? milestone.title}
+                      fill
+                      sizes="(max-width: 768px) 100vw, 420px"
+                      className="object-cover"
+                    />
+                  </div>
+                )}
                 <div className="font-mono text-sm tracking-widest text-emerald-600 dark:text-emerald-400 mb-1 font-bold">
                   {milestone.year}
                 </div>

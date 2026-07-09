@@ -3,9 +3,8 @@ import { Button } from "@/components/ui/button";
 import type { NewsItem, NewsResponseDTO } from "@/types/dto/news";
 import { formatReadableDate } from "@/lib/date";
 import Link from "next/link";
-import { ArrowRight, CalendarDays, Tag, UserRound } from "lucide-react";
-
-const newsImageFallback = "/images/kegiatan-sekolah.jpg";
+import { ArrowRight, CalendarDays, Newspaper, Tag, UserRound } from "lucide-react";
+import { getNewsImage } from "@/lib/news";
 
 const NewsCard = ({ item, index }: { item: NewsItem; index: number }) => {
   return (
@@ -17,7 +16,7 @@ const NewsCard = ({ item, index }: { item: NewsItem; index: number }) => {
     >
       <div className="relative min-h-64 overflow-hidden bg-zinc-100 dark:bg-zinc-800">
         <Image
-          src={item.imageUrl ?? newsImageFallback}
+          src={getNewsImage(item.title, item.imageUrl)}
           alt={item.title}
           fill
           placeholder="empty"
@@ -56,6 +55,8 @@ const NewsCard = ({ item, index }: { item: NewsItem; index: number }) => {
 };
 
 export const Newsroom = ({ news }: { news: NewsResponseDTO | null }) => {
+  const items = news?.data?.slice(0, 4) ?? [];
+
   return (
     <section className="bg-white py-20 transition-colors duration-300 dark:bg-zinc-950 lg:py-28">
       <div className="max-w-7xl mx-auto px-4 md:px-6">
@@ -82,11 +83,24 @@ export const Newsroom = ({ news }: { news: NewsResponseDTO | null }) => {
           </div>
         </div>
 
-        <div className="grid gap-4 sm:grid-cols-1 lg:grid-cols-3">
-          {news?.data.map((item, index) => {
-            return <NewsCard item={item} index={index} key={item.id} />;
-          })}
-        </div>
+        {items.length > 0 ? (
+          <div className="grid gap-4 sm:grid-cols-1 lg:grid-cols-3">
+            {items.map((item, index) => {
+              return <NewsCard item={item} index={index} key={item.id} />;
+            })}
+          </div>
+        ) : (
+          <div className="rounded-lg border border-dashed border-zinc-300 bg-zinc-50 p-8 text-center dark:border-zinc-700 dark:bg-zinc-900">
+            <Newspaper className="mx-auto mb-4 size-10 text-zinc-400" />
+            <h3 className="text-xl font-black text-zinc-950 dark:text-white">
+              Berita belum tersedia.
+            </h3>
+            <p className="mx-auto mt-2 max-w-md text-sm leading-6 text-zinc-600 dark:text-zinc-400">
+              Kabar terbaru akan muncul otomatis setelah dipublikasikan melalui
+              Madtsanda Connect.
+            </p>
+          </div>
+        )}
       </div>
     </section>
   );

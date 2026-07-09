@@ -4,6 +4,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useTransition } from "react";
 import { Controller, useForm } from "react-hook-form";
 import { toast } from "sonner";
+import { useRouter } from "next/navigation";
 import {
   Field,
   FieldDescription,
@@ -17,9 +18,11 @@ import { UserDTO } from "@/types/dto/user";
 import z from "zod";
 import {
   ResearchCreateSchema,
+  ResearchUpdateSchema,
   ResearchTagResponseDTO,
+  ResearchItem,
 } from "@/types/dto/research";
-import { createResearchService } from "../service";
+import { createResearchService, updateResearchService } from "../service";
 import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -35,17 +38,26 @@ import {
 import { DatePicker } from "@/components/shared/date-picker/date";
 import { Textarea } from "@/components/ui/textarea";
 
+type ResearchFormValues =
+  | z.infer<typeof ResearchCreateSchema>
+  | z.infer<typeof ResearchUpdateSchema>;
+
 export function ResearchEditor({
   user,
   researchTag,
+  initialData,
 }: {
   user: UserDTO;
   researchTag: ResearchTagResponseDTO | null;
+  initialData?: ResearchItem | null;
 }) {
   const [pending, startTransition] = useTransition();
+  const router = useRouter();
 
-  const form = useForm<z.infer<typeof ResearchCreateSchema>>({
-    resolver: zodResolver(ResearchCreateSchema),
+  const schema = initialData ? ResearchUpdateSchema : ResearchCreateSchema;
+
+  const form = useForm<ResearchFormValues>({
+    resolver: zodResolver(schema),
     resetOptions: {
       keepValues: true,
       keepErrors: true,
@@ -54,17 +66,17 @@ export function ResearchEditor({
       keepIsValid: true,
     },
     defaultValues: {
-      title: "",
-      abstrack: "",
+      title: initialData?.title ?? "",
+      abstrack: initialData?.abstrack ?? "",
       document: undefined, // Gunakan undefined untuk file
-      published_date: new Date(),
-      researchTagId: "",
+      published_date: initialData?.publishedDate ? new Date(initialData.publishedDate) : new Date(),
+      researchTagId: initialData?.researchTag?.id ?? "",
     },
   });
 
   const { handleSubmit, control } = form;
 
-  function onSubmit(values: z.infer<typeof ResearchCreateSchema>) {
+  function onSubmit(values: ResearchFormValues) {
     startTransition(async () => {
       try {
         const rawFile =
@@ -72,27 +84,38 @@ export function ResearchEditor({
             ? values.document[0]
             : values.document;
 
-        if (!rawFile) {
+        if (!initialData && !rawFile) {
           toast.error("Silakan pilih file penelitian terlebih dahulu");
           return;
         }
 
-        // 1. Panggil service
-        const result = await createResearchService({
-          ...values,
-          document: rawFile,
-          status: "pending",
-          user_id: user.id,
-        });
+        const result = initialData
+          ? await updateResearchService(initialData.id, {
+              title: values.title,
+              abstrack: values.abstrack,
+              published_date: values.published_date,
+              researchTagId: values.researchTagId,
+              document: rawFile || null,
+              status: initialData.status,
+              user_id: user.id,
+            })
+          : await createResearchService({
+              ...values,
+              document: rawFile ?? null,
+              status: "pending",
+              user_id: user.id,
+            });
 
-        // 2. Jika sampai sini tanpa throw, berarti sukses
-        toast.success("Penelitian berhasil diunggah!");
-        // console.log("Success result:", result);
+        if (result) {
+          toast.success(initialData ? "Penelitian berhasil diperbarui!" : "Penelitian berhasil diunggah!");
+          router.push("/dashboard/research/table");
+        } else {
+          toast.error(initialData ? "Gagal memperbarui penelitian." : "Gagal mengunggah penelitian. Silakan coba lagi.");
+        }
       } catch (error: unknown) {
         const msg = error instanceof Error ? error.message : "Terjadi kesalahan";
 
         toast.error(msg);
-        console.error("Detail Error:", error);
       }
     });
   }
@@ -100,7 +123,9 @@ export function ResearchEditor({
   return (
     <form className="mx-auto max-w-3xl py-10" onSubmit={handleSubmit(onSubmit)}>
       <div>
-        <h1 className="text-4xl font-bold mt-4">Unggah Penelitian</h1>
+        <h1 className="text-4xl font-bold mt-4">
+          {initialData ? "Edit Penelitian" : "Unggah Penelitian"}
+        </h1>
       </div>
       <Separator className="mb-8 mt-4" />
 
@@ -194,34 +219,45 @@ export function ResearchEditor({
           <Controller
             name="document"
             control={control}
-            render={({ field: { onChange, value, ...field }, fieldState }) => (
-              <Field>
-                <FieldLabel>
-                  File Dokumen (PDF/DOC)
-                  <Badge variant="secondary" className="ml-2">
-                    Max 50MB
-                  </Badge>
-                </FieldLabel>
-                <Input
-                  {...field}
-                  type="file"
-                  accept=".pdf,.doc,.docx"
-                  // Value harus di-reset atau dibiarkan kosong untuk input file
-                  value={undefined}
-                  onChange={(e) => {
-                    const files = e.target.files;
-                    if (files && files.length > 0) {
-                      onChange(files); // Simpan FileList ke RHF
-                    }
-                  }}
-                />
-                {fieldState.error && <FieldError errors={[fieldState.error]} />}
-              </Field>
-            )}
+            render={({ field: { onChange, value, ...field }, fieldState }) => {
+              void value;
+
+              return (
+                <Field>
+                  <FieldLabel>
+                    File Dokumen (PDF/DOC)
+                    <Badge variant="secondary" className="ml-2">
+                      Max 50MB
+                    </Badge>
+                  </FieldLabel>
+                  <Input
+                    {...field}
+                    type="file"
+                    accept=".pdf,.doc,.docx"
+                    value={undefined}
+                    onChange={(e) => {
+                      const files = e.target.files;
+                      if (files && files.length > 0) {
+                        onChange(files);
+                      }
+                    }}
+                  />
+                  {fieldState.error && (
+                    <FieldError errors={[fieldState.error]} />
+                  )}
+                </Field>
+              );
+            }}
           />
 
           <Button type="submit" className="w-full mt-6" disabled={pending}>
-            {pending ? "Mengunggah..." : "Unggah Penelitian"}
+            {pending
+              ? initialData
+                ? "Memperbarui..."
+                : "Mengunggah..."
+              : initialData
+                ? "Simpan Perubahan"
+                : "Unggah Penelitian"}
           </Button>
         </FieldGroup>
       </FieldSet>

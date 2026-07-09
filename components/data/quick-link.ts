@@ -66,4 +66,12 @@ export const quickLink: QuickLink[] = [
     icon: DocumentEdit16Color,
     url: "/dashboard/research/accept",
   },
+  {
+    title: "Manajemen Digital Library",
+    description: "Kelola katalog buku dan status ketersediaan",
+    role: "admin",
+    className: "",
+    icon: Library24Color,
+    url: "/dashboard/library/table",
+  },
 ];

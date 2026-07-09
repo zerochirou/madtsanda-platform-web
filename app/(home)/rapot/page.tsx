@@ -1,3 +1,4 @@
+import { ArrowRight, BookOpen, HelpCircle, Info } from "lucide-react";
 import {
   ArrowRight,
   BookOpen,
@@ -17,7 +18,7 @@ import {
 import { ShinyButton } from "@/components/ui/shiny-button";
 
 export default function Rapot() {
-  const rdmUrl = "https://rdm.mtsnsatukotakediri.sch.id/";
+  const rdmUrl = "https://rdm.mtsn2kotakediri.sch.id/";
 
   return (
     <div className="relative min-h-screen bg-zinc-50 dark:bg-zinc-950 text-zinc-900 dark:text-zinc-50 transition-colors duration-300 overflow-hidden">
@@ -116,6 +117,7 @@ export default function Rapot() {
 
           {/* Right Hero Preview Image */}
           <div className="lg:col-span-5 flex flex-col items-center justify-center relative">
+            <div className="relative group overflow-hidden rounded-[2.5rem] border border-zinc-200/40 dark:border-zinc-800/40 bg-white/30 dark:bg-zinc-900/10 backdrop-blur-md p-4 shadow-2xl transition-all duration-500 hover:shadow-emerald-500/5">
             <div className="relative group overflow-hidden">
               {/* Inner wrapper for image */}
               <div className="relative w-[280px] h-[560px] rounded-[1.8rem] overflow-hidden">

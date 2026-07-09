@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useRef, useState } from "react";
+import Image from "next/image";
 import { Upload, Trash2, Image as ImageIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
@@ -101,7 +102,14 @@ export const DropzoneInput = React.forwardRef<
             return (
               <div className="border border-border rounded-lg p-2 flex items-center gap-3" key={file.name + index}>
                 <div className="w-14 h-14 bg-muted rounded-sm overflow-hidden shrink-0">
-                  <img src={imageUrl} alt="preview" className="w-full h-full object-cover" />
+                  <Image
+                    src={imageUrl}
+                    alt="preview"
+                    width={56}
+                    height={56}
+                    unoptimized
+                    className="w-full h-full object-cover"
+                  />
                 </div>
                 <div className="flex-1 min-w-0">
                   <div className="flex justify-between items-center mb-1">
@@ -138,7 +146,14 @@ export const DropzoneInput = React.forwardRef<
           initialPreview && (
             <div className="border border-border rounded-lg p-2 flex items-center gap-3 bg-muted/20">
               <div className="w-14 h-14 bg-muted rounded-sm overflow-hidden shrink-0 border">
-                <img src={initialPreview} alt="Current" className="w-full h-full object-cover" />
+                <Image
+                  src={initialPreview}
+                  alt="Current"
+                  width={56}
+                  height={56}
+                  unoptimized
+                  className="w-full h-full object-cover"
+                />
               </div>
               <div className="flex-1">
                 <div className="flex items-center gap-2 text-muted-foreground">

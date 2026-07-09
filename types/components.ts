@@ -57,6 +57,7 @@ export interface HomeQuickLinkProps {
 }
 
 import { NewsItem } from "./dto/news";
+import { LibraryItem } from "./dto/library";
 
 export interface NewsListProps {
   data: NewsItem[];
@@ -64,6 +65,10 @@ export interface NewsListProps {
 
 export interface ResearchListProps {
   data: ResearchItem[];
+}
+
+export interface LibraryListProps {
+  data: LibraryItem[];
 }
 
 export interface DynamicPaginationProps {

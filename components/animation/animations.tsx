@@ -1,7 +1,6 @@
 "use client";
 
 import React from "react";
-import Image from "next/image";
 import { motion } from "motion/react";
 import { 
   Sparkles, 
@@ -201,7 +200,6 @@ export function PageHero({
   title,
   subtitle,
   description,
-  imageSrc,
 }: {
   title: string;
   subtitle: string;
@@ -211,8 +209,9 @@ export function PageHero({
   const cards = getHeroCards(title);
   
   const words = title.split(" ");
-  const lastWord = words.length > 1 ? words.pop() : title;
-  const mainTitle = words.length > 0 ? words.join(" ") : "";
+  const hasMultipleWords = words.length > 1;
+  const lastWord = hasMultipleWords ? words.pop() : title;
+  const mainTitle = hasMultipleWords ? words.join(" ") : "";
 
   return (
     <section className="relative pt-36 pb-20 md:pt-44 md:pb-28 overflow-hidden bg-linear-to-b from-emerald-50/20 via-white to-white dark:from-zinc-900/10 dark:via-zinc-950 dark:to-zinc-950 border-b border-zinc-200/60 dark:border-zinc-800/40">

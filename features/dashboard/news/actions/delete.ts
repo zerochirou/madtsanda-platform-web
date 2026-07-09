@@ -1,7 +1,6 @@
 "use server";
 
-import { deleteNewsService, updatePinNewsService } from "../service";
-import type { NewsPinUpdateDTO } from "@/types/dto/news";
+import { deleteNewsService } from "../service";
 import type { NewsResponseDTO } from "@/types/dto/news";
 import { revalidatePath } from "next/cache";
 

@@ -1,7 +1,7 @@
 import { cookies } from "next/headers";
 
 
-const AUTH_COOKIE_NAME = "madtsanda_session_token";
+const AUTH_COOKIE_NAME = "auth_token";
 
 export async function setAuthToken(token: string) {
   const cookieStore = await cookies();

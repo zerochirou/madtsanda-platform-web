@@ -6,8 +6,6 @@ import { formatReadableDate } from "@/lib/date";
 import { Skeleton } from "@/components/ui/skeleton";
 import { getNewsImage } from "@/lib/news";
 
-const newsImageFallback = "/images/kegiatan-sekolah.jpg";
-
 function NewsCardSkeleton() {
   return (
     <div className="flex h-full flex-col overflow-hidden rounded-xl border border-zinc-200 bg-white shadow-none dark:border-zinc-800 dark:bg-zinc-900">

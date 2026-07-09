@@ -11,7 +11,7 @@ import {
   FieldGroup,
   FieldLabel,
   FieldLegend,
-    FieldSeparator,
+  FieldSeparator,
   FieldSet,
 } from "@/components/ui/field";
 import {
@@ -32,8 +32,7 @@ import { Badge } from "@/components/ui/badge";
 import { Editor, EditorFrame } from "@/components/shared/block-editor";
 import { Switch } from "@/components/ui/switch";
 import { Button } from "@/components/ui/button";
-import { Separator } from "@/components/ui/separator";
-import { is } from "zod/v4/locales";import { Spinner } from "@/components/ui/spinner";
+import { Spinner } from "@/components/ui/spinner";
 import { DropzoneInput } from "@/components/shared/file-upload";
 
 export function NewsEditor({
@@ -170,7 +169,7 @@ export function NewsEditor({
           <Controller
             name="content"
             control={control}
-            render={({ field, fieldState }) => (
+            render={({ fieldState }) => (
               <Field>
                 <FieldLabel>
                   Konten Utama <Badge className="ml-2">Markdown</Badge>

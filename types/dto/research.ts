@@ -6,6 +6,8 @@ const ACCEPTED_MIME_TYPES = [
   "application/pdf",
   "application/msword",
   "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+  "application/x-tex",
+  "text/x-tex",
 ];
 
 export const ResearchTagSchema = z.object({
@@ -28,6 +30,25 @@ export const ResearchCreateSchema = z.object({
       (files) => ACCEPTED_MIME_TYPES.includes(files?.[0]?.type),
       "Hanya format PDF, DOC, dan DOCX yang didukung.",
     ),
+});
+
+export const ResearchUpdateSchema = z.object({
+  title: z.string().min(3, "Judul minimal 3 karakter"),
+  abstrack: z.string().min(10, "Abstrak minimal 10 karakter"),
+  published_date: z.date(),
+  researchTagId: z.string(),
+  document: z
+    .custom<FileList>()
+    .refine((files) => files === undefined || files.length === 1, "Paper harus diunggah.")
+    .refine(
+      (files) => files === undefined || files[0].size <= MAX_FILE_SIZE,
+      "Ukuran maksimal adalah 50MB.",
+    )
+    .refine(
+      (files) => files === undefined || ACCEPTED_MIME_TYPES.includes(files[0].type),
+      "Hanya format PDF, DOC, dan DOCX yang didukung.",
+    )
+    .optional(),
 });
 
 export interface ResearchTagDTO {

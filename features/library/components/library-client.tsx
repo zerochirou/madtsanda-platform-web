@@ -3,7 +3,6 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import {
-  BookOpen,
   Search,
   Clock,
   Phone,
@@ -15,30 +14,34 @@ import {
   X,
 } from "lucide-react";
 import { NumberTicker } from "@/components/ui/number-ticker";
-import {
-  libraryStats,
-  libraryCategories,
-  libraryBooks,
-  libraryInfo,
-} from "@/components/data/library-data";
+import { libraryInfo, libraryStats } from "@/components/data/library-data";
 import { Button } from "@/components/ui/button";
+import type { LibraryItem } from "@/types/dto/library";
 
 const categoryColors: Record<string, string> = {
-  emerald: "bg-emerald-100 text-emerald-700 dark:bg-emerald-950 dark:text-emerald-400 border-emerald-200/50 dark:border-emerald-900/50",
+  emerald:
+    "bg-emerald-100 text-emerald-700 dark:bg-emerald-950 dark:text-emerald-400 border-emerald-200/50 dark:border-emerald-900/50",
   blue: "bg-blue-100 text-blue-700 dark:bg-blue-950 dark:text-blue-400 border-blue-200/50 dark:border-blue-900/50",
-  violet: "bg-violet-100 text-violet-700 dark:bg-violet-950 dark:text-violet-400 border-violet-200/50 dark:border-violet-900/50",
-  amber: "bg-amber-100 text-amber-700 dark:bg-amber-950 dark:text-amber-400 border-amber-200/50 dark:border-amber-900/50",
+  violet:
+    "bg-violet-100 text-violet-700 dark:bg-violet-950 dark:text-violet-400 border-violet-200/50 dark:border-violet-900/50",
+  amber:
+    "bg-amber-100 text-amber-700 dark:bg-amber-950 dark:text-amber-400 border-amber-200/50 dark:border-amber-900/50",
   rose: "bg-rose-100 text-rose-700 dark:bg-rose-950 dark:text-rose-400 border-rose-200/50 dark:border-rose-900/50",
   teal: "bg-teal-100 text-teal-700 dark:bg-teal-950 dark:text-teal-400 border-teal-200/50 dark:border-teal-900/50",
 };
 
 const getBookCoverGradient = (category: string) => {
   const c = category.toLowerCase();
-  if (c.includes("agama") || c.includes("islam")) return "from-emerald-500 to-teal-600";
-  if (c.includes("sains") || c.includes("ipa") || c.includes("riset")) return "from-sky-500 to-indigo-600";
-  if (c.includes("sosial") || c.includes("ips") || c.includes("sejarah")) return "from-amber-500 to-orange-600";
-  if (c.includes("bahasa") || c.includes("sastra") || c.includes("novel")) return "from-rose-500 to-pink-600";
-  if (c.includes("kamus") || c.includes("referensi") || c.includes("umum")) return "from-violet-500 to-purple-600";
+  if (c.includes("agama") || c.includes("islam"))
+    return "from-emerald-500 to-teal-600";
+  if (c.includes("sains") || c.includes("ipa") || c.includes("riset"))
+    return "from-sky-500 to-indigo-600";
+  if (c.includes("sosial") || c.includes("ips") || c.includes("sejarah"))
+    return "from-amber-500 to-orange-600";
+  if (c.includes("bahasa") || c.includes("sastra") || c.includes("novel"))
+    return "from-rose-500 to-pink-600";
+  if (c.includes("kamus") || c.includes("referensi") || c.includes("umum"))
+    return "from-violet-500 to-purple-600";
   return "from-emerald-500 to-emerald-700";
 };
 
@@ -46,11 +49,30 @@ const formatNumber = (num: number) => {
   return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
 };
 
-export function LibraryClient() {
+const colorKeys = ["emerald", "blue", "violet", "amber", "rose", "teal"];
+
+export function LibraryClient({ books }: { books: LibraryItem[] }) {
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
 
-  const filteredBooks = libraryBooks.filter((book) => {
+  const categories = Array.from(
+    books.reduce((acc, book) => {
+      acc.set(book.category, (acc.get(book.category) ?? 0) + 1);
+      return acc;
+    }, new Map<string, number>()),
+  ).map(([name, count], index) => ({
+    name,
+    count,
+    color: colorKeys[index % colorKeys.length],
+  }));
+
+  const stats = libraryStats.map((stat, index) =>
+    index === 0
+      ? { ...stat, value: books.length, suffix: "", label: "Koleksi Terdata" }
+      : stat,
+  );
+
+  const filteredBooks = books.filter((book) => {
     const matchesSearch =
       searchTerm === "" ||
       book.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -67,14 +89,19 @@ export function LibraryClient() {
       {/* ==================== STATS OVERLAP SECTION ==================== */}
       <section className="relative z-20 -mt-16 md:-mt-20 max-w-7xl mx-auto px-4 md:px-6 mb-16">
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
-          {libraryStats.map((stat, i) => (
+          {stats.map((stat, i) => (
             <div
               key={i}
               className="rounded-3xl border border-zinc-200 dark:border-zinc-800/80 bg-white dark:bg-zinc-900/60 backdrop-blur-md p-6 text-center hover:border-emerald-500/30 dark:hover:border-emerald-500/30 transition-all duration-300 group shadow-xl shadow-zinc-200/50 dark:shadow-none"
             >
               <div className="text-3xl lg:text-4xl font-black text-zinc-900 dark:text-white tracking-tighter">
-                <NumberTicker value={stat.value} className="text-zinc-900 dark:text-white" />
-                <span className="text-emerald-500 dark:text-emerald-400">{stat.suffix}</span>
+                <NumberTicker
+                  value={stat.value}
+                  className="text-zinc-900 dark:text-white"
+                />
+                <span className="text-emerald-500 dark:text-emerald-400">
+                  {stat.suffix}
+                </span>
               </div>
               <p className="text-sm text-zinc-500 dark:text-zinc-400 mt-2 font-medium tracking-wide uppercase text-[11px] group-hover:text-emerald-500 dark:group-hover:text-emerald-400 transition-colors">
                 {stat.label}
@@ -103,7 +130,7 @@ export function LibraryClient() {
           </motion.div>
 
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
-            {libraryCategories.map((cat, i) => {
+            {categories.map((cat, i) => {
               const isSelected = selectedCategory === cat.name;
               return (
                 <motion.div
@@ -132,12 +159,18 @@ export function LibraryClient() {
                   >
                     <BookMarked className="h-6 w-6" />
                   </div>
-                  <h3 className={`text-sm font-bold mb-1 ${
-                    isSelected ? "text-white" : "text-zinc-900 dark:text-white group-hover:text-emerald-600 dark:group-hover:text-emerald-400"
-                  }`}>
+                  <h3
+                    className={`text-sm font-bold mb-1 ${
+                      isSelected
+                        ? "text-white"
+                        : "text-zinc-900 dark:text-white group-hover:text-emerald-600 dark:group-hover:text-emerald-400"
+                    }`}
+                  >
                     {cat.name}
                   </h3>
-                  <p className={`text-xs ${isSelected ? "text-emerald-100" : "text-zinc-500"}`}>
+                  <p
+                    className={`text-xs ${isSelected ? "text-emerald-100" : "text-zinc-500"}`}
+                  >
                     {formatNumber(cat.count)} buku
                   </p>
                 </motion.div>
@@ -148,7 +181,10 @@ export function LibraryClient() {
       </section>
 
       {/* ==================== KATALOG BUKU SECTION ==================== */}
-      <section id="katalog-buku" className="py-20 lg:py-28 border-b border-zinc-200 dark:border-zinc-900 bg-zinc-50/50 dark:bg-zinc-900/10">
+      <section
+        id="katalog-buku"
+        className="py-20 lg:py-28 border-b border-zinc-200 dark:border-zinc-900 bg-zinc-50/50 dark:bg-zinc-900/10"
+      >
         <div className="mx-auto max-w-7xl px-6">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -173,7 +209,10 @@ export function LibraryClient() {
                 <div className="flex items-center gap-1.5 bg-emerald-50 dark:bg-emerald-950/60 border border-emerald-200 dark:border-emerald-800 text-emerald-700 dark:text-emerald-400 px-3 py-2.5 rounded-xl text-xs font-bold">
                   <Filter className="h-3 w-3" />
                   {selectedCategory}
-                  <button onClick={() => setSelectedCategory(null)} className="hover:text-red-500 transition-colors">
+                  <button
+                    onClick={() => setSelectedCategory(null)}
+                    className="hover:text-red-500 transition-colors"
+                  >
                     <X className="h-3 w-3 ml-1" />
                   </button>
                 </div>
@@ -219,7 +258,9 @@ export function LibraryClient() {
                     className="group rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 overflow-hidden hover:shadow-xl hover:border-emerald-500/40 transition-all duration-300 hover:-translate-y-1 flex flex-col justify-between"
                   >
                     {/* Visual Book Cover Cover Mockup (Dynamic motifs) */}
-                    <div className={`relative h-48 bg-linear-to-br ${getBookCoverGradient(book.category)} flex flex-col justify-between p-4 text-white overflow-hidden shadow-inner select-none`}>
+                    <div
+                      className={`relative h-48 bg-linear-to-br ${getBookCoverGradient(book.category)} flex flex-col justify-between p-4 text-white overflow-hidden shadow-inner select-none`}
+                    >
                       {/* Spine shadow overlay */}
                       <div className="absolute left-0 top-0 bottom-0 w-3.5 bg-black/25" />
                       {/* Decorative overlay shine */}
@@ -249,7 +290,9 @@ export function LibraryClient() {
                         <h3 className="text-base font-bold text-zinc-900 dark:text-white line-clamp-2 leading-snug group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">
                           {book.title}
                         </h3>
-                        <p className="text-xs text-zinc-500 mt-1">Penulis: {book.author}</p>
+                        <p className="text-xs text-zinc-500 mt-1">
+                          Penulis: {book.author}
+                        </p>
                       </div>
 
                       <div className="flex items-center justify-between pt-2 border-t border-zinc-100 dark:border-zinc-800">
@@ -281,8 +324,13 @@ export function LibraryClient() {
             ) : (
               <div className="flex flex-col items-center justify-center py-20 text-center">
                 <Search className="h-12 w-12 text-zinc-300 dark:text-zinc-700 mb-4" />
-                <h3 className="text-xl font-bold text-zinc-700 dark:text-zinc-300">Buku tidak ditemukan</h3>
-                <p className="text-sm text-zinc-500 mt-2">Tidak ada buku yang cocok dengan judul &ldquo;{searchTerm}&rdquo;.</p>
+                <h3 className="text-xl font-bold text-zinc-700 dark:text-zinc-300">
+                  Buku tidak ditemukan
+                </h3>
+                <p className="text-sm text-zinc-500 mt-2">
+                  Tidak ada buku yang cocok dengan judul &ldquo;{searchTerm}
+                  &rdquo;.
+                </p>
                 <Button
                   onClick={() => {
                     setSearchTerm("");
@@ -389,7 +437,11 @@ export function LibraryClient() {
               </div>
 
               <div className="pt-6">
-                <a href={`https://wa.me/${libraryInfo.phone.replace(/[^0-9]/g, "")}`} target="_blank" rel="noopener noreferrer">
+                <a
+                  href={`https://wa.me/${libraryInfo.phone.replace(/[^0-9]/g, "")}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   <Button className="w-full h-12 bg-emerald-600 hover:bg-emerald-500 text-white rounded-xl font-bold transition-all shadow-md shadow-emerald-600/10">
                     Hubungi Pustakawan
                   </Button>

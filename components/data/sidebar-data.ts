@@ -108,4 +108,30 @@ export const sidebarItems: SidebarItem[] = [
       },
     ],
   },
+  {
+    id: "library",
+    label: "Digital Library",
+    icon: Library24Color,
+    route: "/dashboard/library/table",
+    hasSubItems: true,
+    minRole: "student",
+    subItems: [
+      {
+        id: "library-list",
+        label: "Katalog Buku",
+        minRole: "student",
+        icon: ContentView24Color,
+        description: "List koleksi Digital Library",
+        route: "/dashboard/library/table",
+      },
+      {
+        id: "library-create",
+        label: "Tambah Koleksi",
+        minRole: "admin",
+        icon: Edit20Color,
+        description: "Tambah buku atau referensi baru",
+        route: "/dashboard/library/create",
+      },
+    ],
+  },
 ];

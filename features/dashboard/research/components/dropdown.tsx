@@ -7,11 +7,13 @@ import {
   DropdownMenuGroup,
   DropdownMenuLabel,
   DropdownMenuTrigger,
+  DropdownMenuItem,
 } from "@/components/ui/dropdown-menu";
-import { GripVertical } from "lucide-react";
+import { GripVertical, Pencil } from "lucide-react";
+import { DeleteResearch } from "./delete-research";
+import Link from "next/link";
 
 export function DropdownResearch({ id }: { id: string }) {
-  
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
@@ -22,7 +24,13 @@ export function DropdownResearch({ id }: { id: string }) {
       <DropdownMenuContent className="w-40" align="start">
         <DropdownMenuGroup>
           <DropdownMenuLabel>Actions</DropdownMenuLabel>
-          {/*<DeleteNews id={id} />*/}
+          <DropdownMenuItem asChild>
+            <Link href={`/dashboard/research/edit/${id}`} className="flex flex-row items-center gap-2 cursor-pointer w-full text-left">
+              <Pencil className="size-4" />
+              Edit Paper
+            </Link>
+          </DropdownMenuItem>
+          <DeleteResearch id={id} />
         </DropdownMenuGroup>
       </DropdownMenuContent>
     </DropdownMenu>
