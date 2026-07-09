@@ -1,4 +1,11 @@
 import { ArrowRight, BookOpen, HelpCircle, Info } from "lucide-react";
+import {
+  ArrowRight,
+  BookOpen,
+  HelpCircle,
+  Info,
+  CheckCircle2,
+} from "lucide-react";
 import Image from "next/image";
 import { Badge } from "@/components/ui/badge";
 import { DotPattern } from "@/components/ui/dot-pattern";
@@ -111,6 +118,7 @@ export default function Rapot() {
           {/* Right Hero Preview Image */}
           <div className="lg:col-span-5 flex flex-col items-center justify-center relative">
             <div className="relative group overflow-hidden rounded-[2.5rem] border border-zinc-200/40 dark:border-zinc-800/40 bg-white/30 dark:bg-zinc-900/10 backdrop-blur-md p-4 shadow-2xl transition-all duration-500 hover:shadow-emerald-500/5">
+            <div className="relative group overflow-hidden">
               {/* Inner wrapper for image */}
               <div className="relative w-[280px] h-[560px] rounded-[1.8rem] overflow-hidden">
                 <Image
@@ -124,8 +132,8 @@ export default function Rapot() {
               </div>
 
               {/* Decorative elements */}
-              <div className="absolute -top-10 -left-10 w-32 h-32 bg-emerald-500/10 rounded-full blur-2xl group-hover:bg-emerald-500/20 transition-all pointer-events-none" />
-              <div className="absolute -bottom-10 -right-10 w-32 h-32 bg-blue-500/10 rounded-full blur-2xl group-hover:bg-blue-500/20 transition-all pointer-events-none" />
+              {/*<div className="absolute -top-10 -left-10 w-32 h-32 bg-emerald-500/10 rounded-full blur-2xl group-hover:bg-emerald-500/20 transition-all pointer-events-none" />*/}
+              {/*<div className="absolute -bottom-10 -right-10 w-32 h-32 bg-blue-500/10 rounded-full blur-2xl group-hover:bg-blue-500/20 transition-all pointer-events-none" />*/}
             </div>
 
             <div className="mt-4 text-center">
