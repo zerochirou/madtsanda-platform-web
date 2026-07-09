@@ -25,7 +25,7 @@ export const programMadrasahPages = {
     metrics: [
       { label: "Rombel belajar", value: "36" },
       { label: "Sistem layanan", value: "SKS" },
-      { label: "Fokus karakter", value: "P5 & PPRA" },
+      { label: "Fokus karakter", value: "Kokurikuler" },
     ],
     highlights: [
       {
@@ -64,7 +64,7 @@ export const programMadrasahPages = {
           "Nilai keislaman dan kebangsaan dipadukan dalam pembiasaan belajar harian.",
         items: [
           "Menghidupkan Profil Pelajar Rahmatan Lil Alamin yang toleran, peduli, dan berakhlakul karimah.",
-          "Menjalankan P5 melalui pengalaman projek yang dekat dengan persoalan nyata di lingkungan siswa.",
+          "Menjalankan kokurikuler melalui pengalaman projek yang dekat dengan persoalan nyata di lingkungan siswa.",
           "Menanamkan disiplin, doa, tadarus Al-Qur'an, dan shalat berjamaah sebagai budaya madrasah.",
         ],
       },

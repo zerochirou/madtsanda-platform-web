@@ -38,6 +38,10 @@ import {
 import { DatePicker } from "@/components/shared/date-picker/date";
 import { Textarea } from "@/components/ui/textarea";
 
+type ResearchFormValues =
+  | z.infer<typeof ResearchCreateSchema>
+  | z.infer<typeof ResearchUpdateSchema>;
+
 export function ResearchEditor({
   user,
   researchTag,
@@ -52,7 +56,7 @@ export function ResearchEditor({
 
   const schema = initialData ? ResearchUpdateSchema : ResearchCreateSchema;
 
-  const form = useForm<z.infer<typeof ResearchCreateSchema>>({
+  const form = useForm<ResearchFormValues>({
     resolver: zodResolver(schema),
     resetOptions: {
       keepValues: true,
@@ -72,7 +76,7 @@ export function ResearchEditor({
 
   const { handleSubmit, control } = form;
 
-  function onSubmit(values: z.infer<typeof ResearchCreateSchema>) {
+  function onSubmit(values: ResearchFormValues) {
     startTransition(async () => {
       try {
         const rawFile =
@@ -97,7 +101,7 @@ export function ResearchEditor({
             })
           : await createResearchService({
               ...values,
-              document: rawFile,
+              document: rawFile ?? null,
               status: "pending",
               user_id: user.id,
             });

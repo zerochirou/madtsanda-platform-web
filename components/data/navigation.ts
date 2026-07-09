@@ -20,6 +20,11 @@ const aboutUs = [
     label: "Visi & Misi",
     description: "Target utama dan arah strategis kami.",
     href: "/about/visi-misi",
+  },
+  {
+    label: "Galeri Madtsanda",
+    description: "Dokumentasi visual gedung, lingkungan, dan aktivitas siswa.",
+    href: "/about/galeri",
   }
 ];
 
@@ -69,6 +74,19 @@ export const services = [
   }
 ];
 
+const ziPpid = [
+  {
+    label: "Zona Integritas",
+    description: "Eviden pembangunan ZI menuju WBK dan layanan bersih.",
+    href: "/zona-integritas",
+  },
+  {
+    label: "PPID",
+    description: "Profil, struktur, visi misi, dan tugas layanan informasi publik.",
+    href: "/ppid",
+  },
+];
+
 export const navigationData = [
   {
     label: "Program Madrasah",
@@ -86,6 +104,11 @@ export const navigationData = [
     items: services,
   },
   {
+    label: "ZI - PPID",
+    description: "Zona Integritas dan layanan informasi publik madrasah.",
+    items: ziPpid,
+  },
+  {
     label: "Organisasi",
     description: "MPK dan OSIS, Ekstrakurikuler.",
     items: organizations,
@@ -100,4 +123,5 @@ export const footerLinks = [
   { label: "PPDB", href: "/ppdb" },
   { label: "Fasilitas", href: "/facilities" },
   { label: "Research", href: "/research" },
+  { label: "ZI - PPID", href: "/zona-integritas" },
 ];

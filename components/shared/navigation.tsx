@@ -253,7 +253,7 @@ export function Navigation() {
                             <div className="font-semibold text-base">
                               {section.label}
                             </div>
-                            <div className="text-xs text-transbg-transparent-foreground line-clamp-1">
+                            <div className="line-clamp-1 text-xs text-zinc-500 dark:text-zinc-400">
                               {section.description}
                             </div>
                           </div>
@@ -287,7 +287,7 @@ export function Navigation() {
                                       {item.label}
                                     </div>
                                     {item.description && (
-                                      <div className="text-xs text-transbg-transparent-foreground line-clamp-2 mt-0.5">
+                                      <div className="mt-0.5 line-clamp-2 text-xs text-zinc-500 dark:text-zinc-400">
                                         {item.description}
                                       </div>
                                     )}
@@ -343,7 +343,7 @@ function ListItem({
             <SquareArrowOutUpRight className="size-4"/>
               <div className="leading-none font-medium group-hover:text-emerald-400">{title}</div>
             </span>
-            <div className="line-clamp-2 text-transbg-transparent-foreground group-hover:text-emerald-400 opacity-50 text-xs">
+            <div className="line-clamp-2 text-xs text-zinc-500 opacity-70 group-hover:text-emerald-400 dark:text-zinc-400">
               {children}
             </div>
           </div>

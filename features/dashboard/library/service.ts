@@ -56,7 +56,7 @@ export async function createLibraryService(
       body: JSON.stringify(data),
     });
 
-    revalidateTag("library");
+    revalidateTag("library", "max");
     revalidatePath("/dashboard/library/table");
 
     return response;
@@ -79,7 +79,7 @@ export async function updateLibraryService(
       body: JSON.stringify(data),
     });
 
-    revalidateTag("library");
+    revalidateTag("library", "max");
     revalidatePath("/dashboard/library/table");
 
     return response;
@@ -97,7 +97,7 @@ export async function deleteLibraryService(
       method: "DELETE",
     });
 
-    revalidateTag("library");
+    revalidateTag("library", "max");
     revalidatePath("/dashboard/library/table");
 
     return response;

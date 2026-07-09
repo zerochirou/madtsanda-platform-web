@@ -32,21 +32,21 @@ export function ProgramHero({ data }: { data: ProgramMadrasahPageData }) {
     toneBySlug[data.slug as keyof typeof toneBySlug] ?? toneBySlug.kurikulum;
 
   return (
-    <section className="relative overflow-hidden bg-zinc-950 text-white">
+    <section className="relative overflow-hidden bg-white pt-20 text-zinc-950 dark:bg-zinc-950 dark:text-white md:pt-0">
       <div className="absolute inset-0">
         <Image
           src={data.imageSrc}
           alt={data.title}
           fill
           sizes="100vw"
-          className="object-cover opacity-35"
+          className="object-cover opacity-20 dark:opacity-35"
           priority
           fetchPriority="high"
         />
-        <div className="absolute inset-0 bg-linear-to-r from-zinc-950 via-zinc-950/88 to-zinc-950/35" />
+        <div className="absolute inset-0 bg-linear-to-r from-white via-white/90 to-white/65 dark:from-zinc-950 dark:via-zinc-950/88 dark:to-zinc-950/35" />
       </div>
 
-      <div className="relative mx-auto grid min-h-[76vh] max-w-7xl gap-10 px-4 py-28 md:px-6 lg:grid-cols-[1.05fr_0.95fr] lg:items-end">
+      <div className="relative mx-auto grid min-h-[calc(76vh-5rem)] max-w-7xl gap-10 px-4 py-20 md:min-h-[76vh] md:px-6 md:py-28 lg:grid-cols-[1.05fr_0.95fr] lg:items-end">
         <FadeUp>
           <div className="max-w-3xl">
             <span
@@ -54,10 +54,10 @@ export function ProgramHero({ data }: { data: ProgramMadrasahPageData }) {
             >
               {data.subtitle}
             </span>
-            <h1 className="mt-6 text-5xl font-black leading-[0.94] tracking-normal md:text-7xl">
+            <h1 className="mt-6 text-4xl font-black leading-[0.98] tracking-normal sm:text-5xl md:text-7xl">
               {data.title}
             </h1>
-            <p className="mt-6 max-w-2xl text-base leading-8 text-zinc-200 md:text-lg">
+            <p className="mt-6 max-w-2xl text-base leading-8 text-zinc-700 dark:text-zinc-200 md:text-lg">
               {data.description}
             </p>
           </div>
@@ -83,12 +83,12 @@ export function ProgramHero({ data }: { data: ProgramMadrasahPageData }) {
               {data.metrics.slice(0, 3).map((metric) => (
                 <div
                   key={metric.label}
-                  className="rounded-lg border border-white/10 bg-white/10 p-4 backdrop-blur-md"
+                  className="min-h-24 rounded-lg border border-zinc-200/80 bg-white/80 p-4 shadow-sm backdrop-blur-md dark:border-white/10 dark:bg-white/10 dark:shadow-none"
                 >
-                  <div className={`text-2xl font-black ${tone.accent}`}>
+                  <div className={`break-words text-2xl font-black ${tone.accent}`}>
                     {metric.value}
                   </div>
-                  <div className="mt-1 text-xs font-semibold text-zinc-300">
+                  <div className="mt-1 text-xs font-semibold text-zinc-700 dark:text-zinc-300">
                     {metric.label}
                   </div>
                 </div>

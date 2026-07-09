@@ -39,7 +39,7 @@ export async function createResearchService(
       body: formData,
     });
 
-    revalidateTag("research");
+    revalidateTag("research", "max");
     revalidatePath("/dashboard/research/table");
 
     return response;
@@ -86,7 +86,7 @@ export async function updateResearchStatus(
       body: JSON.stringify(data),
     });
 
-    revalidateTag("research");
+    revalidateTag("research", "max");
     revalidatePath("/dashboard/research/table");
 
     return response;
@@ -138,7 +138,7 @@ export async function updateResearchService(
       body: formData,
     });
 
-    revalidateTag("research");
+    revalidateTag("research", "max");
     revalidatePath("/dashboard/research/table");
 
     return response;
@@ -156,7 +156,7 @@ export async function deleteResearchService(
       method: "DELETE",
     });
 
-    revalidateTag("research");
+    revalidateTag("research", "max");
     revalidatePath("/dashboard/research/table");
 
     return response;
