@@ -79,7 +79,9 @@ export function NewsEditor({
     });
   }
 
-  return (
+  console.log(category)
+
+    return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <FieldSet>
         <FieldLegend className="text-4xl">Buat Draft Berita</FieldLegend>
