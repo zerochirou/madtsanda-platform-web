@@ -6,6 +6,7 @@ import { motion } from "motion/react";
 import { Play } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { WordRotate } from "@/components/ui/word-rotate";
+import { EntranceLoader } from "@/components/animation/entrance-loader";
 
 const heroImages = [
   "paseban-1.png",
@@ -24,8 +25,11 @@ export const Hero = () => {
 
     return () => clearInterval(interval);
   }, []);
-  return (
-    <section className="relative flex min-h-[calc(100vh-var(--site-banner-offset,0px))] items-center justify-center overflow-hidden">
+
+  
+    return (
+      <section className="relative flex min-h-[calc(100vh-var(--site-banner-offset,0px))] items-center justify-center overflow-hidden">
+        <EntranceLoader/>
       <div className="absolute inset-0 z-0">
         <motion.div
           key={heroImages[index]} // Sangat penting

@@ -83,12 +83,6 @@ export async function getNewsByCategoryIdService(
     try {
         const response = await request<NewsResponseDTO>(
             `/news/${id}/category`,
-            {
-                next: {
-                    revalidate: 3600,
-                    tags: ["news"],
-                },
-            },
         );
 
         return response;

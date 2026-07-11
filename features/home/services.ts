@@ -10,12 +10,7 @@ export async function getNewsWithLimitService(
   limit: number,
 ): Promise<NewsResponseDTO | null> {
   try {
-    const response = await request<NewsResponseDTO>(`/news/limit/?limit=${limit}`, {
-      next: {
-        revalidate: 3600,
-        tags: ["news"],
-      },
-    });
+    const response = await request<NewsResponseDTO>(`/news/limit/?limit=${limit}`);
 
     return response;
   } catch (error: unknown) {
@@ -29,14 +24,7 @@ export async function getLatestResearchService(
 ): Promise<ResearchPaginateDTO | null> {
   try {
     const response = await request<ResearchPaginateDTO>(
-      `/research/paginate/?page=${page}`,
-      {
-        next: {
-          revalidate: 3600,
-          tags: ["research"],
-        },
-      },
-    );
+      `/research/paginate/?page=${page}`);
 
     return response;
   } catch (error: unknown) {

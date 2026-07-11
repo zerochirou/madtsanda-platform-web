@@ -66,10 +66,9 @@ export function NewsList({
             >
               <div className="relative aspect-[16/10] w-full overflow-hidden bg-zinc-100 dark:bg-zinc-800">
                 <Image
-                  src={getNewsImage(news.title, news.imageUrl)}
+                  src={`${process.env.NEXT_PUBLIC_S3}/${news.imageKey}`}
                   alt={news.title}
                   fill
-                  unoptimized
                   className="object-cover transition duration-500 group-hover:scale-105"
                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                 />
