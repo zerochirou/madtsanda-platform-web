@@ -34,6 +34,7 @@ import { Switch } from "@/components/ui/switch";
 import { Button } from "@/components/ui/button";
 import { Spinner } from "@/components/ui/spinner";
 import { DropzoneInput } from "@/components/shared/file-upload";
+import { NEWS_IMAGE_MAX_SIZE_MB } from "@/lib/upload";
 
 export function NewsEditor({
   user,
@@ -157,6 +158,7 @@ export function NewsEditor({
                   isInvalid={!!fieldState.error}
                   accept="image/*"
                   multiple={false}
+                  maxSizeMB={NEWS_IMAGE_MAX_SIZE_MB}
                 />
                 {fieldState.error && <FieldError errors={[fieldState.error]} />}
               </Field>

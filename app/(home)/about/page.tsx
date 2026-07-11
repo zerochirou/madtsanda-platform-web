@@ -8,10 +8,36 @@ import {
 import { TeacherDirectory } from "@/features/home/components/teacher-directory";
 import { Button } from "@/components/ui";
 import Link from "next/link";
+import {
+  breadcrumbJsonLd,
+  buildMetadata,
+  schoolJsonLd,
+  serializeJsonLd,
+} from "@/lib/seo";
+
+export const metadata = buildMetadata({
+  title: "Profil MTsN 2 Kota Kediri | Sejarah, Visi, Misi, dan Guru",
+  description:
+    "Kenali profil MTsN 2 Kota Kediri, sejarah madrasah, visi misi ISTIKOMAH, budaya sekolah, dan tenaga pendidik Madtsanda.",
+  path: "/about",
+  keywords: ["profil MTsN 2 Kota Kediri", "visi misi Madtsanda", "sejarah MTsN 2 Kota Kediri"],
+});
 
 export default function About() {
   return (
     <div className="min-h-screen bg-zinc-50 dark:bg-zinc-950 transition-colors duration-300">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: serializeJsonLd([
+            schoolJsonLd(),
+            breadcrumbJsonLd([
+              { name: "Beranda", path: "/" },
+              { name: "Profil", path: "/about" },
+            ]),
+          ]),
+        }}
+      />
       <PageHero
         title="Profil Madtsanda"
         subtitle="Sejarah Kami"
@@ -19,10 +45,10 @@ export default function About() {
         imageSrc="/images/gedung-madtsanda.jpg"
       />
 
-      <section className="py-20 lg:py-32 max-w-7xl mx-auto px-4 md:px-6">
-        <div className="grid md:grid-cols-2 gap-16 items-center mb-32">
+      <section className="mx-auto max-w-7xl px-4 py-16 md:px-6 lg:py-32">
+        <div className="mb-20 grid gap-10 md:grid-cols-2 md:items-center lg:mb-32 lg:gap-16">
           <FadeRight>
-            <div className="relative h-100 lg:h-1 rounded-3xl overflow-hidden shadow-2xl border border-zinc-200 dark:border-zinc-800">
+            <div className="relative h-72 overflow-hidden rounded-3xl border border-zinc-200 shadow-2xl dark:border-zinc-800 sm:h-96 lg:h-[28rem]">
               <Image
                 src="/images/kegiatan-sekolah.jpg"
                 alt="Students collaborating"
@@ -33,21 +59,21 @@ export default function About() {
             </div>
           </FadeRight>
           <FadeLeft>
-            <h2 className="text-3xl md:text-5xl font-bold text-zinc-900 dark:text-white mb-6">
+            <h2 className="mb-6 text-3xl font-bold text-zinc-900 dark:text-white md:text-5xl">
               Visi & Misi
             </h2>
             <div className="w-16 h-1.5 bg-emerald-500 rounded-full mb-8"></div>
-            <p className="text-xl font-bold text-emerald-600 dark:text-emerald-400 mb-6 italic">
+            <p className="mb-6 text-lg font-bold text-emerald-600 dark:text-emerald-400 sm:text-xl">
               &ldquo;Unggul dalam Prestasi dan ISTIKOMAH (Islami, Terampil,
               Inovatif, Kompetitif, Berakhlakul Karimah) serta Peduli
               Lingkungan.&ldquo;
             </p>
-            <p className="text-lg text-zinc-600 dark:text-zinc-400 mb-6 leading-relaxed">
+            <p className="mb-6 text-base leading-relaxed text-zinc-600 dark:text-zinc-400 sm:text-lg">
               Menciptakan madrasah yang berbasis nilai-nilai agama, empati, dan
               intelektualitas sehingga menumbuhkan penghayatan dan pengamalan
               ajaran Islam yang bernuansa kebangsaan dan berakhlakul karimah.
             </p>
-            <p className="text-lg text-zinc-600 dark:text-zinc-400 mb-6 leading-relaxed">
+            <p className="mb-6 text-base leading-relaxed text-zinc-600 dark:text-zinc-400 sm:text-lg">
               Kami juga mendorong penguasaan keterampilan dan pengembangan
               teknologi untuk menghadapi tantangan kehidupan di masa mendatang,
               serta menciptakan lingkungan yang sehat dan asri.
@@ -56,11 +82,17 @@ export default function About() {
         </div>
 
         <Link href={"/sambutan"}>
-          <Button variant={'outline'} className="bg-emerald-400 text-white" size={'lg'}>Sambutan Kepala Madrasah</Button>
+          <Button
+            variant="outline"
+            className="bg-emerald-400 text-white"
+            size="lg"
+          >
+            Sambutan Kepala Madrasah
+          </Button>
         </Link>
 
         <FadeUp>
-          <div className="max-w-4xl mx-auto mb-32">
+          <div className="mx-auto mb-20 max-w-4xl lg:mb-32">
             <h2 className="text-3xl md:text-5xl font-bold text-zinc-900 dark:text-white mb-6 text-center">
               Sejarah Madrasah
             </h2>

@@ -6,7 +6,7 @@ import { ComponentProps } from "react";
 export function LoginLayout({ children }: ComponentProps<"div">) {
   return (
     <div
-      className="relative min-h-screen flex flex-col overflow-hidden bg-gradient-to-br from-emerald-50 via-white to-teal-50 dark:from-zinc-950 dark:via-zinc-900 dark:to-emerald-950/30 selection:bg-emerald-500/30 selection:text-emerald-900 dark:selection:text-emerald-100"
+      className="relative flex min-h-screen flex-col overflow-hidden bg-linear-to-br from-emerald-50 via-white to-teal-50 selection:bg-emerald-500/30 selection:text-emerald-900 dark:from-zinc-950 dark:via-zinc-900 dark:to-emerald-950/30 dark:selection:text-emerald-100"
     >
       <div
         className="pointer-events-none absolute inset-0 overflow-hidden"
@@ -65,13 +65,13 @@ export function LoginLayout({ children }: ComponentProps<"div">) {
         </svg>
       </div>
 
-      <main className="relative z-10 flex flex-1 items-center justify-center px-4 py-12">
+      <main className="relative z-10 flex flex-1 items-center justify-center px-4 py-10 sm:py-12">
         <div className="w-full max-w-md">
           <motion.div
             initial={{ opacity: 1, y: 1000, scale: 1 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             transition={{ duration: 1, delay: 0.2 , ease: [0.16, 1, 0.3, 1] }}
-            className="relative overflow-hidden rounded-2xl border border-zinc-200 bg-white/80 p-8 shadow-2xl shadow-emerald-900/10 backdrop-blur-xl dark:border-white/10 dark:bg-zinc-900/80 dark:shadow-emerald-900/20"
+            className="relative overflow-hidden rounded-2xl border border-zinc-200 bg-white/80 p-5 shadow-2xl shadow-emerald-900/10 backdrop-blur-xl dark:border-white/10 dark:bg-zinc-900/80 dark:shadow-emerald-900/20 sm:p-8"
           >
             <div className="mb-8 space-y-1">
               <motion.div
@@ -110,8 +110,8 @@ export function LoginLayout({ children }: ComponentProps<"div">) {
 
           <motion.p
             initial={{ opacity: 1,}}
-            animate={{ opacity: 1, x: [-1000, 100, 0 ] }}
-            transition={{ delay: 3.5, duration: 1}}
+            animate={{ opacity: 1, y: [18, -2, 0] }}
+            transition={{ delay: 3.5, duration: 0.7 }}
             className="mt-6 text-center text-[11px] text-zinc-400"
           >
             &copy; {new Date().getFullYear()} Madtsanda Connect. Unit

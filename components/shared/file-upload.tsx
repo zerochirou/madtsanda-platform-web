@@ -3,22 +3,27 @@
 import React, { useRef, useState } from "react";
 import Image from "next/image";
 import { Upload, Trash2, Image as ImageIcon } from "lucide-react";
+import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-
-interface DropzoneInputProps extends Omit<
-  React.InputHTMLAttributes<HTMLInputElement>,
-  "value" | "onChange"
-> {
-  onChange: (files: File[] | null) => void;
-  isInvalid?: boolean;
-  initialPreview?: string; // Prop baru untuk gambar dari database
-}
+import { NEWS_IMAGE_MAX_SIZE_MB } from "@/lib/upload";
+import type { DropzoneInputProps } from "@/types/components";
 
 export const DropzoneInput = React.forwardRef<
   HTMLInputElement,
   DropzoneInputProps
->(({ onChange, isInvalid, initialPreview, className, ...props }, ref) => {
+>(
+  (
+    {
+      onChange,
+      isInvalid,
+      initialPreview,
+      className,
+      maxSizeMB = NEWS_IMAGE_MAX_SIZE_MB,
+      ...props
+    },
+    ref,
+  ) => {
   const internalInputRef = useRef<HTMLInputElement>(null);
   const [uploadedFiles, setUploadedFiles] = useState<File[]>([]);
   const [fileProgresses, setFileProgresses] = useState<Record<string, number>>({});
@@ -36,6 +41,19 @@ export const DropzoneInput = React.forwardRef<
     if (!files || files.length === 0) return;
 
     const singleFile = files[0];
+    const maxSizeBytes = maxSizeMB * 1024 * 1024;
+
+    if (singleFile.size > maxSizeBytes) {
+      toast.error(`Ukuran gambar maksimal ${maxSizeMB}MB.`);
+      setUploadedFiles([]);
+      setFileProgresses({});
+      onChange(null);
+      if (internalInputRef.current) {
+        internalInputRef.current.value = "";
+      }
+      return;
+    }
+
     const newFiles = [singleFile];
 
     setUploadedFiles(newFiles);
@@ -89,6 +107,9 @@ export const DropzoneInput = React.forwardRef<
         <p className="text-sm font-medium">Upload image</p>
         <p className="text-sm text-muted-foreground mt-1">
           Drag and drop or <span className="text-primary font-medium">click to browse</span>
+        </p>
+        <p className="mt-2 text-xs text-muted-foreground">
+          Maks. {maxSizeMB}MB
         </p>
         <input {...props} type="file" ref={setRefs} className="hidden" onChange={(e) => handleFileSelect(e.target.files)} />
       </div>
@@ -168,6 +189,7 @@ export const DropzoneInput = React.forwardRef<
       </div>
     </div>
   );
-});
+  },
+);
 
 DropzoneInput.displayName = "DropzoneInput";

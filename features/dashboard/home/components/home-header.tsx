@@ -3,16 +3,17 @@ import { ArrowRight } from "lucide-react";
 
 export function HomeHeader() {
   return (
-    <div className="bg-gradient-to-r from-emerald-600 to-emerald-500 px-8 py-12 text-white rounded-3xl m-6">
-      <div className="max-w-6xl mx-auto flex items-center justify-between">
-        <div className="flex-1">
-          <span className="text-xl font-semibold tracking-wide">
+    <div className="m-3 rounded-2xl bg-linear-to-r from-emerald-600 to-emerald-500 px-5 py-8 text-white sm:m-6 sm:rounded-3xl sm:px-8 sm:py-12">
+      <div className="mx-auto flex max-w-6xl items-center justify-between gap-6">
+        <div className="min-w-0 flex-1">
+          <span className="text-base font-semibold tracking-wide sm:text-xl">
             Madtsanda.<span className="text-emerald-300">Connect</span>
           </span>
-          <h1 className="text-4xl font-bold mt-3 mb-6 max-w-2xl">
-            Tingkatkan Pengalaman Pembelajaran Anda dengan Madtsanda.<span className="text-emerald-300">Connect</span>
+          <h1 className="mt-3 mb-6 max-w-2xl text-2xl font-bold leading-tight sm:text-4xl">
+            Tingkatkan Pengalaman Pembelajaran Anda dengan Madtsanda.
+            <span className="text-emerald-300">Connect</span>
           </h1>
-          <Button className="bg-black hover:bg-gray-800 text-white rounded-full px-8 py-6 text-base font-semibold flex items-center gap-2">
+          <Button className="flex items-center gap-2 rounded-full bg-black px-6 py-5 text-sm font-semibold text-white hover:bg-gray-800 sm:px-8 sm:py-6 sm:text-base">
             Pahami
             <ArrowRight className="w-4 h-4" />
           </Button>
