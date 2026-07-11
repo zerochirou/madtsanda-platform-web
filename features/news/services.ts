@@ -69,7 +69,6 @@ export async function getAllNewsCategoryService(): Promise<
                 tags: ["news-categories"],
             },
         });
-        console.log(response);
         return response;
     } catch (error: unknown) {
         logger.error(errorFormat(error));

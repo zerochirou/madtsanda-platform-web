@@ -62,16 +62,21 @@ function EditorInstance({
   });
 
   const themeMapping = {
-    "system": "dark",
-    "light": "light",
-    "dark": "dark",
-  };
+      system: "dark",
+      light: "light",
+      dark: "dark",
+    } as const;
+  
+    // Use a fallback key if theme is undefined or not in the mapping
+    const selectedTheme = theme && theme in themeMapping 
+      ? themeMapping[theme as keyof typeof themeMapping] 
+      : "light";
 
   return (
     <div className="min-h-[150px]">
       <BlockNoteView
         editor={editor}
-        theme={themeMapping[theme]}
+        theme={selectedTheme}
         onChange={() => {
           async function save() {
             const markdown = editor.blocksToMarkdownLossy(editor.document);

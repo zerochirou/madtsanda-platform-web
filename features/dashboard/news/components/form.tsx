@@ -80,7 +80,6 @@ export function NewsEditor({
     });
   }
 
-  console.log(category)
 
     return (
     <form onSubmit={handleSubmit(onSubmit)}>
