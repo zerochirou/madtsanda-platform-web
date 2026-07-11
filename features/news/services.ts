@@ -4,104 +4,96 @@ import { request } from "@/lib/request";
 import logger from "@/lib/logger";
 import { errorFormat } from "@/lib/error";
 import {
-  NewsItemDTO,
-  NewsPaginateDTO,
-  NewsResponseDTO,
+    NewsItemDTO,
+    NewsPaginateDTO,
+    NewsResponseDTO,
 } from "@/types/dto/news";
 import { NewsCategoryDTO } from "@/types/dto/news-category";
 
 export async function getNewsWithLimitService(
-  limit: number,
+    limit: number,
 ): Promise<NewsResponseDTO | null> {
-  try {
-    const response = await request<NewsResponseDTO>(
-      `/news/limit/?limit=${limit}`,
-      {
-        next: {
-          revalidate: 3600,
-          tags: ["news"],
-        },
-      },
-    );
+    try {
+        const response = await request<NewsResponseDTO>(
+            `/news/limit/?limit=${limit}`,
+        );
 
-    return response;
-  } catch (error: unknown) {
-    logger.error(errorFormat(error));
-    return null;
-  }
+        return response;
+    } catch (error: unknown) {
+        logger.error(errorFormat(error));
+        return null;
+    }
 }
 
 export async function getNewsWithPaginate(
-  page: number,
+    page: number,
 ): Promise<NewsPaginateDTO | null> {
-  try {
-    const response = await request<NewsPaginateDTO>(
-      `/news/paginate/?page=${page}`,
-      {
-        next: {
-          revalidate: 3600,
-          tags: ["news"],
-        },
-      },
-    );
+    try {
+        const response = await request<NewsPaginateDTO>(
+            `/news/paginate/?page=${page}`,
+        );
 
-    return response;
-  } catch (error: unknown) {
-    logger.error(errorFormat(error));
-    return null;
-  }
+        return response;
+    } catch (error: unknown) {
+        logger.error(errorFormat(error));
+        return null;
+    }
 }
 
 export async function getNewsByIdService(
-  id: string,
+    id: string,
 ): Promise<NewsItemDTO | null> {
-  try {
-    const response = await request<NewsItemDTO>(`/news/${id}`, {
-      next: {
-        revalidate: 3600,
-        tags: ["news"],
-      },
-    });
+    try {
+        const response = await request<NewsItemDTO>(`/news/${id}`, {
+            next: {
+                revalidate: 3600,
+                tags: ["news"],
+            },
+        });
 
-    return response;
-  } catch (error: unknown) {
-    logger.error(errorFormat(error));
-    return null;
-  }
+        return response;
+    } catch (error: unknown) {
+        logger.error(errorFormat(error));
+        return null;
+    }
 }
 
 export async function getAllNewsCategoryService(): Promise<
-  NewsCategoryDTO[] | null
+    NewsCategoryDTO[] | null
 > {
-  try {
-    const response = await request<NewsCategoryDTO[]>(`/news/category`, {
-      next: {
-        revalidate: 3600,
-        tags: ["news-categories"],
-      },
-    });
-
-    return response;
-  } catch (error: unknown) {
-    logger.error(errorFormat(error));
-    return null;
-  }
+    try {
+        const response = await request<NewsCategoryDTO[]>(`/news/category`, {
+            method: "GET",
+            next: {
+                revalidate: 3600,
+                tags: ["news-categories"],
+            },
+        });
+        console.log(response);
+        return response;
+    } catch (error: unknown) {
+        logger.error(errorFormat(error));
+        return null;
+    }
 }
 
 export async function getNewsByCategoryIdService(
-  id: string,
+    id: string,
 ): Promise<NewsResponseDTO | null> {
-  try {
-    const response = await request<NewsResponseDTO>(`/news/${id}/category`, {
-      next: {
-        revalidate: 3600,
-        tags: ["news"],
-      },
-    });
+    try {
+        const response = await request<NewsResponseDTO>(
+            `/news/${id}/category`,
+            {
+                next: {
+                    revalidate: 3600,
+                    tags: ["news"],
+                },
+            },
+        );
 
-    return response;
-  } catch (error: unknown) {
-    logger.error(errorFormat(error));
-    return null;
-  }
+        return response;
+    } catch (error: unknown) {
+        logger.error(errorFormat(error));
+        return null;
+    }
 }
