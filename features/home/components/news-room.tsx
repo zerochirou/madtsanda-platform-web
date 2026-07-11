@@ -20,7 +20,6 @@ const NewsCard = ({ item, index }: { item: NewsItem; index: number }) => {
           alt={item.title}
           fill
           placeholder="empty"
-          unoptimized
           className="object-cover transition duration-700 group-hover:scale-105"
           sizes={index === 0 ? "(max-width: 1024px) 100vw, 44vw" : "(max-width: 768px) 100vw, 33vw"}
           priority={index === 0}

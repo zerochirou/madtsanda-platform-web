@@ -98,7 +98,6 @@ export function FeaturedNews({
                 src={`${process.env.NEXT_PUBLIC_S3}/${topNews.imageKey}`}
                 alt={topNews.title}
                 fill
-                unoptimized
                 priority
                 fetchPriority="high"
                 className="object-cover transition duration-700 group-hover:scale-105"
