@@ -16,7 +16,7 @@ const NewsCard = ({ item, index }: { item: NewsItem; index: number }) => {
     >
       <div className="relative min-h-64 overflow-hidden bg-zinc-100 dark:bg-zinc-800">
         <Image
-          src={getNewsImage(item.title, item.imageUrl)}
+          src={`${process.env.NEXT_PUBLIC_S3}/${item.imageKey}`}
           alt={item.title}
           fill
           placeholder="empty"
