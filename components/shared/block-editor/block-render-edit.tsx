@@ -61,11 +61,17 @@ function EditorInstance({
     initialContent: initialBlocks,
   });
 
+  const themeMapping = {
+    "system": "dark",
+    "light": "light",
+    "dark": "dark",
+  };
+
   return (
     <div className="min-h-[150px]">
       <BlockNoteView
         editor={editor}
-        theme={theme === "dark" ? "dark" : "light"}
+        theme={themeMapping[theme]}
         onChange={() => {
           async function save() {
             const markdown = editor.blocksToMarkdownLossy(editor.document);

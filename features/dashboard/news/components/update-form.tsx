@@ -229,15 +229,15 @@ export function UpdateForm({
                 </FieldLabel>
 
                 <DropzoneInput
-                  initialPreview={news.imageUrl as string}
+                  initialPreview={news.imageKey as string}
                   name={field.name}
                   onBlur={field.onBlur}
                   ref={field.ref}
                   onChange={(files) => field.onChange(files)}
                   isInvalid={!!fieldState.error}
                   accept="image/*"
-                  multiple={false}
                   maxSizeMB={NEWS_IMAGE_MAX_SIZE_MB}
+                  multiple={false}
                 />
                 {fieldState.error && <FieldError errors={[fieldState.error]} />}
               </Field>

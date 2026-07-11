@@ -168,11 +168,10 @@ export const DropzoneInput = React.forwardRef<
             <div className="border border-border rounded-lg p-2 flex items-center gap-3 bg-muted/20">
               <div className="w-14 h-14 bg-muted rounded-sm overflow-hidden shrink-0 border">
                 <Image
-                  src={initialPreview}
+                  src={`${process.env.NEXT_PUBLIC_S3}/${initialPreview}`}
                   alt="Current"
                   width={56}
                   height={56}
-                  unoptimized
                   className="w-full h-full object-cover"
                 />
               </div>

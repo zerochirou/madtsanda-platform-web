@@ -36,14 +36,14 @@ export default async function Page({
           <h1 className="text-4xl font-bold mt-4">Edit Berita</h1>
         </CardHeader>
         <CardContent>
-          <Suspense fallback={<UpdateFormSkeleton />}>
+          {/*<Suspense fallback={<UpdateFormSkeleton />}>*/}
             <UpdateForm
               news={news.data}
               category={category}
               user={user?.data}
               key={id}
             />
-          </Suspense>
+          {/*</Suspense>*/}
         </CardContent>
       </Card>
     </div>
