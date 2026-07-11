@@ -152,7 +152,8 @@ export default async function NewsDetailPage({
           <BlockRenderDynamic
             md={news.data.content}
             name={news.data.user.username}
-          />
+                  />
+                  {`${process.env.NEXT_PUBLIC_S3}/${news.data.imageKey}`}
         </div>
 
         <footer className="mt-16 border-t border-zinc-200 pt-8 dark:border-zinc-800">

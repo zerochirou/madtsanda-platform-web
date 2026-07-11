@@ -43,7 +43,7 @@ export const Hero = () => {
             alt="Gedung MTsN 2 Kota Kediri"
             fill
             className="object-cover scale-105 animate-slow-zoom"
-            priority={index === 0}
+            // priority={index === 0}
           />
         </motion.div>
         <div className="absolute inset-0 bg-black/30 dark:bg-black/30"></div>
