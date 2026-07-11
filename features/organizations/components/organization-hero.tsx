@@ -33,7 +33,7 @@ export function OrganizationHero({
   const style = toneClass[tone];
 
   return (
-    <section className="relative overflow-hidden bg-white pt-20 text-zinc-950 dark:bg-zinc-950 dark:text-white md:pt-0">
+    <section className="relative overflow-hidden bg-white pt-28 text-zinc-950 dark:bg-zinc-950 dark:text-white lg:pt-0">
       <div className="absolute inset-0">
         <Image
           src={imageSrc}
@@ -47,7 +47,7 @@ export function OrganizationHero({
         <div className="absolute inset-0 bg-linear-to-r from-white via-white/90 to-white/65 dark:from-zinc-950 dark:via-zinc-950/85 dark:to-zinc-950/45" />
       </div>
 
-      <div className="relative mx-auto grid min-h-[calc(72vh-5rem)] max-w-7xl gap-10 px-4 py-20 md:min-h-[72vh] md:px-6 md:py-28 lg:grid-cols-[1fr_0.8fr] lg:items-end">
+      <div className="relative mx-auto grid min-h-[calc(72vh-5rem)] max-w-7xl gap-10 px-4 py-16 md:min-h-[72vh] md:px-6 md:py-24 lg:grid-cols-[1fr_0.8fr] lg:items-end lg:py-28">
         <FadeUp>
           <div className="max-w-3xl">
             <span
@@ -55,7 +55,7 @@ export function OrganizationHero({
             >
               {eyebrow}
             </span>
-            <h1 className="mt-6 text-4xl font-black leading-[0.98] tracking-normal sm:text-5xl md:text-7xl">
+            <h1 className="mt-6 text-4xl font-black leading-[1.02] tracking-normal sm:text-5xl md:text-6xl lg:text-7xl">
               {title}
             </h1>
             <p className="mt-6 max-w-2xl text-base leading-8 text-zinc-700 dark:text-zinc-200 md:text-lg">

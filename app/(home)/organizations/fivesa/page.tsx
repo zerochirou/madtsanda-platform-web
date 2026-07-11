@@ -5,6 +5,15 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui";
 import { AtSign, User } from "lucide-react";
 import { organizationsData } from "@/components/data/organizations";
 import { OrganizationHero } from "@/features/organizations/components";
+import { buildMetadata } from "@/lib/seo";
+
+export const metadata = buildMetadata({
+  title: "Fivesa MTsN 2 Kota Kediri | Komunitas dan Organisasi Kesiswaan",
+  description:
+    "Fivesa MTsN 2 Kota Kediri menaungi komunitas siswa untuk kepedulian sosial, jurnalistik, kedisiplinan, dan pengembangan kreativitas.",
+  path: "/organizations/fivesa",
+  keywords: ["Fivesa MTsN 2 Kota Kediri", "organisasi Madtsanda", "komunitas siswa Madtsanda"],
+});
 
 export default function FivesaPage() {
   // Filter out MPK and OSIS, and display Fivesa organizations

@@ -12,6 +12,15 @@ import {
 } from "lucide-react";
 import { organizationsData } from "@/components/data/organizations";
 import { OrganizationHero } from "@/features/organizations/components";
+import { buildMetadata } from "@/lib/seo";
+
+export const metadata = buildMetadata({
+  title: "MPK dan OSIS MTsN 2 Kota Kediri | Organisasi Siswa Madtsanda",
+  description:
+    "Profil MPK dan OSIS MTsN 2 Kota Kediri sebagai organisasi utama kesiswaan, aspirasi kelas, kepemimpinan, dan pelaksana program siswa.",
+  path: "/organizations/mpk-osis",
+  keywords: ["OSIS MTsN 2 Kota Kediri", "MPK Madtsanda", "organisasi siswa MTsN 2 Kediri"],
+});
 
 export default function MpkOsisPage() {
   const osis = organizationsData.find((org) => org.name === "OSIS");

@@ -6,8 +6,43 @@ import { getNewsByIdService } from "@/features/news/services";
 import { formatReadableDate } from "@/lib/date";
 import { BlockRenderDynamic } from "@/components/shared/block-render";
 import { Share } from "@/features/news/components/share";
+import {
+  breadcrumbJsonLd,
+  buildMetadata,
+  newsArticleJsonLd,
+  serializeJsonLd,
+} from "@/lib/seo";
 
 const newsImageFallback = "/images/kegiatan-sekolah.jpg";
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ id: string }>;
+}) {
+  const { id } = await params;
+  const news = await getNewsByIdService(id);
+
+  if (!news) {
+    return buildMetadata({
+      title: "Berita tidak ditemukan",
+      description: "Berita MTsN 2 Kota Kediri tidak ditemukan.",
+      path: `/news/${id}`,
+    });
+  }
+
+  return buildMetadata({
+    title: news.data.title,
+    description: news.data.content.replace(/[#*_>`]/g, "").slice(0, 160),
+    path: `/news/${news.data.id}`,
+    image: news.data.imageUrl ?? newsImageFallback,
+    type: "article",
+    publishedTime: news.data.createdAt,
+    modifiedTime: news.data.updatedAt,
+    authors: [news.data.user?.username || "Redaksi Madtsanda"],
+    keywords: [news.data.newsCategory?.category || "Berita Madtsanda"],
+  });
+}
 
 export default async function NewsDetailPage({
   params,
@@ -36,6 +71,19 @@ export default async function NewsDetailPage({
 
   return (
     <div className="min-h-screen bg-zinc-50 pb-20 pt-24 transition-colors duration-300 dark:bg-zinc-950 md:pt-32">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: serializeJsonLd([
+            newsArticleJsonLd(news.data),
+            breadcrumbJsonLd([
+              { name: "Beranda", path: "/" },
+              { name: "Berita", path: "/news" },
+              { name: news.data.title, path: `/news/${news.data.id}` },
+            ]),
+          ]),
+        }}
+      />
       <article className="mx-auto max-w-5xl px-4 md:px-6">
         <div className="mb-8">
           <Link

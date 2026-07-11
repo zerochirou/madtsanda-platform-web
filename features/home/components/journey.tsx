@@ -16,7 +16,7 @@ import { journeySteps } from "@/components/data/journeys";
 
 export const Journey = () => {
   return (
-    <section className="lg:py-32 bg-zinc-950 text-white border-t  border-zinc-900 relative overflow-hidden">
+    <section className="relative overflow-hidden border-t border-zinc-900 bg-zinc-950 py-16 text-white lg:py-32">
       {/* Decorative blobs */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
         {/* DIUBAH:
@@ -28,7 +28,7 @@ export const Journey = () => {
       <div className="relative z-10 container mx-auto px-4">
         <div className="max-w-7xl mx-auto px-4 md:px-6 grid lg:grid-cols-2 gap-16 lg:gap-24 relative z-10">
           <FadeUp>
-            <h2 className="text-4xl lg:text-6xl font-bold leading-tight mb-10 lg:mb-16">
+            <h2 className="mb-10 text-3xl font-bold leading-tight sm:text-4xl lg:mb-16 lg:text-6xl">
               Alur Pendaftaran
               <br />
               PPDB Madtsanda
@@ -47,7 +47,7 @@ export const Journey = () => {
                   className="border-b border-zinc-800 py-3"
                 >
                   <AccordionTrigger className="hover:no-underline text-left data-[state=open]:text-emerald-400 text-lg lg:text-2xl font-bold group">
-                    <div className="flex gap-6 items-center">
+                    <div className="flex min-w-0 items-center gap-4 sm:gap-6">
                       <span className="font-mono text-base text-zinc-600 group-data-[state=open]:text-emerald-500">
                         0{i + 1}
                       </span>
@@ -69,7 +69,7 @@ export const Journey = () => {
           </FadeUp>
 
           <ScaleIn delay={0.2}>
-            <div className="relative h-125 lg:h-175 rounded-3xl overflow-hidden bg-zinc-900 border border-zinc-800 shadow-2xl">
+            <div className="relative h-[32rem] overflow-hidden rounded-3xl border border-zinc-800 bg-zinc-900 shadow-2xl sm:h-125 lg:h-175">
               <Image
                 src="/images/muh-nizar.jpeg"
                 alt="Kepala Madrasah"
@@ -78,8 +78,8 @@ export const Journey = () => {
                 sizes="(max-width: 768px) 100vw, 50vw"
               />
               <div className="absolute inset-0 bg-linear-to-t from-zinc-950 via-zinc-950/40 to-transparent"></div>
-              <div className="absolute bottom-8 left-8 lg:bottom-12 lg:left-12 backdrop-blur-md bg-white/5 border border-white/10 p-6 rounded-2xl max-w-sm">
-                <p className="text-2xl lg:text-3xl font-bold text-white mb-1">
+              <div className="absolute bottom-5 left-5 max-w-[calc(100%-2.5rem)] rounded-2xl border border-white/10 bg-white/5 p-4 backdrop-blur-md sm:bottom-8 sm:left-8 sm:max-w-sm sm:p-6 lg:bottom-12 lg:left-12">
+                <p className="mb-1 text-xl font-bold text-white lg:text-3xl">
                   Drs. Muh Nizar, M.Pd
                 </p>
                 <p className="text-emerald-400 text-base font-medium">

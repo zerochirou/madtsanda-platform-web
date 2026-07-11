@@ -1,5 +1,6 @@
 import { Footer } from "@/components/shared/footer";
 import { Navigation } from "@/components/shared/navigation";
+import { UnderDevelopmentBanner } from "@/components/shared/under-development-banner";
 
 export default function RootLayout({
   children,
@@ -7,7 +8,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <div>
+    <div className="[--site-banner-offset:44px] sm:[--site-banner-offset:48px]">
+      <UnderDevelopmentBanner />
       <Navigation />
       <main className="flex-1">{children}</main>
       <Footer />

@@ -36,7 +36,7 @@ export function Navigation() {
     setExpandedSections([]);
   }, [pathname]);
 
-  const showSolid = scrolled || !isHome
+  const showSolid = scrolled || !isHome;
 
   const toggleSection = (index: number) => {
     setExpandedSections((prev) =>
@@ -47,13 +47,13 @@ export function Navigation() {
   return (
     <>
       <nav
-        className={`fixed top-0 w-full z-50 transition-all duration-500 ${
+        className={`fixed top-[var(--site-banner-offset,0px)] w-full z-50 transition-all duration-500 ${
           showSolid
             ? "bg-white/90 dark:bg-zinc-950/90 backdrop-blur-xl py-3 shadow-sm border-b border-zinc-200/50 dark:border-zinc-800/50"
-            : "bg-transparent py-4 md:py-6"
+            : "bg-transparent py-3 lg:py-6"
         }`} 
       >
-        <div className="max-w-7xl mx-auto px-4 md:px-6 flex justify-between items-center">
+        <div className="max-w-7xl mx-auto px-4 md:px-6 flex justify-between items-center gap-3">
           {/* Logo */}
           <motion.div
             initial={{ x: -100, opacity: 0 }}
@@ -62,24 +62,24 @@ export function Navigation() {
             }}
             animate={{ x: 0, opacity: 1 }}
           >
-            <Link href="/" className="group flex items-center gap-6">
+            <Link href="/" className="group flex min-w-0 items-center gap-2 lg:gap-6">
               <Image
                 suppressHydrationWarning
                 src="/icons/icon.png"
                 alt="Logo MTsN 2 Kota Kediri"
                 width={50}
                 height={50}
-                className="object-contain px-0 w-10 tracking-wide md:w-14"
+                className="w-10 shrink-0 object-contain px-0 tracking-wide lg:w-14"
               />
               <motion.div
-                className={`text-xl flex flex-col md:text-xl tracking-wide -ml-4 font-bold transition-colors duration-300 ${
+                className={`flex min-w-0 flex-col text-xl font-bold tracking-wide transition-colors duration-300 lg:-ml-4 lg:text-xl ${
                   showSolid ? "text-zinc-900 dark:text-white" : "text-white"
                 }`}
                 whileHover={{ scale: 1.02 }}
               >
-                <span className="-mb-1 text-md md:block hidden">MTsN 2</span>
-                <span className="text-sm md:block hidden">Kota Kediri</span>
-                <span className="md:hidden block text-sm tracking-wider">
+                <span className="-mb-1 hidden text-md lg:block">MTsN 2</span>
+                <span className="hidden text-sm lg:block">Kota Kediri</span>
+                <span className="block max-w-[190px] truncate text-sm tracking-wider sm:max-w-[260px] lg:hidden">
                   MTsN 2 Kota Kediri
                 </span>
               </motion.div>
@@ -93,7 +93,7 @@ export function Navigation() {
               ease: "easeInOut",
             }}
             animate={{ y: 0, opacity: 1 }}
-            className={`hidden md:flex items-center space-x-8 text-sm font-medium ${
+            className={`hidden lg:flex items-center space-x-3 xl:space-x-8 text-sm font-medium ${
               showSolid ? "text-zinc-600 dark:text-zinc-400" : "text-white/90"
             }`}
           >
@@ -157,7 +157,7 @@ export function Navigation() {
               ease: "easeInOut",
             }}
             animate={{ x: 0, opacity: 1 }}
-            className="hidden md:flex items-center space-x-4"
+            className="hidden lg:flex items-center space-x-4"
           >
             <ThemeToggle />
             <Link href="/login" prefetch>
@@ -175,7 +175,7 @@ export function Navigation() {
               ease: "easeInOut",
             }}
             animate={{ x: 0, opacity: 1 }}
-            className="md:hidden relative z-50"
+            className="relative z-50 lg:hidden"
             onClick={() => setMobileOpen(!mobileOpen)}
             aria-label="Toggle menu"
           >
@@ -208,7 +208,7 @@ export function Navigation() {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               onClick={() => setMobileOpen(false)}
-              className="fixed inset-0 z-40 bg-black/60 md:hidden"
+              className="fixed inset-x-0 bottom-0 top-[var(--site-banner-offset,0px)] z-40 bg-black/60 lg:hidden"
             />
 
             {/* Slide-in Panel */}
@@ -217,7 +217,7 @@ export function Navigation() {
               animate={{ x: 0 }}
               exit={{ x: "100%" }}
               transition={{ type: "spring", damping: 28, stiffness: 220 }}
-              className="fixed top-0 right-0 bottom-0 z-50 w-full max-w-[320px] bg-white dark:bg-zinc-950 shadow-2xl md:hidden overflow-y-auto"
+              className="fixed bottom-0 right-0 top-[var(--site-banner-offset,0px)] z-50 w-full max-w-[320px] overflow-y-auto bg-white shadow-2xl dark:bg-zinc-950 lg:hidden"
             >
               <div className="pb-6 px-4 pt-4">
                 {/* Header Mobile */}

@@ -1,3 +1,4 @@
+import type { InputHTMLAttributes } from "react";
 import { StudentDTO } from "./dto/student";
 import { TeacherDTO } from "./dto/teacher";
 import { UserDTO } from "./dto/user";
@@ -73,4 +74,12 @@ export interface LibraryListProps {
 
 export interface DynamicPaginationProps {
   totalPages: number;
+}
+
+export interface DropzoneInputProps
+  extends Omit<InputHTMLAttributes<HTMLInputElement>, "value" | "onChange"> {
+  onChange: (files: File[] | null) => void;
+  isInvalid?: boolean;
+  initialPreview?: string;
+  maxSizeMB?: number;
 }

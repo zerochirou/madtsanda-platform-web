@@ -42,10 +42,10 @@ export function VisiMisiTabs() {
   const [activeMisi, setActiveMisi] = useState(0);
 
   return (
-    <div className="space-y-12">
+    <div className="space-y-10 overflow-hidden sm:space-y-12">
       {/* Custom Premium Tabs Navigation */}
-      <div className="flex justify-center">
-        <div className="inline-flex rounded-full bg-zinc-100 p-1.5 dark:bg-zinc-900 border border-zinc-200/50 dark:border-zinc-800/50">
+      <div className="-mx-4 overflow-x-auto px-4 pb-1 sm:mx-0 sm:flex sm:justify-center sm:overflow-visible sm:px-0">
+        <div className="inline-flex min-w-max rounded-full border border-zinc-200/50 bg-zinc-100 p-1.5 dark:border-zinc-800/50 dark:bg-zinc-900 sm:min-w-0">
           {tabItems.map((tab) => {
             const Icon = tab.icon;
             const isActive = activeTab === tab.id;
@@ -53,7 +53,7 @@ export function VisiMisiTabs() {
               <button
                 key={tab.id}
                 onClick={() => setActiveTab(tab.id)}
-                className={`relative flex items-center gap-2 rounded-full px-6 py-3 text-sm font-bold transition-all duration-300 ${
+                className={`relative flex items-center gap-2 rounded-full px-4 py-3 text-xs font-bold transition-all duration-300 sm:px-6 sm:text-sm ${
                   isActive
                     ? "text-white"
                     : "text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white"
@@ -89,12 +89,12 @@ export function VisiMisiTabs() {
               className="space-y-12 max-w-4xl mx-auto"
             >
               {/* Visi Quote Block */}
-              <div className="relative text-center py-8 px-6 sm:px-12 rounded-3xl border border-zinc-100 dark:border-zinc-900 bg-zinc-50/50 dark:bg-zinc-900/20 backdrop-blur-xs">
-                <div className="absolute top-4 left-6 text-7xl font-serif text-emerald-200/40 dark:text-emerald-900/30 select-none">“</div>
-                <blockquote className="relative z-10 text-2xl sm:text-3xl font-black leading-relaxed text-zinc-900 dark:text-white tracking-tight italic">
+              <div className="relative rounded-3xl border border-zinc-100 bg-zinc-50/50 px-5 py-8 text-center backdrop-blur-xs dark:border-zinc-900 dark:bg-zinc-900/20 sm:px-12">
+                <div className="absolute left-4 top-3 text-5xl font-serif text-emerald-200/40 select-none dark:text-emerald-900/30 sm:left-6 sm:top-4 sm:text-7xl">“</div>
+                <blockquote className="relative z-10 text-xl font-black leading-relaxed tracking-tight text-zinc-900 dark:text-white sm:text-3xl">
                   {visiData}
                 </blockquote>
-                <div className="absolute bottom-2 right-6 text-7xl font-serif text-emerald-200/40 dark:text-emerald-900/30 select-none">”</div>
+                <div className="absolute bottom-1 right-4 text-5xl font-serif text-emerald-200/40 select-none dark:text-emerald-900/30 sm:bottom-2 sm:right-6 sm:text-7xl">”</div>
               </div>
 
               {/* Interactive ISTIKOMAH Acronym Section */}
@@ -112,14 +112,14 @@ export function VisiMisiTabs() {
                 </div>
 
                 {/* Letters Grid */}
-                <div className="grid grid-cols-3 sm:grid-cols-9 gap-3">
+                <div className="grid grid-cols-3 gap-3 sm:grid-cols-9">
                   {istikomahBreakdown.map((item, idx) => (
                     <div
                       key={idx}
                       onMouseEnter={() => setHoveredLetter(idx)}
                       onMouseLeave={() => setHoveredLetter(null)}
                       onClick={() => setHoveredLetter(hoveredLetter === idx ? null : idx)}
-                      className={`relative cursor-pointer aspect-square flex items-center justify-center rounded-2xl border text-3xl font-black transition-all duration-300 select-none ${
+                      className={`relative flex aspect-square cursor-pointer items-center justify-center rounded-2xl border text-2xl font-black transition-all duration-300 select-none sm:text-3xl ${
                         hoveredLetter === idx
                           ? "bg-emerald-600 text-white border-emerald-600 scale-105 shadow-md shadow-emerald-600/20"
                           : "bg-white dark:bg-zinc-900 border-zinc-200 dark:border-zinc-800 text-zinc-900 dark:text-zinc-100 hover:border-emerald-300 dark:hover:border-emerald-700"
@@ -176,7 +176,7 @@ export function VisiMisiTabs() {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -15 }}
               transition={{ duration: 0.4 }}
-              className="grid lg:grid-cols-[1.2fr_1fr] gap-8 max-w-5xl mx-auto"
+              className="mx-auto grid max-w-5xl gap-8 lg:grid-cols-[1.2fr_1fr]"
             >
               {/* Stepper List (Left Side) */}
               <div className="space-y-4">
@@ -219,7 +219,7 @@ export function VisiMisiTabs() {
               </div>
 
               {/* Dynamic Panel Details (Right Side) */}
-              <div className="relative sticky top-28 self-start overflow-hidden rounded-3xl border border-zinc-200/80 dark:border-zinc-800 bg-zinc-50/50 dark:bg-zinc-900/30 p-8 flex flex-col justify-between h-[360px]">
+              <div className="relative self-start overflow-hidden rounded-3xl border border-zinc-200/80 bg-zinc-50/50 p-6 dark:border-zinc-800 dark:bg-zinc-900/30 md:p-8 lg:sticky lg:top-28 lg:flex lg:h-[360px] lg:flex-col lg:justify-between">
                 {/* Decorative BG pattern */}
                 <div className="absolute right-0 top-0 h-40 w-40 rounded-full bg-emerald-500/5 blur-3xl" />
 
