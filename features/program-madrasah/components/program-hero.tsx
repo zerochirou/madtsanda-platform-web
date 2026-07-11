@@ -32,7 +32,7 @@ export function ProgramHero({ data }: { data: ProgramMadrasahPageData }) {
     toneBySlug[data.slug as keyof typeof toneBySlug] ?? toneBySlug.kurikulum;
 
   return (
-    <section className="relative overflow-hidden bg-white pt-20 text-zinc-950 dark:bg-zinc-950 dark:text-white md:pt-0">
+    <section className="relative overflow-hidden bg-white pt-28 text-zinc-950 dark:bg-zinc-950 dark:text-white lg:pt-0">
       <div className="absolute inset-0">
         <Image
           src={data.imageSrc}
@@ -46,7 +46,7 @@ export function ProgramHero({ data }: { data: ProgramMadrasahPageData }) {
         <div className="absolute inset-0 bg-linear-to-r from-white via-white/90 to-white/65 dark:from-zinc-950 dark:via-zinc-950/88 dark:to-zinc-950/35" />
       </div>
 
-      <div className="relative mx-auto grid min-h-[calc(76vh-5rem)] max-w-7xl gap-10 px-4 py-20 md:min-h-[76vh] md:px-6 md:py-28 lg:grid-cols-[1.05fr_0.95fr] lg:items-end">
+      <div className="relative mx-auto grid min-h-[calc(76vh-5rem)] max-w-7xl gap-10 px-4 py-16 md:min-h-[76vh] md:px-6 md:py-24 lg:grid-cols-[1.05fr_0.95fr] lg:items-end lg:py-28">
         <FadeUp>
           <div className="max-w-3xl">
             <span
@@ -54,7 +54,7 @@ export function ProgramHero({ data }: { data: ProgramMadrasahPageData }) {
             >
               {data.subtitle}
             </span>
-            <h1 className="mt-6 text-4xl font-black leading-[0.98] tracking-normal sm:text-5xl md:text-7xl">
+            <h1 className="mt-6 text-4xl font-black leading-[1.02] tracking-normal sm:text-5xl md:text-6xl lg:text-7xl">
               {data.title}
             </h1>
             <p className="mt-6 max-w-2xl text-base leading-8 text-zinc-700 dark:text-zinc-200 md:text-lg">

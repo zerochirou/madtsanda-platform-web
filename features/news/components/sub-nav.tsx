@@ -7,7 +7,7 @@ export function NewsSubnav({
   categories: NewsCategoryDTO[] | null;
 }) {
   return (
-    <div className="sticky top-[78px] z-40 mx-auto mb-4 mt-2 flex max-w-7xl justify-center px-4 pointer-events-none md:top-[92px] md:mt-4">
+    <div className="pointer-events-none sticky top-[112px] z-40 mx-auto mb-4 mt-2 flex max-w-7xl justify-center px-4 sm:top-[124px] md:mt-4">
       <div className="pointer-events-auto flex w-full max-w-7xl items-center justify-start rounded-2xl border border-zinc-200 bg-white/90 px-4 py-2.5 shadow-sm backdrop-blur-xl dark:border-zinc-800 dark:bg-zinc-900/90 md:px-6 md:py-3">
         <div
           className="flex w-full items-center gap-2 overflow-x-auto pb-1 md:pb-0 scrollbar-hide hide-scrollbar"

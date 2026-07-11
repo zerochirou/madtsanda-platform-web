@@ -1,9 +1,16 @@
 import z from "zod";
 import { NewsCategoryDTO } from "./news-category";
 import { UserDTO } from "./user";
+import { NEWS_IMAGE_MAX_SIZE_BYTES, NEWS_IMAGE_MAX_SIZE_LABEL } from "@/lib/upload";
 
-const MAX_FILE_SIZE = 5000000 * 10; // 5MB
 const ACCEPTED_IMAGE_TYPES = ["image/jpeg", "image/jpg", "image/png"];
+
+function getFirstImageFile(files: unknown): File | null {
+  if (!files) return null;
+  if (files instanceof File) return files;
+  const list = files as File[] | FileList;
+  return list?.[0] ?? null;
+}
 
 export interface NewsResponseDTO {
   data: NewsItem[];
@@ -20,16 +27,15 @@ export const NewsCreateSchema = z.object({
   image: z
     .unknown()
     .refine((files) => {
-      const list = files as FileList;
-      return list && list.length === 1;
+      return Boolean(getFirstImageFile(files));
     }, "Avatar harus diunggah.")
     .refine((files) => {
-      const list = files as FileList;
-      return list && list[0] && list[0].size <= MAX_FILE_SIZE;
-    }, "Ukuran maksimal adalah 5MB.")
+      const file = getFirstImageFile(files);
+      return file ? file.size <= NEWS_IMAGE_MAX_SIZE_BYTES : false;
+    }, `Ukuran maksimal adalah ${NEWS_IMAGE_MAX_SIZE_LABEL}.`)
     .refine((files) => {
-      const list = files as FileList;
-      return list && list[0] && ACCEPTED_IMAGE_TYPES.includes(list[0].type);
+      const file = getFirstImageFile(files);
+      return file ? ACCEPTED_IMAGE_TYPES.includes(file.type) : false;
     }, "Hanya format .jpg, .jpeg, dan .png yang didukung."),
   categoryId: z.uuid(),
 });
@@ -40,16 +46,15 @@ export const NewsUpdateSchema = z.object({
   image: z
     .unknown()
     .refine((files) => {
-      const list = files as FileList;
-      return list && list.length === 1;
+      return files === null || files === undefined || Boolean(getFirstImageFile(files));
     }, "Avatar harus diunggah.")
     .refine((files) => {
-      const list = files as FileList;
-      return list && list[0] && list[0].size <= MAX_FILE_SIZE;
-    }, "Ukuran maksimal adalah 5MB.")
+      const file = getFirstImageFile(files);
+      return !file || file.size <= NEWS_IMAGE_MAX_SIZE_BYTES;
+    }, `Ukuran maksimal adalah ${NEWS_IMAGE_MAX_SIZE_LABEL}.`)
     .refine((files) => {
-      const list = files as FileList;
-      return list && list[0] && ACCEPTED_IMAGE_TYPES.includes(list[0].type);
+      const file = getFirstImageFile(files);
+      return !file || ACCEPTED_IMAGE_TYPES.includes(file.type);
     }, "Hanya format .jpg, .jpeg, dan .png yang didukung.")
     .nullable(),
   categoryId: z.uuid(),

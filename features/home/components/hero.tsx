@@ -25,7 +25,7 @@ export const Hero = () => {
     return () => clearInterval(interval);
   }, []);
   return (
-    <section className="relative h-screen flex items-center justify-center overflow-hidden">
+    <section className="relative flex min-h-[calc(100vh-var(--site-banner-offset,0px))] items-center justify-center overflow-hidden">
       <div className="absolute inset-0 z-0">
         <motion.div
           key={heroImages[index]} // Sangat penting
@@ -48,7 +48,7 @@ export const Hero = () => {
         </motion.div>
         <div className="absolute inset-0 bg-black/30 dark:bg-black/30"></div>
       </div>
-      <div className="relative z-10 text-center max-w-4xl px-4 pt-20">
+      <div className="relative z-10 max-w-4xl px-4 pt-28 text-center sm:pt-24">
         <motion.div
           initial={{ opacity: 0, scale: 0.9, y: 20 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}
@@ -57,7 +57,7 @@ export const Hero = () => {
             delay: 0.1,
             ease: [0.25, 0.46, 0.45, 0.94],
           }}
-          className="inline-block mb-4 px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white text-sm font-medium"
+          className="mb-4 inline-block rounded-full border border-white/20 bg-white/10 px-3 py-1.5 text-xs font-medium text-white backdrop-blur-md sm:px-4 sm:text-sm"
         >
           Selamat Datang di MTsN 2 Kota Kediri
         </motion.div>
@@ -65,7 +65,7 @@ export const Hero = () => {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
-          className="text-5xl md:text-6xl lg:text-8xl font-bold text-white tracking-tight mb-8"
+          className="mb-8 text-4xl font-bold tracking-tight text-white sm:text-5xl md:text-6xl lg:text-8xl"
         >
           <WordRotate
             words={[
@@ -89,7 +89,7 @@ export const Hero = () => {
           <a href="https://youtu.be/iNpZNOQqlXA?si=TQJ78mMKo-eGsnUbi">
             <Button
               variant="secondary"
-              className="rounded-full pl-6 pr-2 py-6 flex items-center space-x-4 mx-auto group hover:scale-105 transition-all duration-300 text-zinc-900 bg-white/95 hover:bg-white shadow-xl shadow-black/20"
+              className="group mx-auto flex rounded-full bg-white/95 py-5 pl-5 pr-2 text-zinc-900 shadow-xl shadow-black/20 transition-all duration-300 hover:scale-105 hover:bg-white sm:space-x-4 sm:py-6 sm:pl-6"
             >
               <span className="font-semibold text-sm">Lihat Video Profil</span>
               <div className="bg-emerald-500 p-2 rounded-full group-hover:bg-emerald-400 group-hover:rotate-12 transition-all duration-300">

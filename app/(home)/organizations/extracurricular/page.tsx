@@ -4,6 +4,15 @@ import {
   OrganizationHero,
 } from "@/features/organizations/components";
 import { extracurricularsData } from "@/components/data/extracurriculars";
+import { buildMetadata } from "@/lib/seo";
+
+export const metadata = buildMetadata({
+  title: "Ekstrakurikuler MTsN 2 Kota Kediri | Pengembangan Bakat Siswa",
+  description:
+    "Daftar ekstrakurikuler MTsN 2 Kota Kediri untuk pengembangan minat, bakat, karakter, dan prestasi siswa Madtsanda.",
+  path: "/organizations/extracurricular",
+  keywords: ["ekstrakurikuler MTsN 2 Kota Kediri", "ekskul Madtsanda", "organisasi siswa Kediri"],
+});
 
 export default function ExtracurricularsPage() {
   return (

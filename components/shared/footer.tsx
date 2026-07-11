@@ -8,7 +8,7 @@ export function Footer() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12 mb-12 lg:mb-16 border-b border-zinc-800 pb-12 lg:pb-16">
           <div className="sm:col-span-2">
             <Link href="/">
-              <div className="text-4xl lg:text-5xl font-bold tracking-tighter mb-4 lg:mb-6">
+              <div className="mb-4 text-3xl font-bold tracking-tight sm:text-4xl lg:mb-6 lg:text-5xl">
                 Madtsanda<span className="text-emerald-500">.</span>
               </div>
             </Link>
@@ -40,12 +40,12 @@ export function Footer() {
             </p>
           </div>
         </div>
-        <div className="flex flex-col lg:flex-row justify-between items-center text-sm text-zinc-600 gap-4 lg:gap-0">
-          <p>
+        <div className="flex flex-col items-center justify-between gap-4 text-center text-sm text-zinc-600 lg:flex-row lg:gap-0 lg:text-left">
+          <p className="max-w-full">
             &copy; {new Date().getFullYear()} MTsN 2 Kota Kediri. All rights
             reserved.
           </p>
-          <div className="flex flex-wrap justify-center gap-4 lg:space-x-6 font-medium text-zinc-400">
+          <div className="flex flex-wrap justify-center gap-4 font-medium text-zinc-400 lg:space-x-6">
             {footerLinks.map((link) => (
               <Link
                 key={link.href}

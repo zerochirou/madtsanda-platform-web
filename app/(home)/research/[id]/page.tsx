@@ -6,6 +6,12 @@ import { Button } from "@/components/ui/button";
 import { Calendar, User, FileText, ArrowLeft, Download } from "lucide-react";
 import Link from "next/link";
 import BlockRender from "@/components/shared/block-render/render";
+import {
+  breadcrumbJsonLd,
+  buildMetadata,
+  researchArticleJsonLd,
+  serializeJsonLd,
+} from "@/lib/seo";
 
 interface ResearchDetailPageProps {
   params: Promise<{ id: string }>;
@@ -15,12 +21,26 @@ export async function generateMetadata({ params }: ResearchDetailPageProps) {
   const { id } = await params;
   const research = await getResearchById(id);
 
-  return {
-    title: research
-      ? `${research.data.title} | Research Repository`
-      : "Research Not Found",
-    description: research?.data?.abstrack?.slice(0, 160) || "Detail penelitian",
-  };
+  if (!research) {
+    return buildMetadata({
+      title: "Riset tidak ditemukan",
+      description: "Detail riset MTsN 2 Kota Kediri tidak ditemukan.",
+      path: `/research/${id}`,
+    });
+  }
+
+  return buildMetadata({
+    title: `${research.data.title} | Repository Riset`,
+    description:
+      research.data.abstrack.replace(/[#*_>`]/g, "").slice(0, 160) ||
+      "Detail penelitian MTsN 2 Kota Kediri.",
+    path: `/research/${research.data.id}`,
+    type: "article",
+    publishedTime: research.data.publishedDate || research.data.createdAt,
+    modifiedTime: research.data.updatedAt,
+    authors: [research.data.user?.username || "Research Team"],
+    keywords: [research.data.researchTag?.category || "Riset Madtsanda"],
+  });
 }
 
 export default async function ResearchDetailPage({
@@ -39,6 +59,19 @@ export default async function ResearchDetailPage({
 
   return (
     <div className="mt-20 min-h-screen bg-white dark:bg-zinc-950 text-zinc-950 dark:text-white selection:bg-emerald-500 selection:text-white">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: serializeJsonLd([
+            researchArticleJsonLd(research.data),
+            breadcrumbJsonLd([
+              { name: "Beranda", path: "/" },
+              { name: "Repository Riset", path: "/research" },
+              { name: research.data.title, path: `/research/${research.data.id}` },
+            ]),
+          ]),
+        }}
+      />
       <div className="max-w-4xl mx-auto px-6 py-12">
         {/* Back Button */}
         <Link
