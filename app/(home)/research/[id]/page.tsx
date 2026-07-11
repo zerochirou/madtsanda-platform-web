@@ -97,7 +97,7 @@ export default async function ResearchDetailPage({
           <h2 className="text-xl font-bold mb-4 flex items-center gap-2 text-zinc-900 dark:text-white">
             <FileText className="w-5 h-5 text-emerald-600 dark:text-emerald-400" /> Abstrak Penelitian
           </h2>
-          <div className="prose dark:prose-invert max-w-none text leading-relaxed text-zinc-700 dark:text-zinc-300">
+          <div className="prose dark:prose-invert max-w-none text leading-relaxed text-zinc-700 dark:text-zinc-300 wrap-break-word">
             <BlockRender name="" md={research.data.abstrack} />
           </div>
         </div>

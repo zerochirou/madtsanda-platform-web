@@ -40,7 +40,9 @@ export function DatePicker({ value, onChange }: DatePickerProps) {
           mode="single" 
           selected={value} 
           onSelect={onChange} // Kirim value ke RHF
-          // initialFocus 
+                  // initialFocus 
+            captionLayout="dropdown"
+
         />
       </PopoverContent>
     </Popover>

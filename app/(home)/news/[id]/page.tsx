@@ -16,7 +16,8 @@ export default async function NewsDetailPage({
 }) {
   const { id } = await params;
 
-  const news = await getNewsByIdService(id);
+    const news = await getNewsByIdService(id);
+    console.log(news)
 
   if (!news) {
     return (
