@@ -135,7 +135,7 @@ export default async function NewsDetailPage({
           </div>
 
           <div className="relative aspect-video w-full overflow-hidden bg-zinc-100 dark:bg-zinc-800">
-            <Image
+            {/*<Image
                 src={`${process.env.NEXT_PUBLIC_S3}/${news.data.imageKey}`}
               alt={news.data.title}
               fill
@@ -144,6 +144,13 @@ export default async function NewsDetailPage({
               sizes="(max-width: 1024px) 100vw, 1024px"
               fetchPriority="high"
               priority
+            />*/}
+            <img
+              src={`${process.env.NEXT_PUBLIC_S3}/${news.data.imageKey}`}
+              alt={news.data.title}
+              className="object-cover"
+              sizes="(max-width: 1024px) 100vw, 1024px"
+              fetchPriority="high"
             />
           </div>
         </header>
@@ -152,8 +159,7 @@ export default async function NewsDetailPage({
           <BlockRenderDynamic
             md={news.data.content}
             name={news.data.user.username}
-                  />
-                  {`${process.env.NEXT_PUBLIC_S3}/${news.data.imageKey}`}
+          />
         </div>
 
         <footer className="mt-16 border-t border-zinc-200 pt-8 dark:border-zinc-800">
