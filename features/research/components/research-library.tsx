@@ -155,7 +155,7 @@ export function ClientResearchList({
 
       {/* Research Cards Grid (Glassmorphism + Responsive) */}
       {filteredResearch.length > 0 ? (
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-2 gap-6">
           {filteredResearch.map((item) => (
             <Card
               key={item.id}
@@ -195,7 +195,7 @@ export function ClientResearchList({
                 </div>
               </CardHeader>
 
-              <div className="px-6 pb-6 pt-2 border-t border-white/10 dark:border-white/10 flex items-center justify-between">
+              <div className="px-6 pb-6 pt-6 border-t border-white/10 dark:border-white/10 flex items-center justify-between">
                 <div className="text-[10px] text-muted-foreground font-mono tracking-widest">
                   {item.publishedDate
                     ? formatReadableDate(item.publishedDate)

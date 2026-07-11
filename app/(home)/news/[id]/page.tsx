@@ -52,7 +52,6 @@ export default async function NewsDetailPage({
   const { id } = await params;
 
     const news = await getNewsByIdService(id);
-    console.log(news)
 
   if (!news) {
     return (
@@ -69,6 +68,7 @@ export default async function NewsDetailPage({
       </div>
     );
   }
+  const image = `${process.env.NEXT_PUBLIC_S3}/${news.data.imageUrl}`;
 
   return (
     <div className="min-h-screen bg-zinc-50 pb-20 pt-24 transition-colors duration-300 dark:bg-zinc-950 md:pt-32">
@@ -109,7 +109,7 @@ export default async function NewsDetailPage({
               </span>
             </div>
 
-            <h1 className="max-w-4xl text-3xl font-extrabold leading-tight tracking-tight text-zinc-950 dark:text-white md:text-5xl">
+            <h1 className="max-w-4xl text-3xl font-extrabold leading-tight text-zinc-950 dark:text-white md:text-5xl">
               {news.data.title}
             </h1>
 
@@ -136,7 +136,7 @@ export default async function NewsDetailPage({
 
           <div className="relative aspect-video w-full overflow-hidden bg-zinc-100 dark:bg-zinc-800">
             <Image
-              src={news.data.imageUrl ?? newsImageFallback}
+                src={`${process.env.NEXT_PUBLIC_S3}/${news.data.imageKey}`}
               alt={news.data.title}
               fill
               unoptimized

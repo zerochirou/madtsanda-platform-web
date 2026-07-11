@@ -71,7 +71,7 @@ export default async function NewsCategory({
                 >
                   <div className="relative aspect-[4/3] w-full overflow-hidden rounded-xl bg-zinc-100 dark:bg-zinc-800">
                     <Image
-                      src={item.imageUrl ?? newsImageFallback}
+                      src={`${process.env.NEXT_PUBLIC_S3}/${item.imageKey}`}
                       alt={item.title}
                       fill
                       unoptimized

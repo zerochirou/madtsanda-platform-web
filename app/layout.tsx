@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Outfit } from "next/font/google";
+import { Outfit, Inter } from "next/font/google";
 import "./globals.css";
 import { cn } from "@/lib/utils";
 import { ThemeProvider } from "@/components/shared/theme-provider";
@@ -7,6 +7,7 @@ import { Toaster } from "@/components/ui/sonner";
 import { SCHOOL_DESCRIPTION, SCHOOL_KEYWORDS, SITE_URL } from "@/lib/seo";
 
 const outfit = Outfit({ subsets: ["latin"], variable: "--font-sans" });
+const inter = Inter({ subsets: ["latin"], variable: "--font-sans" });
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -73,7 +74,7 @@ export default function RootLayout({
         "h-full",
         "antialiased",
         "font-sans",
-        outfit.variable,
+        inter.variable,
       )}
       suppressHydrationWarning
     >

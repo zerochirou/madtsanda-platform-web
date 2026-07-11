@@ -72,7 +72,7 @@ export default async function ResearchDetailPage({
           ]),
         }}
       />
-      <div className="max-w-4xl mx-auto px-6 py-12">
+      <div className="max-w-6xl mx-auto px-6 py-12">
         {/* Back Button */}
         <Link
           href="/research"
@@ -104,7 +104,7 @@ export default async function ResearchDetailPage({
             </Badge>
           </div>
 
-          <h1 className="text-4xl md:text-5xl font-black tracking-tighter leading-tight text-zinc-900 dark:text-white">
+          <h1 className="text-2xl md:text-3xl font-semibold tracking-tighter leading-tight text-zinc-900 dark:text-white">
             {research.data.title}
           </h1>
 
@@ -149,7 +149,7 @@ export default async function ResearchDetailPage({
               </div>
 
               <a
-                href={research.data.documentUrl}
+                href={`${process.env.NEXT_PUBLIC_S3}/${research.data.documentKey}`}
                 download
                 target="_blank"
                 rel="noopener noreferrer"

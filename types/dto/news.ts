@@ -101,6 +101,7 @@ export interface NewsItem {
   pin: number;
   categoryId: string;
   imageUrl: string | null;
+  imageKey: string | null;
   createdAt: string;
   updatedAt: string;
   user: UserDTO;

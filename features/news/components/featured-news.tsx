@@ -64,7 +64,7 @@ export function FeaturedNews({
               <p className="text-xs font-bold uppercase tracking-[0.28em] text-emerald-500">
                 Madtsanda News
               </p>
-              <h1 className="mt-2 text-2xl font-bold tracking-tight text-zinc-950 dark:text-white md:text-4xl">
+              <h1 className="mt-2 text-2xl font-bold tracking-tight text-zinc-950 dark:text-white md:text-4xl opacity-50">
                 Berita & Pengumuman Madrasah
               </h1>
             </div>
@@ -90,12 +90,12 @@ export function FeaturedNews({
                 <Badge variant={"outline"}>{topNews.user.role}</Badge>
               </div>
             </div>
-            <h2 className="text-2xl mb-2 font-bold leading-tight text-zinc-950 transition-colors group-hover:text-emerald-600 dark:text-white dark:group-hover:text-emerald-300 md:text-3xl">
+            <h2 className="text-xl mb-2 font-semibold leading-tight text-zinc-950 transition-colors group-hover:text-emerald-600 dark:text-white dark:group-hover:text-emerald-300 md:text-2xl py-2">
               {topNews.title}
             </h2>
             <div className="relative aspect-[16/10] overflow-hidden rounded-xl bg-zinc-100 dark:bg-zinc-800">
               <Image
-                src={getNewsImage(topNews.title, topNews.imageUrl)}
+                src={`${process.env.NEXT_PUBLIC_S3}/${topNews.imageKey}`}
                 alt={topNews.title}
                 fill
                 unoptimized
