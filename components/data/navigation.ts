@@ -30,9 +30,9 @@ const aboutUs = [
 
 const organizations = [
   {
-    label: "MPK dan OSIS",
+    label: "MPK dan OSIM",
     description: "Wadah organisasi siswa untuk melatih kepemimpinan dan aspirasi.",
-    href: "/organizations/mpk-osis",
+    href: "/organizations/mpk-osim",
   },
   {
     label: "Ekstrakurikuler",
@@ -110,7 +110,7 @@ export const navigationData = [
   },
   {
     label: "Organisasi",
-    description: "MPK dan OSIS, Ekstrakurikuler.",
+    description: "MPK dan OSIM, Ekstrakurikuler.",
     items: organizations,
   },
 ];

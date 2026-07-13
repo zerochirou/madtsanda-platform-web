@@ -124,7 +124,7 @@ export const staggerItem = {
 const getHeroCards = (title: string) => {
   const t = title.toLowerCase();
   
-  if (t.includes("osis") || t.includes("mpk") || t.includes("organisasi")) {
+  if (t.includes("osis") || t.includes("osim") || t.includes("mpk") || t.includes("organisasi")) {
     return [
       { Icon: Users, title: "Kolaborasi", desc: "Membangun sinergi dan dinamisme kesiswaan." },
       { Icon: Target, title: "Kepemimpinan", desc: "Mencetak karakter pemimpin masa depan." },

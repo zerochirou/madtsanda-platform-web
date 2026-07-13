@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import Link from "next/link";
 import Image from "next/image";
 import { motion } from "motion/react";
 import { Button } from "@/components/ui/button";
@@ -37,9 +38,11 @@ export const InsideLeading = () => (
             viewport={{ once: true }}
             transition={{ delay: 0.4 }}
           >
-            <Button className="bg-emerald-500 text-white hover:bg-emerald-600 rounded-full font-bold px-8 py-6 shadow-xl shadow-emerald-500/20 w-fit">
-              Jelajahi Fasilitas
-            </Button>
+            <Link href="/facilities">
+              <Button className="bg-emerald-500 text-white hover:bg-emerald-600 rounded-full font-bold px-8 py-6 shadow-xl shadow-emerald-500/20 w-fit">
+                Jelajahi Fasilitas
+              </Button>
+            </Link>
           </motion.div>
         </div>
       </ScaleIn>
