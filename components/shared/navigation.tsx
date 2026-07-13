@@ -36,6 +36,17 @@ export function Navigation() {
     setExpandedSections([]);
   }, [pathname]);
 
+  useEffect(() => {
+    if (mobileOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [mobileOpen]);
+
   const showSolid = scrolled || !isHome;
 
   const toggleSection = (index: number) => {
@@ -51,7 +62,7 @@ export function Navigation() {
           showSolid
             ? "bg-white/90 dark:bg-zinc-950/90 backdrop-blur-xl py-3 shadow-sm border-b border-zinc-200/50 dark:border-zinc-800/50"
             : "bg-transparent py-3 lg:py-6"
-        }`} 
+        }`}
       >
         <div className="max-w-7xl mx-auto px-4 md:px-6 flex justify-between items-center gap-3">
           {/* Logo */}
@@ -72,14 +83,14 @@ export function Navigation() {
                 className="w-10 shrink-0 object-contain px-0 tracking-wide lg:w-14"
               />
               <motion.div
-                className={`flex min-w-0 flex-col text-xl font-bold tracking-wide transition-colors duration-300 lg:-ml-4 lg:text-xl ${
+                className={`flex min-w-0 flex-col text-xl font-bold tracking-wide transition-colors duration-300 md:-ml-4 lg:-ml-4 ${
                   showSolid ? "text-zinc-900 dark:text-white" : "text-white"
                 }`}
                 whileHover={{ scale: 1.02 }}
               >
-                <span className="-mb-1 hidden text-md lg:block">MTsN 2</span>
-                <span className="hidden text-sm lg:block">Kota Kediri</span>
-                <span className="block max-w-[190px] truncate text-sm tracking-wider sm:max-w-[260px] lg:hidden">
+                <span className="-mb-1 hidden text-md md:block">MTsN 2</span>
+                <span className="hidden text-sm md:block">Kota Kediri</span>
+                <span className="block max-w-[190px] truncate text-sm tracking-wider sm:max-w-[260px] md:hidden">
                   MTsN 2 Kota Kediri
                 </span>
               </motion.div>

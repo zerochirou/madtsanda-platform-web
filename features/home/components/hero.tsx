@@ -9,9 +9,9 @@ import { WordRotate } from "@/components/ui/word-rotate";
 import { EntranceLoader } from "@/components/animation/entrance-loader";
 
 const heroImages = [
-  "paseban-1.png",
+  "paseban-1.jpg",
   "paseban-2.jpg",
-  "foto-siswa3.JPG",
+  "foto-siswa3.jpg",
   "paskibra2.jpeg",
 ];
 
@@ -23,7 +23,7 @@ export const Hero = () => {
   useEffect(() => {
     const interval = setInterval(() => {
       setIndex((prev) => (prev + 1) % heroImages.length);
-    }, 10000);
+    }, 4000);
 
     return () => clearInterval(interval);
   }, []);

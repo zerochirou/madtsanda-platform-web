@@ -15,21 +15,21 @@ import { OrganizationHero } from "@/features/organizations/components";
 import { buildMetadata } from "@/lib/seo";
 
 export const metadata = buildMetadata({
-  title: "MPK dan OSIS MTsN 2 Kota Kediri | Organisasi Siswa Madtsanda",
+  title: "MPK dan OSIM MTsN 2 Kota Kediri | Organisasi Siswa Madtsanda",
   description:
-    "Profil MPK dan OSIS MTsN 2 Kota Kediri sebagai organisasi utama kesiswaan, aspirasi kelas, kepemimpinan, dan pelaksana program siswa.",
-  path: "/organizations/mpk-osis",
-  keywords: ["OSIS MTsN 2 Kota Kediri", "MPK Madtsanda", "organisasi siswa MTsN 2 Kediri"],
+    "Profil MPK dan OSIM MTsN 2 Kota Kediri sebagai organisasi utama kesiswaan, aspirasi kelas, kepemimpinan, dan pelaksana program siswa.",
+  path: "/organizations/mpk-osim",
+  keywords: ["OSIM MTsN 2 Kota Kediri", "MPK Madtsanda", "organisasi siswa MTsN 2 Kediri"],
 });
 
-export default function MpkOsisPage() {
-  const osis = organizationsData.find((org) => org.name === "OSIS");
+export default function MpkOsimPage() {
+  const osim = organizationsData.find((org) => org.name === "OSIM");
   const mpk = organizationsData.find((org) => org.name === "MPK");
 
   return (
     <div className="min-h-screen bg-zinc-50 dark:bg-zinc-950 transition-colors duration-300">
       <OrganizationHero
-        title="MPK & OSIS"
+        title="MPK & OSIM"
         eyebrow="Organisasi Utama Kesiswaan"
         description="Pilar kepemimpinan dan perwakilan siswa MTsN 2 Kota Kediri yang bertugas menggerakkan kegiatan kesiswaan serta menyalurkan aspirasi secara dinamis."
         imageSrc="/images/apel-pagi.jpg"
@@ -37,7 +37,7 @@ export default function MpkOsisPage() {
         tone="emerald"
         metrics={[
           { value: "2", label: "Lembaga utama siswa" },
-          { value: "9+", label: "Bidang kerja OSIS" },
+          { value: "9+", label: "Bidang kerja OSIM" },
           { value: "100%", label: "Aspirasi kelas terwakili" },
         ]}
       />
@@ -111,7 +111,7 @@ export default function MpkOsisPage() {
                     Sebagai organisasi tertinggi kesiswaan, MPK berperan sebagai
                     jembatan resmi antara pihak sekolah dan perwakilan kelas.
                     MPK mengemban fungsi pengawasan terhadap jalannya roda
-                    organisasi OSIS demi menjaga transparansi dan kualitas
+                    organisasi OSIM demi menjaga transparansi dan kualitas
                     program kerja.
                   </p>
                 </div>
@@ -127,12 +127,12 @@ export default function MpkOsisPage() {
                         </div>
                         <div>
                           <h4 className="font-bold text-zinc-900 dark:text-white mb-1">
-                            Pengawasan OSIS
+                            Pengawasan OSIM
                           </h4>
                           <p className="text-xs text-zinc-500 dark:text-zinc-400 leading-relaxed">
                             Memantau, mengevaluasi, dan menilai pelaksanaan
                             setiap program kerja yang diselenggarakan oleh
-                            pengurus OSIS.
+                            pengurus OSIM.
                           </p>
                         </div>
                       </div>
@@ -194,10 +194,10 @@ export default function MpkOsisPage() {
           </section>
         )}
 
-        {/* SECTION 2: OSIS */}
-        {osis && (
+        {/* SECTION 2: OSIM */}
+        {osim && (
           <section className="grid lg:grid-cols-12 gap-12 items-center pt-8 border-t border-zinc-200/50 dark:border-zinc-800/50">
-            {/* OSIS Details and Programs (Left) - Shifted order for layout balance */}
+            {/* OSIM Details and Programs (Left) - Shifted order for layout balance */}
             <div className="lg:col-span-7 space-y-8 lg:order-1 order-2">
               <FadeUp>
                 <div className="space-y-4">
@@ -205,13 +205,13 @@ export default function MpkOsisPage() {
                     Lembaga Eksekutif Siswa
                   </span>
                   <h2 className="text-3xl md:text-4xl font-extrabold text-zinc-900 dark:text-white">
-                    Roda Pelaksana Program Kerja OSIS
+                    Roda Pelaksana Program Kerja OSIM
                   </h2>
                   <p className="text-zinc-600 dark:text-zinc-400 leading-relaxed">
                     Sebagai organisasi eksekutif utama di MTsN 2 Kota Kediri,
-                    OSIS bertanggung jawab merencanakan, melaksanakan, dan
+                    OSIM bertanggung jawab merencanakan, melaksanakan, dan
                     mengoordinasikan berbagai kegiatan kesiswaan. Melalui
-                    pembagian Seksi Bidang (Sekbid), OSIS mewadahi pengembangan
+                    pembagian Seksi Bidang (Sekbid), OSIM mewadahi pengembangan
                     potensi akademik maupun non-akademik siswa.
                   </p>
                 </div>
@@ -223,7 +223,7 @@ export default function MpkOsisPage() {
                   <div className="bg-white/80 dark:bg-zinc-900/20 p-6 rounded-2xl border border-zinc-200/50 dark:border-zinc-800/50 space-y-4">
                     <h4 className="font-bold text-zinc-900 dark:text-white flex items-center gap-2">
                       <Award className="w-5 h-5 text-emerald-500" />
-                      Fokus Karakter OSIS
+                      Fokus Karakter OSIM
                     </h4>
                     <ul className="space-y-2.5 text-sm text-zinc-600 dark:text-zinc-400">
                       <li className="flex items-start gap-2.5">
@@ -277,8 +277,8 @@ export default function MpkOsisPage() {
 
                   <div className="w-28 h-28 relative rounded-2xl overflow-hidden bg-zinc-50 dark:bg-zinc-800/40 mb-6 flex items-center justify-center p-2 shadow-inner border border-zinc-200/50 dark:border-zinc-700/30">
                     <Image
-                      src={osis.image}
-                      alt={osis.name}
+                      src={osim.image}
+                      alt={osim.name}
                       fill
                       className="object-contain p-2"
                       sizes="(max-width: 768px) 100vw, 50vw"
@@ -286,10 +286,10 @@ export default function MpkOsisPage() {
                   </div>
 
                   <h3 className="text-3xl font-extrabold text-zinc-900 dark:text-white mb-4">
-                    {osis.name}
+                    {osim.name}
                   </h3>
                   <p className="text-zinc-600 dark:text-zinc-400 mb-8 leading-relaxed">
-                    {osis.desc}
+                    {osim.desc}
                   </p>
 
                   <div className="space-y-3 pt-6 border-t border-zinc-100 dark:border-zinc-800">
@@ -297,11 +297,11 @@ export default function MpkOsisPage() {
                       <AtSign className="w-5 h-5 text-emerald-500" />
                       <span className="font-medium text-zinc-700 dark:text-zinc-300 hover:text-emerald-500 dark:hover:text-emerald-400">
                         <a
-                          href={`https://www.instagram.com/${osis.ig}`}
+                          href={`https://www.instagram.com/${osim.ig}`}
                           target="_blank"
                           rel="noreferrer"
                         >
-                          @{osis.ig}
+                          @{osim.ig}
                         </a>
                       </span>
                     </div>
@@ -310,7 +310,7 @@ export default function MpkOsisPage() {
                       <span>
                         Pendiri:{" "}
                         <span className="font-medium text-zinc-700 dark:text-zinc-300">
-                          {osis.founder}
+                          {osim.founder}
                         </span>
                       </span>
                     </div>

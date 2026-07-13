@@ -131,10 +131,6 @@ export default function Rapot() {
                                         priority
                                     />
                                 </div>
-
-                                {/* Decorative elements */}
-                                {/*<div className="absolute -top-10 -left-10 w-32 h-32 bg-emerald-500/10 rounded-full blur-2xl group-hover:bg-emerald-500/20 transition-all pointer-events-none" />*/}
-                                {/*<div className="absolute -bottom-10 -right-10 w-32 h-32 bg-blue-500/10 rounded-full blur-2xl group-hover:bg-blue-500/20 transition-all pointer-events-none" />*/}
                             </div>
 
                             <div className="mt-4 text-center">
@@ -145,126 +141,126 @@ export default function Rapot() {
                             </div>
                         </div>
                     </div>
+                </div>
 
-                    {/* Separator */}
-                    <div className="h-px bg-zinc-200 dark:bg-zinc-800 my-16" />
+                {/* Separator */}
+                <div className="h-px bg-zinc-200 dark:bg-zinc-800 my-16" />
 
-                    {/* Info Banner */}
-                    <div className="rounded-3xl border border-zinc-200 dark:border-zinc-800 bg-white/50 dark:bg-zinc-900/30 backdrop-blur-md p-8 md:p-10 mb-24 grid md:grid-cols-12 gap-8 items-center">
-                        <div className="md:col-span-8 space-y-4">
-                            <Badge
-                                variant="outline"
-                                className="border-emerald-500/30 text-emerald-600 dark:text-emerald-400 bg-emerald-500/5 px-3 py-1 rounded-full"
-                            >
-                                Pemberitahuan Orang Tua
-                            </Badge>
-                            <h2 className="text-2xl md:text-3xl font-bold">
-                                Butuh Pendampingan Belajar Siswa?
-                            </h2>
-                            <p className="text-zinc-600 dark:text-zinc-400 text-sm md:text-base leading-relaxed">
-                                Rapor digital ini diterbitkan secara resmi oleh
-                                MTsN 2 Kota Kediri. Disarankan agar orang
-                                tua/wali murid mendampingi siswa saat membuka
-                                dan menganalisis nilai evaluasi belajar demi
-                                peningkatan kualitas prestasi akademik di masa
-                                mendatang.
-                            </p>
-                        </div>
-                        <div className="md:col-span-4 flex md:justify-end">
-                            <div className="w-full md:w-auto p-6 rounded-2xl bg-zinc-100 dark:bg-zinc-900/80 border border-zinc-200 dark:border-zinc-800 flex items-center gap-4">
-                                <div className="w-12 h-12 rounded-xl bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 flex items-center justify-center shrink-0">
-                                    <BookOpen className="w-6 h-6" />
-                                </div>
-                                <div>
-                                    <h4 className="font-semibold text-sm">
-                                        Konsultasi Wali Kelas
-                                    </h4>
-                                    <p className="text-xs text-zinc-500 dark:text-zinc-400">
-                                        Jadwal konsultasi dibuka setiap hari
-                                        kerja.
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    {/* FAQ Section */}
-                    <div className="max-w-4xl mx-auto space-y-8">
-                        <div className="text-center space-y-3">
-                            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-zinc-100 dark:bg-zinc-900 text-zinc-600 dark:text-zinc-400 text-xs font-semibold">
-                                <HelpCircle className="w-3.5 h-3.5" />
-                                Tanya Jawab Populer
-                            </div>
-                            <h2 className="text-3xl md:text-4xl font-bold">
-                                Pertanyaan yang Sering Diajukan
-                            </h2>
-                            <p className="text-zinc-500 dark:text-zinc-400 text-sm max-w-xl mx-auto">
-                                Temukan jawaban atas kendala yang paling sering
-                                dialami saat mengakses Rapor Digital Madrasah
-                                (RDM).
-                            </p>
-                        </div>
-
-                        <Accordion
-                            type="single"
-                            collapsible
-                            className="w-full space-y-3 pt-6"
+                {/* Info Banner */}
+                <div className="rounded-3xl border border-zinc-200 dark:border-zinc-800 bg-white/50 dark:bg-zinc-900/30 backdrop-blur-md p-8 md:p-10 mb-16 grid md:grid-cols-12 gap-8 items-center">
+                    <div className="md:col-span-8 space-y-4">
+                        <Badge
+                            variant="outline"
+                            className="border-emerald-500/30 text-emerald-600 dark:text-emerald-400 bg-emerald-500/5 px-3 py-1 rounded-full"
                         >
-                            <AccordionItem
-                                value="faq-1"
-                                className="border border-zinc-200 dark:border-zinc-800 rounded-2xl bg-white dark:bg-zinc-900/20 px-6 py-1"
-                            >
-                                <AccordionTrigger className="text-zinc-900 dark:text-zinc-100 font-semibold hover:no-underline py-4 text-base">
-                                    Bagaimana cara mendapatkan NISN siswa?
-                                </AccordionTrigger>
-                                <AccordionContent className="text-zinc-600 dark:text-zinc-400 leading-relaxed text-sm pt-2 pb-4">
-                                    Nomor Induk Siswa Nasional (NISN) dapat
-                                    dilihat pada kartu pelajar siswa, buku rapor
-                                    semester sebelumnya, atau ditanyakan
-                                    langsung kepada wali kelas masing-masing.
-                                    Anda juga dapat memeriksa secara online
-                                    melalui situs resmi NISN Kemendikbudristek.
-                                </AccordionContent>
-                            </AccordionItem>
-
-                            <AccordionItem
-                                value="faq-2"
-                                className="border border-zinc-200 dark:border-zinc-800 rounded-2xl bg-white dark:bg-zinc-900/20 px-6 py-1"
-                            >
-                                <AccordionTrigger className="text-zinc-900 dark:text-zinc-100 font-semibold hover:no-underline py-4 text-base">
-                                    Saya tidak bisa login ke portal RDM, apa
-                                    solusinya?
-                                </AccordionTrigger>
-                                <AccordionContent className="text-zinc-600 dark:text-zinc-400 leading-relaxed text-sm pt-2 pb-4">
-                                    Pastikan NISN dan password yang Anda
-                                    masukkan sudah benar (sesuai yang dibagikan
-                                    oleh wali kelas). Jika masih berkendala,
-                                    silakan hubungi tim IT/Humas MTsN 2 Kota
-                                    Kediri atau hubungi wali kelas untuk
-                                    melakukan reset password login Anda.
-                                </AccordionContent>
-                            </AccordionItem>
-
-                            <AccordionItem
-                                value="faq-3"
-                                className="border border-zinc-200 dark:border-zinc-800 rounded-2xl bg-white dark:bg-zinc-900/20 px-6 py-1"
-                            >
-                                <AccordionTrigger className="text-zinc-900 dark:text-zinc-100 font-semibold hover:no-underline py-4 text-base">
-                                    Apakah rapor digital ini sah digunakan untuk
-                                    keperluan resmi?
-                                </AccordionTrigger>
-                                <AccordionContent className="text-zinc-600 dark:text-zinc-400 leading-relaxed text-sm pt-2 pb-4">
-                                    Ya, rapor digital yang diunduh melalui
-                                    portal RDM resmi MTsN 2 Kota Kediri
-                                    dilengkapi dengan Tanda Tangan Elektronik
-                                    (TTE) kepala madrasah serta kode QR unik
-                                    untuk validasi keaslian dokumen, sehingga
-                                    sah digunakan untuk berbagai keperluan
-                                    administrasi.
-                                </AccordionContent>
-                            </AccordionItem>
-                        </Accordion>
+                            Pemberitahuan Orang Tua
+                        </Badge>
+                        <h2 className="text-2xl md:text-3xl font-bold">
+                            Butuh Pendampingan Belajar Siswa?
+                        </h2>
+                        <p className="text-zinc-600 dark:text-zinc-400 text-sm md:text-base leading-relaxed">
+                            Rapor digital ini diterbitkan secara resmi oleh
+                            MTsN 2 Kota Kediri. Disarankan agar orang
+                            tua/wali murid mendampingi siswa saat membuka
+                            dan menganalisis nilai evaluasi belajar demi
+                            peningkatan kualitas prestasi akademik di masa
+                            mendatang.
+                        </p>
                     </div>
+                    <div className="md:col-span-4 flex md:justify-end">
+                        <div className="w-full md:w-auto p-6 rounded-2xl bg-zinc-100 dark:bg-zinc-900/80 border border-zinc-200 dark:border-zinc-800 flex items-center gap-4">
+                            <div className="w-12 h-12 rounded-xl bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 flex items-center justify-center shrink-0">
+                                <BookOpen className="w-6 h-6" />
+                            </div>
+                            <div>
+                                <h4 className="font-semibold text-sm">
+                                    Konsultasi Wali Kelas
+                                </h4>
+                                <p className="text-xs text-zinc-500 dark:text-zinc-400">
+                                    Jadwal konsultasi dibuka setiap hari
+                                    kerja.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                {/* FAQ Section */}
+                <div className="max-w-4xl mx-auto space-y-8">
+                    <div className="text-center space-y-3">
+                        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-zinc-100 dark:bg-zinc-900 text-zinc-600 dark:text-zinc-400 text-xs font-semibold">
+                            <HelpCircle className="w-3.5 h-3.5" />
+                            Tanya Jawab Populer
+                        </div>
+                        <h2 className="text-3xl md:text-4xl font-bold">
+                            Pertanyaan yang Sering Diajukan
+                        </h2>
+                        <p className="text-zinc-500 dark:text-zinc-400 text-sm max-w-xl mx-auto">
+                            Temukan jawaban atas kendala yang paling sering
+                            dialami saat mengakses Rapor Digital Madrasah
+                            (RDM).
+                        </p>
+                    </div>
+
+                    <Accordion
+                        type="single"
+                        collapsible
+                        className="w-full space-y-3 pt-6"
+                    >
+                        <AccordionItem
+                            value="faq-1"
+                            className="border border-zinc-200 dark:border-zinc-800 rounded-2xl bg-white dark:bg-zinc-900/20 px-6 py-1"
+                        >
+                            <AccordionTrigger className="text-zinc-900 dark:text-zinc-100 font-semibold hover:no-underline py-4 text-base">
+                                Bagaimana cara mendapatkan NISN siswa?
+                            </AccordionTrigger>
+                            <AccordionContent className="text-zinc-600 dark:text-zinc-400 leading-relaxed text-sm pt-2 pb-4">
+                                Nomor Induk Siswa Nasional (NISN) dapat
+                                dilihat pada kartu pelajar siswa, buku rapor
+                                semester sebelumnya, atau ditanyakan
+                                langsung kepada wali kelas masing-masing.
+                                Anda juga dapat memeriksa secara online
+                                melalui situs resmi NISN Kemendikbudristek.
+                            </AccordionContent>
+                        </AccordionItem>
+
+                        <AccordionItem
+                            value="faq-2"
+                            className="border border-zinc-200 dark:border-zinc-800 rounded-2xl bg-white dark:bg-zinc-900/20 px-6 py-1"
+                        >
+                            <AccordionTrigger className="text-zinc-900 dark:text-zinc-100 font-semibold hover:no-underline py-4 text-base">
+                                Saya tidak bisa login ke portal RDM, apa
+                                solusinya?
+                            </AccordionTrigger>
+                            <AccordionContent className="text-zinc-600 dark:text-zinc-400 leading-relaxed text-sm pt-2 pb-4">
+                                Pastikan NISN dan password yang Anda
+                                masukkan sudah benar (sesuai yang dibagikan
+                                oleh wali kelas). Jika masih berkendala,
+                                silakan hubungi tim IT/Humas MTsN 2 Kota
+                                Kediri atau hubungi wali kelas untuk
+                                melakukan reset password login Anda.
+                            </AccordionContent>
+                        </AccordionItem>
+
+                        <AccordionItem
+                            value="faq-3"
+                            className="border border-zinc-200 dark:border-zinc-800 rounded-2xl bg-white dark:bg-zinc-900/20 px-6 py-1"
+                        >
+                            <AccordionTrigger className="text-zinc-900 dark:text-zinc-100 font-semibold hover:no-underline py-4 text-base">
+                                Apakah rapor digital ini sah digunakan untuk
+                                keperluan resmi?
+                            </AccordionTrigger>
+                            <AccordionContent className="text-zinc-600 dark:text-zinc-400 leading-relaxed text-sm pt-2 pb-4">
+                                Ya, rapor digital yang diunduh melalui
+                                portal RDM resmi MTsN 2 Kota Kediri
+                                dilengkapi dengan Tanda Tangan Elektronik
+                                (TTE) kepala madrasah serta kode QR unik
+                                untuk validasi keaslian dokumen, sehingga
+                                sah digunakan untuk berbagai keperluan
+                                administrasi.
+                            </AccordionContent>
+                        </AccordionItem>
+                    </Accordion>
                 </div>
             </div>
         </div>

@@ -1,4 +1,4 @@
-import {
+﻿import {
   BookOpenCheck,
   Building2,
   CalendarCheck2,
@@ -84,7 +84,7 @@ export const programMadrasahPages = {
     ],
     highlights: [
       {
-        title: "OSIS dan MPK",
+        title: "OSIM dan MPK",
         description:
           "Wadah aspirasi, kepemimpinan, pengawasan program, dan kaderisasi siswa.",
         icon: Users,
@@ -108,8 +108,8 @@ export const programMadrasahPages = {
         description:
           "Kesiswaan menjadi rumah pembinaan organisasi dan aspirasi peserta didik.",
         items: [
-          "OSIS mengoordinasikan kegiatan kesiswaan akademik dan nonakademik melalui unit kerja siswa.",
-          "MPK menjadi organisasi perwakilan kelas yang mengawasi kinerja OSIS dan menampung aspirasi siswa.",
+          "OSIM mengoordinasikan kegiatan kesiswaan akademik dan nonakademik melalui unit kerja siswa.",
+          "MPK menjadi organisasi perwakilan kelas yang mengawasi kinerja OSIM dan menampung aspirasi siswa.",
           "Fivesa, Pramuka, PMR, PKS, dan UKS menjadi ruang praktik kepemimpinan dan layanan sosial.",
         ],
       },
@@ -244,3 +244,4 @@ export const programMadrasahNavItems = Object.values(programMadrasahPages).map(
     href: `/program-madrasah/${program.slug}`,
   }),
 );
+
