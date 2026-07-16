@@ -18,9 +18,9 @@ import {
 export const metadata = buildMetadata({
   title: "Repository Riset | MTsN 2 Kota Kediri",
   description:
-    "Eksplorasi karya ilmiah, sains, teknologi, dan tulisan keagamaan mutakhir hasil riset siswa-siswi MTsN 2 Kota Kediri.",
+    "Eksplorasi karya ilmiah, sains, teknologi, dan tulisan keagamaan mutakhir hasil riset murid MTsN 2 Kota Kediri.",
   path: "/research",
-  keywords: ["repository riset MTsN 2 Kota Kediri", "riset siswa Madtsanda", "karya ilmiah siswa Kediri"],
+  keywords: ["repository riset MTsN 2 Kota Kediri", "riset murid Madtsanda", "karya ilmiah murid Kediri"],
 });
 
 export default async function ResearchPage({
@@ -59,7 +59,7 @@ export default async function ResearchPage({
             collectionJsonLd({
               name: "Repository Riset MTsN 2 Kota Kediri",
               description:
-                "Kumpulan karya ilmiah, riset siswa, dan proyek inovasi Madtsanda.",
+                "Kumpulan karya ilmiah, riset murid, dan proyek inovasi Madtsanda.",
               path: "/research",
             }),
             breadcrumbJsonLd([
@@ -109,7 +109,7 @@ export default async function ResearchPage({
             </h1>
 
             <p className="max-w-200 text-base leading-relaxed text-zinc-500 dark:text-zinc-400 sm:text-xl">
-              Pusat publikasi ilmiah siswa Madtsanda. Akses karya tulis, laporan
+              Pusat publikasi ilmiah murid Madtsanda. Akses karya tulis, laporan
               riset camp, dan proyek inovasi sains terintegrasi nilai keagamaan.
             </p>
 

@@ -59,8 +59,8 @@ export const quickLink: QuickLink[] = [
     url: "/dashboard/research/create",
   },
   {
-    title: "Manajemen Penelitian Siswa",
-    description: "Pusat kendali penelitian siswa",
+    title: "Manajemen Penelitian Murid",
+    description: "Pusat kendali penelitian murid",
     role: "admin",
     className: "",
     icon: DocumentEdit16Color,

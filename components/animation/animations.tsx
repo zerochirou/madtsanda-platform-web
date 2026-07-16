@@ -142,7 +142,7 @@ const getHeroCards = (title: string) => {
   
   if (t.includes("fivesa") || t.includes("jurnal")) {
     return [
-      { Icon: PenTool, title: "Jurnalistik Siswa", desc: "Meliput kegiatan dan melatih keterampilan media." },
+      { Icon: PenTool, title: "Jurnalistik Murid", desc: "Meliput kegiatan dan melatih keterampilan media." },
       { Icon: BookOpen, title: "Karya Majalah", desc: "Penerbitan majalah tahunan karya orisinil kesiswaan." },
       { Icon: Award, title: "Dokumentasi", desc: "Mengabadikan momen bersejarah madrasah." },
     ];
@@ -151,7 +151,7 @@ const getHeroCards = (title: string) => {
   if (t.includes("perpustakaan") || t.includes("library") || t.includes("buku")) {
     return [
       { Icon: BookOpen, title: "Literasi Digital", desc: "Akses ribuan ebook dan jurnal edukatif." },
-      { Icon: Compass, title: "Referensi Riset", desc: "Pusat rujukan karya ilmiah dan penelitian siswa." },
+      { Icon: Compass, title: "Referensi Riset", desc: "Pusat rujukan karya ilmiah dan penelitian murid." },
       { Icon: Sparkles, title: "Katalog Pintar", desc: "Pencarian literatur mudah, cepat, dan terorganisir." },
     ];
   }
@@ -176,7 +176,7 @@ const getHeroCards = (title: string) => {
     return [
       { Icon: GraduationCap, title: "PPDB Online", desc: "Sistem pendaftaran dan seleksi digital transparan." },
       { Icon: Award, title: "Madrasah Pilihan", desc: "Lembaga pendidikan Islam terakreditasi A Kediri." },
-      { Icon: Sparkles, title: "Kuota Kompetitif", desc: "Bergabung bersama siswa berprestasi pilihan." },
+      { Icon: Sparkles, title: "Kuota Kompetitif", desc: "Bergabung bersama murid berprestasi pilihan." },
     ];
   }
   

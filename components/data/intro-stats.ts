@@ -9,7 +9,7 @@ export const introStats = [
     value: 4,
     suffix: "",
     label: "Program Unggulan",
-    description: "Akselerasi, Excellent, Ma'had, Reguler",
+    description: "Akselerasi, Kelas Unggulan, Asrama, Reguler",
   },
   {
     value: 25,

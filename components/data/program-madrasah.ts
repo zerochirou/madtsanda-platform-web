@@ -1,4 +1,4 @@
-﻿import {
+import {
   BookOpenCheck,
   Building2,
   CalendarCheck2,
@@ -43,7 +43,7 @@ export const programMadrasahPages = {
       {
         title: "Riset dan Inovasi",
         description:
-          "Budaya riset, teknologi, bahasa, dan karya ilmiah siswa diperkuat melalui program unggulan madrasah.",
+          "Budaya riset, teknologi, bahasa, dan karya ilmiah murid diperkuat melalui program unggulan madrasah.",
         icon: Microscope,
       },
     ],
@@ -64,7 +64,7 @@ export const programMadrasahPages = {
           "Nilai keislaman dan kebangsaan dipadukan dalam pembiasaan belajar harian.",
         items: [
           "Menghidupkan Profil Pelajar Rahmatan Lil Alamin yang toleran, peduli, dan berakhlakul karimah.",
-          "Menjalankan kokurikuler melalui pengalaman projek yang dekat dengan persoalan nyata di lingkungan siswa.",
+          "Menjalankan kokurikuler melalui pengalaman projek yang dekat dengan persoalan nyata di lingkungan murid.",
           "Menanamkan disiplin, doa, tadarus Al-Qur'an, dan shalat berjamaah sebagai budaya madrasah.",
         ],
       },
@@ -78,7 +78,7 @@ export const programMadrasahPages = {
       "Pembinaan kesiswaan Madtsanda menggabungkan kepemimpinan, organisasi, kesehatan sekolah, kedisiplinan, olahraga, seni, dan kegiatan sosial.",
     imageSrc: "/images/apel-pagi.jpg",
     metrics: [
-      { label: "Siswa TKA 2026", value: "467" },
+      { label: "Murid TKA 2026", value: "467" },
       { label: "Organisasi inti", value: "6+" },
       { label: "Budaya", value: "Disiplin" },
     ],
@@ -86,13 +86,13 @@ export const programMadrasahPages = {
       {
         title: "OSIM dan MPK",
         description:
-          "Wadah aspirasi, kepemimpinan, pengawasan program, dan kaderisasi siswa.",
+          "Wadah aspirasi, kepemimpinan, pengawasan program, dan kaderisasi murid.",
         icon: Users,
       },
       {
         title: "Prestasi Nonakademik",
         description:
-          "Ekstrakurikuler dan komunitas siswa mendorong prestasi olahraga, seni, sosial, dan kepramukaan.",
+          "Ekstrakurikuler dan komunitas murid mendorong prestasi olahraga, seni, sosial, dan kepramukaan.",
         icon: Sparkles,
       },
       {
@@ -104,19 +104,19 @@ export const programMadrasahPages = {
     ],
     sections: [
       {
-        title: "Organisasi Siswa",
+        title: "Organisasi Murid",
         description:
           "Kesiswaan menjadi rumah pembinaan organisasi dan aspirasi peserta didik.",
         items: [
-          "OSIM mengoordinasikan kegiatan kesiswaan akademik dan nonakademik melalui unit kerja siswa.",
-          "MPK menjadi organisasi perwakilan kelas yang mengawasi kinerja OSIM dan menampung aspirasi siswa.",
+          "OSIM mengoordinasikan kegiatan kesiswaan akademik dan nonakademik melalui unit kerja murid.",
+          "MPK menjadi organisasi perwakilan kelas yang mengawasi kinerja OSIM dan menampung aspirasi murid.",
           "Fivesa, Pramuka, PMR, PKS, dan UKS menjadi ruang praktik kepemimpinan dan layanan sosial.",
         ],
       },
       {
         title: "Pembinaan Karakter",
         description:
-          "Aktivitas siswa diarahkan untuk membentuk disiplin, mandiri, kreatif, dan rendah hati.",
+          "Aktivitas murid diarahkan untuk membentuk disiplin, mandiri, kreatif, dan rendah hati.",
         items: [
           "Apel pagi rutin digunakan untuk pembinaan karakter, informasi, kesiapan belajar, dan kebersamaan.",
           "Kegiatan rihlah spiritual dan pembiasaan ibadah memperkuat ikhtiar akademik sekaligus spiritual.",
@@ -153,7 +153,7 @@ export const programMadrasahPages = {
       {
         title: "PPDB Digital",
         description:
-          "Penerimaan siswa baru diarahkan melalui portal PMBM dengan alur akun, data, verifikasi, tes, dan lapor diri.",
+          "Penerimaan murid baru diarahkan melalui portal PMBM dengan alur akun, data, verifikasi, tes, dan lapor diri.",
         icon: BookOpenCheck,
       },
     ],
@@ -175,7 +175,7 @@ export const programMadrasahPages = {
         items: [
           "Mengarahkan calon peserta didik ke portal pmbm.mtsn2kotakediri.sch.id.",
           "Menjelaskan jalur prestasi dan reguler, proses berkas, tes akademik, baca tulis Al-Qur'an, serta wawancara.",
-          "Mendampingi komunikasi lapor diri dan daftar ulang bagi siswa yang dinyatakan lulus.",
+          "Mendampingi komunikasi lapor diri dan daftar ulang bagi murid yang dinyatakan lulus.",
         ],
       },
     ],
@@ -200,9 +200,9 @@ export const programMadrasahPages = {
         icon: School,
       },
       {
-        title: "Ma'had dan Ibadah",
+        title: "Asrama dan Ibadah",
         description:
-          "Ma'had Al-Azhar dan masjid dua lantai memperkuat pembiasaan keislaman dan karakter.",
+          "Asrama Al-Azhar dan masjid dua lantai memperkuat pembiasaan keislaman dan karakter.",
         icon: Building2,
       },
       {
@@ -228,8 +228,8 @@ export const programMadrasahPages = {
         description:
           "Aktivitas ibadah, asrama, olahraga, keamanan, dan parkir didukung ruang khusus.",
         items: [
-          "Ma'had memiliki beberapa tipe kamar di bangunan dua hingga tiga lantai.",
-          "Masjid dua lantai, lapangan basket, badminton, tenis meja, voli, dan ruang olahraga tersedia untuk pembinaan siswa.",
+          "Asrama memiliki beberapa tipe kamar di bangunan dua hingga tiga lantai.",
+          "Masjid dua lantai, lapangan basket, badminton, tenis meja, voli, dan ruang olahraga tersedia untuk pembinaan murid.",
           "Pos keamanan, area parkir, ruang tatib, ruang musik, dan kamar kecil mendukung operasional yang tertib.",
         ],
       },

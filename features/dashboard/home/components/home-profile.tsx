@@ -54,7 +54,7 @@ export function HomeProfile({ user, student, teacher }: HomeProfileProps) {
                   <ShieldCheck className="dark:text-amber-400 text-amber-100  size-5" />
                 </div>
                 <span className="text-sm font-bold text-amber-900 cap">
-                  Status Siswa
+                  Status Murid
                 </span>
               </div>
               <span className="px-3 py-1 bg-amber-600 text-white text-[10px] font-bold rounded-full uppercase">

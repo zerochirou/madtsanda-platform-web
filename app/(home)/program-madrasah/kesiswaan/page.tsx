@@ -7,7 +7,7 @@ export const metadata = buildMetadata({
   description:
     "Program kesiswaan MTsN 2 Kota Kediri: OSIM, MPK, UKS, PMR, PKS, Pramuka, kedisiplinan, dan pembinaan karakter.",
   path: "/program-madrasah/kesiswaan",
-  keywords: ["kesiswaan MTsN 2 Kota Kediri", "program kesiswaan Madtsanda", "pembinaan siswa MTsN"],
+  keywords: ["kesiswaan MTsN 2 Kota Kediri", "program kesiswaan Madtsanda", "pembinaan murid MTsN"],
 });
 
 export default function KesiswaanPage() {

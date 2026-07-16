@@ -23,7 +23,7 @@ const aboutUs = [
   },
   {
     label: "Galeri Madtsanda",
-    description: "Dokumentasi visual gedung, lingkungan, dan aktivitas siswa.",
+    description: "Dokumentasi visual gedung, lingkungan, dan aktivitas murid.",
     href: "/about/galeri",
   }
 ];
@@ -31,12 +31,12 @@ const aboutUs = [
 const organizations = [
   {
     label: "MPK dan OSIM",
-    description: "Wadah organisasi siswa untuk melatih kepemimpinan dan aspirasi.",
+    description: "Wadah organisasi murid untuk melatih kepemimpinan dan aspirasi.",
     href: "/organizations/mpk-osim",
   },
   {
     label: "Ekstrakurikuler",
-    description: "Berbagai kegiatan minat dan bakat untuk mengembangkan potensi siswa.",
+    description: "Berbagai kegiatan minat dan bakat untuk mengembangkan potensi murid.",
     href: "/organizations/extracurricular",
   },
   {
@@ -69,7 +69,7 @@ export const services = [
   },
   {
     label: "Rapot Digital Madrasah",
-    description: "Sistem penilaian siswa madrasah resmi Kemenag.",
+    description: "Sistem penilaian murid madrasah resmi Kemenag.",
     href: "/rapot",
   }
 ];

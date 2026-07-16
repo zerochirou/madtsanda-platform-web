@@ -10,9 +10,9 @@ import { buildMetadata } from "@/lib/seo";
 export const metadata = buildMetadata({
   title: "Fivesa MTsN 2 Kota Kediri | Komunitas dan Organisasi Kesiswaan",
   description:
-    "Fivesa MTsN 2 Kota Kediri menaungi komunitas siswa untuk kepedulian sosial, jurnalistik, kedisiplinan, dan pengembangan kreativitas.",
+    "Fivesa MTsN 2 Kota Kediri menaungi komunitas murid untuk kepedulian sosial, jurnalistik, kedisiplinan, dan pengembangan kreativitas.",
   path: "/organizations/fivesa",
-  keywords: ["Fivesa MTsN 2 Kota Kediri", "organisasi Madtsanda", "komunitas siswa Madtsanda"],
+  keywords: ["Fivesa MTsN 2 Kota Kediri", "organisasi Madtsanda", "komunitas murid Madtsanda"],
 });
 
 export default function FivesaPage() {
@@ -26,7 +26,7 @@ export default function FivesaPage() {
       <OrganizationHero
         title="Fivesa"
         eyebrow="Komunitas & Organisasi Kesiswaan"
-        description="Wadah pengembangan minat bakat, kedisiplinan, kemanusiaan, serta jurnalistik siswa MTsN 2 Kota Kediri."
+        description="Wadah pengembangan minat bakat, kedisiplinan, kemanusiaan, serta jurnalistik murid MTsN 2 Kota Kediri."
         imageSrc="/images/gedung-madtsanda.jpg"
         imageAlt="Gedung MTsN 2 Kota Kediri sebagai ruang kegiatan Fivesa"
         tone="amber"
@@ -45,7 +45,7 @@ export default function FivesaPage() {
             </h2>
             <p className="text-lg text-zinc-600 dark:text-zinc-400 leading-relaxed">
               Komunitas organisasi Fivesa melatih kemandirian, kepedulian
-              sosial, sportivitas, serta kreativitas siswa melalui
+              sosial, sportivitas, serta kreativitas murid melalui
               program-program pengabdian masyarakat dan kompetisi tingkat daerah
               maupun nasional.
             </p>

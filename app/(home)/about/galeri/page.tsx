@@ -8,7 +8,7 @@ import { galleryItems } from "@/components/data/gallery";
 export const metadata: Metadata = {
   title: "Galeri Madtsanda | MTsN 2 Kota Kediri",
   description:
-    "Galeri statis MTsN 2 Kota Kediri berisi dokumentasi gedung, lingkungan, dan aktivitas siswa Madtsanda.",
+    "Galeri statis MTsN 2 Kota Kediri berisi dokumentasi gedung, lingkungan, dan aktivitas murid Madtsanda.",
 };
 
 export default function GaleriMadtsandaPage() {
@@ -28,7 +28,7 @@ export default function GaleriMadtsandaPage() {
               Dokumentasi visual madrasah
             </h1>
             <p className="mt-5 max-w-2xl text-base leading-8 text-zinc-600 dark:text-zinc-400">
-              Cuplikan gedung, lingkungan, dan aktivitas siswa MTsN 2 Kota
+              Cuplikan gedung, lingkungan, dan aktivitas murid MTsN 2 Kota
               Kediri. Semua gambar di halaman ini sudah dikompresi agar tetap
               ringan saat dibuka di desktop maupun perangkat mobile.
             </p>

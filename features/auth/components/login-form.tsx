@@ -77,7 +77,7 @@ export function LoginForm() {
                 htmlFor={field.name}
                 className="text-zinc-700 dark:text-zinc-300"
               >
-                Email Siswa / Guru
+                Email Murid / Guru
               </FieldLabel>
             </motion.div>
             <motion.div

@@ -46,14 +46,14 @@ export default function Rapot() {
                             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-tight">
                                 Akses Rapor Digital <br />
                                 <span className="bg-linear-to-r from-emerald-600 via-teal-500 to-emerald-500 dark:from-emerald-400 dark:via-teal-400 dark:to-emerald-500 bg-clip-text text-transparent">
-                                    Siswa MTsN 2 Kediri
+                                    Murid MTsN 2 Kediri
                                 </span>
                             </h1>
                             <p className="text-base md:text-lg text-zinc-600 dark:text-zinc-400 leading-relaxed max-w-2xl">
                                 Selamat datang di portal Rapor Digital Madrasah
                                 (RDM) MTsN 2 Kota Kediri. Platform digital
                                 terintegrasi untuk mempermudah orang tua/wali
-                                dan siswa dalam melihat, memantau, dan mengunduh
+                                dan murid dalam melihat, memantau, dan mengunduh
                                 hasil evaluasi belajar secara mandiri, aman, dan
                                 efisien.
                             </p>
@@ -88,7 +88,7 @@ export default function Rapot() {
                                     },
                                     {
                                         step: "02",
-                                        title: "Gunakan Akun Siswa",
+                                        title: "Gunakan Akun Murid",
                                         desc: "Gunakan nomor NISN dan password yang diberikan wali kelas.",
                                     },
                                     {
@@ -156,12 +156,12 @@ export default function Rapot() {
                             Pemberitahuan Orang Tua
                         </Badge>
                         <h2 className="text-2xl md:text-3xl font-bold">
-                            Butuh Pendampingan Belajar Siswa?
+                            Butuh Pendampingan Belajar Murid?
                         </h2>
                         <p className="text-zinc-600 dark:text-zinc-400 text-sm md:text-base leading-relaxed">
                             Rapor digital ini diterbitkan secara resmi oleh
                             MTsN 2 Kota Kediri. Disarankan agar orang
-                            tua/wali murid mendampingi siswa saat membuka
+                            tua/wali murid mendampingi murid saat membuka
                             dan menganalisis nilai evaluasi belajar demi
                             peningkatan kualitas prestasi akademik di masa
                             mendatang.
@@ -212,11 +212,11 @@ export default function Rapot() {
                             className="border border-zinc-200 dark:border-zinc-800 rounded-2xl bg-white dark:bg-zinc-900/20 px-6 py-1"
                         >
                             <AccordionTrigger className="text-zinc-900 dark:text-zinc-100 font-semibold hover:no-underline py-4 text-base">
-                                Bagaimana cara mendapatkan NISN siswa?
+                                Bagaimana cara mendapatkan NISN murid?
                             </AccordionTrigger>
                             <AccordionContent className="text-zinc-600 dark:text-zinc-400 leading-relaxed text-sm pt-2 pb-4">
                                 Nomor Induk Siswa Nasional (NISN) dapat
-                                dilihat pada kartu pelajar siswa, buku rapor
+                                dilihat pada kartu pelajar murid, buku rapor
                                 semester sebelumnya, atau ditanyakan
                                 langsung kepada wali kelas masing-masing.
                                 Anda juga dapat memeriksa secara online

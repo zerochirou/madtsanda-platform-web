@@ -15,9 +15,9 @@ import {
 export const metadata = buildMetadata({
   title: "Berita MTsN 2 Kota Kediri | Kegiatan, Prestasi, dan Informasi",
   description:
-    "Baca berita resmi MTsN 2 Kota Kediri tentang kegiatan madrasah, prestasi siswa, agenda akademik, sosial keagamaan, dan informasi publik.",
+    "Baca berita resmi MTsN 2 Kota Kediri tentang kegiatan madrasah, prestasi murid, agenda akademik, sosial keagamaan, dan informasi publik.",
   path: "/news",
-  keywords: ["berita MTsN 2 Kota Kediri", "kegiatan Madtsanda", "prestasi siswa Kediri"],
+  keywords: ["berita MTsN 2 Kota Kediri", "kegiatan Madtsanda", "prestasi murid Kediri"],
 });
 
 export default async function News({

@@ -35,11 +35,11 @@ export const timelineMilestones: TimelineMilestone[] = [
   },
   {
     year: "2010",
-    title: "Ma'had Al-Azhar & Boarding School",
+    title: "Asrama Al-Azhar & Boarding School",
     description:
-      "Pembangunan asrama Ma'had Al-Azhar sebagai fasilitas boarding school modern. Program ini memperkuat pembinaan karakter Islami, tahfidz Al-Qur'an, dan kemandirian siswa selama 24 jam.",
+      "Pembangunan Asrama Al-Azhar sebagai fasilitas boarding school modern. Program ini memperkuat pembinaan karakter Islami, tahfidz Al-Qur'an, dan kemandirian murid selama 24 jam.",
     imageSrc: "/images/mahad-alazhar.jpg",
-    imageAlt: "Ma'had Al-Azhar MTsN 2 Kota Kediri",
+    imageAlt: "Asrama Al-Azhar MTsN 2 Kota Kediri",
   },
   {
     year: "2015",
@@ -51,11 +51,11 @@ export const timelineMilestones: TimelineMilestone[] = [
   },
   {
     year: "2020",
-    title: "Kelas Akselerasi & Research Center",
+    title: "LBSCI & Research Center",
     description:
-      "Pendirian Kelas Akselerasi (PDCI) untuk Peserta Didik Cerdas Istimewa dan pembentukan Research Center. Puluhan karya inovatif siswa mulai mendapat pengakuan Hak Kekayaan Intelektual (HaKI).",
+      "Pendirian LBSCI untuk Layanan Belajar Siswa Cerdas Istimewa dan pembentukan Research Center. Puluhan karya inovatif murid mulai mendapat pengakuan Hak Kekayaan Intelektual (HaKI).",
     imageSrc: "/images/gallery/siswa-riset.webp",
-    imageAlt: "Siswa MTsN 2 Kota Kediri dalam aktivitas riset",
+    imageAlt: "Murid MTsN 2 Kota Kediri dalam aktivitas riset",
   },
   {
     year: "Sekarang",
@@ -63,6 +63,6 @@ export const timelineMilestones: TimelineMilestone[] = [
     description:
       "Matsanda terus berkembang sebagai madrasah unggul yang memadukan tradisi keilmuan Islam dengan inovasi pendidikan abad 21. Dengan 4 program unggulan, puluhan HaKI, dan ratusan prestasi, Matsanda siap menghadapi tantangan masa depan.",
     imageSrc: "/images/gallery/siswa-literasi.webp",
-    imageAlt: "Siswa MTsN 2 Kota Kediri dalam kegiatan literasi",
+    imageAlt: "Murid MTsN 2 Kota Kediri dalam kegiatan literasi",
   },
 ];

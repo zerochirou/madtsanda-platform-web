@@ -6,7 +6,7 @@ export default function CampusPage() {
     { name: "Perpustakaan", img: "/images/perpustakaan.jpg" },
     { name: "Laboratorium", img: "/images/kegiatan-sekolah.jpg" },
     { name: "Graha Paseban", img: "/images/paseban-1.JPG" },
-    { name: "Ma'had Al-Azhar", img: "/images/mahad-alazhar.jpg" },
+    { name: "Asrama Al-Azhar", img: "/images/mahad-alazhar.jpg" },
     { name: "Paseban 2", img: "/images/paseban-2.jpg" },
     { name: "Kantin", img: "/images/kantin.jpg" },
   ];
@@ -16,7 +16,7 @@ export default function CampusPage() {
       <PageHero 
         title="Lingkungan Madrasah" 
         subtitle="Fasilitas & Kampus" 
-        description="Lingkungan belajar yang asri, modern, dan bernuansa Islami. Jelajahi fasilitas yang mendukung pengembangan diri siswa."
+        description="Lingkungan belajar yang asri, modern, dan bernuansa Islami. Jelajahi fasilitas yang mendukung pengembangan diri murid."
         imageSrc="/images/paseban-1.JPG"
       />
 
@@ -24,7 +24,7 @@ export default function CampusPage() {
         <FadeUp>
           <div className="text-center mb-16 lg:mb-24">
             <h2 className="text-3xl md:text-5xl font-bold text-zinc-900 dark:text-white mb-6">Fasilitas Utama</h2>
-            <p className="text-zinc-600 dark:text-zinc-400 text-lg max-w-2xl mx-auto">Infrastruktur terbaik yang dirancang untuk memfasilitasi inovasi, kolaborasi, dan prestasi siswa.</p>
+            <p className="text-zinc-600 dark:text-zinc-400 text-lg max-w-2xl mx-auto">Infrastruktur terbaik yang dirancang untuk memfasilitasi inovasi, kolaborasi, dan prestasi murid.</p>
           </div>
         </FadeUp>
 

@@ -22,7 +22,7 @@ export default function BudayaPage() {
       <PageHero
         title="Budaya Madrasah Kami"
         subtitle="Pilar Karakter"
-        description="Empat pilar esensial yang berorientasi pada perwujudan karakter siswa yang beraqidah kuat, beribadah benar, berakhlak karimah, disiplin, dan mandiri."
+        description="Empat pilar esensial yang berorientasi pada perwujudan karakter murid yang beraqidah kuat, beribadah benar, berakhlak karimah, disiplin, dan mandiri."
         imageSrc="/images/bg-mts.jpg"
       />
 

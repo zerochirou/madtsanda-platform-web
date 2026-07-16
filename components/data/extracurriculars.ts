@@ -29,7 +29,7 @@ export const extracurricularsData: ExtracurricularDTO[] = [
   {
     name: "Qira'ah / Tilawah",
     category: "Keagamaan",
-    desc: "Seni membaca Al-Qur'an dengan lagu/maqam yang indah untuk mempersiapkan siswa di ajang MTQ.",
+    desc: "Seni membaca Al-Qur'an dengan lagu/maqam yang indah untuk mempersiapkan murid di ajang MTQ.",
     icon: "Volume2"
   },
 
@@ -43,7 +43,7 @@ export const extracurricularsData: ExtracurricularDTO[] = [
   {
     name: "Robotik",
     category: "Akademik & Riset",
-    desc: "Pembelajaran merakit, memprogram, dan mengoperasikan robot mini guna mempersiapkan siswa di era otomasi industri.",
+    desc: "Pembelajaran merakit, memprogram, dan mengoperasikan robot mini guna mempersiapkan murid di era otomasi industri.",
     icon: "Cpu"
   },
   {
@@ -61,7 +61,7 @@ export const extracurricularsData: ExtracurricularDTO[] = [
   {
     name: "Olimpiade IPS",
     category: "Akademik & Riset",
-    desc: "Bimbingan materi geografi, sejarah, dan ekonomi terintegrasi untuk mempersiapkan siswa dalam kompetisi sosial.",
+    desc: "Bimbingan materi geografi, sejarah, dan ekonomi terintegrasi untuk mempersiapkan murid dalam kompetisi sosial.",
     icon: "Globe2"
   },
   {

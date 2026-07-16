@@ -21,7 +21,7 @@ export default function PPDB() {
     <div className="min-h-screen bg-zinc-50 dark:bg-zinc-950 transition-colors duration-300">
       <PageHero
         title="PPDB"
-        subtitle="Pendaftaran Siswa Baru"
+        subtitle="Pendaftaran Murid Baru"
         description="Langkah awal menuju perjalanan pendidikan yang transformatif. Pelajari alur pendaftaran, persyaratan, dan jadwal penting."
         imageSrc="/images/foto-siswa.JPG"
       />
@@ -36,7 +36,7 @@ export default function PPDB() {
               Kami mencari generasi muda yang bersemangat, kompetitif, dan siap
               berprestasi. Proses seleksi kami meliputi tes kemampuan akademik,
               baca tulis Al-Qur&apos;an, dan wawancara untuk menggali potensi
-              terbaik dari setiap calon siswa.
+              terbaik dari setiap calon murid.
             </p>
             <div className="space-y-6">
               {steps.map((step, idx) => (
@@ -90,7 +90,7 @@ export default function PPDB() {
                 </p>
                 <p className="text-2xl font-bold mb-2">Juni 2026</p>
                 <p className="text-zinc-400">
-                  Lapor diri bagi siswa yang dinyatakan lulus
+                  Lapor diri bagi murid yang dinyatakan lulus
                 </p>
               </div>
             </div>

@@ -258,7 +258,7 @@ export default function Sambutan() {
                 {[
                   "Alhamdulillah, segala puji bagi Allah SWT atas limpahan rahmat dan karunia-Nya sehingga madrasah kita terus tumbuh menjadi ruang pendidikan yang menanamkan ilmu, akhlak, dan karakter mulia.",
                   "Melalui website ini, kami ingin menghadirkan wajah madrasah yang terbuka, informatif, dan dekat dengan masyarakat. Website ini bukan hanya media informasi, tetapi juga jembatan komunikasi antara madrasah, peserta didik, orang tua, alumni, dan seluruh pihak yang peduli terhadap pendidikan.",
-                  "Kami percaya bahwa pendidikan terbaik lahir dari kolaborasi. Guru yang ikhlas mendidik, siswa yang semangat belajar, orang tua yang mendampingi, serta lingkungan yang mendukung akan membentuk generasi yang cerdas secara intelektual, matang secara emosional, dan kuat secara spiritual.",
+                  "Kami percaya bahwa pendidikan terbaik lahir dari kolaborasi. Guru yang ikhlas mendidik, murid yang semangat belajar, orang tua yang mendampingi, serta lingkungan yang mendukung akan membentuk generasi yang cerdas secara intelektual, matang secara emosional, dan kuat secara spiritual.",
                   "Semoga madrasah ini senantiasa menjadi tempat tumbuhnya generasi beriman, berilmu, berakhlakul karimah, serta mampu memberi manfaat bagi agama, bangsa, dan masyarakat.",
                 ].map((paragraph, index) => (
                   <motion.p

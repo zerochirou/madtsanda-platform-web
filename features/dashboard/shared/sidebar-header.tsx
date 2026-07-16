@@ -3,6 +3,7 @@
 import { Separator } from "@/components/ui/separator";
 import { SidebarBreadcrumb } from "./sidebar-breadcrumb";
 import { ThemeToggle } from "@/components/shared/theme-toggle";
+import { SidebarTrigger } from "@/components/ui/sidebar";
 import {
   Avatar,
   AvatarBadge,
@@ -14,19 +15,22 @@ import {
   DropdownMenuContent,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { LogOut } from "lucide-react"; // Tambah icon untuk visual trigger
+import { LogOut } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { handleLogout } from "@/features/auth/actions/logout";
 
 import { SidebarHeaderProps } from "@/types/components";
+
 export function SidebarHeader({ user, student, teacher }: SidebarHeaderProps) {
   const profileImage = student?.profileUrl || teacher?.profileUrl;
 
   return (
     <header className="flex border-b h-18 shrink-0 items-center justify-between gap-2 transition-[width,height] ease-linear group-has-data-[collapsible=icon]/sidebar-wrapper:h-12">
       <div className="flex items-center gap-2 px-4">
+        <SidebarTrigger />
+        <Separator orientation="vertical" className="h-4" />
         <ThemeToggle />
-        <Separator orientation="vertical" />
+        <Separator orientation="vertical" className="h-4" />
         <SidebarBreadcrumb />
       </div>
 

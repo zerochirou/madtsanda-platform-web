@@ -8,8 +8,8 @@ import { Zap, FlaskConical, BookOpenCheck, GraduationCap } from "lucide-react";
 
 export const programsData = [
   {
-    title: "Kelas Akselerasi (PDCI)",
-    school: "Peserta Didik Cerdas Istimewa",
+    title: "LBSCI",
+    school: "Layanan Belajar Siswa Cerdas Istimewa",
     icon: Zap,
     gradient: "from-emerald-500 to-teal-600",
     gradientHover: "from-emerald-400 to-teal-500",
@@ -19,7 +19,7 @@ export const programsData = [
     content: KelasAkselerasi,
   },
   {
-    title: "Kelas Excellent",
+    title: "Program Layanan Kelas Unggulan",
     school: "Program Riset & IT",
     icon: FlaskConical,
     gradient: "from-amber-500 to-orange-600",
@@ -30,7 +30,7 @@ export const programsData = [
     content: KelasExcellent,
   },
   {
-    title: "Ma'had Al-Azhar",
+    title: "Asrama Al-Azhar",
     school: "Kelas Religi & Tahfidz",
     icon: BookOpenCheck,
     gradient: "from-blue-500 to-indigo-600",

@@ -17,14 +17,14 @@ export default async function Page({
 
   return (
     <div className="px-4 py-6 max-w-7xl mx-auto w-full">
-      <div className="flex justify-between items-center mb-6">
+      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-6">
         <h1 className="text-2xl font-bold">Kelola Berita</h1>
-        <div className="flex flex-row items-center gap-2">
+        <div className="flex flex-col sm:flex-row items-start sm:items-center gap-2 w-full sm:w-auto">
           <DynamicPagination totalPages={totalPage ? totalPage : 0} />
-          <Link href="/dashboard/news/create">
+          <Link href="/dashboard/news/create" className="w-full sm:w-auto">
             <Button
               variant={"outline"}
-              className="bg-emerald-400 text-emerald-800 hover:bg-emerald-300 hover:text-emerald-600"
+              className="w-full bg-emerald-400 text-emerald-800 hover:bg-emerald-300 hover:text-emerald-600"
             >
               Buat Berita Baru <Plus />
             </Button>

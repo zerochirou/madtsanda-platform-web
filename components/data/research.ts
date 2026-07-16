@@ -39,8 +39,8 @@ export const mockResearchPaginate: ResearchPaginateDTO = {
   data: [
     {
       id: "mock-res-1",
-      title: "Analisis Efektivitas Penggunaan Gadget Terhadap Prestasi Belajar Siswa Kelas VIII MTsN 2 Kota Kediri",
-      abstrack: "Penelitian ini bertujuan untuk menguji korelasi antara durasi penggunaan gawai (gadget) dengan pencapaian prestasi akademik siswa kelas VIII di MTsN 2 Kota Kediri. Menggunakan metode kuantitatif korelasional dengan sampel 120 siswa. Data dikumpulkan melalui angket terstruktur dan dokumentasi nilai raport semester ganjil. Hasil penelitian menunjukkan adanya korelasi negatif yang signifikan antara penggunaan gawai non-edukatif berlebih dengan prestasi belajar siswa. Penelitian merekomendasikan perlunya pembatasan screen-time dan kolaborasi intensif antara guru serta orang tua dalam memantau aktivitas digital anak.",
+      title: "Analisis Efektivitas Penggunaan Gadget Terhadap Prestasi Belajar Murid Kelas VIII MTsN 2 Kota Kediri",
+      abstrack: "Penelitian ini bertujuan untuk menguji korelasi antara durasi penggunaan gawai (gadget) dengan pencapaian prestasi akademik murid kelas VIII di MTsN 2 Kota Kediri. Menggunakan metode kuantitatif korelasional dengan sampel 120 murid. Data dikumpulkan melalui angket terstruktur dan dokumentasi nilai raport semester ganjil. Hasil penelitian menunjukkan adanya korelasi negatif yang signifikan antara penggunaan gawai non-edukatif berlebih dengan prestasi belajar murid. Penelitian merekomendasikan perlunya pembatasan screen-time dan kolaborasi intensif antara guru serta orang tua dalam memantau aktivitas digital anak.",
       createdAt: "2026-04-10T08:00:00.000Z",
       updatedAt: "2026-04-12T10:00:00.000Z",
       documentUrl: "/documents/sample-research.pdf",
@@ -61,7 +61,7 @@ export const mockResearchPaginate: ResearchPaginateDTO = {
     {
       id: "mock-res-2",
       title: "Penerapan Konsep Green School Sebagai Upaya Menumbuhkan Karakter Peduli Lingkungan Sejak Dini",
-      abstrack: "Sebagai Madrasah Adiwiyata Nasional, MTsN 2 Kota Kediri berkomitmen menerapkan konsep sekolah hijau (Green School). Penelitian ini mengevaluasi efektivitas program Adiwiyata dalam membentuk karakter peduli lingkungan siswa melalui pemilahan sampah, pembuatan kompos organik, dan pembiasaan hemat energi. Menggunakan pendekatan kualitatif deskriptif melalui observasi partisipatif dan wawancara mendalam dengan kader Adiwiyata. Hasil riset mengonfirmasi peningkatan kesadaran ekologis siswa sebesar 85% setelah satu tahun berpartisipasi aktif dalam kegiatan kader Adiwiyata.",
+      abstrack: "Sebagai Madrasah Adiwiyata Nasional, MTsN 2 Kota Kediri berkomitmen menerapkan konsep sekolah hijau (Green School). Penelitian ini mengevaluasi efektivitas program Adiwiyata dalam membentuk karakter peduli lingkungan murid melalui pemilahan sampah, pembuatan kompos organik, dan pembiasaan hemat energi. Menggunakan pendekatan kualitatif deskriptif melalui observasi partisipatif dan wawancara mendalam dengan kader Adiwiyata. Hasil riset mengonfirmasi peningkatan kesadaran ekologis murid sebesar 85% setelah satu tahun berpartisipasi aktif dalam kegiatan kader Adiwiyata.",
       createdAt: "2026-03-25T09:00:00.000Z",
       updatedAt: "2026-03-26T11:00:00.000Z",
       documentUrl: "/documents/sample-research.pdf",
@@ -82,7 +82,7 @@ export const mockResearchPaginate: ResearchPaginateDTO = {
     {
       id: "mock-res-3",
       title: "Implementasi Nilai-Nilai Istikomah dalam Pembelajaran Berbasis Riset di Kelas Akselerasi",
-      abstrack: "Penelitian ini mengeksplorasi integrasi nilai-nilai karakter 'ISTIKOMAH' (Islami, Terampil, Inovatif, Kompetitif, Berakhlakul Karimah) dalam kurikulum berbasis riset pada kelas akselerasi (PDCI) MTsN 2 Kota Kediri. Melalui studi kasus kualitatif, ditemukan bahwa penanaman nilai Islami dan kejujuran ilmiah menjadi pilar utama siswa dalam menyelesaikan karya tulis ilmiah mereka. Siswa akselerasi terbukti memiliki daya saing kompetitif yang lebih tinggi berkat bimbingan riset terstruktur yang disiplin.",
+      abstrack: "Penelitian ini mengeksplorasi integrasi nilai-nilai karakter 'ISTIKOMAH' (Islami, Terampil, Inovatif, Kompetitif, Berakhlakul Karimah) dalam kurikulum berbasis riset pada kelas akselerasi (LBSCI) MTsN 2 Kota Kediri. Melalui studi kasus kualitatif, ditemukan bahwa penanaman nilai Islami dan kejujuran ilmiah menjadi pilar utama murid dalam menyelesaikan karya tulis ilmiah mereka. Murid akselerasi terbukti memiliki daya saing kompetitif yang lebih tinggi berkat bimbingan riset terstruktur yang disiplin.",
       createdAt: "2026-03-15T07:30:00.000Z",
       updatedAt: "2026-03-16T08:45:00.000Z",
       documentUrl: "/documents/sample-research.pdf",

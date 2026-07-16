@@ -22,7 +22,7 @@ import {
 export const metadata = buildMetadata({
   title: "MTsN 2 Kota Kediri | Madrasah Riset, Prestasi, dan Karakter",
   description:
-    "Website resmi MTsN 2 Kota Kediri: profil madrasah, program unggulan, PPDB, berita, riset siswa, perpustakaan, organisasi, dan Madtsanda Connect.",
+    "Website resmi MTsN 2 Kota Kediri: profil madrasah, program unggulan, PPDB, berita, riset murid, perpustakaan, organisasi, dan Madtsanda Connect.",
   path: "/",
   keywords: [
     "website resmi MTsN 2 Kota Kediri",
