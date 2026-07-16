@@ -8,7 +8,7 @@ export const SITE_URL =
 export const SCHOOL_NAME = "MTsN 2 Kota Kediri";
 export const SITE_NAME = "Madtsanda Platform";
 export const SCHOOL_DESCRIPTION =
-  "Website resmi MTsN 2 Kota Kediri untuk informasi madrasah, berita, riset siswa, program unggulan, perpustakaan, organisasi, dan layanan Madtsanda Connect.";
+  "Website resmi MTsN 2 Kota Kediri untuk informasi madrasah, berita, riset murid, program unggulan, perpustakaan, organisasi, dan layanan Madtsanda Connect.";
 
 export const SCHOOL_KEYWORDS = [
   "MTsN 2 Kota Kediri",

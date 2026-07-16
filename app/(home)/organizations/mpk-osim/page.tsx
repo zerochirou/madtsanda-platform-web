@@ -15,11 +15,11 @@ import { OrganizationHero } from "@/features/organizations/components";
 import { buildMetadata } from "@/lib/seo";
 
 export const metadata = buildMetadata({
-  title: "MPK dan OSIM MTsN 2 Kota Kediri | Organisasi Siswa Madtsanda",
+  title: "MPK dan OSIM MTsN 2 Kota Kediri | Organisasi Murid Madtsanda",
   description:
-    "Profil MPK dan OSIM MTsN 2 Kota Kediri sebagai organisasi utama kesiswaan, aspirasi kelas, kepemimpinan, dan pelaksana program siswa.",
+    "Profil MPK dan OSIM MTsN 2 Kota Kediri sebagai organisasi utama kesiswaan, aspirasi kelas, kepemimpinan, dan pelaksana program murid.",
   path: "/organizations/mpk-osim",
-  keywords: ["OSIM MTsN 2 Kota Kediri", "MPK Madtsanda", "organisasi siswa MTsN 2 Kediri"],
+  keywords: ["OSIM MTsN 2 Kota Kediri", "MPK Madtsanda", "organisasi murid MTsN 2 Kediri"],
 });
 
 export default function MpkOsimPage() {
@@ -31,12 +31,12 @@ export default function MpkOsimPage() {
       <OrganizationHero
         title="MPK & OSIM"
         eyebrow="Organisasi Utama Kesiswaan"
-        description="Pilar kepemimpinan dan perwakilan siswa MTsN 2 Kota Kediri yang bertugas menggerakkan kegiatan kesiswaan serta menyalurkan aspirasi secara dinamis."
+        description="Pilar kepemimpinan dan perwakilan murid MTsN 2 Kota Kediri yang bertugas menggerakkan kegiatan kesiswaan serta menyalurkan aspirasi secara dinamis."
         imageSrc="/images/apel-pagi.jpg"
-        imageAlt="Kegiatan apel dan organisasi siswa MTsN 2 Kota Kediri"
+        imageAlt="Kegiatan apel dan organisasi murid MTsN 2 Kota Kediri"
         tone="emerald"
         metrics={[
-          { value: "2", label: "Lembaga utama siswa" },
+          { value: "2", label: "Lembaga utama murid" },
           { value: "9+", label: "Bidang kerja OSIM" },
           { value: "100%", label: "Aspirasi kelas terwakili" },
         ]}
@@ -102,7 +102,7 @@ export default function MpkOsimPage() {
               <FadeUp delay={0.2}>
                 <div className="space-y-4">
                   <span className="text-xs font-bold uppercase tracking-widest text-emerald-500 bg-emerald-50 dark:bg-emerald-950/40 px-3 py-1 rounded-full">
-                    Lembaga Legislatif Siswa
+                    Lembaga Legislatif Murid
                   </span>
                   <h2 className="text-3xl md:text-4xl font-extrabold text-zinc-900 dark:text-white">
                     Peran & Fungsi Legislatif MPK
@@ -202,7 +202,7 @@ export default function MpkOsimPage() {
               <FadeUp>
                 <div className="space-y-4">
                   <span className="text-xs font-bold uppercase tracking-widest text-emerald-500 bg-emerald-50 dark:bg-emerald-950/40 px-3 py-1 rounded-full">
-                    Lembaga Eksekutif Siswa
+                    Lembaga Eksekutif Murid
                   </span>
                   <h2 className="text-3xl md:text-4xl font-extrabold text-zinc-900 dark:text-white">
                     Roda Pelaksana Program Kerja OSIM
@@ -212,7 +212,7 @@ export default function MpkOsimPage() {
                     OSIM bertanggung jawab merencanakan, melaksanakan, dan
                     mengoordinasikan berbagai kegiatan kesiswaan. Melalui
                     pembagian Seksi Bidang (Sekbid), OSIM mewadahi pengembangan
-                    potensi akademik maupun non-akademik siswa.
+                    potensi akademik maupun non-akademik murid.
                   </p>
                 </div>
               </FadeUp>

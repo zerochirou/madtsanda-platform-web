@@ -28,29 +28,29 @@ export const galleryItems: GalleryItem[] = [
     imageAlt: "Area gedung hijau MTsN 2 Kota Kediri",
   },
   {
-    title: "Kolaborasi Siswa",
+    title: "Kolaborasi Murid",
     description:
-      "Siswa bekerja bersama dalam kegiatan literasi, riset, dan penguatan kompetensi.",
-    category: "Siswa",
+      "Murid bekerja bersama dalam kegiatan literasi, riset, dan penguatan kompetensi.",
+    category: "Murid",
     imageSrc: "/images/gallery/siswa-riset.webp",
-    imageAlt: "Siswa MTsN 2 Kota Kediri berkolaborasi menggunakan laptop",
+    imageAlt: "Murid MTsN 2 Kota Kediri berkolaborasi menggunakan laptop",
     featured: true,
   },
   {
     title: "Aktivitas Belajar",
     description:
-      "Kegiatan siswa di lingkungan madrasah sebagai ruang tumbuh akademik dan karakter.",
-    category: "Siswa",
+      "Kegiatan murid di lingkungan madrasah sebagai ruang tumbuh akademik dan karakter.",
+    category: "Murid",
     imageSrc: "/images/gallery/siswa-kolaborasi.webp",
-    imageAlt: "Aktivitas siswa MTsN 2 Kota Kediri",
+    imageAlt: "Aktivitas murid MTsN 2 Kota Kediri",
   },
   {
     title: "Literasi Madrasah",
     description:
-      "Ruang kebersamaan siswa dalam mengembangkan budaya baca dan publikasi madrasah.",
-    category: "Siswa",
+      "Ruang kebersamaan murid dalam mengembangkan budaya baca dan publikasi madrasah.",
+    category: "Murid",
     imageSrc: "/images/gallery/siswa-literasi.webp",
-    imageAlt: "Siswa MTsN 2 Kota Kediri dalam kegiatan literasi",
+    imageAlt: "Murid MTsN 2 Kota Kediri dalam kegiatan literasi",
   },
   {
     title: "Lingkungan Madrasah",

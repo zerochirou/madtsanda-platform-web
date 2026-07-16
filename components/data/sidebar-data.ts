@@ -103,7 +103,7 @@ export const sidebarItems: SidebarItem[] = [
         label: "Accept Paper",
         icon: CheckmarkCircle24Color,
         minRole: "admin",
-        description: "Accept atau tidak paper siswa",
+        description: "Accept atau tidak paper murid",
         route: "/dashboard/research/accept",
       },
     ],

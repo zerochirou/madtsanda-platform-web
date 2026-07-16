@@ -7,11 +7,11 @@ import { extracurricularsData } from "@/components/data/extracurriculars";
 import { buildMetadata } from "@/lib/seo";
 
 export const metadata = buildMetadata({
-  title: "Ekstrakurikuler MTsN 2 Kota Kediri | Pengembangan Bakat Siswa",
+  title: "Ekstrakurikuler MTsN 2 Kota Kediri | Pengembangan Bakat Murid",
   description:
-    "Daftar ekstrakurikuler MTsN 2 Kota Kediri untuk pengembangan minat, bakat, karakter, dan prestasi siswa Madtsanda.",
+    "Daftar ekstrakurikuler MTsN 2 Kota Kediri untuk pengembangan minat, bakat, karakter, dan prestasi murid Madtsanda.",
   path: "/organizations/extracurricular",
-  keywords: ["ekstrakurikuler MTsN 2 Kota Kediri", "ekskul Madtsanda", "organisasi siswa Kediri"],
+  keywords: ["ekstrakurikuler MTsN 2 Kota Kediri", "ekskul Madtsanda", "organisasi murid Kediri"],
 });
 
 export default function ExtracurricularsPage() {
@@ -19,7 +19,7 @@ export default function ExtracurricularsPage() {
     <div className="min-h-screen bg-zinc-50 dark:bg-zinc-950 transition-colors duration-300">
       <OrganizationHero
         title="Ekstrakurikuler"
-        eyebrow="Pengembangan Potensi Siswa"
+        eyebrow="Pengembangan Potensi Murid"
         description="Jelajahi 25 jenis kegiatan ekstrakurikuler unggulan MTsN 2 Kota Kediri untuk menyalurkan minat, mengasah bakat, dan mengukir prestasi."
         imageSrc="/images/bg-mts.jpg"
         imageAlt="Lingkungan madrasah untuk kegiatan ekstrakurikuler"

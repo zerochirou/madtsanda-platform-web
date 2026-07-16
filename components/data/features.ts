@@ -14,12 +14,12 @@ export const featuresData = [
   {
     icon: BookOpen,
     title: "Program Unggulan Tahfidz",
-    desc: "Program hafalan Al-Qur'an terstruktur dengan metode Jibril di Ma'had Al-Azhar.",
+    desc: "Program hafalan Al-Qur'an terstruktur dengan metode Jibril di Asrama Al-Azhar.",
   },
   {
     icon: Medal,
     title: "Juara Robotik Nasional",
-    desc: "Pembinaan riset dan IT yang mencetak siswa berprestasi di tingkat nasional.",
+    desc: "Pembinaan riset dan IT yang mencetak murid berprestasi di tingkat nasional.",
   },
   {
     icon: Users,

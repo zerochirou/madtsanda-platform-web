@@ -27,7 +27,7 @@ export default function ResearchClient({ initialData }: { initialData: ResearchP
       <div className="flex flex-col md:flex-row gap-4 mb-8">
         <Input
           placeholder="Search title or abstract..."
-          className="bg-zinc-900 border-zinc-800 text-lg h-14 rounded-2xl"
+          className="bg-white dark:bg-zinc-900 border-zinc-200 dark:border-zinc-800 text-zinc-900 dark:text-zinc-100 placeholder:text-zinc-400 text-lg h-14 rounded-2xl shadow-sm dark:shadow-none"
           value={search}
           onChange={(e) => setSearch(e.target.value)}
         />
@@ -37,7 +37,7 @@ export default function ResearchClient({ initialData }: { initialData: ResearchP
             <button
               key={s}
               onClick={() => setSelectedStatus(s)}
-              className={`px-5 py-2 rounded-2xl border transition ${selectedStatus === s ? "bg-white text-black border-white" : "border-zinc-700 hover:bg-zinc-900"}`}
+              className={`px-5 py-2 rounded-2xl border transition ${selectedStatus === s ? "bg-zinc-900 text-white border-zinc-900 dark:bg-white dark:text-black dark:border-white shadow-md dark:shadow-none" : "border-zinc-200 bg-white text-zinc-600 hover:bg-zinc-50 dark:border-zinc-700 dark:bg-transparent dark:text-zinc-400 dark:hover:bg-zinc-900 shadow-sm dark:shadow-none"}`}
             >
               {s === "all" ? "All Status" : s === "has_done" ? "Published" : "Under Review"}
             </button>

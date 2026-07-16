@@ -3,14 +3,14 @@ import type { OrganizationDTO } from "@/types/dto/organization";
 export const organizationsData: OrganizationDTO[] = [
   {
     name: "OSIM",
-    desc: "OSIM adalah organisasi independen pada suatu madrasah yang anggotanya adalah seluruh siswa siswi. OSIM MTsN 2 Kota Kediri mengkoordinasikan seluruh kegiatan keekstraan baik akademik maupun non akademik.",
+    desc: "OSIM adalah organisasi independen pada suatu madrasah yang anggotanya adalah seluruh murid. OSIM MTsN 2 Kota Kediri mengkoordinasikan seluruh kegiatan keekstraan baik akademik maupun non akademik.",
     ig: "osimmadtsanda",
     founder: "Drs. H. NurSalim M.Pd.I.",
     image: "/images/osim.png"
   },
   {
     name: "MPK",
-    desc: "Majelis Perwakilan Kelas adalah organisasi tertinggi di MTsN 2 Kota Kediri yang bertugas mengawasi kinerja OSIS, serta sebagai organisasi penampung aspirasi siswa.",
+    desc: "Majelis Perwakilan Kelas adalah organisasi tertinggi di MTsN 2 Kota Kediri yang bertugas mengawasi kinerja OSIS, serta sebagai organisasi penampung aspirasi murid.",
     ig: "mpkmatsanda",
     founder: "Drs. H. NurSalim M.Pd.I.",
     image: "/images/mpk.jpg"
@@ -45,7 +45,7 @@ export const organizationsData: OrganizationDTO[] = [
   },
   {
     name: "FIKRUNA",
-    desc: "FIKRUNA adalah organisasi jurnalistik madrasah yang aktif meliput berbagai kegiatan madrasah, melatih keterampilan menulis dan jurnalistik siswa, serta menerbitkan majalah tahunan secara profesional.",
+    desc: "FIKRUNA adalah organisasi jurnalistik madrasah yang aktif meliput berbagai kegiatan madrasah, melatih keterampilan menulis dan jurnalistik murid, serta menerbitkan majalah tahunan secara profesional.",
     ig: "fikrunaberkarya",
     founder: "Drs. H. NurSalim M.Pd.I.",
     image: "/images/fikruna.png"

@@ -19,7 +19,7 @@ export function HomeQuickLink({ user }: HomeQuickLinkProps) {
       <div className="mb-4 px-6 pt-4">
         <h1 className="text-xl font-semibold">Aplikasi</h1>
       </div>
-      <ul className="grid grid-cols-2 gap-2">
+      <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2">
         {filteredQuickLink.map((i, index) => {
           return (
             <Link href={i.url} key={index}>

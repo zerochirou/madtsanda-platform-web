@@ -10,7 +10,7 @@ export default function Programs() {
       <PageHero
         title="Program Kelas"
         subtitle="Akademik Unggulan"
-        description="Temukan berbagai program kelas unggulan yang dirancang untuk membekali siswa dengan pengetahuan, keterampilan, dan karakter Islami."
+        description="Temukan berbagai program kelas unggulan yang dirancang untuk membekali murid dengan pengetahuan, keterampilan, dan karakter Islami."
         imageSrc="/images/kegiatan-tka.jpg"
       />
 

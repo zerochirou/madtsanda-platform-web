@@ -13,7 +13,7 @@ export const metadata = buildMetadata({
   description:
     "Cari dan temukan ribuan koleksi buku, e-book, jurnal, dan karya tulis ilmiah berkualitas tinggi di Perpustakaan MTsN 2 Kota Kediri.",
   path: "/library",
-  keywords: ["perpustakaan MTsN 2 Kota Kediri", "perpustakaan Madtsanda", "koleksi buku siswa"],
+  keywords: ["perpustakaan MTsN 2 Kota Kediri", "perpustakaan Madtsanda", "koleksi buku murid"],
 });
 
 export default async function LibraryPage() {
@@ -41,7 +41,7 @@ export default async function LibraryPage() {
       <PageHero
         title="Gerbang Ilmu Digital & Fisik"
         subtitle="Perpustakaan Madrasah"
-        description="Akses ribuan koleksi buku, e-book, dan jurnal ilmiah untuk mendukung pembelajaran interaktif serta riset kolaboratif siswa-siswi Madtsanda."
+        description="Akses ribuan koleksi buku, e-book, dan jurnal ilmiah untuk mendukung pembelajaran interaktif serta riset kolaboratif murid Madtsanda."
         imageSrc="/images/perpustakaan2.jpg"
       />
       <LibraryClient books={library?.data ?? []} />

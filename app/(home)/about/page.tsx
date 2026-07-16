@@ -119,7 +119,7 @@ export default function About() {
                 persegi dengan orientasi pada pendidikan berbasis riset,
                 penguatan akhlakul karimah, serta kepedulian terhadap lingkungan
                 melalui program Adiwiyata. Identitas sebagai madrasah riset
-                diperkuat dengan puluhan karya inovatif siswa yang telah
+                diperkuat dengan puluhan karya inovatif murid yang telah
                 memperoleh pengakuan Hak Kekayaan Intelektual (HaKI).
               </p>
             </div>

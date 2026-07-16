@@ -26,7 +26,7 @@ export function ResearchRepository({
           </div>
           <div className="grid gap-4 md:grid-cols-[1fr_auto] md:items-end">
             <p className="text-sm leading-7 text-zinc-600 dark:text-zinc-400">
-              Repository riset menjadi ruang publikasi karya ilmiah siswa,
+              Repository riset menjadi ruang publikasi karya ilmiah murid,
               laporan riset camp, dan proyek inovasi madrasah yang dapat
               diakses dari landing page.
             </p>

@@ -11,7 +11,7 @@ const firstRow = reviewsData.slice(0, Math.ceil(reviewsData.length / 2));
 const secondRow = reviewsData.slice(Math.ceil(reviewsData.length / 2));
 
 const roleColorMap: Record<string, string> = {
-  Siswa: "text-emerald-600 dark:text-emerald-400",
+  Murid: "text-emerald-600 dark:text-emerald-400",
   Siswi: "text-emerald-600 dark:text-emerald-400",
   Alumni: "text-blue-600 dark:text-blue-400",
   "Orang Tua": "text-amber-600 dark:text-amber-400",
@@ -75,7 +75,7 @@ export const Testimonial = () => (
           Apa Kata Mereka
         </h2>
         <p className="mt-4 text-lg text-zinc-500 dark:text-zinc-400 max-w-2xl mx-auto">
-          Cerita dan pengalaman dari siswa, alumni, orang tua, dan guru yang
+          Cerita dan pengalaman dari murid, alumni, orang tua, dan guru yang
           menjadi bagian dari keluarga besar Madtsanda.
         </p>
       </FadeUp>
