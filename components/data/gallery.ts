@@ -20,7 +20,7 @@ export const galleryItems: GalleryItem[] = [
     featured: true,
   },
   {
-    title: "Kampus Hijau",
+    title: "Madrasah Hijau",
     description:
       "Area madrasah yang tertata untuk mendukung suasana belajar yang bersih dan nyaman.",
     category: "Lingkungan",
@@ -69,11 +69,11 @@ export const galleryItems: GalleryItem[] = [
     imageAlt: "Koridor MTsN 2 Kota Kediri",
   },
   {
-    title: "Ruang Kampus Hijau",
+    title: "Ruang Madrasah Hijau",
     description:
-      "Sudut kampus yang memperlihatkan identitas Madtsanda sebagai madrasah peduli lingkungan.",
+      "Sudut Madrasah yang memperlihatkan identitas Madtsanda sebagai madrasah peduli lingkungan.",
     category: "Fasilitas",
-    imageSrc: "/images/gallery/kampus-hijau.webp",
-    imageAlt: "Sudut kampus hijau MTsN 2 Kota Kediri",
+    imageSrc: "/images/gallery/Madrasah-hijau.webp",
+    imageAlt: "Sudut Madrasah hijau MTsN 2 Kota Kediri",
   },
 ];

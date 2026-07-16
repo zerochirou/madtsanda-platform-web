@@ -15,7 +15,7 @@ export default function CampusPage() {
     <div className="min-h-screen bg-zinc-50 dark:bg-zinc-950 transition-colors duration-300">
       <PageHero 
         title="Lingkungan Madrasah" 
-        subtitle="Fasilitas & Kampus" 
+        subtitle="Fasilitas & Madrasah" 
         description="Lingkungan belajar yang asri, modern, dan bernuansa Islami. Jelajahi fasilitas yang mendukung pengembangan diri murid."
         imageSrc="/images/paseban-1.JPG"
       />

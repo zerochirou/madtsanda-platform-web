@@ -80,6 +80,7 @@ export const Hero = () => {
                             "MTsN 2 Kota Kediri",
                             "Madtsanda.",
                             "Islami.",
+                            "Peduli Lingkungan.",
                             "Terampil.",
                             "Inovatif.",
                             "Kompetitif.",

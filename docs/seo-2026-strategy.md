@@ -83,7 +83,7 @@ Content brief standar:
 Link building etis:
 - Profil resmi di Kemenag, direktori pendidikan, dan media lokal.
 - Berita prestasi dikirim ke portal lokal dengan link balik ke artikel resmi.
-- Kolaborasi riset siswa dengan kampus/komunitas edukasi lokal.
+- Kolaborasi riset siswa dengan Madrasah/komunitas edukasi lokal.
 - Pastikan NAP konsisten: nama, alamat, telepon.
 
 Distribusi AEO/GEO:

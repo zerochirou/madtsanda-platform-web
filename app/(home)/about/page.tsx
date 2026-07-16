@@ -18,7 +18,7 @@ import {
 export const metadata = buildMetadata({
   title: "Profil MTsN 2 Kota Kediri | Sejarah, Visi, Misi, dan Guru",
   description:
-    "Kenali profil MTsN 2 Kota Kediri, sejarah madrasah, visi misi ISTIKOMAH, budaya sekolah, dan tenaga pendidik Madtsanda.",
+    "Kenali profil MTsN 2 Kota Kediri, sejarah madrasah, visi misi ISTIKOMAH, budaya sekolah, dan Pendidik dan Tenaga Pendidik Madtsanda.",
   path: "/about",
   keywords: ["profil MTsN 2 Kota Kediri", "visi misi Madtsanda", "sejarah MTsN 2 Kota Kediri"],
 });
@@ -129,7 +129,7 @@ export default function About() {
         <FadeUp>
           <div className="max-w-5xl mx-auto">
             <h2 className="text-3xl md:text-4xl font-bold text-zinc-900 dark:text-white mb-4 text-center">
-              Tenaga Pendidik
+              Pendidik dan Tenaga Pendidik
             </h2>
             <p className="text-center text-zinc-500 dark:text-zinc-400 mb-12">
               Didukung oleh lebih dari 100 staf pengajar profesional dan

@@ -80,6 +80,7 @@ export const Intro = () => {
                 <div className="mb-2 flex items-baseline justify-center gap-0.5">
                   <span className="text-3xl font-bold tracking-tight text-zinc-900 dark:text-white sm:text-4xl lg:text-5xl lg:tracking-tighter">
                     <NumberTicker
+                    // decimalPlaces={3}
                       value={stat.value}
                       className="text-zinc-900 dark:text-white"
                     />

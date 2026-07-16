@@ -6,21 +6,21 @@ export const introStats = [
     description: "Sejak 1978 mencetak generasi unggul",
   },
   {
-    value: 4,
+    value: 12,
     suffix: "",
     label: "Program Unggulan",
     description: "Akselerasi, Kelas Unggulan, Asrama, Reguler",
   },
   {
-    value: 25,
-    suffix: ".000 m²",
-    label: "Luas Kampus",
+    value: 14547,
+    suffix: " m²",
+    label: "Luas Madrasah",
     description: "Area hijau asri untuk kegiatan belajar",
   },
   {
-    value: 100,
+    value: 98,
     suffix: "+",
-    label: "Tenaga Pendidik",
+    label: "Pendidik dan Tenaga Pendidik",
     description: "Guru profesional dan berdedikasi tinggi",
   },
 ];

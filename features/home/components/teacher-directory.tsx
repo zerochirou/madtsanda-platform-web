@@ -49,7 +49,7 @@ export function TeacherDirectory() {
                 className="px-6 py-4 text-center text-emerald-600 dark:text-emerald-400 font-medium cursor-pointer hover:bg-emerald-50 dark:hover:bg-emerald-950/30 transition-colors"
                 onClick={() => setShowAllTeachers(true)}
               >
-                Lihat Semua Tenaga Pendidik (100+)
+                Lihat Semua Pendidik dan Tenaga Pendidik (98+)
               </td>
             </tr>
           </tbody>
@@ -58,9 +58,9 @@ export function TeacherDirectory() {
 
       <DialogContent className="sm:max-w-[800px]">
         <DialogHeader>
-          <DialogTitle>Daftar Lengkap Tenaga Pendidik</DialogTitle>
+          <DialogTitle>Daftar Lengkap Pendidik dan Tenaga Pendidik</DialogTitle>
           <DialogDescription>
-            Berikut adalah daftar lengkap semua tenaga pendidik di sekolah.
+            Berikut adalah daftar lengkap semua Pendidik dan Tenaga Pendidik di sekolah.
           </DialogDescription>
         </DialogHeader>
         <div className="overflow-x-auto max-h-[70vh] rounded-md border">

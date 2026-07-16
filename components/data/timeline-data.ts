@@ -30,8 +30,8 @@ export const timelineMilestones: TimelineMilestone[] = [
     title: "Akreditasi A Pertama",
     description:
       "MTsN 2 Kota Kediri berhasil meraih akreditasi A untuk pertama kalinya. Pencapaian ini menjadi bukti komitmen tinggi terhadap mutu pendidikan dan manajemen madrasah yang profesional.",
-    imageSrc: "/images/gallery/kampus-hijau.webp",
-    imageAlt: "Lingkungan kampus MTsN 2 Kota Kediri",
+    imageSrc: "/images/gallery/Madrasah-hijau.webp",
+    imageAlt: "Lingkungan Madrasah MTsN 2 Kota Kediri",
   },
   {
     year: "2010",
@@ -45,7 +45,7 @@ export const timelineMilestones: TimelineMilestone[] = [
     year: "2015",
     title: "Penghargaan Adiwiyata Nasional",
     description:
-      "MTsN 2 Kota Kediri menerima penghargaan Adiwiyata Nasional dari Kementerian Lingkungan Hidup. Kampus hijau seluas kurang lebih 25.000 m2 menjadi bukti nyata komitmen terhadap pelestarian lingkungan.",
+      "MTsN 2 Kota Kediri menerima penghargaan Adiwiyata Nasional dari Kementerian Lingkungan Hidup. Madrasah hijau seluas kurang lebih 25.000 m2 menjadi bukti nyata komitmen terhadap pelestarian lingkungan.",
     imageSrc: "/images/gallery/lingkungan-madrasah.webp",
     imageAlt: "Lingkungan hijau MTsN 2 Kota Kediri",
   },
