@@ -22,7 +22,7 @@ export const reviewsData: Review[] = [
   {
     name: "Siti Aisyah",
     role: "Alumni 2022",
-    body: "Bekal akhlak dan keilmuan dari Madtsanda sangat membantu saya di jenjang selanjutnya. Saya bangga pernah menjadi bagian dari Matsanda.",
+    body: "Bekal akhlak dan keilmuan dari Madtsanda sangat membantu saya di jenjang selanjutnya. Saya bangga pernah menjadi bagian dari madtsanda.",
     img: "https://avatar.vercel.sh/aisyah",
   },
   {

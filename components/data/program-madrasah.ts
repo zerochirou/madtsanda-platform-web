@@ -188,7 +188,7 @@ export const programMadrasahPages = {
       "Fasilitas Madtsanda disiapkan untuk mendukung pembelajaran, ibadah, riset, literasi, kesehatan, asrama, olahraga, dan kegiatan warga madrasah.",
     imageSrc: "/images/perpustakaan2.jpg",
     metrics: [
-      { label: "Luas lahan", value: "25.000 m2" },
+      { label: "Luas lahan", value: "14.547 m2" },
       { label: "Ruang belajar", value: "36" },
       { label: "Laboratorium", value: "5" },
     ],

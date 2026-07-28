@@ -11,20 +11,20 @@ export const organizationsData: OrganizationDTO[] = [
   {
     name: "MPK",
     desc: "Majelis Perwakilan Kelas adalah organisasi tertinggi di MTsN 2 Kota Kediri yang bertugas mengawasi kinerja OSIS, serta sebagai organisasi penampung aspirasi murid.",
-    ig: "mpkmatsanda",
+    ig: "mpkmadtsanda",
     founder: "Drs. H. NurSalim M.Pd.I.",
     image: "/images/mpk.jpg"
   },
   {
     name: "UKS",
     desc: "UKS memiliki kegiatan yang aktif di lingkungan Madrasah seperti pendidikan kesehatan, pelayanan kesehatan, dan menjaga lingkungan sekolah bersih dan sehat.",
-    ig: "uks_matsanda",
+    ig: "uks_madtsanda",
     founder: "H. Hadi Suseno M.Pd.",
     image: "/images/uks.jpeg"
   },
   {
     name: "PMR (LAMRESADA)",
-    desc: "Palang Merah Remaja Matsanda bergerak dalam bidang kesehatan, kebersihan, kemanusiaan, dan sosial, bersinergi untuk menciptakan lingkungan sekolah yang berprestasi, sehat, dan indah.",
+    desc: "Palang Merah Remaja madtsanda bergerak dalam bidang kesehatan, kebersihan, kemanusiaan, dan sosial, bersinergi untuk menciptakan lingkungan sekolah yang berprestasi, sehat, dan indah.",
     ig: "lamresada",
     founder: "Drs. H. NurSalim M.Pd.I.",
     image: "/images/pmr.png"
@@ -38,8 +38,8 @@ export const organizationsData: OrganizationDTO[] = [
   },
   {
     name: "PRAMUKA (Prasanda)",
-    desc: "Pramuka Matsanda (Prasanda) memiliki regu tangguh bernama ScorVera (Scorpio-Aloevera), berakar dari tradisi kedisiplinan sejak berdirinya madrasah.",
-    ig: "matsanda.scout",
+    desc: "Pramuka madtsanda (Prasanda) memiliki regu tangguh bernama ScorVera (Scorpio-Aloevera), berakar dari tradisi kedisiplinan sejak berdirinya madrasah.",
+    ig: "madtsanda.scout",
     founder: "Drs. H. NurSalim M.Pd.I.",
     image: "/images/pramuka.png"
   },

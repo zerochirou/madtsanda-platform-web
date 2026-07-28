@@ -99,7 +99,7 @@ export default function About() {
             <div className="w-16 h-1.5 bg-emerald-500 rounded-full mb-12 mx-auto"></div>
             <div className="prose prose-lg dark:prose-invert prose-emerald mx-auto text-zinc-600 dark:text-zinc-400">
               <p>
-                MTsN 2 Kota Kediri, yang dikenal sebagai Matsanda, merupakan
+                MTsN 2 Kota Kediri, yang dikenal sebagai madtsanda, merupakan
                 madrasah tsanawiyah negeri unggulan yang berlokasi di Jalan
                 Sunan Ampel No. 12, Kelurahan Ngronggo, Kota Kediri. Madrasah
                 ini didirikan pada tanggal 16 Maret 1978 dengan nama awal MTs

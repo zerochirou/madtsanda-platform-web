@@ -7,7 +7,7 @@ export const metadata = {
   description: "Dari cikal bakal PGAN 6 Tahun di tahun 1962 hingga menjadi madrasah modern berbasis riset, inilah tonggak-tonggak sejarah yang membentuk Madtsanda.",
 };
 
-export default function SejarahMatsandaPage() {
+export default function SejarahmadtsandaPage() {
   return (
     <div className="mt-20 min-h-screen bg-white text-zinc-950 dark:bg-zinc-950 dark:text-white">
       {/* ==================== HEADER ==================== */}
@@ -22,7 +22,7 @@ export default function SejarahMatsandaPage() {
           <p className="mt-4 max-w-2xl text-lg text-zinc-600 dark:text-zinc-400">
             Dari cikal bakal PGAN 6 Tahun di tahun 1962 hingga menjadi madrasah
             modern berbasis riset, inilah tonggak-tonggak sejarah yang membentuk
-            Matsanda.
+            madtsanda.
           </p>
         </div>
       </section>
@@ -36,7 +36,7 @@ export default function SejarahMatsandaPage() {
       <section className="border-t border-zinc-200 py-16 dark:border-zinc-900">
         <div className="mx-auto max-w-xl px-6 text-center">
           <p className="text-lg text-zinc-600 dark:text-zinc-400">
-            Matsanda terus berkembang dengan menjaga akar tradisi sambil membuka
+            madtsanda terus berkembang dengan menjaga akar tradisi sambil membuka
             diri terhadap kemajuan zaman.
           </p>
           <Link href="/about">

@@ -5,13 +5,13 @@ export const timelineMilestones: TimelineMilestone[] = [
     year: "1962",
     title: "Berdirinya PGAN 6 Tahun",
     description:
-      "Pendidikan Guru Agama Negeri (PGAN) 6 Tahun resmi didirikan di Kediri. Lembaga ini menjadi cikal bakal terbentuknya MTsN 2 Kota Kediri yang kita kenal sekarang sebagai Matsanda.",
+      "Pendidikan Guru Agama Negeri (PGAN) 6 Tahun resmi didirikan di Kediri. Lembaga ini menjadi cikal bakal terbentuknya MTsN 2 Kota Kediri yang kita kenal sekarang sebagai madtsanda.",
     imageSrc: "/images/gallery/gerbang-madrasah.webp",
     imageAlt: "Gerbang utama MTsN 2 Kota Kediri",
   },
   {
     year: "1978",
-    title: "Lahirnya Matsanda",
+    title: "Lahirnya madtsanda",
     description:
       "Pada tanggal 16 Maret 1978, PGAN mengalami transformasi menjadi MTs Negeri Kediri II. Momen bersejarah ini menandai transisi dari lembaga pendidikan guru menjadi madrasah tsanawiyah yang lebih luas dan mandiri.",
     imageSrc: "/images/gallery/gedung-ptsp.webp",
@@ -61,7 +61,7 @@ export const timelineMilestones: TimelineMilestone[] = [
     year: "Sekarang",
     title: "Madrasah Modern Berbasis Riset",
     description:
-      "Matsanda terus berkembang sebagai madrasah unggul yang memadukan tradisi keilmuan Islam dengan inovasi pendidikan abad 21. Dengan 4 program unggulan, puluhan HaKI, dan ratusan prestasi, Matsanda siap menghadapi tantangan masa depan.",
+      "madtsanda terus berkembang sebagai madrasah unggul yang memadukan tradisi keilmuan Islam dengan inovasi pendidikan abad 21. Dengan 4 program unggulan, puluhan HaKI, dan ratusan prestasi, madtsanda siap menghadapi tantangan masa depan.",
     imageSrc: "/images/gallery/siswa-literasi.webp",
     imageAlt: "Murid MTsN 2 Kota Kediri dalam kegiatan literasi",
   },
