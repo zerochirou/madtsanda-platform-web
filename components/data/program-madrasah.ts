@@ -23,7 +23,7 @@ export const programMadrasahPages = {
       "Pengelolaan pembelajaran MTsN 2 Kota Kediri diarahkan untuk membentuk peserta didik yang unggul dalam prestasi, ISTIKOMAH, dan siap menghadapi jenjang pendidikan berikutnya.",
     imageSrc: "/images/kegiatan-tka.jpg",
     metrics: [
-      { label: "Rombel belajar", value: "36" },
+      { label: "Rombel belajar", value: "42" },
       { label: "Sistem layanan", value: "SKS" },
       { label: "Fokus karakter", value: "Kokurikuler" },
     ],
