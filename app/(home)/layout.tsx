@@ -10,7 +10,7 @@ export default function RootLayout({
   return (
     <div className="[--site-banner-offset:44px] sm:[--site-banner-offset:48px]">
       {/*<SmoothCursor cursor={<GraduationCap />} />*/}
-      <UnderDevelopmentBanner />
+      {/*<UnderDevelopmentBanner />*/}
       <Navigation />
       <main className="flex-1">{children}</main>
       <Footer />

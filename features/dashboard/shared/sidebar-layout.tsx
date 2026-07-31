@@ -12,7 +12,7 @@ export function SidebarLayout({
 }: SidebarLayoutProps) {
   return (
     <>
-      <UnderDevelopmentBanner />
+      {/*<UnderDevelopmentBanner />*/}
       <SidebarProvider>
         <SidebarApp user={user} />
         <SidebarInset className="min-w-0 overflow-x-hidden">
