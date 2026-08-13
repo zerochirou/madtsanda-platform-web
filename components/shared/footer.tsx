@@ -36,7 +36,7 @@ export function Footer() {
               <br />
               Email: mtsn2kotakediri.official@gmail.com
               <br />
-              Web: mtsn2kediri.sch.id
+              Web: mtsn2kotakediri.sch.id
             </p>
           </div>
         </div>
