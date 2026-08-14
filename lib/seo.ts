@@ -115,7 +115,7 @@ export function schoolJsonLd() {
       addressCountry: "ID",
     },
     telephone: "0354-687895",
-    email: "mtsn2kotakediri.official@gmail.com",
+    email: "mtsn_kdr_2@yahoo.co.id",
     sameAs: [
       "https://www.instagram.com/mtsn2kotakediri",
       "https://www.youtube.com/@mtsn2kotakediri",
