@@ -34,7 +34,7 @@ export function Footer() {
             <p className="text-zinc-500 text-sm leading-relaxed">
               Telp: 0354-687895
               <br />
-              Email: mtsn2kotakediri.official@gmail.com
+              Email: mtsn_kdr_2@yahoo.co.id
               <br />
               Web: mtsn2kotakediri.sch.id
             </p>
