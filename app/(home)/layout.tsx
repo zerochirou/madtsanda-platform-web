@@ -8,7 +8,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <div className="[--site-banner-offset:44px] sm:[--site-banner-offset:48px]">
+    <div className="">
       {/*<SmoothCursor cursor={<GraduationCap />} />*/}
       {/*<UnderDevelopmentBanner />*/}
       <Navigation />

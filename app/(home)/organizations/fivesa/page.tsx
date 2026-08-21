@@ -92,15 +92,6 @@ export default function FivesaPage() {
                         </a>
                       </span>
                     </div>
-                    <div className="flex items-center gap-3 text-sm text-zinc-500 dark:text-zinc-400 justify-center">
-                      <User className="w-4 h-4 text-emerald-500" />
-                      <span>
-                        Pendiri:{" "}
-                        <span className="font-medium text-zinc-700 dark:text-zinc-300">
-                          {org.founder}
-                        </span>
-                      </span>
-                    </div>
                   </div>
                 </CardContent>
               </Card>

@@ -9,9 +9,11 @@ import {
   NewsResponseDTO,
   NewsUpdatePinDTO,
 } from "@/types/dto/news";
+import { cookies } from "next/headers";
 
 export async function createNewsService(data: NewsPostDTO) {
   try {
+    const cookieSession = await cookies()
     const formData = new FormData();
     formData.append("title", data.title);
     formData.append("content", data.content);
@@ -23,12 +25,27 @@ export async function createNewsService(data: NewsPostDTO) {
       formData.append("image", data.image);
     }
 
-    const response = await request<NewsResponseDTO>(`/news`, {
+    // const response = await request<NewsResponseDTO>(`/news`, {
+    //   method: "POST",
+    //   body: formData,
+    // });
+    const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/news`, {
       method: "POST",
       body: formData,
+      headers: {
+        "Authorization": `Bearer ${cookieSession.get("auth_token")?.value}`,
+      }
     });
 
-    return response;
+    console.log(response)
+    
+    const result = await response.json();
+
+    if (!response.ok) {
+      return null;
+    }
+
+    return result.data;
   } catch (error: unknown) {
     logger.error(errorFormat(error));
     return null;

@@ -108,12 +108,12 @@ export function Navigation() {
               showSolid ? "text-zinc-600 dark:text-zinc-400" : "text-white/90"
             }`}
           >
-            <Link
+            {/*<Link
               href="/"
-              className="inline-flex h-9 items-center justify-center rounded-md px-4 py-2 text-sm font-medium transition-colors hover:text-emerald-400"
+              className="inline-flex h-9 items-center justify-center rounded-md px-4 py-2 text-xl font-medium transition-colors hover:text-emerald-400"
             >
               Beranda
-            </Link>
+            </Link>*/}
             <NavigationMenu>
               <NavigationMenuList>
                 {navigationData.map((labels, index) => {
@@ -121,7 +121,7 @@ export function Navigation() {
                     <NavigationMenuItem key={index}>
                       <NavigationMenuTrigger
                         className={
-                          "group/navigation-menu-trigger inline-flex h-9 w-max items-center justify-center rounded-md px-4 py-2 text-sm hover:text-emerald-400 focus:text-emerald-400 font-medium transition-all outline-none hover:bg-transparent focus:bg-transparent focus-visible:ring-3 focus-visible:ring-ring/50 focus-visible:outline-1 disabled:pointer-events-none disabled:opacity-50 data-popup-open:bg-transparent/50 data-popup-open:hover:bg-transparent data-open:bg-transparent/50 data-open:hover:bg-transparent data"
+                          "group/navigation-menu-trigger inline-flex h-9 w-max items-center justify-center rounded-md px-4 py-2 hover:text-emerald-400 focus:text-emerald-400 font-medium transition-all outline-none hover:bg-transparent focus:bg-transparent focus-visible:ring-3 focus-visible:ring-ring/50 focus-visible:outline-1 disabled:pointer-events-none disabled:opacity-50 data-popup-open:bg-transparent/50 data-popup-open:hover:bg-transparent data-open:bg-transparent/50 data-open:hover:bg-transparent data text-xl"
                         }
                       >
                         {labels.label}

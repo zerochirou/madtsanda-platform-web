@@ -83,15 +83,6 @@ export default function MpkOsimPage() {
                         </a>
                       </span>
                     </div>
-                    <div className="flex items-center gap-3 text-sm text-zinc-500 dark:text-zinc-400">
-                      <User className="w-5 h-5 text-emerald-500" />
-                      <span>
-                        Pendiri:{" "}
-                        <span className="font-medium text-zinc-700 dark:text-zinc-300">
-                          {mpk.founder}
-                        </span>
-                      </span>
-                    </div>
                   </div>
                 </div>
               </FadeUp>
@@ -303,15 +294,6 @@ export default function MpkOsimPage() {
                         >
                           @{osim.ig}
                         </a>
-                      </span>
-                    </div>
-                    <div className="flex items-center gap-3 text-sm text-zinc-500 dark:text-zinc-400">
-                      <User className="w-5 h-5 text-emerald-500" />
-                      <span>
-                        Pendiri:{" "}
-                        <span className="font-medium text-zinc-700 dark:text-zinc-300">
-                          {osim.founder}
-                        </span>
                       </span>
                     </div>
                   </div>

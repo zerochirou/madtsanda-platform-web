@@ -4,6 +4,7 @@ import { InsideLeading } from "@/features/home/components/inside-leading";
 import { Intro } from "@/features/home/components/intro";
 import { Journey } from "@/features/home/components/journey";
 import { Locations } from "@/features/home/components/locations";
+import { Medsos } from "@/features/home/components/medsos";
 import { Newsroom } from "@/features/home/components/news-room";
 import { Programs } from "@/features/home/components/programs";
 import { ResearchRepository } from "@/features/home/components/research-repository";
@@ -46,7 +47,7 @@ export default async function Home() {
       />
       <Hero />
       <Intro />
-      {/*<Features />*/}
+      {/*<Medsos />*/}
       <ImageBanner />
       <Locations />
       <Journey />

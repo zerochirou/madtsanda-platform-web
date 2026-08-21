@@ -95,7 +95,7 @@ export const Hero = () => {
                         animate={{ opacity: 1, scale: 1 }}
                         transition={{ duration: 0.5, delay: 0.4 }}
                       >
-                        <a href="https://youtu.be/iNpZNOQqlXA?si=TQJ78mMKo-eGsnUbi">
+                        <a href="https://www.youtube.com/watch?v=Q1FpS0jg8iQ">
                           <Button
                             variant="secondary"
                             className="group mx-auto flex rounded-full bg-white/95 py-5 pl-5 pr-2 text-zinc-900 shadow-xl shadow-black/20 transition-all duration-300 hover:scale-105 hover:bg-white sm:space-x-4 sm:py-6 sm:pl-6"
