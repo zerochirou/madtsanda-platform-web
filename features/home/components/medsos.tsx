@@ -9,7 +9,7 @@ import { motion } from "motion/react";
 export function Medsos() {
   return (
     <div className="relative flex mb-20 items-center justify-center overflow-hidden px-4 py-2">
-      <div className="grid w-full max-w-4xl grid-cols-4 gap-4">
+      <div className="grid w-full max-w-4xl md:grid-cols-4 grid-cols-1 gap-4">
         {medsos.map((item, index) => (
           <motion.a
             key={item.name}
