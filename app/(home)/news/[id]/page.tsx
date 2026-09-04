@@ -12,6 +12,7 @@ import {
   newsArticleJsonLd,
   serializeJsonLd,
 } from "@/lib/seo";
+import { resolveNewsImageUrl } from "@/lib/news";
 
 const newsImageFallback = "/images/kegiatan-sekolah.jpg";
 
@@ -35,7 +36,7 @@ export async function generateMetadata({
     title: news.data.title,
     description: news.data.content.replace(/[#*_>`]/g, "").slice(0, 160),
     path: `/news/${news.data.id}`,
-    image: news.data.imageUrl ?? newsImageFallback,
+    image: resolveNewsImageUrl(news.data),
     type: "article",
     publishedTime: news.data.createdAt,
     modifiedTime: news.data.updatedAt,
@@ -68,7 +69,7 @@ export default async function NewsDetailPage({
       </div>
     );
   }
-  const image = `${process.env.NEXT_PUBLIC_S3}/${news.data.imageUrl}`;
+  const image = resolveNewsImageUrl(news.data);
 
   return (
     <div className="min-h-screen bg-zinc-50 pb-20 pt-24 transition-colors duration-300 dark:bg-zinc-950 md:pt-32">
@@ -136,7 +137,7 @@ export default async function NewsDetailPage({
 
           <div className="relative aspect-video w-full overflow-hidden bg-zinc-100 dark:bg-zinc-800">
             <Image
-                src={`${process.env.NEXT_PUBLIC_S3}/${news.data.imageKey}`}
+              src={resolveNewsImageUrl(news.data)}
               alt={news.data.title}
               fill
               className="object-cover"

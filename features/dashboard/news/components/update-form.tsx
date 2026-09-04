@@ -154,10 +154,10 @@ export function UpdateForm({
 
       const result = await updateNewsService(payload, news.id);
 
-      if (result) {
-        toast.success("Perubahan berhasil disimpan!");
+      if (result && (result.success || (result as any).id)) {
+        toast.success(result.message || "Perubahan berhasil disimpan!");
       } else {
-        toast.error("Gagal menyimpan perubahan.");
+        toast.error(result?.message || "Gagal menyimpan perubahan.");
       }
     });
   }

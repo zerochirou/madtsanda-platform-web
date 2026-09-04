@@ -34,6 +34,7 @@ import { Switch } from "@/components/ui/switch";
 import { Button } from "@/components/ui/button";
 import { Spinner } from "@/components/ui/spinner";
 import { DropzoneInput } from "@/components/shared/file-upload";
+import { useRouter } from "next/navigation";
 import { NEWS_IMAGE_MAX_SIZE_MB } from "@/lib/upload";
 
 export function NewsEditor({
@@ -43,6 +44,7 @@ export function NewsEditor({
   user: UserDTO;
   category: NewsCategoryDTO[] | null;
 }) {
+  const router = useRouter();
   const [pending, startTransition] = useTransition();
   const form = useForm<z.infer<typeof NewsCreateSchema>>({
     resolver: zodResolver(NewsCreateSchema),
@@ -55,7 +57,7 @@ export function NewsEditor({
     },
   });
 
-  const { setValue, handleSubmit, control } = form;
+  const { setValue, handleSubmit, control, reset } = form;
 
   function onSubmit(data: z.infer<typeof NewsCreateSchema>) {
     startTransition(async () => {
@@ -72,10 +74,12 @@ export function NewsEditor({
         pin: data.pin,
         userId: user.id,
       });
-      if (result) {
-        toast.success("Berita berhasil dibuat!");
+      if (result && result.success) {
+        toast.success(result.message || "Berita berhasil dibuat!");
+        reset();
+        router.push("/dashboard/news");
       } else {
-        toast.error("Gagal membuat berita. Silakan coba lagi.");
+        toast.error(result?.message || "Gagal membuat berita. Silakan coba lagi.");
       }
     });
   }

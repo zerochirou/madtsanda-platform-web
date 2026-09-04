@@ -4,7 +4,7 @@ import { ArrowRight, CalendarDays, Tag, UserRound } from "lucide-react";
 import type { NewsPaginateDTO } from "@/types/dto/news";
 import { formatReadableDate } from "@/lib/date";
 import { Skeleton } from "@/components/ui/skeleton";
-import { getNewsImage } from "@/lib/news";
+import { resolveNewsImageUrl } from "@/lib/news";
 
 function NewsCardSkeleton() {
   return (
@@ -66,7 +66,7 @@ export function NewsList({
             >
               <div className="relative aspect-[16/10] w-full overflow-hidden bg-zinc-100 dark:bg-zinc-800">
                 <Image
-                  src={`${process.env.NEXT_PUBLIC_S3}/${news.imageKey}`}
+                  src={resolveNewsImageUrl(news)}
                   alt={news.title}
                   fill
                   className="object-cover transition duration-500 group-hover:scale-105"

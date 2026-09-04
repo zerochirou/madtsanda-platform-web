@@ -11,12 +11,15 @@ const nextConfig: NextConfig = {
         },
     },
     images: {
+        unoptimized: true,
         remotePatterns: [
             {
                 protocol: "http",
-                hostname: "187.77.121.243",
-                port: "9001",
-                pathname: "/madtsanda-platform-storage/**",
+                hostname: "**",
+            },
+            {
+                protocol: "https",
+                hostname: "**",
             },
         ],
     },

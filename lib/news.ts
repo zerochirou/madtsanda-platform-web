@@ -12,3 +12,23 @@ export function getNewsImage(title: string, dbImageUrl: string | null): string {
   if (t.includes("studi tiru")) return "/images/news/berita-09.jpg";
   return dbImageUrl || "/images/kegiatan-sekolah.jpg";
 }
+
+export function resolveNewsImageUrl(item?: { imageUrl?: string | null; imageKey?: string | null; title?: string } | null): string {
+  if (!item) return "/images/kegiatan-sekolah.jpg";
+
+  if (item.imageUrl && (item.imageUrl.startsWith("http://") || item.imageUrl.startsWith("https://"))) {
+    return item.imageUrl;
+  }
+
+  if (item.imageUrl && item.imageUrl.startsWith("/")) {
+    const apiBase = (process.env.NEXT_PUBLIC_API_URL || "http://localhost:3333/api/v1").replace(/\/api\/v1\/?$/, "");
+    return `${apiBase}${item.imageUrl}`;
+  }
+
+  if (item.imageKey) {
+    const s3Base = (process.env.NEXT_PUBLIC_S3 || "http://localhost:9000/madtsanda-platform-storage").replace(/\/$/, "");
+    return `${s3Base}/${item.imageKey.replace(/^\//, "")}`;
+  }
+
+  return getNewsImage(item.title || "", item.imageUrl || null);
+}

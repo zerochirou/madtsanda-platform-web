@@ -4,6 +4,7 @@ import { formatReadableDate } from "@/lib/date";
 import { ArrowLeft, ArrowRight, CalendarDays, Tag, UserRound } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+import { resolveNewsImageUrl } from "@/lib/news";
 
 const newsImageFallback = "/images/kegiatan-sekolah.jpg";
 
@@ -71,7 +72,7 @@ export default async function NewsCategory({
                 >
                   <div className="relative aspect-[4/3] w-full overflow-hidden rounded-xl bg-zinc-100 dark:bg-zinc-800">
                     <Image
-                      src={`${process.env.NEXT_PUBLIC_S3}/${item.imageKey}`}
+                      src={resolveNewsImageUrl(item)}
                       alt={item.title}
                       fill
                       unoptimized

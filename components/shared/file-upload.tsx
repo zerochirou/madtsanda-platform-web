@@ -168,7 +168,13 @@ export const DropzoneInput = React.forwardRef<
             <div className="border border-border rounded-lg p-2 flex items-center gap-3 bg-muted/20">
               <div className="w-14 h-14 bg-muted rounded-sm overflow-hidden shrink-0 border">
                 <Image
-                  src={`${process.env.NEXT_PUBLIC_S3}/${initialPreview}`}
+                  src={
+                    initialPreview.startsWith("http://") || initialPreview.startsWith("https://")
+                      ? initialPreview
+                      : initialPreview.startsWith("/")
+                        ? `${(process.env.NEXT_PUBLIC_API_URL || "http://localhost:3333/api/v1").replace(/\/api\/v1\/?$/, "")}${initialPreview}`
+                        : `${process.env.NEXT_PUBLIC_S3 || "http://localhost:9000/madtsanda-platform-storage"}/${initialPreview.replace(/^\//, "")}`
+                  }
                   alt="Current"
                   width={56}
                   height={56}

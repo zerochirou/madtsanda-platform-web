@@ -5,7 +5,7 @@ import type { NewsItem, NewsResponseDTO } from "@/types/dto/news";
 import { formatReadableDate } from "@/lib/date";
 import { Avatar, AvatarFallback, Badge, Button } from "@/components/ui";
 import { BlockRenderDynamicNoType } from "@/components/shared/block-render";
-import { getNewsImage } from "@/lib/news";
+import { resolveNewsImageUrl } from "@/lib/news";
 
 function NewsMeta({
   category,
@@ -95,7 +95,7 @@ export function FeaturedNews({
             </h2>
             <div className="relative aspect-[16/10] overflow-hidden rounded-xl bg-zinc-100 dark:bg-zinc-800">
               <Image
-                src={`${process.env.NEXT_PUBLIC_S3}/${topNews.imageKey}`}
+                src={resolveNewsImageUrl(topNews)}
                 alt={topNews.title}
                 fill
                 priority
@@ -142,7 +142,7 @@ export function FeaturedNews({
                 </h3>
                 <div className="relative aspect-square overflow-hidden rounded-xl bg-zinc-100 dark:bg-zinc-800 lg:aspect-[4/3]">
                   <Image
-                    src={getNewsImage(news.title, news.imageUrl)}
+                    src={resolveNewsImageUrl(news)}
                     alt={news.title}
                     fill
                     unoptimized
@@ -166,7 +166,7 @@ export function FeaturedNews({
               >
                 <div className="relative aspect-square overflow-hidden rounded-xl bg-zinc-100 dark:bg-zinc-800 lg:aspect-[4/3]">
                   <Image
-                    src={getNewsImage(news.title, news.imageUrl)}
+                    src={resolveNewsImageUrl(news)}
                     alt={news.title}
                     fill
                     unoptimized

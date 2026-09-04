@@ -4,7 +4,7 @@ import type { NewsItem, NewsResponseDTO } from "@/types/dto/news";
 import { formatReadableDate } from "@/lib/date";
 import Link from "next/link";
 import { ArrowRight, CalendarDays, Newspaper, Tag, UserRound } from "lucide-react";
-import { getNewsImage } from "@/lib/news";
+import { resolveNewsImageUrl } from "@/lib/news";
 
 const NewsCard = ({ item, index }: { item: NewsItem; index: number }) => {
   return (
@@ -16,7 +16,7 @@ const NewsCard = ({ item, index }: { item: NewsItem; index: number }) => {
     >
       <div className="relative min-h-64 overflow-hidden bg-zinc-100 dark:bg-zinc-800">
         <Image
-          src={`${process.env.NEXT_PUBLIC_S3}/${item.imageKey}`}
+          src={resolveNewsImageUrl(item)}
           alt={item.title}
           fill
           placeholder="empty"

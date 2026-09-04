@@ -1,3 +1,4 @@
-export const NEWS_IMAGE_MAX_SIZE_MB = 1;
+export const NEWS_IMAGE_MAX_SIZE_MB = 10;
 export const NEWS_IMAGE_MAX_SIZE_BYTES = NEWS_IMAGE_MAX_SIZE_MB * 1024 * 1024;
-export const NEWS_IMAGE_MAX_SIZE_LABEL = "1MB";
+export const NEWS_IMAGE_MAX_SIZE_LABEL = "10MB";
+
