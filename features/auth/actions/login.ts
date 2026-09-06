@@ -1,4 +1,4 @@
-﻿'use server'
+'use server'
 
 import { z } from 'zod'
 import { accessTokenService } from '../services/login'
@@ -18,11 +18,22 @@ async function handleLogin(data: z.infer<typeof loginSchema>) {
   // === SUCCESS RESPONSE ===
   if (result?.data && "token" in result.data) {
     const cookieStore = await cookies()
+    let isHttps = process.env.NODE_ENV === 'production'
+    try {
+      const { headers } = await import('next/headers')
+      const headerList = await headers()
+      const proto = headerList.get('x-forwarded-proto')
+      if (proto) {
+        isHttps = proto === 'https'
+      }
+    } catch {
+      // ignore
+    }
 
     // Sinkronisasi mutlak: 24 jam (86400 detik) sesuai expiresIn token backend AdonisJS
     cookieStore.set('auth_token', result.data.token, {
       httpOnly: true,
-      secure: process.env.NODE_ENV === 'production',
+      secure: isHttps,
       sameSite: 'lax',
       maxAge: 60 * 60 * 24, // 24 jam (86400 detik)
       path: '/',
