@@ -26,7 +26,10 @@ export function resolveNewsImageUrl(item?: { imageUrl?: string | null; imageKey?
   }
 
   if (item.imageKey) {
-    const s3Base = (process.env.NEXT_PUBLIC_S3 || "http://localhost:9000/madtsanda-platform-storage").replace(/\/$/, "");
+    const s3Base = (
+      process.env.NEXT_PUBLIC_S3 ||
+      `${(process.env.NEXT_PUBLIC_API_URL || "http://localhost:3333/api/v1").replace(/\/api\/v1\/?$/, "")}/storage/madtsanda-platform-storage`
+    ).replace(/\/$/, "");
     return `${s3Base}/${item.imageKey.replace(/^\//, "")}`;
   }
 
