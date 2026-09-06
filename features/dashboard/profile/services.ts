@@ -1,31 +1,34 @@
-"use server";
+﻿"use server";
 
+import { cache } from "react";
 import { request } from "@/lib/request";
 import logger from "@/lib/logger";
 import { errorFormat } from "@/lib/error";
 import { UserResponseDTO } from "@/types/dto/user";
-import { cookies } from "next/headers";
 
-export async function getUserProfile() {
-  const cookieStore = await cookies()
-  const token = cookieStore.get("auth_token")?.value;
+/**
+ * Mengambil profil user yang sedang login dengan memoization per siklus render SSR.
+ * Mencegah request HTTP ganda ke backend /auth/me saat dipanggil di layout dan page.
+ */
+export const getUserProfile = cache(async (): Promise<UserResponseDTO | null> => {
   try {
     const response = await request<UserResponseDTO>(`/auth/me`, {
       headers: {
         "Content-Type": "application/json",
-        "Authorization": `Bearer ${token}`,
       },
     });
 
-    return response
+    return response;
   } catch (error: unknown) {
     logger.error(errorFormat(error));
     return null;
   }
-}
+});
 
-
-export async function getUsersProfile() {
+/**
+ * Mengambil seluruh daftar pengguna (hanya dapat diakses oleh admin / super_user).
+ */
+export async function getAllUsers(): Promise<UserResponseDTO | null> {
   try {
     const response = await request<UserResponseDTO>(`/user`, {
       headers: {
@@ -33,9 +36,12 @@ export async function getUsersProfile() {
       },
     });
 
-    return response
+    return response;
   } catch (error: unknown) {
     logger.error(errorFormat(error));
     return null;
   }
 }
+
+// Alias kompatibilitas
+export const getUsersProfile = getAllUsers;

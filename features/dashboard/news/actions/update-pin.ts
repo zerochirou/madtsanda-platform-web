@@ -17,6 +17,11 @@ export async function togglePinNewsAction(
   currentPin: boolean,
 ): Promise<NewsResponseDTO | null> {
   const payload: NewsPinUpdateDTO = { pin: !currentPin };
+  const result = await updatePinNewsService(id, payload);
   revalidatePath("/dashboard/news");
-  return await updatePinNewsService(id, payload);
+  revalidatePath("/dashboard/news/table");
+  revalidatePath("/news");
+  revalidatePath("/");
+  revalidatePath("/dashboard");
+  return result;
 }

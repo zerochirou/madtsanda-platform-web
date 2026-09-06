@@ -127,16 +127,18 @@ export function UpdateForm({
 
   const { setValue, handleSubmit, control, reset } = form;
 
-  // Re-sinkronisasi jika data news berubah (opsional)
+  const { id: newsId, title: newsTitle, content: newsContent, categoryId: newsCategoryId, pin: newsPin } = news;
+
+  // Re-sinkronisasi jika data news berubah
   useEffect(() => {
     reset({
-      title: news.title,
-      content: news.content,
-      categoryId: String(news.categoryId),
-      pin: Boolean(news.pin),
+      title: newsTitle,
+      content: newsContent,
+      categoryId: String(newsCategoryId),
+      pin: Boolean(newsPin),
       image: null,
     });
-  }, [news, reset]);
+  }, [newsId, newsTitle, newsContent, newsCategoryId, newsPin, reset]);
 
   function onSubmit(data: z.infer<typeof NewsUpdateSchema>) {
     startTransition(async () => {
@@ -154,11 +156,12 @@ export function UpdateForm({
 
       const result = await updateNewsService(payload, news.id);
 
-      if (result && (result.success || (result as any).id)) {
+      if (result && result.success) {
         toast.success(result.message || "Perubahan berhasil disimpan!");
       } else {
         toast.error(result?.message || "Gagal menyimpan perubahan.");
       }
+
     });
   }
 

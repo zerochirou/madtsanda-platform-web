@@ -28,7 +28,7 @@ export const NewsCreateSchema = z.object({
     .unknown()
     .refine((files) => {
       return Boolean(getFirstImageFile(files));
-    }, "Avatar harus diunggah.")
+    }, "Banner gambar berita harus diunggah.")
     .refine((files) => {
       const file = getFirstImageFile(files);
       return file ? file.size <= NEWS_IMAGE_MAX_SIZE_BYTES : false;
@@ -47,7 +47,7 @@ export const NewsUpdateSchema = z.object({
     .unknown()
     .refine((files) => {
       return files === null || files === undefined || Boolean(getFirstImageFile(files));
-    }, "Avatar harus diunggah.")
+    }, "Banner gambar berita harus diunggah.")
     .refine((files) => {
       const file = getFirstImageFile(files);
       return !file || file.size <= NEWS_IMAGE_MAX_SIZE_BYTES;

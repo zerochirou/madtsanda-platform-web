@@ -247,7 +247,7 @@ export const Intro = () => {
         </motion.div>
       </div>
       <div className="relative mt-10 flex mb-20 items-center justify-center overflow-hidden px-4 py-2">
-        <div className="grid w-full max-w-6xl grid-cols-4 gap-4">
+        <div className="grid w-full max-w-6xl grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
           {medsos.map((item, index) => (
             <motion.a
               key={item.name}

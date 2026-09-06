@@ -105,7 +105,7 @@ export function EntranceLoader({ onComplete }: EntranceLoaderProps) {
                 initial={{ width: 0 }}
                 animate={{ width: `${progress}%` }}
                 transition={{ duration: 0.1 }}
-                className="h-full bg-emerald-text-emerald-500"
+                className="h-full bg-emerald-500"
                 style={{
                   backgroundImage: "repeating-linear-gradient(45deg, transparent, transparent 4px, rgba(0,0,0,0.15) 4px, rgba(0,0,0,0.15) 8px)",
                 }}

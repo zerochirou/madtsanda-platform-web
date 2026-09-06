@@ -1,4 +1,4 @@
-'use server'
+﻿'use server'
 
 import { z } from 'zod'
 import { accessTokenService } from '../services/login'
@@ -11,23 +11,24 @@ async function handleLogin(data: z.infer<typeof loginSchema>) {
   const result = await accessTokenService(data)
 
   // === ERROR RESPONSE ===
-  if (result?.data?.code) {
+  if (result?.data && "code" in result.data) {
     return result as LoginFailedResponseDTO
   }
 
   // === SUCCESS RESPONSE ===
-  if (result?.data?.token) {
+  if (result?.data && "token" in result.data) {
     const cookieStore = await cookies()
 
+    // Sinkronisasi mutlak: 24 jam (86400 detik) sesuai expiresIn token backend AdonisJS
     cookieStore.set('auth_token', result.data.token, {
       httpOnly: true,
       secure: process.env.NODE_ENV === 'production',
       sameSite: 'lax',
-      maxAge: 60 * 60 * 24 * 7,
+      maxAge: 60 * 60 * 24, // 24 jam (86400 detik)
       path: '/',
     })
 
-    // Redirect ke dashboard (akan throw, jadi tidak lanjut)
+    // Redirect ke dashboard
     redirect('/dashboard')
   }
 

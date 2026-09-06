@@ -9,7 +9,8 @@ import {
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { UserDTO, UserResponseDTO } from "@/types/dto/user";
-import { getUsersProfile } from "@/features/dashboard/profile/services";
+import { getUserProfile, getUsersProfile } from "@/features/dashboard/profile/services";
+import { redirect } from "next/navigation";
 
 // Helper function to get color class based on role
 const getColorForRole = (role: UserDTO["role"]): string => {
@@ -28,13 +29,15 @@ const getColorForRole = (role: UserDTO["role"]): string => {
 };
 
 export default async function UserProfileTablePage() {
+  const currentUser = await getUserProfile();
+  if (!currentUser || (currentUser.data.role !== "admin" && currentUser.data.role !== "super_user")) {
+    redirect("/dashboard");
+  }
+
   const usersResponse: UserResponseDTO | null = await getUsersProfile();
 
   // Redirect if there's no user data or if the API call fails
   if (!usersResponse || !usersResponse.data) {
-    // Optionally redirect to a login page or show an error
-    // If this page requires authentication, redirecting to login might be more appropriate.
-    // redirect("/login"); // Uncomment if redirection is desired for no data
     return (
       <div className="flex flex-col items-center justify-center p-4 min-h-screen">
         <p className="text-zinc-500 dark:text-zinc-400">
@@ -60,14 +63,40 @@ export default async function UserProfileTablePage() {
           </p>
         </CardHeader>
         <CardContent>
-          <div className="overflow-x-auto">
+          {/* Mobile View: Card List (<640px) */}
+          <div className="sm:hidden space-y-3">
+            {users.map((user, index) => (
+              <div
+                key={user.id}
+                className="flex flex-col gap-2 rounded-lg border border-border/60 bg-muted/20 p-3.5 text-sm transition-colors"
+              >
+                <div className="flex items-center justify-between gap-2">
+                  <span className="flex items-center gap-2 font-medium text-foreground">
+                    <span className="flex size-6 items-center justify-center rounded-full bg-muted text-xs font-semibold text-muted-foreground">
+                      {index + 1}
+                    </span>
+                    {user.username}
+                  </span>
+                  <Badge className={`capitalize ${getColorForRole(user.role)}`}>
+                    {user.role}
+                  </Badge>
+                </div>
+                <div className="text-xs text-muted-foreground break-all pl-8">
+                  {user.email}
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* Tablet & Desktop View: Structured Table (>=640px) */}
+          <div className="hidden sm:block overflow-x-auto">
             <Table>
               <TableHeader>
                 <TableRow>
-                  <TableHead className="">ID</TableHead>
+                  <TableHead className="w-16">ID</TableHead>
                   <TableHead>Username</TableHead>
                   <TableHead>Email</TableHead>
-                  <TableHead>Role</TableHead>
+                  <TableHead className="w-32">Role</TableHead>
                 </TableRow>
               </TableHeader>
               <TableBody>

@@ -20,7 +20,7 @@ interface QuickLink {
 export const quickLink: QuickLink[] = [
   {
     title: "Profile View",
-    description: "Lihat dan edit inforamsi pribadi",
+    description: "Lihat dan edit informasi pribadi",
     className: "",
     role: "student",
     icon: Person24Color,

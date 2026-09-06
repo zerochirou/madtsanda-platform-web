@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
+import { notFound } from "next/navigation";
 import { ArrowLeft, CalendarDays, Tag, UserRound } from "lucide-react";
-import { Button } from "@/components/ui/button";
 import { getNewsByIdService } from "@/features/news/services";
 import { formatReadableDate } from "@/lib/date";
 import { BlockRenderDynamic } from "@/components/shared/block-render";
@@ -13,8 +13,6 @@ import {
   serializeJsonLd,
 } from "@/lib/seo";
 import { resolveNewsImageUrl } from "@/lib/news";
-
-const newsImageFallback = "/images/kegiatan-sekolah.jpg";
 
 export async function generateMetadata({
   params,
@@ -55,19 +53,7 @@ export default async function NewsDetailPage({
     const news = await getNewsByIdService(id);
 
   if (!news) {
-    return (
-      <div className="flex min-h-screen flex-col items-center justify-center bg-zinc-50 p-4 text-center dark:bg-zinc-950">
-        <p className="mb-3 text-xs font-bold uppercase tracking-[0.24em] text-emerald-500">
-          Madtsanda News
-        </p>
-        <h1 className="mb-4 text-2xl font-bold text-zinc-950 dark:text-white">
-          Berita tidak ditemukan
-        </h1>
-        <Link href="/news">
-          <Button variant="outline">Kembali ke Madtsanda News</Button>
-        </Link>
-      </div>
-    );
+    notFound();
   }
   const image = resolveNewsImageUrl(news.data);
 
@@ -137,7 +123,7 @@ export default async function NewsDetailPage({
 
           <div className="relative aspect-video w-full overflow-hidden bg-zinc-100 dark:bg-zinc-800">
             <Image
-              src={resolveNewsImageUrl(news.data)}
+              src={image}
               alt={news.data.title}
               fill
               className="object-cover"

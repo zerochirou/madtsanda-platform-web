@@ -1,6 +1,5 @@
-"use client";
+﻿"use client";
 
-import { useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import {
   Search,
@@ -8,15 +7,15 @@ import {
   Phone,
   MapPin,
   BookMarked,
-  CheckCircle2,
-  XCircle,
   Filter,
   X,
 } from "lucide-react";
 import { NumberTicker } from "@/components/ui/number-ticker";
-import { libraryInfo, libraryStats } from "@/components/data/library-data";
+import { libraryInfo } from "@/components/data/library-data";
 import { Button } from "@/components/ui/button";
 import type { LibraryItem } from "@/types/dto/library";
+import { useLibraryCatalog } from "../hooks/use-library-catalog";
+import { BookCard } from "./book-card";
 
 const categoryColors: Record<string, string> = {
   emerald:
@@ -30,59 +29,21 @@ const categoryColors: Record<string, string> = {
   teal: "bg-teal-100 text-teal-700 dark:bg-teal-950 dark:text-teal-400 border-teal-200/50 dark:border-teal-900/50",
 };
 
-const getBookCoverGradient = (category: string) => {
-  const c = category.toLowerCase();
-  if (c.includes("agama") || c.includes("islam"))
-    return "from-emerald-500 to-teal-600";
-  if (c.includes("sains") || c.includes("ipa") || c.includes("riset"))
-    return "from-sky-500 to-indigo-600";
-  if (c.includes("sosial") || c.includes("ips") || c.includes("sejarah"))
-    return "from-amber-500 to-orange-600";
-  if (c.includes("bahasa") || c.includes("sastra") || c.includes("novel"))
-    return "from-rose-500 to-pink-600";
-  if (c.includes("kamus") || c.includes("referensi") || c.includes("umum"))
-    return "from-violet-500 to-purple-600";
-  return "from-emerald-500 to-emerald-700";
-};
-
 const formatNumber = (num: number) => {
   return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
 };
 
-const colorKeys = ["emerald", "blue", "violet", "amber", "rose", "teal"];
-
 export function LibraryClient({ books }: { books: LibraryItem[] }) {
-  const [searchTerm, setSearchTerm] = useState("");
-  const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
-
-  const categories = Array.from(
-    books.reduce((acc, book) => {
-      acc.set(book.category, (acc.get(book.category) ?? 0) + 1);
-      return acc;
-    }, new Map<string, number>()),
-  ).map(([name, count], index) => ({
-    name,
-    count,
-    color: colorKeys[index % colorKeys.length],
-  }));
-
-  const stats = libraryStats.map((stat, index) =>
-    index === 0
-      ? { ...stat, value: books.length, suffix: "", label: "Koleksi Terdata" }
-      : stat,
-  );
-
-  const filteredBooks = books.filter((book) => {
-    const matchesSearch =
-      searchTerm === "" ||
-      book.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      book.author.toLowerCase().includes(searchTerm.toLowerCase());
-
-    const matchesCategory =
-      !selectedCategory || book.category === selectedCategory;
-
-    return matchesSearch && matchesCategory;
-  });
+  const {
+    searchTerm,
+    setSearchTerm,
+    selectedCategory,
+    setSelectedCategory,
+    categories,
+    stats,
+    filteredBooks,
+    resetFilters,
+  } = useLibraryCatalog(books);
 
   return (
     <div className="selection:bg-emerald-500 selection:text-white">
@@ -248,99 +209,35 @@ export function LibraryClient({ books }: { books: LibraryItem[] }) {
                 className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6"
               >
                 {filteredBooks.map((book, i) => (
-                  <motion.div
-                    layout
-                    key={book.title + i}
-                    initial={{ opacity: 0, y: 15 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, scale: 0.9 }}
-                    transition={{ duration: 0.3 }}
-                    className="group rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 overflow-hidden hover:shadow-xl hover:border-emerald-500/40 transition-all duration-300 hover:-translate-y-1 flex flex-col justify-between"
-                  >
-                    {/* Visual Book Cover Cover Mockup (Dynamic motifs) */}
-                    <div
-                      className={`relative h-48 bg-linear-to-br ${getBookCoverGradient(book.category)} flex flex-col justify-between p-4 text-white overflow-hidden shadow-inner select-none`}
-                    >
-                      {/* Spine shadow overlay */}
-                      <div className="absolute left-0 top-0 bottom-0 w-3.5 bg-black/25" />
-                      {/* Decorative overlay shine */}
-                      <div className="absolute right-0 top-0 bottom-0 w-1/3 bg-[radial-gradient(circle_at_right,rgba(255,255,255,0.08),transparent_70%)]" />
-
-                      {/* Header category badge */}
-                      <div className="text-[9px] uppercase font-bold tracking-widest bg-white/20 backdrop-blur-xs px-2 py-0.5 rounded self-start border border-white/10">
-                        {book.category}
-                      </div>
-
-                      {/* Center motif icon */}
-                      <BookMarked className="h-10 w-10 opacity-30 self-center group-hover:scale-110 transition-transform duration-500" />
-
-                      {/* Title & Author on Cover */}
-                      <div className="space-y-0.5 relative z-10 pl-2">
-                        <h4 className="text-xs font-black line-clamp-2 leading-tight drop-shadow-[0_1px_2px_rgba(0,0,0,0.5)]">
-                          {book.title}
-                        </h4>
-                        <p className="text-[9px] text-white/80 font-semibold truncate drop-shadow-sm">
-                          {book.author}
-                        </p>
-                      </div>
-                    </div>
-
-                    <div className="p-5 flex-1 flex flex-col justify-between space-y-4">
-                      <div>
-                        <h3 className="text-base font-bold text-zinc-900 dark:text-white line-clamp-2 leading-snug group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">
-                          {book.title}
-                        </h3>
-                        <p className="text-xs text-zinc-500 mt-1">
-                          Penulis: {book.author}
-                        </p>
-                      </div>
-
-                      <div className="flex items-center justify-between pt-2 border-t border-zinc-100 dark:border-zinc-800">
-                        <span className="text-[10px] font-bold text-zinc-400 bg-zinc-100 dark:bg-zinc-800 px-2 py-1 rounded-md">
-                          {book.category}
-                        </span>
-                        <div className="flex items-center gap-1">
-                          {book.available ? (
-                            <>
-                              <CheckCircle2 className="h-3.5 w-3.5 text-emerald-500" />
-                              <span className="text-[11px] text-emerald-600 dark:text-emerald-400 font-bold">
-                                Tersedia
-                              </span>
-                            </>
-                          ) : (
-                            <>
-                              <XCircle className="h-3.5 w-3.5 text-rose-500" />
-                              <span className="text-[11px] text-rose-600 dark:text-rose-400 font-bold">
-                                Dipinjam
-                              </span>
-                            </>
-                          )}
-                        </div>
-                      </div>
-                    </div>
-                  </motion.div>
+                  <BookCard key={book.id || book.title + i} book={book} index={i} />
                 ))}
               </motion.div>
             ) : (
               <div className="flex flex-col items-center justify-center py-20 text-center">
-                <Search className="h-12 w-12 text-zinc-300 dark:text-zinc-700 mb-4" />
+                {books.length === 0 ? (
+                  <BookMarked className="h-12 w-12 text-zinc-300 dark:text-zinc-700 mb-4" />
+                ) : (
+                  <Search className="h-12 w-12 text-zinc-300 dark:text-zinc-700 mb-4" />
+                )}
                 <h3 className="text-xl font-bold text-zinc-700 dark:text-zinc-300">
-                  Buku tidak ditemukan
+                  {books.length === 0 ? "Koleksi Belum Tersedia" : "Buku tidak ditemukan"}
                 </h3>
                 <p className="text-sm text-zinc-500 mt-2">
-                  Tidak ada buku yang cocok dengan judul &ldquo;{searchTerm}
-                  &rdquo;.
+                  {books.length === 0
+                    ? "Saat ini belum ada koleksi buku digital yang terdaftar."
+                    : searchTerm
+                      ? `Tidak ada buku yang cocok dengan kata kunci "${searchTerm}".`
+                      : "Tidak ada buku yang cocok dengan kategori yang dipilih."}
                 </p>
-                <Button
-                  onClick={() => {
-                    setSearchTerm("");
-                    setSelectedCategory(null);
-                  }}
-                  variant="outline"
-                  className="mt-6 border-emerald-500 text-emerald-600 hover:bg-emerald-500/10 rounded-xl"
-                >
-                  Reset Pencarian
-                </Button>
+                {searchTerm || selectedCategory ? (
+                  <Button
+                    onClick={resetFilters}
+                    variant="outline"
+                    className="mt-6 border-emerald-500 text-emerald-600 hover:bg-emerald-500/10 rounded-xl"
+                  >
+                    Reset Pencarian
+                  </Button>
+                ) : null}
               </div>
             )}
           </AnimatePresence>

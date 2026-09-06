@@ -1,27 +1,40 @@
-"use server";
+﻿"use server";
 
 import {
   ResearchStatusUpdateDTO,
   ResearchItem,
 } from "@/types/dto/research";
-import { revalidatePath } from "next/cache";
+import { revalidatePath, revalidateTag } from "next/cache";
 import { updateResearchStatus } from "../service";
 
 /**
- * Server action to toggle the status of a research item.
+ * Server action to toggle the approval status of a research item.
  *
  * @param id - The ID of the research item.
- * @param currentStatus - The current status. The action will reverse it.
+ * @param currentStatus - The current status (boolean true if completed/has_done).
  * @returns The updated research response or null on failure.
  */
-export async function togglePinSearchAction(
+export async function toggleResearchApprovalAction(
   id: string,
   currentStatus: boolean,
 ): Promise<ResearchItem | null> {
   const payload: ResearchStatusUpdateDTO = {
     status: !currentStatus ? "has_done" : "pending",
   };
-  revalidatePath("/dashboard/research");
 
-  return await updateResearchStatus(id, payload);
+  const response = await updateResearchStatus(id, payload);
+
+  if (response) {
+    revalidateTag("research", "default");
+    revalidatePath("/dashboard/research/table");
+    revalidatePath("/dashboard/research");
+    revalidatePath("/research");
+    revalidatePath("/");
+  }
+
+  return response;
 }
+
+// Alias kompatibilitas
+export const togglePinSearchAction = toggleResearchApprovalAction;
+

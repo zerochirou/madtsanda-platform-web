@@ -73,7 +73,7 @@ export const galleryItems: GalleryItem[] = [
     description:
       "Sudut Madrasah yang memperlihatkan identitas Madtsanda sebagai madrasah peduli lingkungan.",
     category: "Fasilitas",
-    imageSrc: "/images/gallery/Madrasah-hijau.webp",
+    imageSrc: "/images/gallery/kampus-hijau.webp",
     imageAlt: "Sudut Madrasah hijau MTsN 2 Kota Kediri",
   },
 ];

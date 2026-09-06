@@ -1,4 +1,4 @@
-"use server";
+﻿"use server";
 
 import { request } from "@/lib/request";
 import logger from "@/lib/logger";
@@ -39,8 +39,10 @@ export async function createResearchService(
       body: formData,
     });
 
-    revalidateTag("research", "max");
+    revalidateTag("research", "default");
     revalidatePath("/dashboard/research/table");
+    revalidatePath("/research");
+    revalidatePath("/");
 
     return response;
   } catch (error: unknown) {
@@ -63,15 +65,17 @@ export async function getResearchWithPaginate(
   }
 }
 
-export async function getResearchTag(): Promise<ResearchTagResponseDTO | null> {
+export async function getAllResearchTags(): Promise<ResearchTagResponseDTO | null> {
   try {
-    const response = await request<ResearchTagResponseDTO>(`/research/tag`);
+    const response = await request<ResearchTagResponseDTO>("/research/tag");
     return response;
   } catch (error: unknown) {
     logger.error(errorFormat(error));
     return null;
   }
 }
+
+export const getResearchTag = getAllResearchTags;
 
 export async function updateResearchStatus(
   id: string,
@@ -86,8 +90,10 @@ export async function updateResearchStatus(
       body: JSON.stringify(data),
     });
 
-    revalidateTag("research", "max");
+    revalidateTag("research", "default");
     revalidatePath("/dashboard/research/table");
+    revalidatePath("/research");
+    revalidatePath("/");
 
     return response;
   } catch (error: unknown) {
@@ -138,8 +144,10 @@ export async function updateResearchService(
       body: formData,
     });
 
-    revalidateTag("research", "max");
+    revalidateTag("research", "default");
     revalidatePath("/dashboard/research/table");
+    revalidatePath("/research");
+    revalidatePath("/");
 
     return response;
   } catch (error: unknown) {
@@ -156,8 +164,10 @@ export async function deleteResearchService(
       method: "DELETE",
     });
 
-    revalidateTag("research", "max");
+    revalidateTag("research", "default");
     revalidatePath("/dashboard/research/table");
+    revalidatePath("/research");
+    revalidatePath("/");
 
     return response;
   } catch (error: unknown) {

@@ -4,7 +4,6 @@ import { FadeUp } from "@/components/animation/animations";
 import { Card, CardContent } from "@/components/ui";
 import {
   AtSign,
-  User,
   Award,
   Shield,
   FileText,

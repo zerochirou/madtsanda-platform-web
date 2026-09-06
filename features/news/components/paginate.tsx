@@ -15,6 +15,10 @@ import { DynamicPaginationProps } from "@/types/components";
 export function DynamicPagination({ totalPages }: DynamicPaginationProps) {
   const pathname = usePathname();
   const searchParams = useSearchParams();
+
+  if (totalPages <= 1) {
+    return null;
+  }
   
   // Mengambil halaman saat ini dari URL, default ke 1
   const currentPage = Number(searchParams.get("page")) || 1;

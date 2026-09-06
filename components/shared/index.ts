@@ -1,4 +1,4 @@
-export * from "./corousel";
+﻿export * from "./carousel";
 export * from "./footer";
 export * from "./navigation";
 export * from "./program-sheet";

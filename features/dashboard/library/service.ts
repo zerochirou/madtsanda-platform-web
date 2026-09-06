@@ -1,24 +1,23 @@
-"use server";
+﻿"use server";
 
 import { request } from "@/lib/request";
 import logger from "@/lib/logger";
 import { errorFormat } from "@/lib/error";
-import { revalidatePath, revalidateTag } from "next/cache";
 import {
   LibraryItemDTO,
+  LibraryPaginateDTO,
   LibraryPostDTO,
   LibraryResponseDTO,
 } from "@/types/dto/library";
+import { revalidatePath, revalidateTag } from "next/cache";
 
-export async function getLibraryService(): Promise<LibraryResponseDTO | null> {
+export async function getLibraryWithPaginate(
+  page: number,
+): Promise<LibraryPaginateDTO | null> {
   try {
-    const response = await request<LibraryResponseDTO>("/library", {
-      next: {
-        revalidate: 3600,
-        tags: ["library"],
-      },
-    });
-
+    const response = await request<LibraryPaginateDTO>(
+      `/library/paginate/?page=${page}`,
+    );
     return response;
   } catch (error: unknown) {
     logger.error(errorFormat(error));
@@ -26,23 +25,30 @@ export async function getLibraryService(): Promise<LibraryResponseDTO | null> {
   }
 }
 
-export async function getLibraryByIdService(
+export async function getAllLibrary(): Promise<LibraryResponseDTO | null> {
+  try {
+    const response = await request<LibraryResponseDTO>("/library");
+    return response;
+  } catch (error: unknown) {
+    logger.error(errorFormat(error));
+    return null;
+  }
+}
+
+export async function getLibraryById(
   id: string,
 ): Promise<LibraryItemDTO | null> {
   try {
-    const response = await request<LibraryItemDTO>(`/library/${id}`, {
-      next: {
-        revalidate: 3600,
-        tags: ["library"],
-      },
-    });
-
+    const response = await request<LibraryItemDTO>(`/library/${id}`);
     return response;
   } catch (error: unknown) {
     logger.error(errorFormat(error));
     return null;
   }
 }
+
+export const getLibraryService = getAllLibrary;
+export const getLibraryByIdService = getLibraryById;
 
 export async function createLibraryService(
   data: LibraryPostDTO,
@@ -56,8 +62,10 @@ export async function createLibraryService(
       body: JSON.stringify(data),
     });
 
-    revalidateTag("library", "max");
+    revalidateTag("library", "default");
     revalidatePath("/dashboard/library/table");
+    revalidatePath("/library");
+    revalidatePath("/");
 
     return response;
   } catch (error: unknown) {
@@ -79,8 +87,10 @@ export async function updateLibraryService(
       body: JSON.stringify(data),
     });
 
-    revalidateTag("library", "max");
+    revalidateTag("library", "default");
     revalidatePath("/dashboard/library/table");
+    revalidatePath("/library");
+    revalidatePath("/");
 
     return response;
   } catch (error: unknown) {
@@ -97,8 +107,10 @@ export async function deleteLibraryService(
       method: "DELETE",
     });
 
-    revalidateTag("library", "max");
+    revalidateTag("library", "default");
     revalidatePath("/dashboard/library/table");
+    revalidatePath("/library");
+    revalidatePath("/");
 
     return response;
   } catch (error: unknown) {
@@ -106,3 +118,4 @@ export async function deleteLibraryService(
     return null;
   }
 }
+

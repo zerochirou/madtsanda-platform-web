@@ -81,7 +81,7 @@ export default function About() {
           </FadeLeft>
         </div>
 
-        <Link href={"/sambutan"}>
+        <Link href={"/about/sambutan"}>
           <Button
             variant="outline"
             className="bg-emerald-400 text-white"

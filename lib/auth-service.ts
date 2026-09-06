@@ -10,9 +10,10 @@ export async function setAuthToken(token: string) {
     secure: process.env.NODE_ENV === "production",
     sameSite: "lax",
     path: "/",
-    maxAge: 60 * 60 * 24 * 7, // 1 week
+    maxAge: 60 * 60 * 24, // 24 hours
   });
 }
+
 
 export async function getAuthToken() {
   const cookieStore = await cookies();

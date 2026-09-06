@@ -5,7 +5,7 @@ export default function CampusPage() {
   const facilities = [
     { name: "Perpustakaan", img: "/images/perpustakaan.jpg" },
     { name: "Laboratorium", img: "/images/kegiatan-sekolah.jpg" },
-    { name: "Graha Paseban", img: "/images/paseban-1.JPG" },
+    { name: "Graha Paseban", img: "/images/paseban-1.jpg" },
     { name: "Asrama Al-Azhar", img: "/images/mahad-alazhar.jpg" },
     { name: "Paseban 2", img: "/images/paseban-2.jpg" },
     { name: "Kantin", img: "/images/kantin.jpg" },
@@ -17,7 +17,7 @@ export default function CampusPage() {
         title="Lingkungan Madrasah" 
         subtitle="Fasilitas & Madrasah" 
         description="Lingkungan belajar yang asri, modern, dan bernuansa Islami. Jelajahi fasilitas yang mendukung pengembangan diri murid."
-        imageSrc="/images/paseban-1.JPG"
+        imageSrc="/images/paseban-1.jpg"
       />
 
       <section className="py-20 lg:py-32 max-w-7xl mx-auto px-4 md:px-6">

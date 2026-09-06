@@ -15,5 +15,9 @@ export async function deleteNewsAction(
 ): Promise<NewsResponseDTO | null> {
   const result = await deleteNewsService(id);
   revalidatePath("/dashboard/news");
+  revalidatePath("/dashboard/news/table");
+  revalidatePath("/news");
+  revalidatePath("/");
+  revalidatePath("/dashboard");
   return result;
 }

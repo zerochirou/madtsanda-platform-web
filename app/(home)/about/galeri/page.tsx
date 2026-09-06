@@ -53,7 +53,9 @@ export default function GaleriMadtsandaPage() {
                   index === 0 ? "sm:col-span-2 sm:row-span-2" : ""
                 }`}
               >
-                <div className={index === 0 ? "aspect-[16/11]" : "aspect-square"}>
+                <div
+                  className={`relative ${index === 0 ? "aspect-[16/11]" : "aspect-square"}`}
+                >
                   <Image
                     src={item.imageSrc}
                     alt={item.imageAlt}

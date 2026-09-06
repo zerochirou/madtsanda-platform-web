@@ -23,10 +23,10 @@ export default async function Page({
           <DynamicPagination totalPages={totalPage ? totalPage : 0} />
           <Link href="/dashboard/news/create" className="w-full sm:w-auto">
             <Button
-              variant={"outline"}
-              className="w-full bg-emerald-400 text-emerald-800 hover:bg-emerald-300 hover:text-emerald-600"
+              variant="default"
+              className="w-full bg-emerald-600 text-white hover:bg-emerald-700 shadow-sm font-medium transition-colors"
             >
-              Buat Berita Baru <Plus />
+              Buat Berita Baru <Plus className="size-4 ml-1.5" />
             </Button>
           </Link>
         </div>

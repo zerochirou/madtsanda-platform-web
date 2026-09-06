@@ -10,14 +10,15 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const [user, student, teacher] = await Promise.all([
-    getUserProfile(),
-    getStudentByToken(),
-    getTeacherByToken(),
-  ]);
+  const user = await getUserProfile();
   if (!user) {
     redirect("/login");
   }
+
+  const [student, teacher] = await Promise.all([
+    user.data.role === "student" ? getStudentByToken() : Promise.resolve(null),
+    user.data.role === "teacher" ? getTeacherByToken() : Promise.resolve(null),
+  ]);
   return (
     <TooltipProvider>
       <SidebarLayout

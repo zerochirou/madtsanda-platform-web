@@ -134,4 +134,12 @@ export const sidebarItems: SidebarItem[] = [
       },
     ],
   },
+  {
+    id: "settings",
+    label: "Pengaturan",
+    icon: Settings24Color,
+    route: "/dashboard/settings",
+    hasSubItems: false,
+    minRole: "student",
+  },
 ];

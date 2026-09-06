@@ -60,7 +60,7 @@ export const services = [
   {
     label: "Madtsanda Connect",
     description: "Portal integrasi sistem akademik digital.",
-    href: "",
+    href: "/login",
   },
   {
     label: "Modern Library",

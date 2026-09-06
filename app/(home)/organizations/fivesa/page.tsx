@@ -2,7 +2,7 @@ import React from "react";
 import Image from "next/image";
 import { FadeUp } from "@/components/animation/animations";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui";
-import { AtSign, User } from "lucide-react";
+import { AtSign } from "lucide-react";
 import { organizationsData } from "@/components/data/organizations";
 import { OrganizationHero } from "@/features/organizations/components";
 import { buildMetadata } from "@/lib/seo";

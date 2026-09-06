@@ -30,7 +30,7 @@ export function HomeLatest() {
             </tr>
           </thead>
           <tbody>
-            <tr className="border-b hover:bg-gray-50">
+            <tr className="border-b hover:bg-muted/50 dark:hover:bg-zinc-800/50 transition-colors">
               <td className="py-4 px-4">
                 <div className="flex items-center gap-3">
                   <Avatar className="w-8 h-8">

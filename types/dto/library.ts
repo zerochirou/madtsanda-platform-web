@@ -37,3 +37,14 @@ export interface LibraryResponseDTO {
 export interface LibraryItemDTO {
   data: LibraryItem;
 }
+
+export interface LibraryPaginateDTO {
+  meta: {
+    total: number;
+    perPage: number;
+    currentPage: number;
+    lastPage: number;
+    firstPage: number;
+  };
+  data: LibraryItem[];
+}

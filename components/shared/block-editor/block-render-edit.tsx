@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import "@blocknote/core/fonts/inter.css";
 import "@blocknote/shadcn/style.css";
@@ -6,7 +6,7 @@ import { BlockNoteEditor, PartialBlock } from "@blocknote/core";
 import { useCreateBlockNote } from "@blocknote/react";
 import { BlockNoteView } from "@blocknote/shadcn";
 import { useTheme } from "next-themes";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 interface EditorBlockProps {
   onChange: (markdown: string) => void;
@@ -18,22 +18,39 @@ export default function EditorBlock({
   initialContent,
 }: EditorBlockProps) {
   const [initialBlocks, setInitialBlocks] = useState<PartialBlock[] | null>(null);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(Boolean(initialContent));
 
   useEffect(() => {
+    let isMounted = true;
+
     async function convertMarkdown() {
-      if (initialContent) {
-        // Gunakan editor instance sementara hanya untuk parsing
-        const editor = BlockNoteEditor.create();
-        const blocks = await editor.tryParseMarkdownToBlocks(initialContent);
-        setInitialBlocks(blocks);
+      if (!initialContent) {
+        if (isMounted) setLoading(false);
+        return;
       }
-      setLoading(false);
+
+      try {
+        const tempEditor = BlockNoteEditor.create();
+        const blocks = await tempEditor.tryParseMarkdownToBlocks(initialContent);
+        if (isMounted) {
+          setInitialBlocks(blocks);
+        }
+      } catch (err) {
+        console.warn("Failed to parse initial markdown into blocks:", err);
+      } finally {
+        if (isMounted) {
+          setLoading(false);
+        }
+      }
     }
+
     convertMarkdown();
+
+    return () => {
+      isMounted = false;
+    };
   }, [initialContent]);
 
-  // Jangan render editor utama sampai blocks siap
   if (loading) {
     return <div className="h-[150px] w-full bg-muted animate-pulse rounded-md" />;
   }
@@ -46,7 +63,6 @@ export default function EditorBlock({
   );
 }
 
-// Komponen terpisah untuk menangani Hook dengan benar
 function EditorInstance({ 
   initialBlocks, 
   onChange 
@@ -55,22 +71,29 @@ function EditorInstance({
   onChange: (markdown: string) => void 
 }) {
   const { theme } = useTheme();
-  
-  // Hook dipanggil di level teratas komponen ini
+  const debounceRef = useRef<NodeJS.Timeout | null>(null);
+
   const editor = useCreateBlockNote({
     initialContent: initialBlocks,
   });
 
+  useEffect(() => {
+    return () => {
+      if (debounceRef.current) {
+        clearTimeout(debounceRef.current);
+      }
+    };
+  }, []);
+
   const themeMapping = {
-      system: "dark",
-      light: "light",
-      dark: "dark",
-    } as const;
-  
-    // Use a fallback key if theme is undefined or not in the mapping
-    const selectedTheme = theme && theme in themeMapping 
-      ? themeMapping[theme as keyof typeof themeMapping] 
-      : "light";
+    system: "dark",
+    light: "light",
+    dark: "dark",
+  } as const;
+
+  const selectedTheme = theme && theme in themeMapping 
+    ? themeMapping[theme as keyof typeof themeMapping] 
+    : "light";
 
   return (
     <div className="min-h-[150px]">
@@ -78,11 +101,13 @@ function EditorInstance({
         editor={editor}
         theme={selectedTheme}
         onChange={() => {
-          async function save() {
-            const markdown = editor.blocksToMarkdownLossy(editor.document);
-            onChange(markdown);
+          if (debounceRef.current) {
+            clearTimeout(debounceRef.current);
           }
-          save();
+          debounceRef.current = setTimeout(async () => {
+            const markdown = await editor.blocksToMarkdownLossy(editor.document);
+            onChange(markdown);
+          }, 300);
         }}
       />
     </div>

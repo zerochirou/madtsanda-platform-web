@@ -6,8 +6,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { resolveNewsImageUrl } from "@/lib/news";
 
-const newsImageFallback = "/images/kegiatan-sekolah.jpg";
-
 export default async function NewsCategory({
   params,
 }: {

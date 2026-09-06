@@ -14,6 +14,11 @@ export default async function Page() {
     redirect("/login");
   }
 
+  if (user.data.role !== "admin" && user.data.role !== "super_user") {
+    redirect("/dashboard");
+  }
+
+
   return (
     <div className="px-4 py-10">
       <Card className="mx-auto max-w-3xl mt-4">

@@ -30,7 +30,7 @@ export const timelineMilestones: TimelineMilestone[] = [
     title: "Akreditasi A Pertama",
     description:
       "MTsN 2 Kota Kediri berhasil meraih akreditasi A untuk pertama kalinya. Pencapaian ini menjadi bukti komitmen tinggi terhadap mutu pendidikan dan manajemen madrasah yang profesional.",
-    imageSrc: "/images/gallery/Madrasah-hijau.webp",
+    imageSrc: "/images/gallery/kampus-hijau.webp",
     imageAlt: "Lingkungan Madrasah MTsN 2 Kota Kediri",
   },
   {

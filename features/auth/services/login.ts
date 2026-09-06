@@ -3,21 +3,32 @@
 import logger from "@/lib/logger";
 import { errorFormat } from "@/lib/error";
 import { LoginDTO } from "@/types/dto/auth";
+import { httpClient } from "@/lib/http/client";
 
-const BASE_URL =
-  process.env.NEXT_PUBLIC_API_URL || "http://localhost:3333/api/v1";
+interface LoginSuccessPayload {
+  token: string;
+  user: Record<string, unknown>;
+}
 
 async function accessTokenService(payload: LoginDTO) {
   try {
-    const response = await fetch(`${BASE_URL}/auth/login`, {
+    const result = await httpClient<LoginSuccessPayload>("/auth/login", {
       method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(payload),
+      body: payload,
     });
 
-    return await response.json();
+    if (!result.ok) {
+      return {
+        data: {
+          message: result.error || "Username atau password salah",
+          code: result.statusCode || 401,
+        },
+      };
+    }
+
+    return {
+      data: result.data,
+    };
   } catch (error: unknown) {
     logger.error(errorFormat(error));
     return {

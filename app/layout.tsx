@@ -6,7 +6,7 @@ import { ThemeProvider } from "@/components/shared/theme-provider";
 import { Toaster } from "@/components/ui/sonner";
 import { SCHOOL_DESCRIPTION, SCHOOL_KEYWORDS, SITE_URL } from "@/lib/seo";
 
-const outfit = Outfit({ subsets: ["latin"], variable: "--font-sans" });
+const outfit = Outfit({ subsets: ["latin"], variable: "--font-heading" });
 const inter = Inter({ subsets: ["latin"], variable: "--font-sans" });
 
 export const metadata: Metadata = {
@@ -74,6 +74,7 @@ export default function RootLayout({
         "h-full",
         "antialiased",
         "font-sans",
+        outfit.variable,
         inter.variable,
       )}
       suppressHydrationWarning

@@ -25,26 +25,22 @@ export function Navigation() {
   const isHome = pathname === "/";
 
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 50);
-    window.addEventListener("scroll", handleScroll);
+    const handleScroll = () => {
+      const isScrolled = window.scrollY > 50;
+      setScrolled((prev) => (prev !== isScrolled ? isScrolled : prev));
+    };
+    window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   useEffect(() => {
-    // eslint-disable-next-line react-hooks/set-state-in-effect
-    setMobileOpen(false);
-    setExpandedSections([]);
-  }, [pathname]);
-
-  useEffect(() => {
     if (mobileOpen) {
+      const originalOverflow = document.body.style.overflow;
       document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "";
+      return () => {
+        document.body.style.overflow = originalOverflow;
+      };
     }
-    return () => {
-      document.body.style.overflow = "";
-    };
   }, [mobileOpen]);
 
   const showSolid = scrolled || !isHome;
@@ -73,7 +69,7 @@ export function Navigation() {
             }}
             animate={{ x: 0, opacity: 1 }}
           >
-            <Link href="/" className="group flex min-w-0 items-center gap-2 lg:gap-6">
+            <Link href="/" className="group flex min-w-0 items-center gap-2.5 sm:gap-3">
               <Image
                 suppressHydrationWarning
                 src="/icons/icon.png"
@@ -83,13 +79,13 @@ export function Navigation() {
                 className="w-10 shrink-0 object-contain px-0 tracking-wide lg:w-14"
               />
               <motion.div
-                className={`flex min-w-0 flex-col text-xl font-bold tracking-wide transition-colors duration-300 md:-ml-4 lg:-ml-4 ${
+                className={`flex min-w-0 flex-col text-xl font-bold tracking-wide transition-colors duration-300 ${
                   showSolid ? "text-zinc-900 dark:text-white" : "text-white"
                 }`}
                 whileHover={{ scale: 1.02 }}
               >
-                <span className="-mb-1 hidden text-md md:block">MTsN 2</span>
-                <span className="hidden text-sm md:block">Kota Kediri</span>
+                <span className="hidden text-md md:block leading-tight">MTsN 2</span>
+                <span className="hidden text-sm md:block leading-tight">Kota Kediri</span>
                 <span className="block max-w-[190px] truncate text-sm tracking-wider sm:max-w-[260px] md:hidden">
                   MTsN 2 Kota Kediri
                 </span>
@@ -105,16 +101,10 @@ export function Navigation() {
             }}
             animate={{ y: 0, opacity: 1 }}
             className={`hidden lg:flex items-center space-x-3 xl:space-x-8 text-sm font-medium ${
-              showSolid ? "text-zinc-600 dark:text-zinc-400" : "text-white/90"
+              showSolid ? "text-zinc-900 dark:text-white" : "text-white/90"
             }`}
           >
-            {/*<Link
-              href="/"
-              className="inline-flex h-9 items-center justify-center rounded-md px-4 py-2 text-xl font-medium transition-colors hover:text-emerald-400"
-            >
-              Beranda
-            </Link>*/}
-            <NavigationMenu>
+            <NavigationMenu viewport={false}>
               <NavigationMenuList>
                 {navigationData.map((labels, index) => {
                   return (
@@ -147,6 +137,7 @@ export function Navigation() {
                                 key={itemIndex}
                                 href={item.href}
                                 title={item.label}
+                                isActive={pathname === item.href}
                               >
                                 {item.description}
                               </ListItem>
@@ -172,7 +163,7 @@ export function Navigation() {
           >
             <ThemeToggle />
             <Link href="/login" prefetch>
-              <button className="dark:bg-emerald-950 bg-emerald-100 text-emerald-400 border border-emerald-400 border-b-4 font-bold font-mono overflow-hidden relative px-4 py-1 rounded-xl dark:hover:brightness-150 hover:brightness-110 hover:border-t-4 hover:border-b active:opacity-75 outline-none duration-300 group">
+              <button className="dark:bg-emerald-950 bg-emerald-100 text-emerald-800 dark:text-emerald-300 border border-emerald-400 border-b-4 font-bold font-mono overflow-hidden relative px-4 py-1 rounded-xl dark:hover:brightness-150 hover:brightness-110 hover:border-t-4 hover:border-b active:opacity-75 outline-none duration-300 group">
                 <span className="dark:bg-emerald-400 bg-emerald-100 shadow-emerald-400 absolute top-[-150%] left-0 inline-flex w-80 h-1.25 rounded-md opacity-50 group-hover:top-[150%] duration-500 shadow-[0_0_10px_10px_rgba(0,0,0,0.3)]" />
                 Connect
               </button>
@@ -186,7 +177,7 @@ export function Navigation() {
               ease: "easeInOut",
             }}
             animate={{ x: 0, opacity: 1 }}
-            className="relative z-50 lg:hidden"
+            className="relative z-50 lg:hidden flex size-11 items-center justify-center rounded-lg hover:bg-black/5 dark:hover:bg-white/10 transition-colors"
             onClick={() => setMobileOpen(!mobileOpen)}
             aria-label="Toggle menu"
           >
@@ -287,23 +278,30 @@ export function Navigation() {
                             >
                               {/* List Items */}
                               <div className="px-2 pb-4 space-y-1">
-                                {section.items.map((item, itemIndex) => (
-                                  <Link
-                                    key={itemIndex}
-                                    href={item.href}
-                                    onClick={() => setMobileOpen(false)}
-                                    className="block px-4 py-3 rounded-xl hover:bg-zinc-100 dark:hover:bg-zinc-900 transition-colors"
-                                  >
-                                    <div className="font-medium text-sm">
-                                      {item.label}
-                                    </div>
-                                    {item.description && (
-                                      <div className="mt-0.5 line-clamp-2 text-xs text-zinc-500 dark:text-zinc-400">
-                                        {item.description}
+                                {section.items.map((item, itemIndex) => {
+                                  const isActive = pathname === item.href;
+                                  return (
+                                    <Link
+                                      key={itemIndex}
+                                      href={item.href}
+                                      onClick={() => setMobileOpen(false)}
+                                      className={`block px-4 py-3 rounded-xl transition-colors ${
+                                        isActive
+                                          ? "bg-emerald-50 text-emerald-600 dark:bg-emerald-950/50 dark:text-emerald-400"
+                                          : "text-zinc-900 dark:text-white hover:bg-zinc-100 dark:hover:bg-zinc-900"
+                                      }`}
+                                    >
+                                      <div className="font-medium text-sm">
+                                        {item.label}
                                       </div>
-                                    )}
-                                  </Link>
-                                ))}
+                                      {item.description && (
+                                        <div className="mt-0.5 line-clamp-2 text-xs text-zinc-500 dark:text-zinc-400">
+                                          {item.description}
+                                        </div>
+                                      )}
+                                    </Link>
+                                  );
+                                })}
                               </div>
                             </motion.div>
                           )}
@@ -324,7 +322,7 @@ export function Navigation() {
                     onClick={() => setMobileOpen(false)}
                     prefetch
                   >
-                    <button className="w-full dark:bg-emerald-950 bg-emerald-100 text-emerald-400 border border-emerald-400 border-b-4 font-bold font-mono overflow-hidden relative px-4 py-3 rounded-2xl dark:hover:brightness-150 hover:brightness-110 hover:border-t-4 hover:border-b active:opacity-75 outline-none duration-300 group">
+                    <button className="w-full dark:bg-emerald-950 bg-emerald-100 text-emerald-800 dark:text-emerald-300 border border-emerald-400 border-b-4 font-bold font-mono overflow-hidden relative px-4 py-3 rounded-2xl dark:hover:brightness-150 hover:brightness-110 hover:border-t-4 hover:border-b active:opacity-75 outline-none duration-300 group">
                       <span className="dark:bg-emerald-400 bg-emerald-100 shadow-emerald-400 absolute top-[-150%] left-0 inline-flex w-80 h-1.25 rounded-md opacity-50 group-hover:top-[150%] duration-500 shadow-[0_0_10px_10px_rgba(0,0,0,0.3)]" />
                       Connect
                     </button>
@@ -343,18 +341,44 @@ function ListItem({
   title,
   children,
   href,
+  isActive,
   ...props
-}: React.ComponentPropsWithoutRef<"li"> & { href: string }) {
+}: React.ComponentPropsWithoutRef<"li"> & { href: string; isActive?: boolean }) {
   return (
-    <li {...props} className="container">
+    <li {...props} className="list-none">
       <NavigationMenuLink asChild>
-        <Link href={href}>
+        <Link
+          href={href}
+          className={`group/item block select-none rounded-lg p-2.5 transition-colors outline-none ${
+            isActive
+              ? "bg-emerald-50/80 dark:bg-emerald-950/40"
+              : "hover:bg-zinc-100 dark:hover:bg-zinc-800/60 focus:bg-zinc-100 dark:focus:bg-zinc-800/60"
+          }`}
+        >
           <div className="flex flex-col gap-1 text-sm">
-            <span className="flex flex-row items-center gap-1 text-sm">
-            <SquareArrowOutUpRight className="size-4"/>
-              <div className="leading-none font-medium group-hover:text-emerald-400">{title}</div>
+            <span
+              className={`flex flex-row items-center gap-1.5 text-sm transition-colors ${
+                isActive
+                  ? "text-emerald-600 dark:text-emerald-400 font-semibold"
+                  : "text-zinc-900 dark:text-white group-hover/item:text-emerald-600 dark:group-hover/item:text-emerald-400"
+              }`}
+            >
+              <SquareArrowOutUpRight
+                className={`size-4 shrink-0 transition-colors ${
+                  isActive
+                    ? "text-emerald-600 dark:text-emerald-400"
+                    : "text-zinc-500 dark:text-zinc-400 group-hover/item:text-emerald-600 dark:group-hover/item:text-emerald-400"
+                }`}
+              />
+              <div className="leading-none font-medium">{title}</div>
             </span>
-            <div className="line-clamp-2 text-xs text-zinc-500 opacity-70 group-hover:text-emerald-400 dark:text-zinc-400">
+            <div
+              className={`line-clamp-2 text-xs transition-colors ${
+                isActive
+                  ? "text-emerald-700/80 dark:text-emerald-300/80"
+                  : "text-zinc-500 dark:text-zinc-400 group-hover/item:text-zinc-700 dark:group-hover/item:text-zinc-300"
+              }`}
+            >
               {children}
             </div>
           </div>

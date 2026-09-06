@@ -8,16 +8,20 @@ import {
   DropdownMenuLabel,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { GripVertical } from "lucide-react";
+import { MoreVertical } from "lucide-react";
 import { DeleteNews } from "./delete-news";
 
 export function UpdateDropdown({ id }: { id: string }) {
-  
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button variant="ghost" size={'xs'}>
-          <GripVertical className="size-4" />
+        <Button
+          variant="ghost"
+          size="icon"
+          className="size-9 p-0 flex items-center justify-center rounded-md hover:bg-muted text-muted-foreground hover:text-foreground"
+          aria-label="Menu opsi berita"
+        >
+          <MoreVertical className="size-4" />
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent className="w-40" align="start">

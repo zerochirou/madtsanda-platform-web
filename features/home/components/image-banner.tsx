@@ -54,7 +54,7 @@ export const ImageBanner = () => {
                 variant="outline"
                 className="h-12 w-full rounded-full border-white/30 bg-white/10 px-6 text-sm font-bold text-white backdrop-blur-md transition-all hover:-translate-y-1 hover:bg-white/20 hover:text-white sm:w-auto sm:px-8 sm:text-base"
               >
-                <Link href="/facilities">
+                <Link href="/about/galeri">
                   Tur Virtual
                 </Link>
               </Button>
